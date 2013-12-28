@@ -10,19 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HurtowniaNapojow.Helpers;
 
-namespace HurtowniaNapojow
+namespace HurtowniaNapojow.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
-        public MainWindow()
+        public AdminWindow()
         {
             InitializeComponent();
+        }
+        protected void ButtonLogout_Click(object sender, RoutedEventArgs e)
+        {
+            SessionHelper.Instance.LogoutUser();
+            new LoginWindow().Show();
+            this.Close();
         }
     }
 }
