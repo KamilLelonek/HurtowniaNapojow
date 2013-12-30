@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Windows.Admin;
 
 namespace HurtowniaNapojow.Windows
 {
@@ -13,7 +13,7 @@ namespace HurtowniaNapojow.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private String _emailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+        private const String EmailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
 
         public LoginWindow()
         {
@@ -26,7 +26,7 @@ namespace HurtowniaNapojow.Windows
             String email = TextBoxEmail.Text;
             String password = PasswordBox.Password;
 
-            if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || !(email.Equals("admin") || Regex.IsMatch(email, _emailRegex)))
+            if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || !(email.Equals("admin") || Regex.IsMatch(email, EmailRegex)))
             {
                 MessageBox.Show("Uzupełnij poprawnie wszystkie dane!", "Błąd logowania");
                 return;
@@ -49,15 +49,15 @@ namespace HurtowniaNapojow.Windows
                 {
                     new EmployeeWindow().Show();
                 }
-                this.Close();
+                Close();
             }
         }
 
-        private void OnKeyDownHandler(object sender, System.Windows.Input.KeyEventArgs e)
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                ButtonLogin.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                ButtonLogin.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             }
         }
     }

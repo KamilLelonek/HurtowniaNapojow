@@ -20,11 +20,15 @@ namespace HurtowniaNapojow.Database {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("HurtowniaNapojow")]
+    [global::System.Xml.Serialization.XmlRootAttribute("HurtowniaNapojówDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class HurtowniaNapojow : global::System.Data.DataSet {
+    public partial class HurtowniaNapojówDataSet : global::System.Data.DataSet {
         
         private KlienciDataTable tableKlienci;
+        
+        private PracownicyDataTable tablePracownicy;
+        
+        private ProduktyKlientaDataTable tableProduktyKlienta;
         
         private ZakupyKlientaDataTable tableZakupyKlienta;
         
@@ -32,61 +36,57 @@ namespace HurtowniaNapojow.Database {
         
         private NapojeProducentaDataTable tableNapojeProducenta;
         
-        private NazwyNapojuDataTable tableNazwyNapoju;
-        
-        private NazwyOpakowaniaSztukiDataTable tableNazwyOpakowaniaSztuki;
-        
-        private NazwyOpakowaniaZbiorczegoDataTable tableNazwyOpakowaniaZbiorczego;
-        
-        private OpakowaniaSztukiDataTable tableOpakowaniaSztuki;
+        private ProducenciDataTable tableProducenci;
         
         private OpakowaniaZbiorczeDataTable tableOpakowaniaZbiorcze;
         
-        private PracownicyDataTable tablePracownicy;
+        private OpakowaniaSztukiDataTable tableOpakowaniaSztuki;
         
-        private ProducenciDataTable tableProducenci;
+        private NazwyOpakowaniaZbiorczegoDataTable tableNazwyOpakowaniaZbiorczego;
         
-        private ProduktyKlientaDataTable tableProduktyKlienta;
+        private NazwyOpakowaniaSztukiDataTable tableNazwyOpakowaniaSztuki;
+        
+        private SmakiDataTable tableSmaki;
+        
+        private NazwyNapojuDataTable tableNazwyNapoju;
         
         private RodzajeGazuDataTable tableRodzajeGazu;
         
         private RodzajeNapojuDataTable tableRodzajeNapoju;
         
-        private SmakiDataTable tableSmaki;
+        private global::System.Data.DataRelation relationZakupyKlientaProduktyKlienta;
+        
+        private global::System.Data.DataRelation relationKlienciZakupyKlienta;
         
         private global::System.Data.DataRelation relationPracownicyZakupyKlienta;
         
+        private global::System.Data.DataRelation relationNapojeHurtowniProduktyKlienta;
+        
         private global::System.Data.DataRelation relationNapojePozycjeMagazynu;
         
-        private global::System.Data.DataRelation relationNazwyNapojuNapoje;
-        
-        private global::System.Data.DataRelation relationOpakowaniaSztukiNapoje;
+        private global::System.Data.DataRelation relationProducenciNapoje;
         
         private global::System.Data.DataRelation relationOpakowaniaZbiorczeNapoje;
         
-        private global::System.Data.DataRelation relationProducenciNapoje;
+        private global::System.Data.DataRelation relationOpakowaniaSztukiNapoje;
+        
+        private global::System.Data.DataRelation relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze;
+        
+        private global::System.Data.DataRelation relationNazwyOpakowaniaSztukiOpakowaniaSztuki;
+        
+        private global::System.Data.DataRelation relationSmakiNapoje;
+        
+        private global::System.Data.DataRelation relationNazwyNapojuNapoje;
         
         private global::System.Data.DataRelation relationRodzajeGazuNapoje;
         
         private global::System.Data.DataRelation relationRodzajeNapojuNapoje;
         
-        private global::System.Data.DataRelation relationSmakiNapoje;
-        
-        private global::System.Data.DataRelation relationNazwyOpakowaniaSztukiOpakowaniaSztuki;
-        
-        private global::System.Data.DataRelation relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze;
-        
-        private global::System.Data.DataRelation relationNapojeHurtowniProduktyKlienta;
-        
-        private global::System.Data.DataRelation relationZakupyKlientaProduktyKlienta;
-        
-        private global::System.Data.DataRelation relationKlienciZakupyKlienta1;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public HurtowniaNapojow() {
+        public HurtowniaNapojówDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -97,7 +97,7 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected HurtowniaNapojow(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected HurtowniaNapojówDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -113,6 +113,12 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["Klienci"] != null)) {
                     base.Tables.Add(new KlienciDataTable(ds.Tables["Klienci"]));
                 }
+                if ((ds.Tables["Pracownicy"] != null)) {
+                    base.Tables.Add(new PracownicyDataTable(ds.Tables["Pracownicy"]));
+                }
+                if ((ds.Tables["ProduktyKlienta"] != null)) {
+                    base.Tables.Add(new ProduktyKlientaDataTable(ds.Tables["ProduktyKlienta"]));
+                }
                 if ((ds.Tables["ZakupyKlienta"] != null)) {
                     base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
                 }
@@ -122,38 +128,32 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["NapojeProducenta"] != null)) {
                     base.Tables.Add(new NapojeProducentaDataTable(ds.Tables["NapojeProducenta"]));
                 }
-                if ((ds.Tables["NazwyNapoju"] != null)) {
-                    base.Tables.Add(new NazwyNapojuDataTable(ds.Tables["NazwyNapoju"]));
-                }
-                if ((ds.Tables["NazwyOpakowaniaSztuki"] != null)) {
-                    base.Tables.Add(new NazwyOpakowaniaSztukiDataTable(ds.Tables["NazwyOpakowaniaSztuki"]));
-                }
-                if ((ds.Tables["NazwyOpakowaniaZbiorczego"] != null)) {
-                    base.Tables.Add(new NazwyOpakowaniaZbiorczegoDataTable(ds.Tables["NazwyOpakowaniaZbiorczego"]));
-                }
-                if ((ds.Tables["OpakowaniaSztuki"] != null)) {
-                    base.Tables.Add(new OpakowaniaSztukiDataTable(ds.Tables["OpakowaniaSztuki"]));
+                if ((ds.Tables["Producenci"] != null)) {
+                    base.Tables.Add(new ProducenciDataTable(ds.Tables["Producenci"]));
                 }
                 if ((ds.Tables["OpakowaniaZbiorcze"] != null)) {
                     base.Tables.Add(new OpakowaniaZbiorczeDataTable(ds.Tables["OpakowaniaZbiorcze"]));
                 }
-                if ((ds.Tables["Pracownicy"] != null)) {
-                    base.Tables.Add(new PracownicyDataTable(ds.Tables["Pracownicy"]));
+                if ((ds.Tables["OpakowaniaSztuki"] != null)) {
+                    base.Tables.Add(new OpakowaniaSztukiDataTable(ds.Tables["OpakowaniaSztuki"]));
                 }
-                if ((ds.Tables["Producenci"] != null)) {
-                    base.Tables.Add(new ProducenciDataTable(ds.Tables["Producenci"]));
+                if ((ds.Tables["NazwyOpakowaniaZbiorczego"] != null)) {
+                    base.Tables.Add(new NazwyOpakowaniaZbiorczegoDataTable(ds.Tables["NazwyOpakowaniaZbiorczego"]));
                 }
-                if ((ds.Tables["ProduktyKlienta"] != null)) {
-                    base.Tables.Add(new ProduktyKlientaDataTable(ds.Tables["ProduktyKlienta"]));
+                if ((ds.Tables["NazwyOpakowaniaSztuki"] != null)) {
+                    base.Tables.Add(new NazwyOpakowaniaSztukiDataTable(ds.Tables["NazwyOpakowaniaSztuki"]));
+                }
+                if ((ds.Tables["Smaki"] != null)) {
+                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
+                }
+                if ((ds.Tables["NazwyNapoju"] != null)) {
+                    base.Tables.Add(new NazwyNapojuDataTable(ds.Tables["NazwyNapoju"]));
                 }
                 if ((ds.Tables["RodzajeGazu"] != null)) {
                     base.Tables.Add(new RodzajeGazuDataTable(ds.Tables["RodzajeGazu"]));
                 }
                 if ((ds.Tables["RodzajeNapoju"] != null)) {
                     base.Tables.Add(new RodzajeNapojuDataTable(ds.Tables["RodzajeNapoju"]));
-                }
-                if ((ds.Tables["Smaki"] != null)) {
-                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -180,6 +180,26 @@ namespace HurtowniaNapojow.Database {
         public KlienciDataTable Klienci {
             get {
                 return this.tableKlienci;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PracownicyDataTable Pracownicy {
+            get {
+                return this.tablePracownicy;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ProduktyKlientaDataTable ProduktyKlienta {
+            get {
+                return this.tableProduktyKlienta;
             }
         }
         
@@ -217,39 +237,9 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NazwyNapojuDataTable NazwyNapoju {
+        public ProducenciDataTable Producenci {
             get {
-                return this.tableNazwyNapoju;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NazwyOpakowaniaSztukiDataTable NazwyOpakowaniaSztuki {
-            get {
-                return this.tableNazwyOpakowaniaSztuki;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NazwyOpakowaniaZbiorczegoDataTable NazwyOpakowaniaZbiorczego {
-            get {
-                return this.tableNazwyOpakowaniaZbiorczego;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public OpakowaniaSztukiDataTable OpakowaniaSztuki {
-            get {
-                return this.tableOpakowaniaSztuki;
+                return this.tableProducenci;
             }
         }
         
@@ -267,9 +257,9 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PracownicyDataTable Pracownicy {
+        public OpakowaniaSztukiDataTable OpakowaniaSztuki {
             get {
-                return this.tablePracownicy;
+                return this.tableOpakowaniaSztuki;
             }
         }
         
@@ -277,9 +267,9 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ProducenciDataTable Producenci {
+        public NazwyOpakowaniaZbiorczegoDataTable NazwyOpakowaniaZbiorczego {
             get {
-                return this.tableProducenci;
+                return this.tableNazwyOpakowaniaZbiorczego;
             }
         }
         
@@ -287,9 +277,29 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ProduktyKlientaDataTable ProduktyKlienta {
+        public NazwyOpakowaniaSztukiDataTable NazwyOpakowaniaSztuki {
             get {
-                return this.tableProduktyKlienta;
+                return this.tableNazwyOpakowaniaSztuki;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SmakiDataTable Smaki {
+            get {
+                return this.tableSmaki;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public NazwyNapojuDataTable NazwyNapoju {
+            get {
+                return this.tableNazwyNapoju;
             }
         }
         
@@ -310,16 +320,6 @@ namespace HurtowniaNapojow.Database {
         public RodzajeNapojuDataTable RodzajeNapoju {
             get {
                 return this.tableRodzajeNapoju;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SmakiDataTable Smaki {
-            get {
-                return this.tableSmaki;
             }
         }
         
@@ -365,7 +365,7 @@ namespace HurtowniaNapojow.Database {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            HurtowniaNapojow cln = ((HurtowniaNapojow)(base.Clone()));
+            HurtowniaNapojówDataSet cln = ((HurtowniaNapojówDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -393,6 +393,12 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["Klienci"] != null)) {
                     base.Tables.Add(new KlienciDataTable(ds.Tables["Klienci"]));
                 }
+                if ((ds.Tables["Pracownicy"] != null)) {
+                    base.Tables.Add(new PracownicyDataTable(ds.Tables["Pracownicy"]));
+                }
+                if ((ds.Tables["ProduktyKlienta"] != null)) {
+                    base.Tables.Add(new ProduktyKlientaDataTable(ds.Tables["ProduktyKlienta"]));
+                }
                 if ((ds.Tables["ZakupyKlienta"] != null)) {
                     base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
                 }
@@ -402,38 +408,32 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["NapojeProducenta"] != null)) {
                     base.Tables.Add(new NapojeProducentaDataTable(ds.Tables["NapojeProducenta"]));
                 }
-                if ((ds.Tables["NazwyNapoju"] != null)) {
-                    base.Tables.Add(new NazwyNapojuDataTable(ds.Tables["NazwyNapoju"]));
-                }
-                if ((ds.Tables["NazwyOpakowaniaSztuki"] != null)) {
-                    base.Tables.Add(new NazwyOpakowaniaSztukiDataTable(ds.Tables["NazwyOpakowaniaSztuki"]));
-                }
-                if ((ds.Tables["NazwyOpakowaniaZbiorczego"] != null)) {
-                    base.Tables.Add(new NazwyOpakowaniaZbiorczegoDataTable(ds.Tables["NazwyOpakowaniaZbiorczego"]));
-                }
-                if ((ds.Tables["OpakowaniaSztuki"] != null)) {
-                    base.Tables.Add(new OpakowaniaSztukiDataTable(ds.Tables["OpakowaniaSztuki"]));
+                if ((ds.Tables["Producenci"] != null)) {
+                    base.Tables.Add(new ProducenciDataTable(ds.Tables["Producenci"]));
                 }
                 if ((ds.Tables["OpakowaniaZbiorcze"] != null)) {
                     base.Tables.Add(new OpakowaniaZbiorczeDataTable(ds.Tables["OpakowaniaZbiorcze"]));
                 }
-                if ((ds.Tables["Pracownicy"] != null)) {
-                    base.Tables.Add(new PracownicyDataTable(ds.Tables["Pracownicy"]));
+                if ((ds.Tables["OpakowaniaSztuki"] != null)) {
+                    base.Tables.Add(new OpakowaniaSztukiDataTable(ds.Tables["OpakowaniaSztuki"]));
                 }
-                if ((ds.Tables["Producenci"] != null)) {
-                    base.Tables.Add(new ProducenciDataTable(ds.Tables["Producenci"]));
+                if ((ds.Tables["NazwyOpakowaniaZbiorczego"] != null)) {
+                    base.Tables.Add(new NazwyOpakowaniaZbiorczegoDataTable(ds.Tables["NazwyOpakowaniaZbiorczego"]));
                 }
-                if ((ds.Tables["ProduktyKlienta"] != null)) {
-                    base.Tables.Add(new ProduktyKlientaDataTable(ds.Tables["ProduktyKlienta"]));
+                if ((ds.Tables["NazwyOpakowaniaSztuki"] != null)) {
+                    base.Tables.Add(new NazwyOpakowaniaSztukiDataTable(ds.Tables["NazwyOpakowaniaSztuki"]));
+                }
+                if ((ds.Tables["Smaki"] != null)) {
+                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
+                }
+                if ((ds.Tables["NazwyNapoju"] != null)) {
+                    base.Tables.Add(new NazwyNapojuDataTable(ds.Tables["NazwyNapoju"]));
                 }
                 if ((ds.Tables["RodzajeGazu"] != null)) {
                     base.Tables.Add(new RodzajeGazuDataTable(ds.Tables["RodzajeGazu"]));
                 }
                 if ((ds.Tables["RodzajeNapoju"] != null)) {
                     base.Tables.Add(new RodzajeNapojuDataTable(ds.Tables["RodzajeNapoju"]));
-                }
-                if ((ds.Tables["Smaki"] != null)) {
-                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -474,6 +474,18 @@ namespace HurtowniaNapojow.Database {
                     this.tableKlienci.InitVars();
                 }
             }
+            this.tablePracownicy = ((PracownicyDataTable)(base.Tables["Pracownicy"]));
+            if ((initTable == true)) {
+                if ((this.tablePracownicy != null)) {
+                    this.tablePracownicy.InitVars();
+                }
+            }
+            this.tableProduktyKlienta = ((ProduktyKlientaDataTable)(base.Tables["ProduktyKlienta"]));
+            if ((initTable == true)) {
+                if ((this.tableProduktyKlienta != null)) {
+                    this.tableProduktyKlienta.InitVars();
+                }
+            }
             this.tableZakupyKlienta = ((ZakupyKlientaDataTable)(base.Tables["ZakupyKlienta"]));
             if ((initTable == true)) {
                 if ((this.tableZakupyKlienta != null)) {
@@ -492,28 +504,10 @@ namespace HurtowniaNapojow.Database {
                     this.tableNapojeProducenta.InitVars();
                 }
             }
-            this.tableNazwyNapoju = ((NazwyNapojuDataTable)(base.Tables["NazwyNapoju"]));
+            this.tableProducenci = ((ProducenciDataTable)(base.Tables["Producenci"]));
             if ((initTable == true)) {
-                if ((this.tableNazwyNapoju != null)) {
-                    this.tableNazwyNapoju.InitVars();
-                }
-            }
-            this.tableNazwyOpakowaniaSztuki = ((NazwyOpakowaniaSztukiDataTable)(base.Tables["NazwyOpakowaniaSztuki"]));
-            if ((initTable == true)) {
-                if ((this.tableNazwyOpakowaniaSztuki != null)) {
-                    this.tableNazwyOpakowaniaSztuki.InitVars();
-                }
-            }
-            this.tableNazwyOpakowaniaZbiorczego = ((NazwyOpakowaniaZbiorczegoDataTable)(base.Tables["NazwyOpakowaniaZbiorczego"]));
-            if ((initTable == true)) {
-                if ((this.tableNazwyOpakowaniaZbiorczego != null)) {
-                    this.tableNazwyOpakowaniaZbiorczego.InitVars();
-                }
-            }
-            this.tableOpakowaniaSztuki = ((OpakowaniaSztukiDataTable)(base.Tables["OpakowaniaSztuki"]));
-            if ((initTable == true)) {
-                if ((this.tableOpakowaniaSztuki != null)) {
-                    this.tableOpakowaniaSztuki.InitVars();
+                if ((this.tableProducenci != null)) {
+                    this.tableProducenci.InitVars();
                 }
             }
             this.tableOpakowaniaZbiorcze = ((OpakowaniaZbiorczeDataTable)(base.Tables["OpakowaniaZbiorcze"]));
@@ -522,22 +516,34 @@ namespace HurtowniaNapojow.Database {
                     this.tableOpakowaniaZbiorcze.InitVars();
                 }
             }
-            this.tablePracownicy = ((PracownicyDataTable)(base.Tables["Pracownicy"]));
+            this.tableOpakowaniaSztuki = ((OpakowaniaSztukiDataTable)(base.Tables["OpakowaniaSztuki"]));
             if ((initTable == true)) {
-                if ((this.tablePracownicy != null)) {
-                    this.tablePracownicy.InitVars();
+                if ((this.tableOpakowaniaSztuki != null)) {
+                    this.tableOpakowaniaSztuki.InitVars();
                 }
             }
-            this.tableProducenci = ((ProducenciDataTable)(base.Tables["Producenci"]));
+            this.tableNazwyOpakowaniaZbiorczego = ((NazwyOpakowaniaZbiorczegoDataTable)(base.Tables["NazwyOpakowaniaZbiorczego"]));
             if ((initTable == true)) {
-                if ((this.tableProducenci != null)) {
-                    this.tableProducenci.InitVars();
+                if ((this.tableNazwyOpakowaniaZbiorczego != null)) {
+                    this.tableNazwyOpakowaniaZbiorczego.InitVars();
                 }
             }
-            this.tableProduktyKlienta = ((ProduktyKlientaDataTable)(base.Tables["ProduktyKlienta"]));
+            this.tableNazwyOpakowaniaSztuki = ((NazwyOpakowaniaSztukiDataTable)(base.Tables["NazwyOpakowaniaSztuki"]));
             if ((initTable == true)) {
-                if ((this.tableProduktyKlienta != null)) {
-                    this.tableProduktyKlienta.InitVars();
+                if ((this.tableNazwyOpakowaniaSztuki != null)) {
+                    this.tableNazwyOpakowaniaSztuki.InitVars();
+                }
+            }
+            this.tableSmaki = ((SmakiDataTable)(base.Tables["Smaki"]));
+            if ((initTable == true)) {
+                if ((this.tableSmaki != null)) {
+                    this.tableSmaki.InitVars();
+                }
+            }
+            this.tableNazwyNapoju = ((NazwyNapojuDataTable)(base.Tables["NazwyNapoju"]));
+            if ((initTable == true)) {
+                if ((this.tableNazwyNapoju != null)) {
+                    this.tableNazwyNapoju.InitVars();
                 }
             }
             this.tableRodzajeGazu = ((RodzajeGazuDataTable)(base.Tables["RodzajeGazu"]));
@@ -552,90 +558,108 @@ namespace HurtowniaNapojow.Database {
                     this.tableRodzajeNapoju.InitVars();
                 }
             }
-            this.tableSmaki = ((SmakiDataTable)(base.Tables["Smaki"]));
-            if ((initTable == true)) {
-                if ((this.tableSmaki != null)) {
-                    this.tableSmaki.InitVars();
-                }
-            }
+            this.relationZakupyKlientaProduktyKlienta = this.Relations["ZakupyKlientaProduktyKlienta"];
+            this.relationKlienciZakupyKlienta = this.Relations["KlienciZakupyKlienta"];
             this.relationPracownicyZakupyKlienta = this.Relations["PracownicyZakupyKlienta"];
+            this.relationNapojeHurtowniProduktyKlienta = this.Relations["NapojeHurtowniProduktyKlienta"];
             this.relationNapojePozycjeMagazynu = this.Relations["NapojePozycjeMagazynu"];
-            this.relationNazwyNapojuNapoje = this.Relations["NazwyNapojuNapoje"];
-            this.relationOpakowaniaSztukiNapoje = this.Relations["OpakowaniaSztukiNapoje"];
-            this.relationOpakowaniaZbiorczeNapoje = this.Relations["OpakowaniaZbiorczeNapoje"];
             this.relationProducenciNapoje = this.Relations["ProducenciNapoje"];
+            this.relationOpakowaniaZbiorczeNapoje = this.Relations["OpakowaniaZbiorczeNapoje"];
+            this.relationOpakowaniaSztukiNapoje = this.Relations["OpakowaniaSztukiNapoje"];
+            this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze = this.Relations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"];
+            this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki = this.Relations["NazwyOpakowaniaSztukiOpakowaniaSztuki"];
+            this.relationSmakiNapoje = this.Relations["SmakiNapoje"];
+            this.relationNazwyNapojuNapoje = this.Relations["NazwyNapojuNapoje"];
             this.relationRodzajeGazuNapoje = this.Relations["RodzajeGazuNapoje"];
             this.relationRodzajeNapojuNapoje = this.Relations["RodzajeNapojuNapoje"];
-            this.relationSmakiNapoje = this.Relations["SmakiNapoje"];
-            this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki = this.Relations["NazwyOpakowaniaSztukiOpakowaniaSztuki"];
-            this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze = this.Relations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"];
-            this.relationNapojeHurtowniProduktyKlienta = this.Relations["NapojeHurtowniProduktyKlienta"];
-            this.relationZakupyKlientaProduktyKlienta = this.Relations["ZakupyKlientaProduktyKlienta"];
-            this.relationKlienciZakupyKlienta1 = this.Relations["KlienciZakupyKlienta1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "HurtowniaNapojow";
+            this.DataSetName = "HurtowniaNapojówDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/HurtowniaNapojow.xsd";
+            this.Namespace = "http://tempuri.org/HurtowniaNapojówDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableKlienci = new KlienciDataTable();
             base.Tables.Add(this.tableKlienci);
+            this.tablePracownicy = new PracownicyDataTable();
+            base.Tables.Add(this.tablePracownicy);
+            this.tableProduktyKlienta = new ProduktyKlientaDataTable();
+            base.Tables.Add(this.tableProduktyKlienta);
             this.tableZakupyKlienta = new ZakupyKlientaDataTable();
             base.Tables.Add(this.tableZakupyKlienta);
             this.tableNapojeHurtowni = new NapojeHurtowniDataTable();
             base.Tables.Add(this.tableNapojeHurtowni);
             this.tableNapojeProducenta = new NapojeProducentaDataTable();
             base.Tables.Add(this.tableNapojeProducenta);
-            this.tableNazwyNapoju = new NazwyNapojuDataTable();
-            base.Tables.Add(this.tableNazwyNapoju);
-            this.tableNazwyOpakowaniaSztuki = new NazwyOpakowaniaSztukiDataTable();
-            base.Tables.Add(this.tableNazwyOpakowaniaSztuki);
-            this.tableNazwyOpakowaniaZbiorczego = new NazwyOpakowaniaZbiorczegoDataTable();
-            base.Tables.Add(this.tableNazwyOpakowaniaZbiorczego);
-            this.tableOpakowaniaSztuki = new OpakowaniaSztukiDataTable();
-            base.Tables.Add(this.tableOpakowaniaSztuki);
-            this.tableOpakowaniaZbiorcze = new OpakowaniaZbiorczeDataTable();
-            base.Tables.Add(this.tableOpakowaniaZbiorcze);
-            this.tablePracownicy = new PracownicyDataTable();
-            base.Tables.Add(this.tablePracownicy);
             this.tableProducenci = new ProducenciDataTable();
             base.Tables.Add(this.tableProducenci);
-            this.tableProduktyKlienta = new ProduktyKlientaDataTable();
-            base.Tables.Add(this.tableProduktyKlienta);
+            this.tableOpakowaniaZbiorcze = new OpakowaniaZbiorczeDataTable();
+            base.Tables.Add(this.tableOpakowaniaZbiorcze);
+            this.tableOpakowaniaSztuki = new OpakowaniaSztukiDataTable();
+            base.Tables.Add(this.tableOpakowaniaSztuki);
+            this.tableNazwyOpakowaniaZbiorczego = new NazwyOpakowaniaZbiorczegoDataTable();
+            base.Tables.Add(this.tableNazwyOpakowaniaZbiorczego);
+            this.tableNazwyOpakowaniaSztuki = new NazwyOpakowaniaSztukiDataTable();
+            base.Tables.Add(this.tableNazwyOpakowaniaSztuki);
+            this.tableSmaki = new SmakiDataTable();
+            base.Tables.Add(this.tableSmaki);
+            this.tableNazwyNapoju = new NazwyNapojuDataTable();
+            base.Tables.Add(this.tableNazwyNapoju);
             this.tableRodzajeGazu = new RodzajeGazuDataTable();
             base.Tables.Add(this.tableRodzajeGazu);
             this.tableRodzajeNapoju = new RodzajeNapojuDataTable();
             base.Tables.Add(this.tableRodzajeNapoju);
-            this.tableSmaki = new SmakiDataTable();
-            base.Tables.Add(this.tableSmaki);
+            this.relationZakupyKlientaProduktyKlienta = new global::System.Data.DataRelation("ZakupyKlientaProduktyKlienta", new global::System.Data.DataColumn[] {
+                        this.tableZakupyKlienta.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProduktyKlienta.id_zakupu_klientaColumn}, false);
+            this.Relations.Add(this.relationZakupyKlientaProduktyKlienta);
+            this.relationKlienciZakupyKlienta = new global::System.Data.DataRelation("KlienciZakupyKlienta", new global::System.Data.DataColumn[] {
+                        this.tableKlienci.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZakupyKlienta.id_klientaColumn}, false);
+            this.Relations.Add(this.relationKlienciZakupyKlienta);
             this.relationPracownicyZakupyKlienta = new global::System.Data.DataRelation("PracownicyZakupyKlienta", new global::System.Data.DataColumn[] {
                         this.tablePracownicy.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableZakupyKlienta.id_pracownikaColumn}, false);
             this.Relations.Add(this.relationPracownicyZakupyKlienta);
+            this.relationNapojeHurtowniProduktyKlienta = new global::System.Data.DataRelation("NapojeHurtowniProduktyKlienta", new global::System.Data.DataColumn[] {
+                        this.tableNapojeHurtowni.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProduktyKlienta.id_napoju_hurtowniColumn}, false);
+            this.Relations.Add(this.relationNapojeHurtowniProduktyKlienta);
             this.relationNapojePozycjeMagazynu = new global::System.Data.DataRelation("NapojePozycjeMagazynu", new global::System.Data.DataColumn[] {
                         this.tableNapojeProducenta.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableNapojeHurtowni.id_napojuColumn}, false);
             this.Relations.Add(this.relationNapojePozycjeMagazynu);
-            this.relationNazwyNapojuNapoje = new global::System.Data.DataRelation("NazwyNapojuNapoje", new global::System.Data.DataColumn[] {
-                        this.tableNazwyNapoju.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableNapojeProducenta.id_nazwy_napojuColumn}, false);
-            this.Relations.Add(this.relationNazwyNapojuNapoje);
-            this.relationOpakowaniaSztukiNapoje = new global::System.Data.DataRelation("OpakowaniaSztukiNapoje", new global::System.Data.DataColumn[] {
-                        this.tableOpakowaniaSztuki.IdenidtyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableNapojeProducenta.id_opakowania_sztukiColumn}, false);
-            this.Relations.Add(this.relationOpakowaniaSztukiNapoje);
-            this.relationOpakowaniaZbiorczeNapoje = new global::System.Data.DataRelation("OpakowaniaZbiorczeNapoje", new global::System.Data.DataColumn[] {
-                        this.tableOpakowaniaZbiorcze.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableNapojeProducenta.id_opakowania_zbiorczegoColumn}, false);
-            this.Relations.Add(this.relationOpakowaniaZbiorczeNapoje);
             this.relationProducenciNapoje = new global::System.Data.DataRelation("ProducenciNapoje", new global::System.Data.DataColumn[] {
                         this.tableProducenci.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableNapojeProducenta.id_procuentaColumn}, false);
             this.Relations.Add(this.relationProducenciNapoje);
+            this.relationOpakowaniaZbiorczeNapoje = new global::System.Data.DataRelation("OpakowaniaZbiorczeNapoje", new global::System.Data.DataColumn[] {
+                        this.tableOpakowaniaZbiorcze.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNapojeProducenta.id_opakowania_zbiorczegoColumn}, false);
+            this.Relations.Add(this.relationOpakowaniaZbiorczeNapoje);
+            this.relationOpakowaniaSztukiNapoje = new global::System.Data.DataRelation("OpakowaniaSztukiNapoje", new global::System.Data.DataColumn[] {
+                        this.tableOpakowaniaSztuki.IdenidtyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNapojeProducenta.id_opakowania_sztukiColumn}, false);
+            this.Relations.Add(this.relationOpakowaniaSztukiNapoje);
+            this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze = new global::System.Data.DataRelation("NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze", new global::System.Data.DataColumn[] {
+                        this.tableNazwyOpakowaniaZbiorczego.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOpakowaniaZbiorcze.id_nazwy_opakowania_zbiorczegoColumn}, false);
+            this.Relations.Add(this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze);
+            this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki = new global::System.Data.DataRelation("NazwyOpakowaniaSztukiOpakowaniaSztuki", new global::System.Data.DataColumn[] {
+                        this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOpakowaniaSztuki.id_nazwy_opakowania_sztukiColumn}, false);
+            this.Relations.Add(this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki);
+            this.relationSmakiNapoje = new global::System.Data.DataRelation("SmakiNapoje", new global::System.Data.DataColumn[] {
+                        this.tableSmaki.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNapojeProducenta.id_smakuColumn}, false);
+            this.Relations.Add(this.relationSmakiNapoje);
+            this.relationNazwyNapojuNapoje = new global::System.Data.DataRelation("NazwyNapojuNapoje", new global::System.Data.DataColumn[] {
+                        this.tableNazwyNapoju.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNapojeProducenta.id_nazwy_napojuColumn}, false);
+            this.Relations.Add(this.relationNazwyNapojuNapoje);
             this.relationRodzajeGazuNapoje = new global::System.Data.DataRelation("RodzajeGazuNapoje", new global::System.Data.DataColumn[] {
                         this.tableRodzajeGazu.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableNapojeProducenta.id_rodzaju_gazuColumn}, false);
@@ -644,35 +668,23 @@ namespace HurtowniaNapojow.Database {
                         this.tableRodzajeNapoju.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableNapojeProducenta.id_rodzaju_napojuColumn}, false);
             this.Relations.Add(this.relationRodzajeNapojuNapoje);
-            this.relationSmakiNapoje = new global::System.Data.DataRelation("SmakiNapoje", new global::System.Data.DataColumn[] {
-                        this.tableSmaki.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableNapojeProducenta.id_smakuColumn}, false);
-            this.Relations.Add(this.relationSmakiNapoje);
-            this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki = new global::System.Data.DataRelation("NazwyOpakowaniaSztukiOpakowaniaSztuki", new global::System.Data.DataColumn[] {
-                        this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOpakowaniaSztuki.id_rodzaju_opakowania_sztukiColumn}, false);
-            this.Relations.Add(this.relationNazwyOpakowaniaSztukiOpakowaniaSztuki);
-            this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze = new global::System.Data.DataRelation("NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze", new global::System.Data.DataColumn[] {
-                        this.tableNazwyOpakowaniaZbiorczego.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOpakowaniaZbiorcze.id_rodzaju_opakowania_zbiorczegoColumn}, false);
-            this.Relations.Add(this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze);
-            this.relationNapojeHurtowniProduktyKlienta = new global::System.Data.DataRelation("NapojeHurtowniProduktyKlienta", new global::System.Data.DataColumn[] {
-                        this.tableNapojeHurtowni.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableProduktyKlienta.id_napoju_hurtowniColumn}, false);
-            this.Relations.Add(this.relationNapojeHurtowniProduktyKlienta);
-            this.relationZakupyKlientaProduktyKlienta = new global::System.Data.DataRelation("ZakupyKlientaProduktyKlienta", new global::System.Data.DataColumn[] {
-                        this.tableZakupyKlienta.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableProduktyKlienta.id_zakupu_klientaColumn}, false);
-            this.Relations.Add(this.relationZakupyKlientaProduktyKlienta);
-            this.relationKlienciZakupyKlienta1 = new global::System.Data.DataRelation("KlienciZakupyKlienta1", new global::System.Data.DataColumn[] {
-                        this.tableKlienci.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZakupyKlienta.id_klientaColumn}, false);
-            this.Relations.Add(this.relationKlienciZakupyKlienta1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeKlienci() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializePracownicy() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeProduktyKlienta() {
             return false;
         }
         
@@ -696,25 +708,7 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeNazwyNapoju() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeNazwyOpakowaniaSztuki() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeNazwyOpakowaniaZbiorczego() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeOpakowaniaSztuki() {
+        private bool ShouldSerializeProducenci() {
             return false;
         }
         
@@ -726,19 +720,31 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializePracownicy() {
+        private bool ShouldSerializeOpakowaniaSztuki() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeProducenci() {
+        private bool ShouldSerializeNazwyOpakowaniaZbiorczego() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeProduktyKlienta() {
+        private bool ShouldSerializeNazwyOpakowaniaSztuki() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeSmaki() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeNazwyNapoju() {
             return false;
         }
         
@@ -756,12 +762,6 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSmaki() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -771,7 +771,7 @@ namespace HurtowniaNapojow.Database {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            HurtowniaNapojow ds = new HurtowniaNapojow();
+            HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -819,6 +819,12 @@ namespace HurtowniaNapojow.Database {
         public delegate void KlienciRowChangeEventHandler(object sender, KlienciRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void PracownicyRowChangeEventHandler(object sender, PracownicyRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ProduktyKlientaRowChangeEventHandler(object sender, ProduktyKlientaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ZakupyKlientaRowChangeEventHandler(object sender, ZakupyKlientaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -828,37 +834,31 @@ namespace HurtowniaNapojow.Database {
         public delegate void NapojeProducentaRowChangeEventHandler(object sender, NapojeProducentaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void NazwyNapojuRowChangeEventHandler(object sender, NazwyNapojuRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void NazwyOpakowaniaSztukiRowChangeEventHandler(object sender, NazwyOpakowaniaSztukiRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void NazwyOpakowaniaZbiorczegoRowChangeEventHandler(object sender, NazwyOpakowaniaZbiorczegoRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void OpakowaniaSztukiRowChangeEventHandler(object sender, OpakowaniaSztukiRowChangeEvent e);
+        public delegate void ProducenciRowChangeEventHandler(object sender, ProducenciRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void OpakowaniaZbiorczeRowChangeEventHandler(object sender, OpakowaniaZbiorczeRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void PracownicyRowChangeEventHandler(object sender, PracownicyRowChangeEvent e);
+        public delegate void OpakowaniaSztukiRowChangeEventHandler(object sender, OpakowaniaSztukiRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ProducenciRowChangeEventHandler(object sender, ProducenciRowChangeEvent e);
+        public delegate void NazwyOpakowaniaZbiorczegoRowChangeEventHandler(object sender, NazwyOpakowaniaZbiorczegoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ProduktyKlientaRowChangeEventHandler(object sender, ProduktyKlientaRowChangeEvent e);
+        public delegate void NazwyOpakowaniaSztukiRowChangeEventHandler(object sender, NazwyOpakowaniaSztukiRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void SmakiRowChangeEventHandler(object sender, SmakiRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void NazwyNapojuRowChangeEventHandler(object sender, NazwyNapojuRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RodzajeGazuRowChangeEventHandler(object sender, RodzajeGazuRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RodzajeNapojuRowChangeEventHandler(object sender, RodzajeNapojuRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SmakiRowChangeEventHandler(object sender, SmakiRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1152,7 +1152,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1171,6 +1171,664 @@ namespace HurtowniaNapojow.Database {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "KlienciDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PracownicyDataTable : global::System.Data.TypedTableBase<PracownicyRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnNazwisko;
+            
+            private global::System.Data.DataColumn columnImię;
+            
+            private global::System.Data.DataColumn columnHasło;
+            
+            private global::System.Data.DataColumn columnEmail;
+            
+            private global::System.Data.DataColumn columnCzyAdministrator;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyDataTable() {
+                this.TableName = "Pracownicy";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PracownicyDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected PracownicyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NazwiskoColumn {
+                get {
+                    return this.columnNazwisko;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ImięColumn {
+                get {
+                    return this.columnImię;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HasłoColumn {
+                get {
+                    return this.columnHasło;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CzyAdministratorColumn {
+                get {
+                    return this.columnCzyAdministrator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow this[int index] {
+                get {
+                    return ((PracownicyRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PracownicyRowChangeEventHandler PracownicyRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PracownicyRowChangeEventHandler PracownicyRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PracownicyRowChangeEventHandler PracownicyRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PracownicyRowChangeEventHandler PracownicyRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddPracownicyRow(PracownicyRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow AddPracownicyRow(string Nazwisko, string Imię, string Hasło, string Email, bool CzyAdministrator) {
+                PracownicyRow rowPracownicyRow = ((PracownicyRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Nazwisko,
+                        Imię,
+                        Hasło,
+                        Email,
+                        CzyAdministrator};
+                rowPracownicyRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPracownicyRow);
+                return rowPracownicyRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow FindByIdentyfikator(int Identyfikator) {
+                return ((PracownicyRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PracownicyDataTable cln = ((PracownicyDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PracownicyDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnNazwisko = base.Columns["Nazwisko"];
+                this.columnImię = base.Columns["Imię"];
+                this.columnHasło = base.Columns["Hasło"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnCzyAdministrator = base.Columns["CzyAdministrator"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnNazwisko = new global::System.Data.DataColumn("Nazwisko", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwisko);
+                this.columnImię = new global::System.Data.DataColumn("Imię", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImię);
+                this.columnHasło = new global::System.Data.DataColumn("Hasło", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHasło);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnCzyAdministrator = new global::System.Data.DataColumn("CzyAdministrator", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCzyAdministrator);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+                this.columnNazwisko.MaxLength = 20;
+                this.columnImię.MaxLength = 20;
+                this.columnHasło.MaxLength = 30;
+                this.columnEmail.MaxLength = 30;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow NewPracownicyRow() {
+                return ((PracownicyRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PracownicyRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PracownicyRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PracownicyRowChanged != null)) {
+                    this.PracownicyRowChanged(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PracownicyRowChanging != null)) {
+                    this.PracownicyRowChanging(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PracownicyRowDeleted != null)) {
+                    this.PracownicyRowDeleted(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PracownicyRowDeleting != null)) {
+                    this.PracownicyRowDeleting(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovePracownicyRow(PracownicyRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PracownicyDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ProduktyKlientaDataTable : global::System.Data.TypedTableBase<ProduktyKlientaRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnid_zakupu_klienta;
+            
+            private global::System.Data.DataColumn columnid_napoju_hurtowni;
+            
+            private global::System.Data.DataColumn columnLiczba;
+            
+            private global::System.Data.DataColumn columnKwota;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaDataTable() {
+                this.TableName = "ProduktyKlienta";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ProduktyKlientaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ProduktyKlientaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_zakupu_klientaColumn {
+                get {
+                    return this.columnid_zakupu_klienta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_napoju_hurtowniColumn {
+                get {
+                    return this.columnid_napoju_hurtowni;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LiczbaColumn {
+                get {
+                    return this.columnLiczba;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KwotaColumn {
+                get {
+                    return this.columnKwota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow this[int index] {
+                get {
+                    return ((ProduktyKlientaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddProduktyKlientaRow(ProduktyKlientaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow AddProduktyKlientaRow(ZakupyKlientaRow parentZakupyKlientaRowByZakupyKlientaProduktyKlienta, NapojeHurtowniRow parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta, int Liczba, float Kwota) {
+                ProduktyKlientaRow rowProduktyKlientaRow = ((ProduktyKlientaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null,
+                        Liczba,
+                        Kwota};
+                if ((parentZakupyKlientaRowByZakupyKlientaProduktyKlienta != null)) {
+                    columnValuesArray[1] = parentZakupyKlientaRowByZakupyKlientaProduktyKlienta[0];
+                }
+                if ((parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta != null)) {
+                    columnValuesArray[2] = parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta[0];
+                }
+                rowProduktyKlientaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowProduktyKlientaRow);
+                return rowProduktyKlientaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow FindByIdentyfikator(int Identyfikator) {
+                return ((ProduktyKlientaRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ProduktyKlientaDataTable cln = ((ProduktyKlientaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ProduktyKlientaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnid_zakupu_klienta = base.Columns["id_zakupu_klienta"];
+                this.columnid_napoju_hurtowni = base.Columns["id_napoju_hurtowni"];
+                this.columnLiczba = base.Columns["Liczba"];
+                this.columnKwota = base.Columns["Kwota"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnid_zakupu_klienta = new global::System.Data.DataColumn("id_zakupu_klienta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_zakupu_klienta);
+                this.columnid_napoju_hurtowni = new global::System.Data.DataColumn("id_napoju_hurtowni", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_napoju_hurtowni);
+                this.columnLiczba = new global::System.Data.DataColumn("Liczba", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLiczba);
+                this.columnKwota = new global::System.Data.DataColumn("Kwota", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKwota);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow NewProduktyKlientaRow() {
+                return ((ProduktyKlientaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ProduktyKlientaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ProduktyKlientaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ProduktyKlientaRowChanged != null)) {
+                    this.ProduktyKlientaRowChanged(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ProduktyKlientaRowChanging != null)) {
+                    this.ProduktyKlientaRowChanging(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ProduktyKlientaRowDeleted != null)) {
+                    this.ProduktyKlientaRowDeleted(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ProduktyKlientaRowDeleting != null)) {
+                    this.ProduktyKlientaRowDeleting(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveProduktyKlientaRow(ProduktyKlientaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ProduktyKlientaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1328,15 +1986,15 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow AddZakupyKlientaRow(KlienciRow parentKlienciRowByKlienciZakupyKlienta1, PracownicyRow parentPracownicyRowByPracownicyZakupyKlienta, System.DateTime DataZłożenia) {
+            public ZakupyKlientaRow AddZakupyKlientaRow(KlienciRow parentKlienciRowByKlienciZakupyKlienta, PracownicyRow parentPracownicyRowByPracownicyZakupyKlienta, System.DateTime DataZłożenia) {
                 ZakupyKlientaRow rowZakupyKlientaRow = ((ZakupyKlientaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
                         DataZłożenia};
-                if ((parentKlienciRowByKlienciZakupyKlienta1 != null)) {
-                    columnValuesArray[1] = parentKlienciRowByKlienciZakupyKlienta1[0];
+                if ((parentKlienciRowByKlienciZakupyKlienta != null)) {
+                    columnValuesArray[1] = parentKlienciRowByKlienciZakupyKlienta[0];
                 }
                 if ((parentPracownicyRowByPracownicyZakupyKlienta != null)) {
                     columnValuesArray[2] = parentPracownicyRowByPracownicyZakupyKlienta[0];
@@ -1461,7 +2119,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1796,7 +2454,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2190,7 +2848,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2209,1739 +2867,6 @@ namespace HurtowniaNapojow.Database {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "NapojeProducentaDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NazwyNapojuDataTable : global::System.Data.TypedTableBase<NazwyNapojuRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnNazwaNapoju;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuDataTable() {
-                this.TableName = "NazwyNapoju";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NazwyNapojuDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected NazwyNapojuDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwaNapojuColumn {
-                get {
-                    return this.columnNazwaNapoju;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow this[int index] {
-                get {
-                    return ((NazwyNapojuRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddNazwyNapojuRow(NazwyNapojuRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow AddNazwyNapojuRow(string NazwaNapoju) {
-                NazwyNapojuRow rowNazwyNapojuRow = ((NazwyNapojuRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        NazwaNapoju};
-                rowNazwyNapojuRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNazwyNapojuRow);
-                return rowNazwyNapojuRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow FindByIdentyfikator(int Identyfikator) {
-                return ((NazwyNapojuRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                NazwyNapojuDataTable cln = ((NazwyNapojuDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new NazwyNapojuDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwaNapoju = base.Columns["NazwaNapoju"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwaNapoju = new global::System.Data.DataColumn("NazwaNapoju", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwaNapoju);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-                this.columnNazwaNapoju.MaxLength = 100;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow NewNazwyNapojuRow() {
-                return ((NazwyNapojuRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NazwyNapojuRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(NazwyNapojuRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.NazwyNapojuRowChanged != null)) {
-                    this.NazwyNapojuRowChanged(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.NazwyNapojuRowChanging != null)) {
-                    this.NazwyNapojuRowChanging(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.NazwyNapojuRowDeleted != null)) {
-                    this.NazwyNapojuRowDeleted(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.NazwyNapojuRowDeleting != null)) {
-                    this.NazwyNapojuRowDeleting(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveNazwyNapojuRow(NazwyNapojuRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NazwyNapojuDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NazwyOpakowaniaSztukiDataTable : global::System.Data.TypedTableBase<NazwyOpakowaniaSztukiRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnNazwaOpakowania;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiDataTable() {
-                this.TableName = "NazwyOpakowaniaSztuki";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NazwyOpakowaniaSztukiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected NazwyOpakowaniaSztukiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwaOpakowaniaColumn {
-                get {
-                    return this.columnNazwaOpakowania;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow this[int index] {
-                get {
-                    return ((NazwyOpakowaniaSztukiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddNazwyOpakowaniaSztukiRow(NazwyOpakowaniaSztukiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow AddNazwyOpakowaniaSztukiRow(string NazwaOpakowania) {
-                NazwyOpakowaniaSztukiRow rowNazwyOpakowaniaSztukiRow = ((NazwyOpakowaniaSztukiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        NazwaOpakowania};
-                rowNazwyOpakowaniaSztukiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNazwyOpakowaniaSztukiRow);
-                return rowNazwyOpakowaniaSztukiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow FindByIdentyfikator(int Identyfikator) {
-                return ((NazwyOpakowaniaSztukiRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                NazwyOpakowaniaSztukiDataTable cln = ((NazwyOpakowaniaSztukiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new NazwyOpakowaniaSztukiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwaOpakowania = base.Columns["NazwaOpakowania"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwaOpakowania = new global::System.Data.DataColumn("NazwaOpakowania", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwaOpakowania);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-                this.columnNazwaOpakowania.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow NewNazwyOpakowaniaSztukiRow() {
-                return ((NazwyOpakowaniaSztukiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NazwyOpakowaniaSztukiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(NazwyOpakowaniaSztukiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.NazwyOpakowaniaSztukiRowChanged != null)) {
-                    this.NazwyOpakowaniaSztukiRowChanged(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.NazwyOpakowaniaSztukiRowChanging != null)) {
-                    this.NazwyOpakowaniaSztukiRowChanging(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.NazwyOpakowaniaSztukiRowDeleted != null)) {
-                    this.NazwyOpakowaniaSztukiRowDeleted(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.NazwyOpakowaniaSztukiRowDeleting != null)) {
-                    this.NazwyOpakowaniaSztukiRowDeleting(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveNazwyOpakowaniaSztukiRow(NazwyOpakowaniaSztukiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NazwyOpakowaniaSztukiDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NazwyOpakowaniaZbiorczegoDataTable : global::System.Data.TypedTableBase<NazwyOpakowaniaZbiorczegoRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnNazwaOpakowania;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoDataTable() {
-                this.TableName = "NazwyOpakowaniaZbiorczego";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NazwyOpakowaniaZbiorczegoDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected NazwyOpakowaniaZbiorczegoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwaOpakowaniaColumn {
-                get {
-                    return this.columnNazwaOpakowania;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow this[int index] {
-                get {
-                    return ((NazwyOpakowaniaZbiorczegoRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddNazwyOpakowaniaZbiorczegoRow(NazwyOpakowaniaZbiorczegoRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow AddNazwyOpakowaniaZbiorczegoRow(string NazwaOpakowania) {
-                NazwyOpakowaniaZbiorczegoRow rowNazwyOpakowaniaZbiorczegoRow = ((NazwyOpakowaniaZbiorczegoRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        NazwaOpakowania};
-                rowNazwyOpakowaniaZbiorczegoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNazwyOpakowaniaZbiorczegoRow);
-                return rowNazwyOpakowaniaZbiorczegoRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow FindByIdentyfikator(int Identyfikator) {
-                return ((NazwyOpakowaniaZbiorczegoRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                NazwyOpakowaniaZbiorczegoDataTable cln = ((NazwyOpakowaniaZbiorczegoDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new NazwyOpakowaniaZbiorczegoDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwaOpakowania = base.Columns["NazwaOpakowania"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwaOpakowania = new global::System.Data.DataColumn("NazwaOpakowania", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwaOpakowania);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-                this.columnNazwaOpakowania.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow NewNazwyOpakowaniaZbiorczegoRow() {
-                return ((NazwyOpakowaniaZbiorczegoRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NazwyOpakowaniaZbiorczegoRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(NazwyOpakowaniaZbiorczegoRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.NazwyOpakowaniaZbiorczegoRowChanged != null)) {
-                    this.NazwyOpakowaniaZbiorczegoRowChanged(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.NazwyOpakowaniaZbiorczegoRowChanging != null)) {
-                    this.NazwyOpakowaniaZbiorczegoRowChanging(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.NazwyOpakowaniaZbiorczegoRowDeleted != null)) {
-                    this.NazwyOpakowaniaZbiorczegoRowDeleted(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.NazwyOpakowaniaZbiorczegoRowDeleting != null)) {
-                    this.NazwyOpakowaniaZbiorczegoRowDeleting(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveNazwyOpakowaniaZbiorczegoRow(NazwyOpakowaniaZbiorczegoRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NazwyOpakowaniaZbiorczegoDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class OpakowaniaSztukiDataTable : global::System.Data.TypedTableBase<OpakowaniaSztukiRow> {
-            
-            private global::System.Data.DataColumn columnIdenidtyfikator;
-            
-            private global::System.Data.DataColumn columnPojemność;
-            
-            private global::System.Data.DataColumn columnid_rodzaju_opakowania_sztuki;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiDataTable() {
-                this.TableName = "OpakowaniaSztuki";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal OpakowaniaSztukiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected OpakowaniaSztukiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdenidtyfikatorColumn {
-                get {
-                    return this.columnIdenidtyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PojemnośćColumn {
-                get {
-                    return this.columnPojemność;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_rodzaju_opakowania_sztukiColumn {
-                get {
-                    return this.columnid_rodzaju_opakowania_sztuki;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow this[int index] {
-                get {
-                    return ((OpakowaniaSztukiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddOpakowaniaSztukiRow(OpakowaniaSztukiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow AddOpakowaniaSztukiRow(int Pojemność, NazwyOpakowaniaSztukiRow parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki) {
-                OpakowaniaSztukiRow rowOpakowaniaSztukiRow = ((OpakowaniaSztukiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Pojemność,
-                        null};
-                if ((parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki != null)) {
-                    columnValuesArray[2] = parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki[0];
-                }
-                rowOpakowaniaSztukiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowOpakowaniaSztukiRow);
-                return rowOpakowaniaSztukiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow FindByIdenidtyfikator(int Idenidtyfikator) {
-                return ((OpakowaniaSztukiRow)(this.Rows.Find(new object[] {
-                            Idenidtyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                OpakowaniaSztukiDataTable cln = ((OpakowaniaSztukiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new OpakowaniaSztukiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdenidtyfikator = base.Columns["Idenidtyfikator"];
-                this.columnPojemność = base.Columns["Pojemność"];
-                this.columnid_rodzaju_opakowania_sztuki = base.Columns["id_rodzaju_opakowania_sztuki"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdenidtyfikator = new global::System.Data.DataColumn("Idenidtyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdenidtyfikator);
-                this.columnPojemność = new global::System.Data.DataColumn("Pojemność", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPojemność);
-                this.columnid_rodzaju_opakowania_sztuki = new global::System.Data.DataColumn("id_rodzaju_opakowania_sztuki", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_rodzaju_opakowania_sztuki);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdenidtyfikator}, true));
-                this.columnIdenidtyfikator.AutoIncrement = true;
-                this.columnIdenidtyfikator.AutoIncrementSeed = -1;
-                this.columnIdenidtyfikator.AutoIncrementStep = -1;
-                this.columnIdenidtyfikator.AllowDBNull = false;
-                this.columnIdenidtyfikator.Unique = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow NewOpakowaniaSztukiRow() {
-                return ((OpakowaniaSztukiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new OpakowaniaSztukiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(OpakowaniaSztukiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.OpakowaniaSztukiRowChanged != null)) {
-                    this.OpakowaniaSztukiRowChanged(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.OpakowaniaSztukiRowChanging != null)) {
-                    this.OpakowaniaSztukiRowChanging(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.OpakowaniaSztukiRowDeleted != null)) {
-                    this.OpakowaniaSztukiRowDeleted(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.OpakowaniaSztukiRowDeleting != null)) {
-                    this.OpakowaniaSztukiRowDeleting(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveOpakowaniaSztukiRow(OpakowaniaSztukiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "OpakowaniaSztukiDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class OpakowaniaZbiorczeDataTable : global::System.Data.TypedTableBase<OpakowaniaZbiorczeRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnPojemność;
-            
-            private global::System.Data.DataColumn columnid_rodzaju_opakowania_zbiorczego;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaZbiorczeDataTable() {
-                this.TableName = "OpakowaniaZbiorcze";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal OpakowaniaZbiorczeDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected OpakowaniaZbiorczeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PojemnośćColumn {
-                get {
-                    return this.columnPojemność;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_rodzaju_opakowania_zbiorczegoColumn {
-                get {
-                    return this.columnid_rodzaju_opakowania_zbiorczego;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaZbiorczeRow this[int index] {
-                get {
-                    return ((OpakowaniaZbiorczeRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddOpakowaniaZbiorczeRow(OpakowaniaZbiorczeRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaZbiorczeRow AddOpakowaniaZbiorczeRow(int Pojemność, NazwyOpakowaniaZbiorczegoRow parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze) {
-                OpakowaniaZbiorczeRow rowOpakowaniaZbiorczeRow = ((OpakowaniaZbiorczeRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Pojemność,
-                        null};
-                if ((parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze != null)) {
-                    columnValuesArray[2] = parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze[0];
-                }
-                rowOpakowaniaZbiorczeRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowOpakowaniaZbiorczeRow);
-                return rowOpakowaniaZbiorczeRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaZbiorczeRow FindByIdentyfikator(int Identyfikator) {
-                return ((OpakowaniaZbiorczeRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                OpakowaniaZbiorczeDataTable cln = ((OpakowaniaZbiorczeDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new OpakowaniaZbiorczeDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnPojemność = base.Columns["Pojemność"];
-                this.columnid_rodzaju_opakowania_zbiorczego = base.Columns["id_rodzaju_opakowania_zbiorczego"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnPojemność = new global::System.Data.DataColumn("Pojemność", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPojemność);
-                this.columnid_rodzaju_opakowania_zbiorczego = new global::System.Data.DataColumn("id_rodzaju_opakowania_zbiorczego", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_rodzaju_opakowania_zbiorczego);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaZbiorczeRow NewOpakowaniaZbiorczeRow() {
-                return ((OpakowaniaZbiorczeRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new OpakowaniaZbiorczeRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(OpakowaniaZbiorczeRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.OpakowaniaZbiorczeRowChanged != null)) {
-                    this.OpakowaniaZbiorczeRowChanged(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.OpakowaniaZbiorczeRowChanging != null)) {
-                    this.OpakowaniaZbiorczeRowChanging(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.OpakowaniaZbiorczeRowDeleted != null)) {
-                    this.OpakowaniaZbiorczeRowDeleted(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.OpakowaniaZbiorczeRowDeleting != null)) {
-                    this.OpakowaniaZbiorczeRowDeleting(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveOpakowaniaZbiorczeRow(OpakowaniaZbiorczeRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "OpakowaniaZbiorczeDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PracownicyDataTable : global::System.Data.TypedTableBase<PracownicyRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnNazwisko;
-            
-            private global::System.Data.DataColumn columnImię;
-            
-            private global::System.Data.DataColumn columnHasło;
-            
-            private global::System.Data.DataColumn columnEmail;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyDataTable() {
-                this.TableName = "Pracownicy";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal PracownicyDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected PracownicyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwiskoColumn {
-                get {
-                    return this.columnNazwisko;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ImięColumn {
-                get {
-                    return this.columnImię;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HasłoColumn {
-                get {
-                    return this.columnHasło;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EmailColumn {
-                get {
-                    return this.columnEmail;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow this[int index] {
-                get {
-                    return ((PracownicyRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PracownicyRowChangeEventHandler PracownicyRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PracownicyRowChangeEventHandler PracownicyRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PracownicyRowChangeEventHandler PracownicyRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PracownicyRowChangeEventHandler PracownicyRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddPracownicyRow(PracownicyRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow AddPracownicyRow(string Nazwisko, string Imię, string Hasło, string Email) {
-                PracownicyRow rowPracownicyRow = ((PracownicyRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Nazwisko,
-                        Imię,
-                        Hasło,
-                        Email};
-                rowPracownicyRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPracownicyRow);
-                return rowPracownicyRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow FindByIdentyfikator(int Identyfikator) {
-                return ((PracownicyRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                PracownicyDataTable cln = ((PracownicyDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new PracownicyDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwisko = base.Columns["Nazwisko"];
-                this.columnImię = base.Columns["Imię"];
-                this.columnHasło = base.Columns["Hasło"];
-                this.columnEmail = base.Columns["Email"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwisko = new global::System.Data.DataColumn("Nazwisko", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwisko);
-                this.columnImię = new global::System.Data.DataColumn("Imię", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImię);
-                this.columnHasło = new global::System.Data.DataColumn("Hasło", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHasło);
-                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEmail);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-                this.columnNazwisko.MaxLength = 20;
-                this.columnImię.MaxLength = 20;
-                this.columnHasło.MaxLength = 30;
-                this.columnEmail.MaxLength = 30;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow NewPracownicyRow() {
-                return ((PracownicyRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PracownicyRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(PracownicyRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.PracownicyRowChanged != null)) {
-                    this.PracownicyRowChanged(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.PracownicyRowChanging != null)) {
-                    this.PracownicyRowChanging(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.PracownicyRowDeleted != null)) {
-                    this.PracownicyRowDeleted(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.PracownicyRowDeleting != null)) {
-                    this.PracownicyRowDeleting(this, new PracownicyRowChangeEvent(((PracownicyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemovePracownicyRow(PracownicyRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PracownicyDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4199,7 +3124,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4263,22 +3188,18 @@ namespace HurtowniaNapojow.Database {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ProduktyKlientaDataTable : global::System.Data.TypedTableBase<ProduktyKlientaRow> {
+        public partial class OpakowaniaZbiorczeDataTable : global::System.Data.TypedTableBase<OpakowaniaZbiorczeRow> {
             
             private global::System.Data.DataColumn columnIdentyfikator;
             
-            private global::System.Data.DataColumn columnid_zakupu_klienta;
+            private global::System.Data.DataColumn columnPojemność;
             
-            private global::System.Data.DataColumn columnid_napoju_hurtowni;
-            
-            private global::System.Data.DataColumn columnLiczba;
-            
-            private global::System.Data.DataColumn columnKwota;
+            private global::System.Data.DataColumn columnid_nazwy_opakowania_zbiorczego;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaDataTable() {
-                this.TableName = "ProduktyKlienta";
+            public OpakowaniaZbiorczeDataTable() {
+                this.TableName = "OpakowaniaZbiorcze";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -4286,7 +3207,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ProduktyKlientaDataTable(global::System.Data.DataTable table) {
+            internal OpakowaniaZbiorczeDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -4303,7 +3224,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ProduktyKlientaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected OpakowaniaZbiorczeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -4318,33 +3239,17 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_zakupu_klientaColumn {
+            public global::System.Data.DataColumn PojemnośćColumn {
                 get {
-                    return this.columnid_zakupu_klienta;
+                    return this.columnPojemność;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_napoju_hurtowniColumn {
+            public global::System.Data.DataColumn id_nazwy_opakowania_zbiorczegoColumn {
                 get {
-                    return this.columnid_napoju_hurtowni;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LiczbaColumn {
-                get {
-                    return this.columnLiczba;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn KwotaColumn {
-                get {
-                    return this.columnKwota;
+                    return this.columnid_nazwy_opakowania_zbiorczego;
                 }
             }
             
@@ -4359,62 +3264,57 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow this[int index] {
+            public OpakowaniaZbiorczeRow this[int index] {
                 get {
-                    return ((ProduktyKlientaRow)(this.Rows[index]));
+                    return ((OpakowaniaZbiorczeRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowChanging;
+            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowChanged;
+            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowDeleting;
+            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ProduktyKlientaRowChangeEventHandler ProduktyKlientaRowDeleted;
+            public event OpakowaniaZbiorczeRowChangeEventHandler OpakowaniaZbiorczeRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddProduktyKlientaRow(ProduktyKlientaRow row) {
+            public void AddOpakowaniaZbiorczeRow(OpakowaniaZbiorczeRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow AddProduktyKlientaRow(ZakupyKlientaRow parentZakupyKlientaRowByZakupyKlientaProduktyKlienta, NapojeHurtowniRow parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta, int Liczba, float Kwota) {
-                ProduktyKlientaRow rowProduktyKlientaRow = ((ProduktyKlientaRow)(this.NewRow()));
+            public OpakowaniaZbiorczeRow AddOpakowaniaZbiorczeRow(int Pojemność, NazwyOpakowaniaZbiorczegoRow parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze) {
+                OpakowaniaZbiorczeRow rowOpakowaniaZbiorczeRow = ((OpakowaniaZbiorczeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
-                        null,
-                        Liczba,
-                        Kwota};
-                if ((parentZakupyKlientaRowByZakupyKlientaProduktyKlienta != null)) {
-                    columnValuesArray[1] = parentZakupyKlientaRowByZakupyKlientaProduktyKlienta[0];
+                        Pojemność,
+                        null};
+                if ((parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze != null)) {
+                    columnValuesArray[2] = parentNazwyOpakowaniaZbiorczegoRowByNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze[0];
                 }
-                if ((parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta != null)) {
-                    columnValuesArray[2] = parentNapojeHurtowniRowByNapojeHurtowniProduktyKlienta[0];
-                }
-                rowProduktyKlientaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowProduktyKlientaRow);
-                return rowProduktyKlientaRow;
+                rowOpakowaniaZbiorczeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOpakowaniaZbiorczeRow);
+                return rowOpakowaniaZbiorczeRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow FindByIdentyfikator(int Identyfikator) {
-                return ((ProduktyKlientaRow)(this.Rows.Find(new object[] {
+            public OpakowaniaZbiorczeRow FindByIdentyfikator(int Identyfikator) {
+                return ((OpakowaniaZbiorczeRow)(this.Rows.Find(new object[] {
                             Identyfikator})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ProduktyKlientaDataTable cln = ((ProduktyKlientaDataTable)(base.Clone()));
+                OpakowaniaZbiorczeDataTable cln = ((OpakowaniaZbiorczeDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -4422,17 +3322,15 @@ namespace HurtowniaNapojow.Database {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ProduktyKlientaDataTable();
+                return new OpakowaniaZbiorczeDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnid_zakupu_klienta = base.Columns["id_zakupu_klienta"];
-                this.columnid_napoju_hurtowni = base.Columns["id_napoju_hurtowni"];
-                this.columnLiczba = base.Columns["Liczba"];
-                this.columnKwota = base.Columns["Kwota"];
+                this.columnPojemność = base.Columns["Pojemność"];
+                this.columnid_nazwy_opakowania_zbiorczego = base.Columns["id_nazwy_opakowania_zbiorczego"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4440,14 +3338,10 @@ namespace HurtowniaNapojow.Database {
             private void InitClass() {
                 this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdentyfikator);
-                this.columnid_zakupu_klienta = new global::System.Data.DataColumn("id_zakupu_klienta", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_zakupu_klienta);
-                this.columnid_napoju_hurtowni = new global::System.Data.DataColumn("id_napoju_hurtowni", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_napoju_hurtowni);
-                this.columnLiczba = new global::System.Data.DataColumn("Liczba", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLiczba);
-                this.columnKwota = new global::System.Data.DataColumn("Kwota", typeof(float), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKwota);
+                this.columnPojemność = new global::System.Data.DataColumn("Pojemność", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPojemność);
+                this.columnid_nazwy_opakowania_zbiorczego = new global::System.Data.DataColumn("id_nazwy_opakowania_zbiorczego", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_nazwy_opakowania_zbiorczego);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdentyfikator}, true));
                 this.columnIdentyfikator.AutoIncrement = true;
@@ -4459,28 +3353,28 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow NewProduktyKlientaRow() {
-                return ((ProduktyKlientaRow)(this.NewRow()));
+            public OpakowaniaZbiorczeRow NewOpakowaniaZbiorczeRow() {
+                return ((OpakowaniaZbiorczeRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ProduktyKlientaRow(builder);
+                return new OpakowaniaZbiorczeRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ProduktyKlientaRow);
+                return typeof(OpakowaniaZbiorczeRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ProduktyKlientaRowChanged != null)) {
-                    this.ProduktyKlientaRowChanged(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                if ((this.OpakowaniaZbiorczeRowChanged != null)) {
+                    this.OpakowaniaZbiorczeRowChanged(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4488,8 +3382,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ProduktyKlientaRowChanging != null)) {
-                    this.ProduktyKlientaRowChanging(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                if ((this.OpakowaniaZbiorczeRowChanging != null)) {
+                    this.OpakowaniaZbiorczeRowChanging(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4497,8 +3391,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ProduktyKlientaRowDeleted != null)) {
-                    this.ProduktyKlientaRowDeleted(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                if ((this.OpakowaniaZbiorczeRowDeleted != null)) {
+                    this.OpakowaniaZbiorczeRowDeleted(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4506,14 +3400,14 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ProduktyKlientaRowDeleting != null)) {
-                    this.ProduktyKlientaRowDeleting(this, new ProduktyKlientaRowChangeEvent(((ProduktyKlientaRow)(e.Row)), e.Action));
+                if ((this.OpakowaniaZbiorczeRowDeleting != null)) {
+                    this.OpakowaniaZbiorczeRowDeleting(this, new OpakowaniaZbiorczeRowChangeEvent(((OpakowaniaZbiorczeRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveProduktyKlientaRow(ProduktyKlientaRow row) {
+            public void RemoveOpakowaniaZbiorczeRow(OpakowaniaZbiorczeRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -4522,7 +3416,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4540,7 +3434,1403 @@ namespace HurtowniaNapojow.Database {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ProduktyKlientaDataTable";
+                attribute2.FixedValue = "OpakowaniaZbiorczeDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class OpakowaniaSztukiDataTable : global::System.Data.TypedTableBase<OpakowaniaSztukiRow> {
+            
+            private global::System.Data.DataColumn columnIdenidtyfikator;
+            
+            private global::System.Data.DataColumn columnPojemność;
+            
+            private global::System.Data.DataColumn columnid_nazwy_opakowania_sztuki;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiDataTable() {
+                this.TableName = "OpakowaniaSztuki";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal OpakowaniaSztukiDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected OpakowaniaSztukiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdenidtyfikatorColumn {
+                get {
+                    return this.columnIdenidtyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PojemnośćColumn {
+                get {
+                    return this.columnPojemność;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_nazwy_opakowania_sztukiColumn {
+                get {
+                    return this.columnid_nazwy_opakowania_sztuki;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiRow this[int index] {
+                get {
+                    return ((OpakowaniaSztukiRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event OpakowaniaSztukiRowChangeEventHandler OpakowaniaSztukiRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddOpakowaniaSztukiRow(OpakowaniaSztukiRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiRow AddOpakowaniaSztukiRow(int Pojemność, NazwyOpakowaniaSztukiRow parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki) {
+                OpakowaniaSztukiRow rowOpakowaniaSztukiRow = ((OpakowaniaSztukiRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Pojemność,
+                        null};
+                if ((parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki != null)) {
+                    columnValuesArray[2] = parentNazwyOpakowaniaSztukiRowByNazwyOpakowaniaSztukiOpakowaniaSztuki[0];
+                }
+                rowOpakowaniaSztukiRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOpakowaniaSztukiRow);
+                return rowOpakowaniaSztukiRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiRow FindByIdenidtyfikator(int Idenidtyfikator) {
+                return ((OpakowaniaSztukiRow)(this.Rows.Find(new object[] {
+                            Idenidtyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                OpakowaniaSztukiDataTable cln = ((OpakowaniaSztukiDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new OpakowaniaSztukiDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdenidtyfikator = base.Columns["Idenidtyfikator"];
+                this.columnPojemność = base.Columns["Pojemność"];
+                this.columnid_nazwy_opakowania_sztuki = base.Columns["id_nazwy_opakowania_sztuki"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdenidtyfikator = new global::System.Data.DataColumn("Idenidtyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdenidtyfikator);
+                this.columnPojemność = new global::System.Data.DataColumn("Pojemność", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPojemność);
+                this.columnid_nazwy_opakowania_sztuki = new global::System.Data.DataColumn("id_nazwy_opakowania_sztuki", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_nazwy_opakowania_sztuki);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdenidtyfikator}, true));
+                this.columnIdenidtyfikator.AutoIncrement = true;
+                this.columnIdenidtyfikator.AutoIncrementSeed = -1;
+                this.columnIdenidtyfikator.AutoIncrementStep = -1;
+                this.columnIdenidtyfikator.AllowDBNull = false;
+                this.columnIdenidtyfikator.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiRow NewOpakowaniaSztukiRow() {
+                return ((OpakowaniaSztukiRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new OpakowaniaSztukiRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(OpakowaniaSztukiRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.OpakowaniaSztukiRowChanged != null)) {
+                    this.OpakowaniaSztukiRowChanged(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.OpakowaniaSztukiRowChanging != null)) {
+                    this.OpakowaniaSztukiRowChanging(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.OpakowaniaSztukiRowDeleted != null)) {
+                    this.OpakowaniaSztukiRowDeleted(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.OpakowaniaSztukiRowDeleting != null)) {
+                    this.OpakowaniaSztukiRowDeleting(this, new OpakowaniaSztukiRowChangeEvent(((OpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveOpakowaniaSztukiRow(OpakowaniaSztukiRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "OpakowaniaSztukiDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NazwyOpakowaniaZbiorczegoDataTable : global::System.Data.TypedTableBase<NazwyOpakowaniaZbiorczegoRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnNazwaOpakowania;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaZbiorczegoDataTable() {
+                this.TableName = "NazwyOpakowaniaZbiorczego";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NazwyOpakowaniaZbiorczegoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NazwyOpakowaniaZbiorczegoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NazwaOpakowaniaColumn {
+                get {
+                    return this.columnNazwaOpakowania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaZbiorczegoRow this[int index] {
+                get {
+                    return ((NazwyOpakowaniaZbiorczegoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaZbiorczegoRowChangeEventHandler NazwyOpakowaniaZbiorczegoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNazwyOpakowaniaZbiorczegoRow(NazwyOpakowaniaZbiorczegoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaZbiorczegoRow AddNazwyOpakowaniaZbiorczegoRow(string NazwaOpakowania) {
+                NazwyOpakowaniaZbiorczegoRow rowNazwyOpakowaniaZbiorczegoRow = ((NazwyOpakowaniaZbiorczegoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        NazwaOpakowania};
+                rowNazwyOpakowaniaZbiorczegoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNazwyOpakowaniaZbiorczegoRow);
+                return rowNazwyOpakowaniaZbiorczegoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaZbiorczegoRow FindByIdentyfikator(int Identyfikator) {
+                return ((NazwyOpakowaniaZbiorczegoRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NazwyOpakowaniaZbiorczegoDataTable cln = ((NazwyOpakowaniaZbiorczegoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NazwyOpakowaniaZbiorczegoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnNazwaOpakowania = base.Columns["NazwaOpakowania"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnNazwaOpakowania = new global::System.Data.DataColumn("NazwaOpakowania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwaOpakowania);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+                this.columnNazwaOpakowania.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaZbiorczegoRow NewNazwyOpakowaniaZbiorczegoRow() {
+                return ((NazwyOpakowaniaZbiorczegoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NazwyOpakowaniaZbiorczegoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NazwyOpakowaniaZbiorczegoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NazwyOpakowaniaZbiorczegoRowChanged != null)) {
+                    this.NazwyOpakowaniaZbiorczegoRowChanged(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NazwyOpakowaniaZbiorczegoRowChanging != null)) {
+                    this.NazwyOpakowaniaZbiorczegoRowChanging(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NazwyOpakowaniaZbiorczegoRowDeleted != null)) {
+                    this.NazwyOpakowaniaZbiorczegoRowDeleted(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NazwyOpakowaniaZbiorczegoRowDeleting != null)) {
+                    this.NazwyOpakowaniaZbiorczegoRowDeleting(this, new NazwyOpakowaniaZbiorczegoRowChangeEvent(((NazwyOpakowaniaZbiorczegoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNazwyOpakowaniaZbiorczegoRow(NazwyOpakowaniaZbiorczegoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NazwyOpakowaniaZbiorczegoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NazwyOpakowaniaSztukiDataTable : global::System.Data.TypedTableBase<NazwyOpakowaniaSztukiRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnNazwaOpakowania;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiDataTable() {
+                this.TableName = "NazwyOpakowaniaSztuki";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NazwyOpakowaniaSztukiDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NazwyOpakowaniaSztukiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NazwaOpakowaniaColumn {
+                get {
+                    return this.columnNazwaOpakowania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiRow this[int index] {
+                get {
+                    return ((NazwyOpakowaniaSztukiRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyOpakowaniaSztukiRowChangeEventHandler NazwyOpakowaniaSztukiRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNazwyOpakowaniaSztukiRow(NazwyOpakowaniaSztukiRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiRow AddNazwyOpakowaniaSztukiRow(string NazwaOpakowania) {
+                NazwyOpakowaniaSztukiRow rowNazwyOpakowaniaSztukiRow = ((NazwyOpakowaniaSztukiRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        NazwaOpakowania};
+                rowNazwyOpakowaniaSztukiRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNazwyOpakowaniaSztukiRow);
+                return rowNazwyOpakowaniaSztukiRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiRow FindByIdentyfikator(int Identyfikator) {
+                return ((NazwyOpakowaniaSztukiRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NazwyOpakowaniaSztukiDataTable cln = ((NazwyOpakowaniaSztukiDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NazwyOpakowaniaSztukiDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnNazwaOpakowania = base.Columns["NazwaOpakowania"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnNazwaOpakowania = new global::System.Data.DataColumn("NazwaOpakowania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwaOpakowania);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+                this.columnNazwaOpakowania.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiRow NewNazwyOpakowaniaSztukiRow() {
+                return ((NazwyOpakowaniaSztukiRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NazwyOpakowaniaSztukiRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NazwyOpakowaniaSztukiRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NazwyOpakowaniaSztukiRowChanged != null)) {
+                    this.NazwyOpakowaniaSztukiRowChanged(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NazwyOpakowaniaSztukiRowChanging != null)) {
+                    this.NazwyOpakowaniaSztukiRowChanging(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NazwyOpakowaniaSztukiRowDeleted != null)) {
+                    this.NazwyOpakowaniaSztukiRowDeleted(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NazwyOpakowaniaSztukiRowDeleting != null)) {
+                    this.NazwyOpakowaniaSztukiRowDeleting(this, new NazwyOpakowaniaSztukiRowChangeEvent(((NazwyOpakowaniaSztukiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNazwyOpakowaniaSztukiRow(NazwyOpakowaniaSztukiRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NazwyOpakowaniaSztukiDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SmakiDataTable : global::System.Data.TypedTableBase<SmakiRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnNazwaSmaku;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiDataTable() {
+                this.TableName = "Smaki";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SmakiDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected SmakiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NazwaSmakuColumn {
+                get {
+                    return this.columnNazwaSmaku;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow this[int index] {
+                get {
+                    return ((SmakiRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SmakiRowChangeEventHandler SmakiRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SmakiRowChangeEventHandler SmakiRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SmakiRowChangeEventHandler SmakiRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SmakiRowChangeEventHandler SmakiRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddSmakiRow(SmakiRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow AddSmakiRow(string NazwaSmaku) {
+                SmakiRow rowSmakiRow = ((SmakiRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        NazwaSmaku};
+                rowSmakiRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSmakiRow);
+                return rowSmakiRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow FindByIdentyfikator(int Identyfikator) {
+                return ((SmakiRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SmakiDataTable cln = ((SmakiDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SmakiDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnNazwaSmaku = base.Columns["NazwaSmaku"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnNazwaSmaku = new global::System.Data.DataColumn("NazwaSmaku", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwaSmaku);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+                this.columnNazwaSmaku.MaxLength = 30;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow NewSmakiRow() {
+                return ((SmakiRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SmakiRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SmakiRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SmakiRowChanged != null)) {
+                    this.SmakiRowChanged(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SmakiRowChanging != null)) {
+                    this.SmakiRowChanging(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SmakiRowDeleted != null)) {
+                    this.SmakiRowDeleted(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SmakiRowDeleting != null)) {
+                    this.SmakiRowDeleting(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveSmakiRow(SmakiRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SmakiDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NazwyNapojuDataTable : global::System.Data.TypedTableBase<NazwyNapojuRow> {
+            
+            private global::System.Data.DataColumn columnIdentyfikator;
+            
+            private global::System.Data.DataColumn columnNazwaNapoju;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuDataTable() {
+                this.TableName = "NazwyNapoju";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NazwyNapojuDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NazwyNapojuDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdentyfikatorColumn {
+                get {
+                    return this.columnIdentyfikator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NazwaNapojuColumn {
+                get {
+                    return this.columnNazwaNapoju;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow this[int index] {
+                get {
+                    return ((NazwyNapojuRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NazwyNapojuRowChangeEventHandler NazwyNapojuRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNazwyNapojuRow(NazwyNapojuRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow AddNazwyNapojuRow(string NazwaNapoju) {
+                NazwyNapojuRow rowNazwyNapojuRow = ((NazwyNapojuRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        NazwaNapoju};
+                rowNazwyNapojuRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNazwyNapojuRow);
+                return rowNazwyNapojuRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow FindByIdentyfikator(int Identyfikator) {
+                return ((NazwyNapojuRow)(this.Rows.Find(new object[] {
+                            Identyfikator})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NazwyNapojuDataTable cln = ((NazwyNapojuDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NazwyNapojuDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentyfikator = base.Columns["Identyfikator"];
+                this.columnNazwaNapoju = base.Columns["NazwaNapoju"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentyfikator);
+                this.columnNazwaNapoju = new global::System.Data.DataColumn("NazwaNapoju", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwaNapoju);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdentyfikator}, true));
+                this.columnIdentyfikator.AutoIncrement = true;
+                this.columnIdentyfikator.AutoIncrementSeed = -1;
+                this.columnIdentyfikator.AutoIncrementStep = -1;
+                this.columnIdentyfikator.AllowDBNull = false;
+                this.columnIdentyfikator.Unique = true;
+                this.columnNazwaNapoju.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow NewNazwyNapojuRow() {
+                return ((NazwyNapojuRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NazwyNapojuRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NazwyNapojuRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NazwyNapojuRowChanged != null)) {
+                    this.NazwyNapojuRowChanged(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NazwyNapojuRowChanging != null)) {
+                    this.NazwyNapojuRowChanging(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NazwyNapojuRowDeleted != null)) {
+                    this.NazwyNapojuRowDeleted(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NazwyNapojuRowDeleting != null)) {
+                    this.NazwyNapojuRowDeleting(this, new NazwyNapojuRowChangeEvent(((NazwyNapojuRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNazwyNapojuRow(NazwyNapojuRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NazwyNapojuDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4798,7 +5088,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5088,7 +5378,7 @@ namespace HurtowniaNapojow.Database {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
+                HurtowniaNapojówDataSet ds = new HurtowniaNapojówDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5107,282 +5397,6 @@ namespace HurtowniaNapojow.Database {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "RodzajeNapojuDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SmakiDataTable : global::System.Data.TypedTableBase<SmakiRow> {
-            
-            private global::System.Data.DataColumn columnIdentyfikator;
-            
-            private global::System.Data.DataColumn columnNazwaSmaku;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiDataTable() {
-                this.TableName = "Smaki";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SmakiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SmakiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdentyfikatorColumn {
-                get {
-                    return this.columnIdentyfikator;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwaSmakuColumn {
-                get {
-                    return this.columnNazwaSmaku;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow this[int index] {
-                get {
-                    return ((SmakiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSmakiRow(SmakiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow AddSmakiRow(string NazwaSmaku) {
-                SmakiRow rowSmakiRow = ((SmakiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        NazwaSmaku};
-                rowSmakiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSmakiRow);
-                return rowSmakiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow FindByIdentyfikator(int Identyfikator) {
-                return ((SmakiRow)(this.Rows.Find(new object[] {
-                            Identyfikator})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SmakiDataTable cln = ((SmakiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SmakiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwaSmaku = base.Columns["NazwaSmaku"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwaSmaku = new global::System.Data.DataColumn("NazwaSmaku", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwaSmaku);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdentyfikator}, true));
-                this.columnIdentyfikator.AutoIncrement = true;
-                this.columnIdentyfikator.AutoIncrementSeed = -1;
-                this.columnIdentyfikator.AutoIncrementStep = -1;
-                this.columnIdentyfikator.AllowDBNull = false;
-                this.columnIdentyfikator.Unique = true;
-                this.columnNazwaSmaku.MaxLength = 30;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow NewSmakiRow() {
-                return ((SmakiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SmakiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SmakiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SmakiRowChanged != null)) {
-                    this.SmakiRowChanged(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SmakiRowChanging != null)) {
-                    this.SmakiRowChanging(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SmakiRowDeleted != null)) {
-                    this.SmakiRowDeleted(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SmakiRowDeleting != null)) {
-                    this.SmakiRowDeleting(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSmakiRow(SmakiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HurtowniaNapojow ds = new HurtowniaNapojow();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SmakiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5619,12 +5633,349 @@ namespace HurtowniaNapojow.Database {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ZakupyKlientaRow[] GetZakupyKlientaRows() {
-                if ((this.Table.ChildRelations["KlienciZakupyKlienta1"] == null)) {
+                if ((this.Table.ChildRelations["KlienciZakupyKlienta"] == null)) {
                     return new ZakupyKlientaRow[0];
                 }
                 else {
-                    return ((ZakupyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["KlienciZakupyKlienta1"])));
+                    return ((ZakupyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["KlienciZakupyKlienta"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PracownicyRow : global::System.Data.DataRow {
+            
+            private PracownicyDataTable tablePracownicy;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PracownicyRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePracownicy = ((PracownicyDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Identyfikator {
+                get {
+                    return ((int)(this[this.tablePracownicy.IdentyfikatorColumn]));
+                }
+                set {
+                    this[this.tablePracownicy.IdentyfikatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nazwisko {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracownicy.NazwiskoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nazwisko\' in table \'Pracownicy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracownicy.NazwiskoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Imię {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracownicy.ImięColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Imię\' in table \'Pracownicy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracownicy.ImięColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Hasło {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracownicy.HasłoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Hasło\' in table \'Pracownicy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracownicy.HasłoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Email {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracownicy.EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'Pracownicy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracownicy.EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool CzyAdministrator {
+                get {
+                    try {
+                        return ((bool)(this[this.tablePracownicy.CzyAdministratorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CzyAdministrator\' in table \'Pracownicy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracownicy.CzyAdministratorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNazwiskoNull() {
+                return this.IsNull(this.tablePracownicy.NazwiskoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNazwiskoNull() {
+                this[this.tablePracownicy.NazwiskoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsImięNull() {
+                return this.IsNull(this.tablePracownicy.ImięColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetImięNull() {
+                this[this.tablePracownicy.ImięColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHasłoNull() {
+                return this.IsNull(this.tablePracownicy.HasłoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHasłoNull() {
+                this[this.tablePracownicy.HasłoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEmailNull() {
+                return this.IsNull(this.tablePracownicy.EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEmailNull() {
+                this[this.tablePracownicy.EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCzyAdministratorNull() {
+                return this.IsNull(this.tablePracownicy.CzyAdministratorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCzyAdministratorNull() {
+                this[this.tablePracownicy.CzyAdministratorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ZakupyKlientaRow[] GetZakupyKlientaRows() {
+                if ((this.Table.ChildRelations["PracownicyZakupyKlienta"] == null)) {
+                    return new ZakupyKlientaRow[0];
+                }
+                else {
+                    return ((ZakupyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["PracownicyZakupyKlienta"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ProduktyKlientaRow : global::System.Data.DataRow {
+            
+            private ProduktyKlientaDataTable tableProduktyKlienta;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ProduktyKlientaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableProduktyKlienta = ((ProduktyKlientaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Identyfikator {
+                get {
+                    return ((int)(this[this.tableProduktyKlienta.IdentyfikatorColumn]));
+                }
+                set {
+                    this[this.tableProduktyKlienta.IdentyfikatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_zakupu_klienta {
+                get {
+                    try {
+                        return ((int)(this[this.tableProduktyKlienta.id_zakupu_klientaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_zakupu_klienta\' in table \'ProduktyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProduktyKlienta.id_zakupu_klientaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_napoju_hurtowni {
+                get {
+                    try {
+                        return ((int)(this[this.tableProduktyKlienta.id_napoju_hurtowniColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_napoju_hurtowni\' in table \'ProduktyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProduktyKlienta.id_napoju_hurtowniColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Liczba {
+                get {
+                    try {
+                        return ((int)(this[this.tableProduktyKlienta.LiczbaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Liczba\' in table \'ProduktyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProduktyKlienta.LiczbaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public float Kwota {
+                get {
+                    try {
+                        return ((float)(this[this.tableProduktyKlienta.KwotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kwota\' in table \'ProduktyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProduktyKlienta.KwotaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ZakupyKlientaRow ZakupyKlientaRow {
+                get {
+                    return ((ZakupyKlientaRow)(this.GetParentRow(this.Table.ParentRelations["ZakupyKlientaProduktyKlienta"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["ZakupyKlientaProduktyKlienta"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NapojeHurtowniRow NapojeHurtowniRow {
+                get {
+                    return ((NapojeHurtowniRow)(this.GetParentRow(this.Table.ParentRelations["NapojeHurtowniProduktyKlienta"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["NapojeHurtowniProduktyKlienta"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_zakupu_klientaNull() {
+                return this.IsNull(this.tableProduktyKlienta.id_zakupu_klientaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_zakupu_klientaNull() {
+                this[this.tableProduktyKlienta.id_zakupu_klientaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_napoju_hurtowniNull() {
+                return this.IsNull(this.tableProduktyKlienta.id_napoju_hurtowniColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_napoju_hurtowniNull() {
+                this[this.tableProduktyKlienta.id_napoju_hurtowniColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLiczbaNull() {
+                return this.IsNull(this.tableProduktyKlienta.LiczbaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLiczbaNull() {
+                this[this.tableProduktyKlienta.LiczbaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKwotaNull() {
+                return this.IsNull(this.tableProduktyKlienta.KwotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKwotaNull() {
+                this[this.tableProduktyKlienta.KwotaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5703,23 +6054,23 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KlienciRow KlienciRow {
+                get {
+                    return ((KlienciRow)(this.GetParentRow(this.Table.ParentRelations["KlienciZakupyKlienta"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["KlienciZakupyKlienta"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PracownicyRow PracownicyRow {
                 get {
                     return ((PracownicyRow)(this.GetParentRow(this.Table.ParentRelations["PracownicyZakupyKlienta"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["PracownicyZakupyKlienta"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KlienciRow KlienciRow {
-                get {
-                    return ((KlienciRow)(this.GetParentRow(this.Table.ParentRelations["KlienciZakupyKlienta1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["KlienciZakupyKlienta1"]);
                 }
             }
             
@@ -6116,23 +6467,12 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow NazwyNapojuRow {
+            public ProducenciRow ProducenciRow {
                 get {
-                    return ((NazwyNapojuRow)(this.GetParentRow(this.Table.ParentRelations["NazwyNapojuNapoje"])));
+                    return ((ProducenciRow)(this.GetParentRow(this.Table.ParentRelations["ProducenciNapoje"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["NazwyNapojuNapoje"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow OpakowaniaSztukiRow {
-                get {
-                    return ((OpakowaniaSztukiRow)(this.GetParentRow(this.Table.ParentRelations["OpakowaniaSztukiNapoje"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["OpakowaniaSztukiNapoje"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["ProducenciNapoje"]);
                 }
             }
             
@@ -6149,12 +6489,34 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProducenciRow ProducenciRow {
+            public OpakowaniaSztukiRow OpakowaniaSztukiRow {
                 get {
-                    return ((ProducenciRow)(this.GetParentRow(this.Table.ParentRelations["ProducenciNapoje"])));
+                    return ((OpakowaniaSztukiRow)(this.GetParentRow(this.Table.ParentRelations["OpakowaniaSztukiNapoje"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["ProducenciNapoje"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["OpakowaniaSztukiNapoje"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow SmakiRow {
+                get {
+                    return ((SmakiRow)(this.GetParentRow(this.Table.ParentRelations["SmakiNapoje"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["SmakiNapoje"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow NazwyNapojuRow {
+                get {
+                    return ((NazwyNapojuRow)(this.GetParentRow(this.Table.ParentRelations["NazwyNapojuNapoje"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["NazwyNapojuNapoje"]);
                 }
             }
             
@@ -6177,17 +6539,6 @@ namespace HurtowniaNapojow.Database {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["RodzajeNapojuNapoje"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow SmakiRow {
-                get {
-                    return ((SmakiRow)(this.GetParentRow(this.Table.ParentRelations["SmakiNapoje"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SmakiNapoje"]);
                 }
             }
             
@@ -6302,64 +6653,64 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NazwyNapojuRow : global::System.Data.DataRow {
+        public partial class ProducenciRow : global::System.Data.DataRow {
             
-            private NazwyNapojuDataTable tableNazwyNapoju;
+            private ProducenciDataTable tableProducenci;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NazwyNapojuRow(global::System.Data.DataRowBuilder rb) : 
+            internal ProducenciRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNazwyNapoju = ((NazwyNapojuDataTable)(this.Table));
+                this.tableProducenci = ((ProducenciDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableNazwyNapoju.IdentyfikatorColumn]));
+                    return ((int)(this[this.tableProducenci.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableNazwyNapoju.IdentyfikatorColumn] = value;
+                    this[this.tableProducenci.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NazwaNapoju {
+            public string NazwaProducenta {
                 get {
                     try {
-                        return ((string)(this[this.tableNazwyNapoju.NazwaNapojuColumn]));
+                        return ((string)(this[this.tableProducenci.NazwaProducentaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaNapoju\' in table \'NazwyNapoju\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaProducenta\' in table \'Producenci\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNazwyNapoju.NazwaNapojuColumn] = value;
+                    this[this.tableProducenci.NazwaProducentaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwaNapojuNull() {
-                return this.IsNull(this.tableNazwyNapoju.NazwaNapojuColumn);
+            public bool IsNazwaProducentaNull() {
+                return this.IsNull(this.tableProducenci.NazwaProducentaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwaNapojuNull() {
-                this[this.tableNazwyNapoju.NazwaNapojuColumn] = global::System.Convert.DBNull;
+            public void SetNazwaProducentaNull() {
+                this[this.tableProducenci.NazwaProducentaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["NazwyNapojuNapoje"] == null)) {
+                if ((this.Table.ChildRelations["ProducenciNapoje"] == null)) {
                     return new NapojeProducentaRow[0];
                 }
                 else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["NazwyNapojuNapoje"])));
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["ProducenciNapoje"])));
                 }
             }
         }
@@ -6367,65 +6718,209 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NazwyOpakowaniaSztukiRow : global::System.Data.DataRow {
+        public partial class OpakowaniaZbiorczeRow : global::System.Data.DataRow {
             
-            private NazwyOpakowaniaSztukiDataTable tableNazwyOpakowaniaSztuki;
+            private OpakowaniaZbiorczeDataTable tableOpakowaniaZbiorcze;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NazwyOpakowaniaSztukiRow(global::System.Data.DataRowBuilder rb) : 
+            internal OpakowaniaZbiorczeRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNazwyOpakowaniaSztuki = ((NazwyOpakowaniaSztukiDataTable)(this.Table));
+                this.tableOpakowaniaZbiorcze = ((OpakowaniaZbiorczeDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn]));
+                    return ((int)(this[this.tableOpakowaniaZbiorcze.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn] = value;
+                    this[this.tableOpakowaniaZbiorcze.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NazwaOpakowania {
+            public int Pojemność {
                 get {
                     try {
-                        return ((string)(this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn]));
+                        return ((int)(this[this.tableOpakowaniaZbiorcze.PojemnośćColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaOpakowania\' in table \'NazwyOpakowaniaSztuki\' is DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Pojemność\' in table \'OpakowaniaZbiorcze\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn] = value;
+                    this[this.tableOpakowaniaZbiorcze.PojemnośćColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwaOpakowaniaNull() {
-                return this.IsNull(this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn);
+            public int id_nazwy_opakowania_zbiorczego {
+                get {
+                    try {
+                        return ((int)(this[this.tableOpakowaniaZbiorcze.id_nazwy_opakowania_zbiorczegoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_nazwy_opakowania_zbiorczego\' in table \'OpakowaniaZbiorcz" +
+                                "e\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpakowaniaZbiorcze.id_nazwy_opakowania_zbiorczegoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwaOpakowaniaNull() {
-                this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn] = global::System.Convert.DBNull;
+            public NazwyOpakowaniaZbiorczegoRow NazwyOpakowaniaZbiorczegoRow {
+                get {
+                    return ((NazwyOpakowaniaZbiorczegoRow)(this.GetParentRow(this.Table.ParentRelations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow[] GetOpakowaniaSztukiRows() {
-                if ((this.Table.ChildRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"] == null)) {
-                    return new OpakowaniaSztukiRow[0];
+            public bool IsPojemnośćNull() {
+                return this.IsNull(this.tableOpakowaniaZbiorcze.PojemnośćColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPojemnośćNull() {
+                this[this.tableOpakowaniaZbiorcze.PojemnośćColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_nazwy_opakowania_zbiorczegoNull() {
+                return this.IsNull(this.tableOpakowaniaZbiorcze.id_nazwy_opakowania_zbiorczegoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_nazwy_opakowania_zbiorczegoNull() {
+                this[this.tableOpakowaniaZbiorcze.id_nazwy_opakowania_zbiorczegoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NapojeProducentaRow[] GetNapojeProducentaRows() {
+                if ((this.Table.ChildRelations["OpakowaniaZbiorczeNapoje"] == null)) {
+                    return new NapojeProducentaRow[0];
                 }
                 else {
-                    return ((OpakowaniaSztukiRow[])(base.GetChildRows(this.Table.ChildRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"])));
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["OpakowaniaZbiorczeNapoje"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class OpakowaniaSztukiRow : global::System.Data.DataRow {
+            
+            private OpakowaniaSztukiDataTable tableOpakowaniaSztuki;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal OpakowaniaSztukiRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableOpakowaniaSztuki = ((OpakowaniaSztukiDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Idenidtyfikator {
+                get {
+                    return ((int)(this[this.tableOpakowaniaSztuki.IdenidtyfikatorColumn]));
+                }
+                set {
+                    this[this.tableOpakowaniaSztuki.IdenidtyfikatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Pojemność {
+                get {
+                    try {
+                        return ((int)(this[this.tableOpakowaniaSztuki.PojemnośćColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Pojemność\' in table \'OpakowaniaSztuki\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpakowaniaSztuki.PojemnośćColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_nazwy_opakowania_sztuki {
+                get {
+                    try {
+                        return ((int)(this[this.tableOpakowaniaSztuki.id_nazwy_opakowania_sztukiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_nazwy_opakowania_sztuki\' in table \'OpakowaniaSztuki\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpakowaniaSztuki.id_nazwy_opakowania_sztukiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyOpakowaniaSztukiRow NazwyOpakowaniaSztukiRow {
+                get {
+                    return ((NazwyOpakowaniaSztukiRow)(this.GetParentRow(this.Table.ParentRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPojemnośćNull() {
+                return this.IsNull(this.tableOpakowaniaSztuki.PojemnośćColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPojemnośćNull() {
+                this[this.tableOpakowaniaSztuki.PojemnośćColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_nazwy_opakowania_sztukiNull() {
+                return this.IsNull(this.tableOpakowaniaSztuki.id_nazwy_opakowania_sztukiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_nazwy_opakowania_sztukiNull() {
+                this[this.tableOpakowaniaSztuki.id_nazwy_opakowania_sztukiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NapojeProducentaRow[] GetNapojeProducentaRows() {
+                if ((this.Table.ChildRelations["OpakowaniaSztukiNapoje"] == null)) {
+                    return new NapojeProducentaRow[0];
+                }
+                else {
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["OpakowaniaSztukiNapoje"])));
                 }
             }
         }
@@ -6499,104 +6994,130 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class OpakowaniaSztukiRow : global::System.Data.DataRow {
+        public partial class NazwyOpakowaniaSztukiRow : global::System.Data.DataRow {
             
-            private OpakowaniaSztukiDataTable tableOpakowaniaSztuki;
+            private NazwyOpakowaniaSztukiDataTable tableNazwyOpakowaniaSztuki;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal OpakowaniaSztukiRow(global::System.Data.DataRowBuilder rb) : 
+            internal NazwyOpakowaniaSztukiRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableOpakowaniaSztuki = ((OpakowaniaSztukiDataTable)(this.Table));
+                this.tableNazwyOpakowaniaSztuki = ((NazwyOpakowaniaSztukiDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Idenidtyfikator {
+            public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableOpakowaniaSztuki.IdenidtyfikatorColumn]));
+                    return ((int)(this[this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableOpakowaniaSztuki.IdenidtyfikatorColumn] = value;
+                    this[this.tableNazwyOpakowaniaSztuki.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Pojemność {
-                get {
-                    try {
-                        return ((int)(this[this.tableOpakowaniaSztuki.PojemnośćColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Pojemność\' in table \'OpakowaniaSztuki\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOpakowaniaSztuki.PojemnośćColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_rodzaju_opakowania_sztuki {
+            public string NazwaOpakowania {
                 get {
                     try {
-                        return ((int)(this[this.tableOpakowaniaSztuki.id_rodzaju_opakowania_sztukiColumn]));
+                        return ((string)(this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_rodzaju_opakowania_sztuki\' in table \'OpakowaniaSztuki\' i" +
-                                "s DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaOpakowania\' in table \'NazwyOpakowaniaSztuki\' is DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableOpakowaniaSztuki.id_rodzaju_opakowania_sztukiColumn] = value;
+                    this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow NazwyOpakowaniaSztukiRow {
+            public bool IsNazwaOpakowaniaNull() {
+                return this.IsNull(this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNazwaOpakowaniaNull() {
+                this[this.tableNazwyOpakowaniaSztuki.NazwaOpakowaniaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OpakowaniaSztukiRow[] GetOpakowaniaSztukiRows() {
+                if ((this.Table.ChildRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"] == null)) {
+                    return new OpakowaniaSztukiRow[0];
+                }
+                else {
+                    return ((OpakowaniaSztukiRow[])(base.GetChildRows(this.Table.ChildRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SmakiRow : global::System.Data.DataRow {
+            
+            private SmakiDataTable tableSmaki;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SmakiRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSmaki = ((SmakiDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Identyfikator {
                 get {
-                    return ((NazwyOpakowaniaSztukiRow)(this.GetParentRow(this.Table.ParentRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"])));
+                    return ((int)(this[this.tableSmaki.IdentyfikatorColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["NazwyOpakowaniaSztukiOpakowaniaSztuki"]);
+                    this[this.tableSmaki.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPojemnośćNull() {
-                return this.IsNull(this.tableOpakowaniaSztuki.PojemnośćColumn);
+            public string NazwaSmaku {
+                get {
+                    try {
+                        return ((string)(this[this.tableSmaki.NazwaSmakuColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaSmaku\' in table \'Smaki\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSmaki.NazwaSmakuColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPojemnośćNull() {
-                this[this.tableOpakowaniaSztuki.PojemnośćColumn] = global::System.Convert.DBNull;
+            public bool IsNazwaSmakuNull() {
+                return this.IsNull(this.tableSmaki.NazwaSmakuColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_rodzaju_opakowania_sztukiNull() {
-                return this.IsNull(this.tableOpakowaniaSztuki.id_rodzaju_opakowania_sztukiColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_rodzaju_opakowania_sztukiNull() {
-                this[this.tableOpakowaniaSztuki.id_rodzaju_opakowania_sztukiColumn] = global::System.Convert.DBNull;
+            public void SetNazwaSmakuNull() {
+                this[this.tableSmaki.NazwaSmakuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["OpakowaniaSztukiNapoje"] == null)) {
+                if ((this.Table.ChildRelations["SmakiNapoje"] == null)) {
                     return new NapojeProducentaRow[0];
                 }
                 else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["OpakowaniaSztukiNapoje"])));
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["SmakiNapoje"])));
                 }
             }
         }
@@ -6604,479 +7125,65 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class OpakowaniaZbiorczeRow : global::System.Data.DataRow {
+        public partial class NazwyNapojuRow : global::System.Data.DataRow {
             
-            private OpakowaniaZbiorczeDataTable tableOpakowaniaZbiorcze;
+            private NazwyNapojuDataTable tableNazwyNapoju;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal OpakowaniaZbiorczeRow(global::System.Data.DataRowBuilder rb) : 
+            internal NazwyNapojuRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableOpakowaniaZbiorcze = ((OpakowaniaZbiorczeDataTable)(this.Table));
+                this.tableNazwyNapoju = ((NazwyNapojuDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableOpakowaniaZbiorcze.IdentyfikatorColumn]));
+                    return ((int)(this[this.tableNazwyNapoju.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableOpakowaniaZbiorcze.IdentyfikatorColumn] = value;
+                    this[this.tableNazwyNapoju.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Pojemność {
+            public string NazwaNapoju {
                 get {
                     try {
-                        return ((int)(this[this.tableOpakowaniaZbiorcze.PojemnośćColumn]));
+                        return ((string)(this[this.tableNazwyNapoju.NazwaNapojuColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Pojemność\' in table \'OpakowaniaZbiorcze\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaNapoju\' in table \'NazwyNapoju\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOpakowaniaZbiorcze.PojemnośćColumn] = value;
+                    this[this.tableNazwyNapoju.NazwaNapojuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_rodzaju_opakowania_zbiorczego {
-                get {
-                    try {
-                        return ((int)(this[this.tableOpakowaniaZbiorcze.id_rodzaju_opakowania_zbiorczegoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_rodzaju_opakowania_zbiorczego\' in table \'OpakowaniaZbior" +
-                                "cze\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOpakowaniaZbiorcze.id_rodzaju_opakowania_zbiorczegoColumn] = value;
-                }
+            public bool IsNazwaNapojuNull() {
+                return this.IsNull(this.tableNazwyNapoju.NazwaNapojuColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow NazwyOpakowaniaZbiorczegoRow {
-                get {
-                    return ((NazwyOpakowaniaZbiorczegoRow)(this.GetParentRow(this.Table.ParentRelations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPojemnośćNull() {
-                return this.IsNull(this.tableOpakowaniaZbiorcze.PojemnośćColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPojemnośćNull() {
-                this[this.tableOpakowaniaZbiorcze.PojemnośćColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_rodzaju_opakowania_zbiorczegoNull() {
-                return this.IsNull(this.tableOpakowaniaZbiorcze.id_rodzaju_opakowania_zbiorczegoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_rodzaju_opakowania_zbiorczegoNull() {
-                this[this.tableOpakowaniaZbiorcze.id_rodzaju_opakowania_zbiorczegoColumn] = global::System.Convert.DBNull;
+            public void SetNazwaNapojuNull() {
+                this[this.tableNazwyNapoju.NazwaNapojuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["OpakowaniaZbiorczeNapoje"] == null)) {
+                if ((this.Table.ChildRelations["NazwyNapojuNapoje"] == null)) {
                     return new NapojeProducentaRow[0];
                 }
                 else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["OpakowaniaZbiorczeNapoje"])));
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["NazwyNapojuNapoje"])));
                 }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class PracownicyRow : global::System.Data.DataRow {
-            
-            private PracownicyDataTable tablePracownicy;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal PracownicyRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablePracownicy = ((PracownicyDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Identyfikator {
-                get {
-                    return ((int)(this[this.tablePracownicy.IdentyfikatorColumn]));
-                }
-                set {
-                    this[this.tablePracownicy.IdentyfikatorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nazwisko {
-                get {
-                    try {
-                        return ((string)(this[this.tablePracownicy.NazwiskoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Nazwisko\' in table \'Pracownicy\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePracownicy.NazwiskoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Imię {
-                get {
-                    try {
-                        return ((string)(this[this.tablePracownicy.ImięColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Imię\' in table \'Pracownicy\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePracownicy.ImięColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Hasło {
-                get {
-                    try {
-                        return ((string)(this[this.tablePracownicy.HasłoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Hasło\' in table \'Pracownicy\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePracownicy.HasłoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Email {
-                get {
-                    try {
-                        return ((string)(this[this.tablePracownicy.EmailColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'Pracownicy\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePracownicy.EmailColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwiskoNull() {
-                return this.IsNull(this.tablePracownicy.NazwiskoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwiskoNull() {
-                this[this.tablePracownicy.NazwiskoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsImięNull() {
-                return this.IsNull(this.tablePracownicy.ImięColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetImięNull() {
-                this[this.tablePracownicy.ImięColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHasłoNull() {
-                return this.IsNull(this.tablePracownicy.HasłoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHasłoNull() {
-                this[this.tablePracownicy.HasłoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEmailNull() {
-                return this.IsNull(this.tablePracownicy.EmailColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEmailNull() {
-                this[this.tablePracownicy.EmailColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow[] GetZakupyKlientaRows() {
-                if ((this.Table.ChildRelations["PracownicyZakupyKlienta"] == null)) {
-                    return new ZakupyKlientaRow[0];
-                }
-                else {
-                    return ((ZakupyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["PracownicyZakupyKlienta"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ProducenciRow : global::System.Data.DataRow {
-            
-            private ProducenciDataTable tableProducenci;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ProducenciRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableProducenci = ((ProducenciDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Identyfikator {
-                get {
-                    return ((int)(this[this.tableProducenci.IdentyfikatorColumn]));
-                }
-                set {
-                    this[this.tableProducenci.IdentyfikatorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NazwaProducenta {
-                get {
-                    try {
-                        return ((string)(this[this.tableProducenci.NazwaProducentaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaProducenta\' in table \'Producenci\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProducenci.NazwaProducentaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwaProducentaNull() {
-                return this.IsNull(this.tableProducenci.NazwaProducentaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwaProducentaNull() {
-                this[this.tableProducenci.NazwaProducentaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["ProducenciNapoje"] == null)) {
-                    return new NapojeProducentaRow[0];
-                }
-                else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["ProducenciNapoje"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ProduktyKlientaRow : global::System.Data.DataRow {
-            
-            private ProduktyKlientaDataTable tableProduktyKlienta;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ProduktyKlientaRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableProduktyKlienta = ((ProduktyKlientaDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Identyfikator {
-                get {
-                    return ((int)(this[this.tableProduktyKlienta.IdentyfikatorColumn]));
-                }
-                set {
-                    this[this.tableProduktyKlienta.IdentyfikatorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_zakupu_klienta {
-                get {
-                    try {
-                        return ((int)(this[this.tableProduktyKlienta.id_zakupu_klientaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_zakupu_klienta\' in table \'ProduktyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduktyKlienta.id_zakupu_klientaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_napoju_hurtowni {
-                get {
-                    try {
-                        return ((int)(this[this.tableProduktyKlienta.id_napoju_hurtowniColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_napoju_hurtowni\' in table \'ProduktyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduktyKlienta.id_napoju_hurtowniColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Liczba {
-                get {
-                    try {
-                        return ((int)(this[this.tableProduktyKlienta.LiczbaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Liczba\' in table \'ProduktyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduktyKlienta.LiczbaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public float Kwota {
-                get {
-                    try {
-                        return ((float)(this[this.tableProduktyKlienta.KwotaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kwota\' in table \'ProduktyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduktyKlienta.KwotaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NapojeHurtowniRow NapojeHurtowniRow {
-                get {
-                    return ((NapojeHurtowniRow)(this.GetParentRow(this.Table.ParentRelations["NapojeHurtowniProduktyKlienta"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["NapojeHurtowniProduktyKlienta"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow ZakupyKlientaRow {
-                get {
-                    return ((ZakupyKlientaRow)(this.GetParentRow(this.Table.ParentRelations["ZakupyKlientaProduktyKlienta"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["ZakupyKlientaProduktyKlienta"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_zakupu_klientaNull() {
-                return this.IsNull(this.tableProduktyKlienta.id_zakupu_klientaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_zakupu_klientaNull() {
-                this[this.tableProduktyKlienta.id_zakupu_klientaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_napoju_hurtowniNull() {
-                return this.IsNull(this.tableProduktyKlienta.id_napoju_hurtowniColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_napoju_hurtowniNull() {
-                this[this.tableProduktyKlienta.id_napoju_hurtowniColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLiczbaNull() {
-                return this.IsNull(this.tableProduktyKlienta.LiczbaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLiczbaNull() {
-                this[this.tableProduktyKlienta.LiczbaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsKwotaNull() {
-                return this.IsNull(this.tableProduktyKlienta.KwotaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetKwotaNull() {
-                this[this.tableProduktyKlienta.KwotaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7239,71 +7346,6 @@ namespace HurtowniaNapojow.Database {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class SmakiRow : global::System.Data.DataRow {
-            
-            private SmakiDataTable tableSmaki;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SmakiRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSmaki = ((SmakiDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Identyfikator {
-                get {
-                    return ((int)(this[this.tableSmaki.IdentyfikatorColumn]));
-                }
-                set {
-                    this[this.tableSmaki.IdentyfikatorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NazwaSmaku {
-                get {
-                    try {
-                        return ((string)(this[this.tableSmaki.NazwaSmakuColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaSmaku\' in table \'Smaki\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSmaki.NazwaSmakuColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwaSmakuNull() {
-                return this.IsNull(this.tableSmaki.NazwaSmakuColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwaSmakuNull() {
-                this[this.tableSmaki.NazwaSmakuColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["SmakiNapoje"] == null)) {
-                    return new NapojeProducentaRow[0];
-                }
-                else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["SmakiNapoje"])));
-                }
-            }
-        }
-        
-        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7323,6 +7365,74 @@ namespace HurtowniaNapojow.Database {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KlienciRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class PracownicyRowChangeEvent : global::System.EventArgs {
+            
+            private PracownicyRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRowChangeEvent(PracownicyRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ProduktyKlientaRowChangeEvent : global::System.EventArgs {
+            
+            private ProduktyKlientaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRowChangeEvent(ProduktyKlientaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7443,124 +7553,22 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class NazwyNapojuRowChangeEvent : global::System.EventArgs {
+        public class ProducenciRowChangeEvent : global::System.EventArgs {
             
-            private NazwyNapojuRow eventRow;
+            private ProducenciRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRowChangeEvent(NazwyNapojuRow row, global::System.Data.DataRowAction action) {
+            public ProducenciRowChangeEvent(ProducenciRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyNapojuRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class NazwyOpakowaniaSztukiRowChangeEvent : global::System.EventArgs {
-            
-            private NazwyOpakowaniaSztukiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRowChangeEvent(NazwyOpakowaniaSztukiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaSztukiRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class NazwyOpakowaniaZbiorczegoRowChangeEvent : global::System.EventArgs {
-            
-            private NazwyOpakowaniaZbiorczegoRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRowChangeEvent(NazwyOpakowaniaZbiorczegoRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NazwyOpakowaniaZbiorczegoRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class OpakowaniaSztukiRowChangeEvent : global::System.EventArgs {
-            
-            private OpakowaniaSztukiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRowChangeEvent(OpakowaniaSztukiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OpakowaniaSztukiRow Row {
+            public ProducenciRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7613,22 +7621,22 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class PracownicyRowChangeEvent : global::System.EventArgs {
+        public class OpakowaniaSztukiRowChangeEvent : global::System.EventArgs {
             
-            private PracownicyRow eventRow;
+            private OpakowaniaSztukiRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRowChangeEvent(PracownicyRow row, global::System.Data.DataRowAction action) {
+            public OpakowaniaSztukiRowChangeEvent(OpakowaniaSztukiRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow Row {
+            public OpakowaniaSztukiRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7647,22 +7655,22 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ProducenciRowChangeEvent : global::System.EventArgs {
+        public class NazwyOpakowaniaZbiorczegoRowChangeEvent : global::System.EventArgs {
             
-            private ProducenciRow eventRow;
+            private NazwyOpakowaniaZbiorczegoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProducenciRowChangeEvent(ProducenciRow row, global::System.Data.DataRowAction action) {
+            public NazwyOpakowaniaZbiorczegoRowChangeEvent(NazwyOpakowaniaZbiorczegoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProducenciRow Row {
+            public NazwyOpakowaniaZbiorczegoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7681,22 +7689,90 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ProduktyKlientaRowChangeEvent : global::System.EventArgs {
+        public class NazwyOpakowaniaSztukiRowChangeEvent : global::System.EventArgs {
             
-            private ProduktyKlientaRow eventRow;
+            private NazwyOpakowaniaSztukiRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRowChangeEvent(ProduktyKlientaRow row, global::System.Data.DataRowAction action) {
+            public NazwyOpakowaniaSztukiRowChangeEvent(NazwyOpakowaniaSztukiRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow Row {
+            public NazwyOpakowaniaSztukiRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class SmakiRowChangeEvent : global::System.EventArgs {
+            
+            private SmakiRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRowChangeEvent(SmakiRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SmakiRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class NazwyNapojuRowChangeEvent : global::System.EventArgs {
+            
+            private NazwyNapojuRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRowChangeEvent(NazwyNapojuRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NazwyNapojuRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7778,43 +7854,9 @@ namespace HurtowniaNapojow.Database {
                 }
             }
         }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SmakiRowChangeEvent : global::System.EventArgs {
-            
-            private SmakiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRowChangeEvent(SmakiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
     }
 }
-namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
+namespace HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters {
     
     
     /// <summary>
@@ -8021,7 +8063,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.KlienciDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.KlienciDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8034,9 +8076,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.KlienciDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.KlienciDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.KlienciDataTable dataTable = new HurtowniaNapojow.KlienciDataTable();
+            HurtowniaNapojówDataSet.KlienciDataTable dataTable = new HurtowniaNapojówDataSet.KlienciDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8044,14 +8086,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.KlienciDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.KlienciDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Klienci");
         }
         
@@ -8305,6 +8347,787 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class PracownicyTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public PracownicyTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Pracownicy";
+            tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
+            tableMapping.ColumnMappings.Add("Nazwisko", "Nazwisko");
+            tableMapping.ColumnMappings.Add("Imię", "Imię");
+            tableMapping.ColumnMappings.Add("Hasło", "Hasło");
+            tableMapping.ColumnMappings.Add("Email", "Email");
+            tableMapping.ColumnMappings.Add("CzyAdministrator", "CzyAdministrator");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Pracownicy` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Nazwisko` IS NULL) OR (`Nazwisko` = ?)) AND ((? = 1 AND `Imię` IS NULL) OR (`Imię` = ?)) AND ((? = 1 AND `Hasło` IS NULL) OR (`Hasło` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `CzyAdministrator` IS NULL) OR (`CzyAdministrator` = ?)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Nazwisko", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Imię", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Hasło", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Email", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_CzyAdministrator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_CzyAdministrator", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Pracownicy` (`Nazwisko`, `Imię`, `Hasło`, `Email`, `CzyAdministrator" +
+                "`) VALUES (?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CzyAdministrator", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Pracownicy` SET `Nazwisko` = ?, `Imię` = ?, `Hasło` = ?, `Email` = ?, `CzyAdministrator` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Nazwisko` IS NULL) OR (`Nazwisko` = ?)) AND ((? = 1 AND `Imię` IS NULL) OR (`Imię` = ?)) AND ((? = 1 AND `Hasło` IS NULL) OR (`Hasło` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `CzyAdministrator` IS NULL) OR (`CzyAdministrator` = ?)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CzyAdministrator", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Nazwisko", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Imię", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Hasło", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Email", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_CzyAdministrator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_CzyAdministrator", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CzyAdministrator", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, Nazwisko, Imię, Hasło, Email, CzyAdministrator FROM Pracown" +
+                "icy";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(HurtowniaNapojówDataSet.PracownicyDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual HurtowniaNapojówDataSet.PracownicyDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            HurtowniaNapojówDataSet.PracownicyDataTable dataTable = new HurtowniaNapojówDataSet.PracownicyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet.PracownicyDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Pracownicy");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Identyfikator, string Original_Nazwisko, string Original_Imię, string Original_Hasło, string Original_Email, bool Original_CzyAdministrator) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
+            if ((Original_Nazwisko == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Nazwisko));
+            }
+            if ((Original_Imię == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Imię));
+            }
+            if ((Original_Hasło == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Hasło));
+            }
+            if ((Original_Email == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Email));
+            }
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((bool)(Original_CzyAdministrator));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string Nazwisko, string Imię, string Hasło, string Email, bool CzyAdministrator) {
+            if ((Nazwisko == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Nazwisko));
+            }
+            if ((Imię == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Imię));
+            }
+            if ((Hasło == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Hasło));
+            }
+            if ((Email == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Email));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(CzyAdministrator));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Nazwisko, string Imię, string Hasło, string Email, bool CzyAdministrator, int Original_Identyfikator, string Original_Nazwisko, string Original_Imię, string Original_Hasło, string Original_Email, bool Original_CzyAdministrator) {
+            if ((Nazwisko == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Nazwisko));
+            }
+            if ((Imię == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Imię));
+            }
+            if ((Hasło == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Hasło));
+            }
+            if ((Email == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Email));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(CzyAdministrator));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Identyfikator));
+            if ((Original_Nazwisko == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Nazwisko));
+            }
+            if ((Original_Imię == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Imię));
+            }
+            if ((Original_Hasło == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Hasło));
+            }
+            if ((Original_Email == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Email));
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_CzyAdministrator));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ProduktyKlientaTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ProduktyKlientaTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ProduktyKlienta";
+            tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
+            tableMapping.ColumnMappings.Add("id_zakupu_klienta", "id_zakupu_klienta");
+            tableMapping.ColumnMappings.Add("id_napoju_hurtowni", "id_napoju_hurtowni");
+            tableMapping.ColumnMappings.Add("Liczba", "Liczba");
+            tableMapping.ColumnMappings.Add("Kwota", "Kwota");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `ProduktyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Kwota", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `ProduktyKlienta` (`id_zakupu_klienta`, `id_napoju_hurtowni`, `Liczba" +
+                "`, `Kwota`) VALUES (?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `ProduktyKlienta` SET `id_zakupu_klienta` = ?, `id_napoju_hurtowni` = ?, `Liczba` = ?, `Kwota` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Kwota", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, id_zakupu_klienta, id_napoju_hurtowni, Liczba, Kwota FROM P" +
+                "roduktyKlienta";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(HurtowniaNapojówDataSet.ProduktyKlientaDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual HurtowniaNapojówDataSet.ProduktyKlientaDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            HurtowniaNapojówDataSet.ProduktyKlientaDataTable dataTable = new HurtowniaNapojówDataSet.ProduktyKlientaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet.ProduktyKlientaDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ProduktyKlienta");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Identyfikator, int Original_id_zakupu_klienta, global::System.Nullable<int> Original_id_napoju_hurtowni, int Original_Liczba, float Original_Kwota) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_zakupu_klienta));
+            if ((Original_id_napoju_hurtowni.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_napoju_hurtowni.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Liczba));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((float)(Original_Kwota));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int id_zakupu_klienta, global::System.Nullable<int> id_napoju_hurtowni, int Liczba, float Kwota) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_zakupu_klienta));
+            if ((id_napoju_hurtowni.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_napoju_hurtowni.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Liczba));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((float)(Kwota));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int id_zakupu_klienta, global::System.Nullable<int> id_napoju_hurtowni, int Liczba, float Kwota, int Original_Identyfikator, int Original_id_zakupu_klienta, global::System.Nullable<int> Original_id_napoju_hurtowni, int Original_Liczba, float Original_Kwota) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_zakupu_klienta));
+            if ((id_napoju_hurtowni.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_napoju_hurtowni.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Liczba));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((float)(Kwota));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Identyfikator));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_zakupu_klienta));
+            if ((Original_id_napoju_hurtowni.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_id_napoju_hurtowni.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Liczba));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((float)(Original_Kwota));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class ZakupyKlientaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
@@ -8481,7 +9304,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.ZakupyKlientaDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.ZakupyKlientaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8494,9 +9317,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.ZakupyKlientaDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.ZakupyKlientaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.ZakupyKlientaDataTable dataTable = new HurtowniaNapojow.ZakupyKlientaDataTable();
+            HurtowniaNapojówDataSet.ZakupyKlientaDataTable dataTable = new HurtowniaNapojówDataSet.ZakupyKlientaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8504,14 +9327,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.ZakupyKlientaDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.ZakupyKlientaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "ZakupyKlienta");
         }
         
@@ -8833,7 +9656,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.NapojeHurtowniDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.NapojeHurtowniDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8846,9 +9669,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.NapojeHurtowniDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.NapojeHurtowniDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.NapojeHurtowniDataTable dataTable = new HurtowniaNapojow.NapojeHurtowniDataTable();
+            HurtowniaNapojówDataSet.NapojeHurtowniDataTable dataTable = new HurtowniaNapojówDataSet.NapojeHurtowniDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8856,14 +9679,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.NapojeHurtowniDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.NapojeHurtowniDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "NapojeHurtowni");
         }
         
@@ -9242,7 +10065,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.NapojeProducentaDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.NapojeProducentaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9255,9 +10078,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.NapojeProducentaDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.NapojeProducentaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.NapojeProducentaDataTable dataTable = new HurtowniaNapojow.NapojeProducentaDataTable();
+            HurtowniaNapojówDataSet.NapojeProducentaDataTable dataTable = new HurtowniaNapojówDataSet.NapojeProducentaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9265,14 +10088,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.NapojeProducentaDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.NapojeProducentaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "NapojeProducenta");
         }
         
@@ -9453,7 +10276,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NazwyNapojuTableAdapter : global::System.ComponentModel.Component {
+    public partial class ProducenciTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -9467,7 +10290,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public NazwyNapojuTableAdapter() {
+        public ProducenciTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -9564,32 +10387,32 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NazwyNapoju";
+            tableMapping.DataSetTable = "Producenci";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("NazwaNapoju", "NazwaNapoju");
+            tableMapping.ColumnMappings.Add("NazwaProducenta", "NazwaProducenta");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `NazwyNapoju` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaNapo" +
-                "ju` IS NULL) OR (`NazwaNapoju` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Producenci` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaProdu" +
+                "centa` IS NULL) OR (`NazwaProducenta` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaNapoju", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaProducenta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `NazwyNapoju` (`NazwaNapoju`) VALUES (?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Producenci` (`NazwaProducenta`) VALUES (?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `NazwyNapoju` SET `NazwaNapoju` = ? WHERE ((`Identyfikator` = ?) AND ((? =" +
-                " 1 AND `NazwaNapoju` IS NULL) OR (`NazwaNapoju` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Producenci` SET `NazwaProducenta` = ? WHERE ((`Identyfikator` = ?) AND ((" +
+                "? = 1 AND `NazwaProducenta` IS NULL) OR (`NazwaProducenta` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaNapoju", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaProducenta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9605,7 +10428,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaNapoju FROM NazwyNapoju";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaProducenta FROM Producenci";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9613,7 +10436,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.NazwyNapojuDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.ProducenciDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9626,9 +10449,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.NazwyNapojuDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.ProducenciDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.NazwyNapojuDataTable dataTable = new HurtowniaNapojow.NazwyNapojuDataTable();
+            HurtowniaNapojówDataSet.ProducenciDataTable dataTable = new HurtowniaNapojówDataSet.ProducenciDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9636,15 +10459,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.NazwyNapojuDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.ProducenciDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "NazwyNapoju");
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Producenci");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9666,14 +10489,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_NazwaNapoju) {
+        public virtual int Delete(int Original_Identyfikator, string Original_NazwaProducenta) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaNapoju == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaNapoju");
+            if ((Original_NazwaProducenta == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaProducenta");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaNapoju));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaProducenta));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9695,12 +10518,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NazwaNapoju) {
-            if ((NazwaNapoju == null)) {
-                throw new global::System.ArgumentNullException("NazwaNapoju");
+        public virtual int Insert(string NazwaProducenta) {
+            if ((NazwaProducenta == null)) {
+                throw new global::System.ArgumentNullException("NazwaProducenta");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaNapoju));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaProducenta));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9722,20 +10545,20 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NazwaNapoju, int Original_Identyfikator, string Original_NazwaNapoju) {
-            if ((NazwaNapoju == null)) {
-                throw new global::System.ArgumentNullException("NazwaNapoju");
+        public virtual int Update(string NazwaProducenta, int Original_Identyfikator, string Original_NazwaProducenta) {
+            if ((NazwaProducenta == null)) {
+                throw new global::System.ArgumentNullException("NazwaProducenta");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaNapoju));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaProducenta));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaNapoju == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaNapoju");
+            if ((Original_NazwaProducenta == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaProducenta");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaNapoju));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaProducenta));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9763,7 +10586,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NazwyOpakowaniaSztukiTableAdapter : global::System.ComponentModel.Component {
+    public partial class OpakowaniaZbiorczeTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -9777,7 +10600,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public NazwyOpakowaniaSztukiTableAdapter() {
+        public OpakowaniaZbiorczeTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -9874,32 +10697,40 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NazwyOpakowaniaSztuki";
+            tableMapping.DataSetTable = "OpakowaniaZbiorcze";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("NazwaOpakowania", "NazwaOpakowania");
+            tableMapping.ColumnMappings.Add("Pojemność", "Pojemność");
+            tableMapping.ColumnMappings.Add("id_nazwy_opakowania_zbiorczego", "id_nazwy_opakowania_zbiorczego");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `NazwyOpakowaniaSztuki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
-                "`NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `OpakowaniaZbiorcze` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Po" +
+                "jemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_zbi" +
+                "orczego` IS NULL) OR (`id_nazwy_opakowania_zbiorczego` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaOpakowania", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `NazwyOpakowaniaSztuki` (`NazwaOpakowania`) VALUES (?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `OpakowaniaZbiorcze` (`Pojemność`, `id_nazwy_opakowania_zbiorczego`) " +
+                "VALUES (?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `NazwyOpakowaniaSztuki` SET `NazwaOpakowania` = ? WHERE ((`Identyfikator` " +
-                "= ?) AND ((? = 1 AND `NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `OpakowaniaZbiorcze` SET `Pojemność` = ?, `id_nazwy_opakowania_zbiorczego` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_zbiorczego` IS NULL) OR (`id_nazwy_opakowania_zbiorczego` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaOpakowania", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_nazwy_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9915,7 +10746,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaOpakowania FROM NazwyOpakowaniaSztuki";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, Pojemność, id_nazwy_opakowania_zbiorczego FROM OpakowaniaZb" +
+                "iorcze";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9923,7 +10755,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.NazwyOpakowaniaSztukiDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.OpakowaniaZbiorczeDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9936,9 +10768,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.NazwyOpakowaniaSztukiDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.OpakowaniaZbiorczeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.NazwyOpakowaniaSztukiDataTable dataTable = new HurtowniaNapojow.NazwyOpakowaniaSztukiDataTable();
+            HurtowniaNapojówDataSet.OpakowaniaZbiorczeDataTable dataTable = new HurtowniaNapojówDataSet.OpakowaniaZbiorczeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9946,15 +10778,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.NazwyOpakowaniaSztukiDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.OpakowaniaZbiorczeDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "NazwyOpakowaniaSztuki");
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "OpakowaniaZbiorcze");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9976,15 +10808,17 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_NazwaOpakowania) {
+        public virtual int Delete(int Original_Identyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_nazwy_opakowania_zbiorczego) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaOpakowania == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Pojemność));
+            if ((Original_id_nazwy_opakowania_zbiorczego.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_nazwy_opakowania_zbiorczego.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaOpakowania));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10006,12 +10840,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NazwaOpakowania) {
-            if ((NazwaOpakowania == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Insert(int Pojemność, global::System.Nullable<int> id_nazwy_opakowania_zbiorczego) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Pojemność));
+            if ((id_nazwy_opakowania_zbiorczego.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_nazwy_opakowania_zbiorczego.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaOpakowania));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10033,21 +10868,351 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NazwaOpakowania, int Original_Identyfikator, string Original_NazwaOpakowania) {
-            if ((NazwaOpakowania == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Update(int Pojemność, global::System.Nullable<int> id_nazwy_opakowania_zbiorczego, int Original_Identyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_nazwy_opakowania_zbiorczego) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Pojemność));
+            if ((id_nazwy_opakowania_zbiorczego.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_nazwy_opakowania_zbiorczego.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaOpakowania));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaOpakowania == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Identyfikator));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Pojemność));
+            if ((Original_id_nazwy_opakowania_zbiorczego.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_nazwy_opakowania_zbiorczego.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaOpakowania));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class OpakowaniaSztukiTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public OpakowaniaSztukiTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "OpakowaniaSztuki";
+            tableMapping.ColumnMappings.Add("Idenidtyfikator", "Idenidtyfikator");
+            tableMapping.ColumnMappings.Add("Pojemność", "Pojemność");
+            tableMapping.ColumnMappings.Add("id_nazwy_opakowania_sztuki", "id_nazwy_opakowania_sztuki");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `OpakowaniaSztuki` WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Po" +
+                "jemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_szt" +
+                "uki` IS NULL) OR (`id_nazwy_opakowania_sztuki` = ?)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Idenidtyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Idenidtyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `OpakowaniaSztuki` (`Pojemność`, `id_nazwy_opakowania_sztuki`) VALUES" +
+                " (?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `OpakowaniaSztuki` SET `Pojemność` = ?, `id_nazwy_opakowania_sztuki` = ? WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_sztuki` IS NULL) OR (`id_nazwy_opakowania_sztuki` = ?)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Idenidtyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Idenidtyfikator", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_nazwy_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_nazwy_opakowania_sztuki", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Idenidtyfikator, Pojemność, id_nazwy_opakowania_sztuki FROM OpakowaniaSztu" +
+                "ki";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(HurtowniaNapojówDataSet.OpakowaniaSztukiDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual HurtowniaNapojówDataSet.OpakowaniaSztukiDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            HurtowniaNapojówDataSet.OpakowaniaSztukiDataTable dataTable = new HurtowniaNapojówDataSet.OpakowaniaSztukiDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet.OpakowaniaSztukiDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "OpakowaniaSztuki");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Idenidtyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_nazwy_opakowania_sztuki) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Idenidtyfikator));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Pojemność));
+            if ((Original_id_nazwy_opakowania_sztuki.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_nazwy_opakowania_sztuki.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Pojemność, global::System.Nullable<int> id_nazwy_opakowania_sztuki) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Pojemność));
+            if ((id_nazwy_opakowania_sztuki.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_nazwy_opakowania_sztuki.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Pojemność, global::System.Nullable<int> id_nazwy_opakowania_sztuki, int Original_Idenidtyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_nazwy_opakowania_sztuki) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Pojemność));
+            if ((id_nazwy_opakowania_sztuki.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_nazwy_opakowania_sztuki.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Idenidtyfikator));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Pojemność));
+            if ((Original_id_nazwy_opakowania_sztuki.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_nazwy_opakowania_sztuki.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10236,7 +11401,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.NazwyOpakowaniaZbiorczegoDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.NazwyOpakowaniaZbiorczegoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -10249,9 +11414,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.NazwyOpakowaniaZbiorczegoDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.NazwyOpakowaniaZbiorczegoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.NazwyOpakowaniaZbiorczegoDataTable dataTable = new HurtowniaNapojow.NazwyOpakowaniaZbiorczegoDataTable();
+            HurtowniaNapojówDataSet.NazwyOpakowaniaZbiorczegoDataTable dataTable = new HurtowniaNapojówDataSet.NazwyOpakowaniaZbiorczegoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -10259,14 +11424,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.NazwyOpakowaniaZbiorczegoDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.NazwyOpakowaniaZbiorczegoDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "NazwyOpakowaniaZbiorczego");
         }
         
@@ -10388,7 +11553,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class OpakowaniaSztukiTableAdapter : global::System.ComponentModel.Component {
+    public partial class NazwyOpakowaniaSztukiTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -10402,7 +11567,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public OpakowaniaSztukiTableAdapter() {
+        public NazwyOpakowaniaSztukiTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -10499,367 +11664,32 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "OpakowaniaSztuki";
-            tableMapping.ColumnMappings.Add("Idenidtyfikator", "Idenidtyfikator");
-            tableMapping.ColumnMappings.Add("Pojemność", "Pojemność");
-            tableMapping.ColumnMappings.Add("id_rodzaju_opakowania_sztuki", "id_rodzaju_opakowania_sztuki");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `OpakowaniaSztuki` WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Po" +
-                "jemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_s" +
-                "ztuki` IS NULL) OR (`id_rodzaju_opakowania_sztuki` = ?)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Idenidtyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Idenidtyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `OpakowaniaSztuki` (`Pojemność`, `id_rodzaju_opakowania_sztuki`) VALU" +
-                "ES (?, ?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `OpakowaniaSztuki` SET `Pojemność` = ?, `id_rodzaju_opakowania_sztuki` = ? WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_sztuki` IS NULL) OR (`id_rodzaju_opakowania_sztuki` = ?)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Idenidtyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Idenidtyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_rodzaju_opakowania_sztuki", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_sztuki", global::System.Data.DataRowVersion.Original, false, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Idenidtyfikator, Pojemność, id_rodzaju_opakowania_sztuki FROM OpakowaniaSz" +
-                "tuki";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.OpakowaniaSztukiDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.OpakowaniaSztukiDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.OpakowaniaSztukiDataTable dataTable = new HurtowniaNapojow.OpakowaniaSztukiDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.OpakowaniaSztukiDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "OpakowaniaSztuki");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Idenidtyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_rodzaju_opakowania_sztuki) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Idenidtyfikator));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Pojemność));
-            if ((Original_id_rodzaju_opakowania_sztuki.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_rodzaju_opakowania_sztuki.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Pojemność, global::System.Nullable<int> id_rodzaju_opakowania_sztuki) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Pojemność));
-            if ((id_rodzaju_opakowania_sztuki.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_rodzaju_opakowania_sztuki.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Pojemność, global::System.Nullable<int> id_rodzaju_opakowania_sztuki, int Original_Idenidtyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_rodzaju_opakowania_sztuki) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Pojemność));
-            if ((id_rodzaju_opakowania_sztuki.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_rodzaju_opakowania_sztuki.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Idenidtyfikator));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Pojemność));
-            if ((Original_id_rodzaju_opakowania_sztuki.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_rodzaju_opakowania_sztuki.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class OpakowaniaZbiorczeTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public OpakowaniaZbiorczeTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "OpakowaniaZbiorcze";
+            tableMapping.DataSetTable = "NazwyOpakowaniaSztuki";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("Pojemność", "Pojemność");
-            tableMapping.ColumnMappings.Add("id_rodzaju_opakowania_zbiorczego", "id_rodzaju_opakowania_zbiorczego");
+            tableMapping.ColumnMappings.Add("NazwaOpakowania", "NazwaOpakowania");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `OpakowaniaZbiorcze` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Po" +
-                "jemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_z" +
-                "biorczego` IS NULL) OR (`id_rodzaju_opakowania_zbiorczego` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `NazwyOpakowaniaSztuki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
+                "`NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaOpakowania", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `OpakowaniaZbiorcze` (`Pojemność`, `id_rodzaju_opakowania_zbiorczego`" +
-                ") VALUES (?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `NazwyOpakowaniaSztuki` (`NazwaOpakowania`) VALUES (?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `OpakowaniaZbiorcze` SET `Pojemność` = ?, `id_rodzaju_opakowania_zbiorczego` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_zbiorczego` IS NULL) OR (`id_rodzaju_opakowania_zbiorczego` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `NazwyOpakowaniaSztuki` SET `NazwaOpakowania` = ? WHERE ((`Identyfikator` " +
+                "= ?) AND ((? = 1 AND `NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Pojemność", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Pojemność", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_rodzaju_opakowania_zbiorczego", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_rodzaju_opakowania_zbiorczego", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaOpakowania", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaOpakowania", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaOpakowania", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10875,8 +11705,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, Pojemność, id_rodzaju_opakowania_zbiorczego FROM Opakowania" +
-                "Zbiorcze";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaOpakowania FROM NazwyOpakowaniaSztuki";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10884,7 +11713,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.OpakowaniaZbiorczeDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.NazwyOpakowaniaSztukiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -10897,9 +11726,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.OpakowaniaZbiorczeDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.NazwyOpakowaniaSztukiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.OpakowaniaZbiorczeDataTable dataTable = new HurtowniaNapojow.OpakowaniaZbiorczeDataTable();
+            HurtowniaNapojówDataSet.NazwyOpakowaniaSztukiDataTable dataTable = new HurtowniaNapojówDataSet.NazwyOpakowaniaSztukiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -10907,15 +11736,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.OpakowaniaZbiorczeDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.NazwyOpakowaniaSztukiDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "OpakowaniaZbiorcze");
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "NazwyOpakowaniaSztuki");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10937,377 +11766,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_rodzaju_opakowania_zbiorczego) {
+        public virtual int Delete(int Original_Identyfikator, string Original_NazwaOpakowania) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Pojemność));
-            if ((Original_id_rodzaju_opakowania_zbiorczego.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_rodzaju_opakowania_zbiorczego.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Pojemność, global::System.Nullable<int> id_rodzaju_opakowania_zbiorczego) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Pojemność));
-            if ((id_rodzaju_opakowania_zbiorczego.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_rodzaju_opakowania_zbiorczego.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Pojemność, global::System.Nullable<int> id_rodzaju_opakowania_zbiorczego, int Original_Identyfikator, int Original_Pojemność, global::System.Nullable<int> Original_id_rodzaju_opakowania_zbiorczego) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Pojemność));
-            if ((id_rodzaju_opakowania_zbiorczego.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_rodzaju_opakowania_zbiorczego.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Identyfikator));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Pojemność));
-            if ((Original_id_rodzaju_opakowania_zbiorczego.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_rodzaju_opakowania_zbiorczego.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PracownicyTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public PracownicyTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Pracownicy";
-            tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("Nazwisko", "Nazwisko");
-            tableMapping.ColumnMappings.Add("Imię", "Imię");
-            tableMapping.ColumnMappings.Add("Hasło", "Hasło");
-            tableMapping.ColumnMappings.Add("Email", "Email");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Pracownicy` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Nazwisko` IS NULL) OR (`Nazwisko` = ?)) AND ((? = 1 AND `Imię` IS NULL) OR (`Imię` = ?)) AND ((? = 1 AND `Hasło` IS NULL) OR (`Hasło` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Nazwisko", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Imię", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Hasło", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Email", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Pracownicy` (`Nazwisko`, `Imię`, `Hasło`, `Email`) VALUES (?, ?, ?, " +
-                "?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `Pracownicy` SET `Nazwisko` = ?, `Imię` = ?, `Hasło` = ?, `Email` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Nazwisko` IS NULL) OR (`Nazwisko` = ?)) AND ((? = 1 AND `Imię` IS NULL) OR (`Imię` = ?)) AND ((? = 1 AND `Hasło` IS NULL) OR (`Hasło` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Nazwisko", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Nazwisko", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Nazwisko", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Imię", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Imię", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Imię", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Hasło", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Hasło", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Hasło", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Email", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Email", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Email", global::System.Data.DataRowVersion.Original, false, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, Nazwisko, Imię, Hasło, Email FROM Pracownicy";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.PracownicyDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.PracownicyDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.PracownicyDataTable dataTable = new HurtowniaNapojow.PracownicyDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.PracownicyDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "Pracownicy");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_Nazwisko, string Original_Imię, string Original_Hasło, string Original_Email) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_Nazwisko == null)) {
+            if ((Original_NazwaOpakowania == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Nazwisko));
-            }
-            if ((Original_Imię == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Imię));
-            }
-            if ((Original_Hasło == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Hasło));
-            }
-            if ((Original_Email == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Email));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaOpakowania));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11329,30 +11796,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nazwisko, string Imię, string Hasło, string Email) {
-            if ((Nazwisko == null)) {
+        public virtual int Insert(string NazwaOpakowania) {
+            if ((NazwaOpakowania == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Nazwisko));
-            }
-            if ((Imię == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Imię));
-            }
-            if ((Hasło == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Hasło));
-            }
-            if ((Email == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Email));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaOpakowania));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11374,63 +11823,21 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nazwisko, string Imię, string Hasło, string Email, int Original_Identyfikator, string Original_Nazwisko, string Original_Imię, string Original_Hasło, string Original_Email) {
-            if ((Nazwisko == null)) {
+        public virtual int Update(string NazwaOpakowania, int Original_Identyfikator, string Original_NazwaOpakowania) {
+            if ((NazwaOpakowania == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Nazwisko));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaOpakowania));
             }
-            if ((Imię == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Imię));
-            }
-            if ((Hasło == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Hasło));
-            }
-            if ((Email == null)) {
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
+            if ((Original_NazwaOpakowania == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Email));
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Identyfikator));
-            if ((Original_Nazwisko == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Nazwisko));
-            }
-            if ((Original_Imię == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Imię));
-            }
-            if ((Original_Hasło == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Hasło));
-            }
-            if ((Original_Email == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaOpakowania));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11458,7 +11865,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ProducenciTableAdapter : global::System.ComponentModel.Component {
+    public partial class SmakiTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -11472,7 +11879,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ProducenciTableAdapter() {
+        public SmakiTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -11569,32 +11976,32 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Producenci";
+            tableMapping.DataSetTable = "Smaki";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("NazwaProducenta", "NazwaProducenta");
+            tableMapping.ColumnMappings.Add("NazwaSmaku", "NazwaSmaku");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Producenci` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaProdu" +
-                "centa` IS NULL) OR (`NazwaProducenta` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS " +
+                "NULL) OR (`NazwaSmaku` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaProducenta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Producenci` (`NazwaProducenta`) VALUES (?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Producenci` SET `NazwaProducenta` = ? WHERE ((`Identyfikator` = ?) AND ((" +
-                "? = 1 AND `NazwaProducenta` IS NULL) OR (`NazwaProducenta` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
+                "`NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaProducenta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaProducenta", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaProducenta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11610,7 +12017,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaProducenta FROM Producenci";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaSmaku FROM Smaki";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11618,7 +12025,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.ProducenciDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.SmakiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -11631,9 +12038,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.ProducenciDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.SmakiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.ProducenciDataTable dataTable = new HurtowniaNapojow.ProducenciDataTable();
+            HurtowniaNapojówDataSet.SmakiDataTable dataTable = new HurtowniaNapojówDataSet.SmakiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -11641,15 +12048,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.ProducenciDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.SmakiDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "Producenci");
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Smaki");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11671,14 +12078,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_NazwaProducenta) {
+        public virtual int Delete(int Original_Identyfikator, string Original_NazwaSmaku) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaProducenta == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaProducenta");
+            if ((Original_NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaProducenta));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaSmaku));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11700,12 +12107,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NazwaProducenta) {
-            if ((NazwaProducenta == null)) {
-                throw new global::System.ArgumentNullException("NazwaProducenta");
+        public virtual int Insert(string NazwaSmaku) {
+            if ((NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("NazwaSmaku");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaProducenta));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaSmaku));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11727,20 +12134,20 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NazwaProducenta, int Original_Identyfikator, string Original_NazwaProducenta) {
-            if ((NazwaProducenta == null)) {
-                throw new global::System.ArgumentNullException("NazwaProducenta");
+        public virtual int Update(string NazwaSmaku, int Original_Identyfikator, string Original_NazwaSmaku) {
+            if ((NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("NazwaSmaku");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaProducenta));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaSmaku));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaProducenta == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaProducenta");
+            if ((Original_NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaProducenta));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaSmaku));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11768,7 +12175,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ProduktyKlientaTableAdapter : global::System.ComponentModel.Component {
+    public partial class NazwyNapojuTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -11782,7 +12189,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ProduktyKlientaTableAdapter() {
+        public NazwyNapojuTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -11879,52 +12286,32 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ProduktyKlienta";
+            tableMapping.DataSetTable = "NazwyNapoju";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("id_zakupu_klienta", "id_zakupu_klienta");
-            tableMapping.ColumnMappings.Add("id_napoju_hurtowni", "id_napoju_hurtowni");
-            tableMapping.ColumnMappings.Add("Liczba", "Liczba");
-            tableMapping.ColumnMappings.Add("Kwota", "Kwota");
+            tableMapping.ColumnMappings.Add("NazwaNapoju", "NazwaNapoju");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `ProduktyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `NazwyNapoju` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaNapo" +
+                "ju` IS NULL) OR (`NazwaNapoju` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Kwota", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaNapoju", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `ProduktyKlienta` (`id_zakupu_klienta`, `id_napoju_hurtowni`, `Liczba" +
-                "`, `Kwota`) VALUES (?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `NazwyNapoju` (`NazwaNapoju`) VALUES (?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `ProduktyKlienta` SET `id_zakupu_klienta` = ?, `id_napoju_hurtowni` = ?, `Liczba` = ?, `Kwota` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `NazwyNapoju` SET `NazwaNapoju` = ? WHERE ((`Identyfikator` = ?) AND ((? =" +
+                " 1 AND `NazwaNapoju` IS NULL) OR (`NazwaNapoju` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_zakupu_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_zakupu_klienta", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_napoju_hurtowni", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_napoju_hurtowni", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Liczba", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Liczba", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Kwota", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Kwota", global::System.Data.OleDb.OleDbType.Single, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Kwota", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaNapoju", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaNapoju", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaNapoju", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11940,8 +12327,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, id_zakupu_klienta, id_napoju_hurtowni, Liczba, Kwota FROM P" +
-                "roduktyKlienta";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaNapoju FROM NazwyNapoju";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11949,7 +12335,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.ProduktyKlientaDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.NazwyNapojuDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -11962,9 +12348,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.ProduktyKlientaDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.NazwyNapojuDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.ProduktyKlientaDataTable dataTable = new HurtowniaNapojow.ProduktyKlientaDataTable();
+            HurtowniaNapojówDataSet.NazwyNapojuDataTable dataTable = new HurtowniaNapojówDataSet.NazwyNapojuDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -11972,15 +12358,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.ProduktyKlientaDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.NazwyNapojuDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "ProduktyKlienta");
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "NazwyNapoju");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12002,22 +12388,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, int Original_id_zakupu_klienta, global::System.Nullable<int> Original_id_napoju_hurtowni, int Original_Liczba, float Original_Kwota) {
+        public virtual int Delete(int Original_Identyfikator, string Original_NazwaNapoju) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_zakupu_klienta));
-            if ((Original_id_napoju_hurtowni.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_napoju_hurtowni.Value));
+            if ((Original_NazwaNapoju == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaNapoju");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaNapoju));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Liczba));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((float)(Original_Kwota));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12038,16 +12417,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int id_zakupu_klienta, global::System.Nullable<int> id_napoju_hurtowni, int Liczba, float Kwota) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_zakupu_klienta));
-            if ((id_napoju_hurtowni.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_napoju_hurtowni.Value));
+        public virtual int Insert(string NazwaNapoju) {
+            if ((NazwaNapoju == null)) {
+                throw new global::System.ArgumentNullException("NazwaNapoju");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaNapoju));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Liczba));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((float)(Kwota));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12068,31 +12444,21 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int id_zakupu_klienta, global::System.Nullable<int> id_napoju_hurtowni, int Liczba, float Kwota, int Original_Identyfikator, int Original_id_zakupu_klienta, global::System.Nullable<int> Original_id_napoju_hurtowni, int Original_Liczba, float Original_Kwota) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_zakupu_klienta));
-            if ((id_napoju_hurtowni.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_napoju_hurtowni.Value));
+        public virtual int Update(string NazwaNapoju, int Original_Identyfikator, string Original_NazwaNapoju) {
+            if ((NazwaNapoju == null)) {
+                throw new global::System.ArgumentNullException("NazwaNapoju");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaNapoju));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Liczba));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((float)(Kwota));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Identyfikator));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_zakupu_klienta));
-            if ((Original_id_napoju_hurtowni.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_id_napoju_hurtowni.Value));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
+            if ((Original_NazwaNapoju == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaNapoju");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaNapoju));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Liczba));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((float)(Original_Kwota));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12279,7 +12645,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.RodzajeGazuDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.RodzajeGazuDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -12292,9 +12658,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.RodzajeGazuDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.RodzajeGazuDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.RodzajeGazuDataTable dataTable = new HurtowniaNapojow.RodzajeGazuDataTable();
+            HurtowniaNapojówDataSet.RodzajeGazuDataTable dataTable = new HurtowniaNapojówDataSet.RodzajeGazuDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -12302,14 +12668,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.RodzajeGazuDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.RodzajeGazuDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "RodzajeGazu");
         }
         
@@ -12600,7 +12966,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.RodzajeNapojuDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojówDataSet.RodzajeNapojuDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -12613,9 +12979,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.RodzajeNapojuDataTable GetData() {
+        public virtual HurtowniaNapojówDataSet.RodzajeNapojuDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.RodzajeNapojuDataTable dataTable = new HurtowniaNapojow.RodzajeNapojuDataTable();
+            HurtowniaNapojówDataSet.RodzajeNapojuDataTable dataTable = new HurtowniaNapojówDataSet.RodzajeNapojuDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -12623,14 +12989,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.RodzajeNapojuDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojówDataSet.RodzajeNapojuDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
+        public virtual int Update(HurtowniaNapojówDataSet dataSet) {
             return this.Adapter.Update(dataSet, "RodzajeNapoju");
         }
         
@@ -12772,316 +13138,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SmakiTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SmakiTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Smaki";
-            tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("NazwaSmaku", "NazwaSmaku");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS " +
-                "NULL) OR (`NazwaSmaku` = ?)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
-                "`NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojówConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaSmaku FROM Smaki";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojow.SmakiDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojow.SmakiDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojow.SmakiDataTable dataTable = new HurtowniaNapojow.SmakiDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow.SmakiDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojow dataSet) {
-            return this.Adapter.Update(dataSet, "Smaki");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_NazwaSmaku) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaSmaku));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NazwaSmaku) {
-            if ((NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("NazwaSmaku");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaSmaku));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NazwaSmaku, int Original_Identyfikator, string Original_NazwaSmaku) {
-            if ((NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("NazwaSmaku");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaSmaku));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaSmaku));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13095,33 +13151,33 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         private KlienciTableAdapter _klienciTableAdapter;
         
+        private PracownicyTableAdapter _pracownicyTableAdapter;
+        
+        private ProduktyKlientaTableAdapter _produktyKlientaTableAdapter;
+        
         private ZakupyKlientaTableAdapter _zakupyKlientaTableAdapter;
         
         private NapojeHurtowniTableAdapter _napojeHurtowniTableAdapter;
         
         private NapojeProducentaTableAdapter _napojeProducentaTableAdapter;
         
-        private NazwyNapojuTableAdapter _nazwyNapojuTableAdapter;
-        
-        private NazwyOpakowaniaSztukiTableAdapter _nazwyOpakowaniaSztukiTableAdapter;
-        
-        private NazwyOpakowaniaZbiorczegoTableAdapter _nazwyOpakowaniaZbiorczegoTableAdapter;
-        
-        private OpakowaniaSztukiTableAdapter _opakowaniaSztukiTableAdapter;
+        private ProducenciTableAdapter _producenciTableAdapter;
         
         private OpakowaniaZbiorczeTableAdapter _opakowaniaZbiorczeTableAdapter;
         
-        private PracownicyTableAdapter _pracownicyTableAdapter;
+        private OpakowaniaSztukiTableAdapter _opakowaniaSztukiTableAdapter;
         
-        private ProducenciTableAdapter _producenciTableAdapter;
+        private NazwyOpakowaniaZbiorczegoTableAdapter _nazwyOpakowaniaZbiorczegoTableAdapter;
         
-        private ProduktyKlientaTableAdapter _produktyKlientaTableAdapter;
+        private NazwyOpakowaniaSztukiTableAdapter _nazwyOpakowaniaSztukiTableAdapter;
+        
+        private SmakiTableAdapter _smakiTableAdapter;
+        
+        private NazwyNapojuTableAdapter _nazwyNapojuTableAdapter;
         
         private RodzajeGazuTableAdapter _rodzajeGazuTableAdapter;
         
         private RodzajeNapojuTableAdapter _rodzajeNapojuTableAdapter;
-        
-        private SmakiTableAdapter _smakiTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -13149,6 +13205,34 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             }
             set {
                 this._klienciTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public PracownicyTableAdapter PracownicyTableAdapter {
+            get {
+                return this._pracownicyTableAdapter;
+            }
+            set {
+                this._pracownicyTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ProduktyKlientaTableAdapter ProduktyKlientaTableAdapter {
+            get {
+                return this._produktyKlientaTableAdapter;
+            }
+            set {
+                this._produktyKlientaTableAdapter = value;
             }
         }
         
@@ -13199,54 +13283,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public NazwyNapojuTableAdapter NazwyNapojuTableAdapter {
+        public ProducenciTableAdapter ProducenciTableAdapter {
             get {
-                return this._nazwyNapojuTableAdapter;
+                return this._producenciTableAdapter;
             }
             set {
-                this._nazwyNapojuTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public NazwyOpakowaniaSztukiTableAdapter NazwyOpakowaniaSztukiTableAdapter {
-            get {
-                return this._nazwyOpakowaniaSztukiTableAdapter;
-            }
-            set {
-                this._nazwyOpakowaniaSztukiTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public NazwyOpakowaniaZbiorczegoTableAdapter NazwyOpakowaniaZbiorczegoTableAdapter {
-            get {
-                return this._nazwyOpakowaniaZbiorczegoTableAdapter;
-            }
-            set {
-                this._nazwyOpakowaniaZbiorczegoTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public OpakowaniaSztukiTableAdapter OpakowaniaSztukiTableAdapter {
-            get {
-                return this._opakowaniaSztukiTableAdapter;
-            }
-            set {
-                this._opakowaniaSztukiTableAdapter = value;
+                this._producenciTableAdapter = value;
             }
         }
         
@@ -13269,12 +13311,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public PracownicyTableAdapter PracownicyTableAdapter {
+        public OpakowaniaSztukiTableAdapter OpakowaniaSztukiTableAdapter {
             get {
-                return this._pracownicyTableAdapter;
+                return this._opakowaniaSztukiTableAdapter;
             }
             set {
-                this._pracownicyTableAdapter = value;
+                this._opakowaniaSztukiTableAdapter = value;
             }
         }
         
@@ -13283,12 +13325,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ProducenciTableAdapter ProducenciTableAdapter {
+        public NazwyOpakowaniaZbiorczegoTableAdapter NazwyOpakowaniaZbiorczegoTableAdapter {
             get {
-                return this._producenciTableAdapter;
+                return this._nazwyOpakowaniaZbiorczegoTableAdapter;
             }
             set {
-                this._producenciTableAdapter = value;
+                this._nazwyOpakowaniaZbiorczegoTableAdapter = value;
             }
         }
         
@@ -13297,12 +13339,40 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ProduktyKlientaTableAdapter ProduktyKlientaTableAdapter {
+        public NazwyOpakowaniaSztukiTableAdapter NazwyOpakowaniaSztukiTableAdapter {
             get {
-                return this._produktyKlientaTableAdapter;
+                return this._nazwyOpakowaniaSztukiTableAdapter;
             }
             set {
-                this._produktyKlientaTableAdapter = value;
+                this._nazwyOpakowaniaSztukiTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public SmakiTableAdapter SmakiTableAdapter {
+            get {
+                return this._smakiTableAdapter;
+            }
+            set {
+                this._smakiTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public NazwyNapojuTableAdapter NazwyNapojuTableAdapter {
+            get {
+                return this._nazwyNapojuTableAdapter;
+            }
+            set {
+                this._nazwyNapojuTableAdapter = value;
             }
         }
         
@@ -13336,20 +13406,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public SmakiTableAdapter SmakiTableAdapter {
-            get {
-                return this._smakiTableAdapter;
-            }
-            set {
-                this._smakiTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -13371,6 +13427,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                             && (this._klienciTableAdapter.Connection != null))) {
                     return this._klienciTableAdapter.Connection;
                 }
+                if (((this._pracownicyTableAdapter != null) 
+                            && (this._pracownicyTableAdapter.Connection != null))) {
+                    return this._pracownicyTableAdapter.Connection;
+                }
+                if (((this._produktyKlientaTableAdapter != null) 
+                            && (this._produktyKlientaTableAdapter.Connection != null))) {
+                    return this._produktyKlientaTableAdapter.Connection;
+                }
                 if (((this._zakupyKlientaTableAdapter != null) 
                             && (this._zakupyKlientaTableAdapter.Connection != null))) {
                     return this._zakupyKlientaTableAdapter.Connection;
@@ -13383,37 +13447,33 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                             && (this._napojeProducentaTableAdapter.Connection != null))) {
                     return this._napojeProducentaTableAdapter.Connection;
                 }
-                if (((this._nazwyNapojuTableAdapter != null) 
-                            && (this._nazwyNapojuTableAdapter.Connection != null))) {
-                    return this._nazwyNapojuTableAdapter.Connection;
-                }
-                if (((this._nazwyOpakowaniaSztukiTableAdapter != null) 
-                            && (this._nazwyOpakowaniaSztukiTableAdapter.Connection != null))) {
-                    return this._nazwyOpakowaniaSztukiTableAdapter.Connection;
-                }
-                if (((this._nazwyOpakowaniaZbiorczegoTableAdapter != null) 
-                            && (this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection != null))) {
-                    return this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection;
-                }
-                if (((this._opakowaniaSztukiTableAdapter != null) 
-                            && (this._opakowaniaSztukiTableAdapter.Connection != null))) {
-                    return this._opakowaniaSztukiTableAdapter.Connection;
+                if (((this._producenciTableAdapter != null) 
+                            && (this._producenciTableAdapter.Connection != null))) {
+                    return this._producenciTableAdapter.Connection;
                 }
                 if (((this._opakowaniaZbiorczeTableAdapter != null) 
                             && (this._opakowaniaZbiorczeTableAdapter.Connection != null))) {
                     return this._opakowaniaZbiorczeTableAdapter.Connection;
                 }
-                if (((this._pracownicyTableAdapter != null) 
-                            && (this._pracownicyTableAdapter.Connection != null))) {
-                    return this._pracownicyTableAdapter.Connection;
+                if (((this._opakowaniaSztukiTableAdapter != null) 
+                            && (this._opakowaniaSztukiTableAdapter.Connection != null))) {
+                    return this._opakowaniaSztukiTableAdapter.Connection;
                 }
-                if (((this._producenciTableAdapter != null) 
-                            && (this._producenciTableAdapter.Connection != null))) {
-                    return this._producenciTableAdapter.Connection;
+                if (((this._nazwyOpakowaniaZbiorczegoTableAdapter != null) 
+                            && (this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection != null))) {
+                    return this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection;
                 }
-                if (((this._produktyKlientaTableAdapter != null) 
-                            && (this._produktyKlientaTableAdapter.Connection != null))) {
-                    return this._produktyKlientaTableAdapter.Connection;
+                if (((this._nazwyOpakowaniaSztukiTableAdapter != null) 
+                            && (this._nazwyOpakowaniaSztukiTableAdapter.Connection != null))) {
+                    return this._nazwyOpakowaniaSztukiTableAdapter.Connection;
+                }
+                if (((this._smakiTableAdapter != null) 
+                            && (this._smakiTableAdapter.Connection != null))) {
+                    return this._smakiTableAdapter.Connection;
+                }
+                if (((this._nazwyNapojuTableAdapter != null) 
+                            && (this._nazwyNapojuTableAdapter.Connection != null))) {
+                    return this._nazwyNapojuTableAdapter.Connection;
                 }
                 if (((this._rodzajeGazuTableAdapter != null) 
                             && (this._rodzajeGazuTableAdapter.Connection != null))) {
@@ -13422,10 +13482,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if (((this._rodzajeNapojuTableAdapter != null) 
                             && (this._rodzajeNapojuTableAdapter.Connection != null))) {
                     return this._rodzajeNapojuTableAdapter.Connection;
-                }
-                if (((this._smakiTableAdapter != null) 
-                            && (this._smakiTableAdapter.Connection != null))) {
-                    return this._smakiTableAdapter.Connection;
                 }
                 return null;
             }
@@ -13443,6 +13499,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if ((this._klienciTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._pracownicyTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._produktyKlientaTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._zakupyKlientaTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -13452,37 +13514,31 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if ((this._napojeProducentaTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._nazwyNapojuTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._opakowaniaSztukiTableAdapter != null)) {
+                if ((this._producenciTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._opakowaniaZbiorczeTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._pracownicyTableAdapter != null)) {
+                if ((this._opakowaniaSztukiTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._producenciTableAdapter != null)) {
+                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._produktyKlientaTableAdapter != null)) {
+                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._smakiTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._nazwyNapojuTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._rodzajeGazuTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._rodzajeNapojuTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._smakiTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -13494,17 +13550,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(HurtowniaNapojow dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(HurtowniaNapojówDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.NazwyOpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._nazwyOpakowaniaSztukiTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.NazwyOpakowaniaZbiorczego.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -13514,21 +13561,21 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._nazwyNapojuTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NazwyOpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._nazwyNapojuTableAdapter.Update(updatedRows));
+                    result = (result + this._nazwyOpakowaniaSztukiTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._opakowaniaSztukiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.OpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._producenciTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._opakowaniaSztukiTableAdapter.Update(updatedRows));
+                    result = (result + this._producenciTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13541,12 +13588,30 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._producenciTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._opakowaniaSztukiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.OpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._producenciTableAdapter.Update(updatedRows));
+                    result = (result + this._opakowaniaSztukiTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._smakiTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nazwyNapojuTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nazwyNapojuTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13568,12 +13633,21 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(updatedRows));
+                    result = (result + this._klienciTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pracownicyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13583,15 +13657,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._napojeProducentaTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13613,15 +13678,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._produktyKlientaTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ProduktyKlienta.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -13639,16 +13695,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(HurtowniaNapojow dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(HurtowniaNapojówDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.NazwyOpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._nazwyOpakowaniaSztukiTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.NazwyOpakowaniaZbiorczego.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -13657,19 +13705,19 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._nazwyNapojuTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NazwyOpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._nazwyNapojuTableAdapter.Update(addedRows));
+                    result = (result + this._nazwyOpakowaniaSztukiTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._opakowaniaSztukiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.OpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._producenciTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._opakowaniaSztukiTableAdapter.Update(addedRows));
+                    result = (result + this._producenciTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13681,11 +13729,27 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._producenciTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._opakowaniaSztukiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.OpakowaniaSztuki.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._producenciTableAdapter.Update(addedRows));
+                    result = (result + this._opakowaniaSztukiTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._smakiTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nazwyNapojuTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nazwyNapojuTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13705,11 +13769,19 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(addedRows));
+                    result = (result + this._klienciTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pracownicyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13718,14 +13790,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._napojeProducentaTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13745,14 +13809,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._produktyKlientaTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ProduktyKlienta.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -13769,21 +13825,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(HurtowniaNapojow dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(HurtowniaNapojówDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._produktyKlientaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ProduktyKlienta.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._produktyKlientaTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13803,14 +13851,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._napojeProducentaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.NapojeProducenta.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -13819,11 +13859,19 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(deletedRows));
+                    result = (result + this._pracownicyTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._klienciTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13843,19 +13891,19 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._producenciTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._nazwyNapojuTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._producenciTableAdapter.Update(deletedRows));
+                    result = (result + this._nazwyNapojuTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._opakowaniaZbiorczeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.OpakowaniaZbiorcze.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._opakowaniaZbiorczeTableAdapter.Update(deletedRows));
+                    result = (result + this._smakiTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13867,19 +13915,19 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nazwyNapojuTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.NazwyNapoju.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._opakowaniaZbiorczeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.OpakowaniaZbiorcze.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._nazwyNapojuTableAdapter.Update(deletedRows));
+                    result = (result + this._opakowaniaZbiorczeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.NazwyOpakowaniaZbiorczego.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._producenciTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Producenci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._nazwyOpakowaniaZbiorczegoTableAdapter.Update(deletedRows));
+                    result = (result + this._producenciTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13888,6 +13936,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._nazwyOpakowaniaSztukiTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NazwyOpakowaniaZbiorczego.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._nazwyOpakowaniaZbiorczegoTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13923,7 +13979,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(HurtowniaNapojow dataSet) {
+        public virtual int UpdateAll(HurtowniaNapojówDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
@@ -13932,6 +13988,16 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             }
             if (((this._klienciTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._klienciTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._pracownicyTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._pracownicyTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._produktyKlientaTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._produktyKlientaTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -13950,23 +14016,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._nazwyNapojuTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._nazwyNapojuTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._nazwyOpakowaniaSztukiTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._nazwyOpakowaniaSztukiTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._nazwyOpakowaniaZbiorczegoTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._opakowaniaSztukiTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._opakowaniaSztukiTableAdapter.Connection) == false))) {
+            if (((this._producenciTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._producenciTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -13975,18 +14026,28 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._pracownicyTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._pracownicyTableAdapter.Connection) == false))) {
+            if (((this._opakowaniaSztukiTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._opakowaniaSztukiTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._producenciTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._producenciTableAdapter.Connection) == false))) {
+            if (((this._nazwyOpakowaniaZbiorczegoTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._produktyKlientaTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._produktyKlientaTableAdapter.Connection) == false))) {
+            if (((this._nazwyOpakowaniaSztukiTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nazwyOpakowaniaSztukiTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._smakiTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._smakiTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._nazwyNapojuTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nazwyNapojuTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -13997,11 +14058,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
             }
             if (((this._rodzajeNapojuTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._rodzajeNapojuTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._smakiTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._smakiTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -14046,6 +14102,24 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._klienciTableAdapter.Adapter);
                     }
                 }
+                if ((this._pracownicyTableAdapter != null)) {
+                    revertConnections.Add(this._pracownicyTableAdapter, this._pracownicyTableAdapter.Connection);
+                    this._pracownicyTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._pracownicyTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._pracownicyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._pracownicyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._pracownicyTableAdapter.Adapter);
+                    }
+                }
+                if ((this._produktyKlientaTableAdapter != null)) {
+                    revertConnections.Add(this._produktyKlientaTableAdapter, this._produktyKlientaTableAdapter.Connection);
+                    this._produktyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._produktyKlientaTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._produktyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._produktyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._produktyKlientaTableAdapter.Adapter);
+                    }
+                }
                 if ((this._zakupyKlientaTableAdapter != null)) {
                     revertConnections.Add(this._zakupyKlientaTableAdapter, this._zakupyKlientaTableAdapter.Connection);
                     this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
@@ -14073,40 +14147,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._napojeProducentaTableAdapter.Adapter);
                     }
                 }
-                if ((this._nazwyNapojuTableAdapter != null)) {
-                    revertConnections.Add(this._nazwyNapojuTableAdapter, this._nazwyNapojuTableAdapter.Connection);
-                    this._nazwyNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._nazwyNapojuTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._nazwyNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._nazwyNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyNapojuTableAdapter.Adapter);
-                    }
-                }
-                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
-                    revertConnections.Add(this._nazwyOpakowaniaSztukiTableAdapter, this._nazwyOpakowaniaSztukiTableAdapter.Connection);
-                    this._nazwyOpakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._nazwyOpakowaniaSztukiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._nazwyOpakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._nazwyOpakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyOpakowaniaSztukiTableAdapter.Adapter);
-                    }
-                }
-                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
-                    revertConnections.Add(this._nazwyOpakowaniaZbiorczegoTableAdapter, this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection);
-                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter);
-                    }
-                }
-                if ((this._opakowaniaSztukiTableAdapter != null)) {
-                    revertConnections.Add(this._opakowaniaSztukiTableAdapter, this._opakowaniaSztukiTableAdapter.Connection);
-                    this._opakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._opakowaniaSztukiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._opakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._opakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._opakowaniaSztukiTableAdapter.Adapter);
+                if ((this._producenciTableAdapter != null)) {
+                    revertConnections.Add(this._producenciTableAdapter, this._producenciTableAdapter.Connection);
+                    this._producenciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._producenciTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._producenciTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._producenciTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._producenciTableAdapter.Adapter);
                     }
                 }
                 if ((this._opakowaniaZbiorczeTableAdapter != null)) {
@@ -14118,31 +14165,49 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._opakowaniaZbiorczeTableAdapter.Adapter);
                     }
                 }
-                if ((this._pracownicyTableAdapter != null)) {
-                    revertConnections.Add(this._pracownicyTableAdapter, this._pracownicyTableAdapter.Connection);
-                    this._pracownicyTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._pracownicyTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._pracownicyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._pracownicyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._pracownicyTableAdapter.Adapter);
+                if ((this._opakowaniaSztukiTableAdapter != null)) {
+                    revertConnections.Add(this._opakowaniaSztukiTableAdapter, this._opakowaniaSztukiTableAdapter.Connection);
+                    this._opakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._opakowaniaSztukiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._opakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._opakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._opakowaniaSztukiTableAdapter.Adapter);
                     }
                 }
-                if ((this._producenciTableAdapter != null)) {
-                    revertConnections.Add(this._producenciTableAdapter, this._producenciTableAdapter.Connection);
-                    this._producenciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._producenciTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._producenciTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._producenciTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._producenciTableAdapter.Adapter);
+                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
+                    revertConnections.Add(this._nazwyOpakowaniaZbiorczegoTableAdapter, this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection);
+                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyOpakowaniaZbiorczegoTableAdapter.Adapter);
                     }
                 }
-                if ((this._produktyKlientaTableAdapter != null)) {
-                    revertConnections.Add(this._produktyKlientaTableAdapter, this._produktyKlientaTableAdapter.Connection);
-                    this._produktyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._produktyKlientaTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._produktyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._produktyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._produktyKlientaTableAdapter.Adapter);
+                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
+                    revertConnections.Add(this._nazwyOpakowaniaSztukiTableAdapter, this._nazwyOpakowaniaSztukiTableAdapter.Connection);
+                    this._nazwyOpakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._nazwyOpakowaniaSztukiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._nazwyOpakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nazwyOpakowaniaSztukiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyOpakowaniaSztukiTableAdapter.Adapter);
+                    }
+                }
+                if ((this._smakiTableAdapter != null)) {
+                    revertConnections.Add(this._smakiTableAdapter, this._smakiTableAdapter.Connection);
+                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._smakiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._smakiTableAdapter.Adapter);
+                    }
+                }
+                if ((this._nazwyNapojuTableAdapter != null)) {
+                    revertConnections.Add(this._nazwyNapojuTableAdapter, this._nazwyNapojuTableAdapter.Connection);
+                    this._nazwyNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._nazwyNapojuTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._nazwyNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nazwyNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nazwyNapojuTableAdapter.Adapter);
                     }
                 }
                 if ((this._rodzajeGazuTableAdapter != null)) {
@@ -14161,15 +14226,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     if (this._rodzajeNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._rodzajeNapojuTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._rodzajeNapojuTableAdapter.Adapter);
-                    }
-                }
-                if ((this._smakiTableAdapter != null)) {
-                    revertConnections.Add(this._smakiTableAdapter, this._smakiTableAdapter.Connection);
-                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._smakiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._smakiTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -14234,6 +14290,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     this._klienciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._klienciTableAdapter]));
                     this._klienciTableAdapter.Transaction = null;
                 }
+                if ((this._pracownicyTableAdapter != null)) {
+                    this._pracownicyTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._pracownicyTableAdapter]));
+                    this._pracownicyTableAdapter.Transaction = null;
+                }
+                if ((this._produktyKlientaTableAdapter != null)) {
+                    this._produktyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._produktyKlientaTableAdapter]));
+                    this._produktyKlientaTableAdapter.Transaction = null;
+                }
                 if ((this._zakupyKlientaTableAdapter != null)) {
                     this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._zakupyKlientaTableAdapter]));
                     this._zakupyKlientaTableAdapter.Transaction = null;
@@ -14246,37 +14310,33 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                     this._napojeProducentaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._napojeProducentaTableAdapter]));
                     this._napojeProducentaTableAdapter.Transaction = null;
                 }
-                if ((this._nazwyNapojuTableAdapter != null)) {
-                    this._nazwyNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyNapojuTableAdapter]));
-                    this._nazwyNapojuTableAdapter.Transaction = null;
-                }
-                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
-                    this._nazwyOpakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyOpakowaniaSztukiTableAdapter]));
-                    this._nazwyOpakowaniaSztukiTableAdapter.Transaction = null;
-                }
-                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
-                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyOpakowaniaZbiorczegoTableAdapter]));
-                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Transaction = null;
-                }
-                if ((this._opakowaniaSztukiTableAdapter != null)) {
-                    this._opakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._opakowaniaSztukiTableAdapter]));
-                    this._opakowaniaSztukiTableAdapter.Transaction = null;
+                if ((this._producenciTableAdapter != null)) {
+                    this._producenciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._producenciTableAdapter]));
+                    this._producenciTableAdapter.Transaction = null;
                 }
                 if ((this._opakowaniaZbiorczeTableAdapter != null)) {
                     this._opakowaniaZbiorczeTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._opakowaniaZbiorczeTableAdapter]));
                     this._opakowaniaZbiorczeTableAdapter.Transaction = null;
                 }
-                if ((this._pracownicyTableAdapter != null)) {
-                    this._pracownicyTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._pracownicyTableAdapter]));
-                    this._pracownicyTableAdapter.Transaction = null;
+                if ((this._opakowaniaSztukiTableAdapter != null)) {
+                    this._opakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._opakowaniaSztukiTableAdapter]));
+                    this._opakowaniaSztukiTableAdapter.Transaction = null;
                 }
-                if ((this._producenciTableAdapter != null)) {
-                    this._producenciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._producenciTableAdapter]));
-                    this._producenciTableAdapter.Transaction = null;
+                if ((this._nazwyOpakowaniaZbiorczegoTableAdapter != null)) {
+                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyOpakowaniaZbiorczegoTableAdapter]));
+                    this._nazwyOpakowaniaZbiorczegoTableAdapter.Transaction = null;
                 }
-                if ((this._produktyKlientaTableAdapter != null)) {
-                    this._produktyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._produktyKlientaTableAdapter]));
-                    this._produktyKlientaTableAdapter.Transaction = null;
+                if ((this._nazwyOpakowaniaSztukiTableAdapter != null)) {
+                    this._nazwyOpakowaniaSztukiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyOpakowaniaSztukiTableAdapter]));
+                    this._nazwyOpakowaniaSztukiTableAdapter.Transaction = null;
+                }
+                if ((this._smakiTableAdapter != null)) {
+                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._smakiTableAdapter]));
+                    this._smakiTableAdapter.Transaction = null;
+                }
+                if ((this._nazwyNapojuTableAdapter != null)) {
+                    this._nazwyNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._nazwyNapojuTableAdapter]));
+                    this._nazwyNapojuTableAdapter.Transaction = null;
                 }
                 if ((this._rodzajeGazuTableAdapter != null)) {
                     this._rodzajeGazuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._rodzajeGazuTableAdapter]));
@@ -14285,10 +14345,6 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters {
                 if ((this._rodzajeNapojuTableAdapter != null)) {
                     this._rodzajeNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._rodzajeNapojuTableAdapter]));
                     this._rodzajeNapojuTableAdapter.Transaction = null;
-                }
-                if ((this._smakiTableAdapter != null)) {
-                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._smakiTableAdapter]));
-                    this._smakiTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

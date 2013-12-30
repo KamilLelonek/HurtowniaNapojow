@@ -11,23 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HurtowniaNapojow.Helpers;
 
-namespace HurtowniaNapojow.Windows
+namespace HurtowniaNapojow.Windows.Admin
 {
     /// <summary>
-    /// Interaction logic for AdminWindow.xaml
+    /// Interaction logic for EmployeeDetail.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class EmployeeDetail : Window
     {
-        public AdminWindow()
+        public EmployeeDetail()
         {
             InitializeComponent();
         }
-        protected void ButtonLogout_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SessionHelper.Instance.LogoutUser();
-            new LoginWindow().Show();
             this.Close();
         }
     }

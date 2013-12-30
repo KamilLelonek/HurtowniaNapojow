@@ -53,7 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Windows\AdminWindow.xaml">
+    <Page Include="Windows\Admin\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\EmployeeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -69,14 +73,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Database\HurtowniaNapojow.Designer.cs">
+    <Compile Include="Database\HurtowniaNapojówDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HurtowniaNapojow.xsd</DependentUpon>
+      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SessionHelper.cs" />
-    <Compile Include="Windows\AdminWindow.xaml.cs">
+    <Compile Include="Windows\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Admin\EmployeeDetail.xaml.cs">
+      <DependentUpon>EmployeeDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
@@ -104,16 +111,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Database\HurtowniaNapojow.xsc">
-      <DependentUpon>HurtowniaNapojow.xsd</DependentUpon>
+    <None Include="Database\HurtowniaNapojówDataSet.xsc">
+      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Database\HurtowniaNapojow.xsd">
+    <None Include="Database\HurtowniaNapojówDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HurtowniaNapojow.Designer.cs</LastGenOutput>
+      <LastGenOutput>HurtowniaNapojówDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Database\HurtowniaNapojow.xss">
-      <DependentUpon>HurtowniaNapojow.xsd</DependentUpon>
+    <None Include="Database\HurtowniaNapojówDataSet.xss">
+      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using HurtowniaNapojow.Database.HurtowniaNapojowTableAdapters;
+using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -33,16 +34,17 @@ namespace HurtowniaNapojow.Helpers
 
         #region Instance properties
         private readonly String _pathForCookie = Environment.CurrentDirectory + @"\cookie.hn";
-        private readonly IEnumerable<Database.HurtowniaNapojow.PracownicyRow> _employeesDataTable;
+        private readonly PracownicyTableAdapter _employeesTableAdapter;
 
         public Boolean IsUserSet { get; private set; }
         public bool IsCurrentUserAdmin { get; set; }
-        public Database.HurtowniaNapojow.PracownicyRow CurrentEmployee { get; private set; }
+        public HurtowniaNapojówDataSet.PracownicyRow CurrentEmployee { get; private set; }
 
+        # region Initialization
         private SessionHelper()
         {
+            _employeesTableAdapter = new PracownicyTableAdapter();
             Initialize();
-            _employeesDataTable = Enumerable.AsEnumerable(new PracownicyTableAdapter().GetData());
         }
         private void Initialize()
         {
@@ -78,10 +80,12 @@ namespace HurtowniaNapojow.Helpers
             login = fileData[0];
             password = fileData[1];
         }
+        #endregion Initialization
 
+        #region Public methods
         public Boolean LoginUser(String email, String password, Boolean saveUserData)
         {
-            if (email.Equals("admin") && password.Equals("password") || AreDataValid(email, password))
+            if (AreDataValid(email, password))
             {
                 ManageUserCookie(email, password, saveUserData);
                 SetSessionState(email, password);
@@ -98,11 +102,56 @@ namespace HurtowniaNapojow.Helpers
             DeleteUserCookie();
         }
 
+        public Boolean IsUserAuthenticated(String password)
+        {
+            return CurrentEmployee.Field<String>("Hasło").Equals(password);
+        }
+
+        public String ChangePassword(String newPassword)
+        {
+            CurrentEmployee.SetField("Hasło", newPassword);
+            return UpdateDB();
+        }
+
+        public String ChangeEmail(String newEmail)
+        {
+            CurrentEmployee.Email = newEmail;
+            return UpdateDB();
+        }
+
+        public String ChangeFirstName(String newFirstName)
+        {
+            CurrentEmployee.Imię = newFirstName;
+            return UpdateDB();
+        }
+
+        public String ChangeLasttName(String newLastName)
+        {
+            CurrentEmployee.Nazwisko = newLastName;
+            return UpdateDB();
+        }
+
+        private String UpdateDB()
+        {
+            try
+            {
+                _employeesTableAdapter.Update(CurrentEmployee);
+                return null;
+            }
+            catch (OleDbException e)
+            {
+                return e.Message;
+            }
+        }
+
+        #endregion Public methods
+
+        #region Private methods
         private bool AreDataValid(string email, string password)
         {
-            var employee = from e in _employeesDataTable where e.Field<String>("Email") == email select e;
-            var employeesRows = employee as IList<Database.HurtowniaNapojow.PracownicyRow> ?? employee.ToList();
-            Boolean areDataValid = employeesRows.Count() != 0 && employeesRows.First().Field<String>("Hasło").Equals(password);
+            var employeesTable = _employeesTableAdapter.GetData();
+            var employeesRows = from e in employeesTable where e.Field<String>("Email") == email select e;
+            var areDataValid = employeesRows.Count() != 0 && employeesRows.First().Field<String>("Hasło").Equals(password);
 
             if (!areDataValid) return false;
 
@@ -113,7 +162,7 @@ namespace HurtowniaNapojow.Helpers
         private void SetSessionState(String email, String password)
         {
             IsUserSet = !String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password);
-            IsCurrentUserAdmin = IsUserSet && email.Equals("admin") && password.Equals("password");
+            IsCurrentUserAdmin = IsUserSet && CurrentEmployee.Field<Boolean>("CzyAdministrator");
         }
 
         private void ManageUserCookie(String email, String password, Boolean saveData)
@@ -138,7 +187,7 @@ namespace HurtowniaNapojow.Helpers
                     writer.Write(email + "_" + password);
                 }
             }
-            catch (IOException) { return; }
+            catch (IOException) { }
         }
 
         private void DeleteUserCookie()
@@ -148,6 +197,7 @@ namespace HurtowniaNapojow.Helpers
                 File.Delete(_pathForCookie);
             }
         }
-        #endregion
+        #endregion Private methods
+        #endregion Instance properties
     }
 }
