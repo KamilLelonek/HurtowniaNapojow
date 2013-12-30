@@ -23,6 +23,7 @@ namespace HurtowniaNapojow.Windows.Admin
         public AdminWindow()
         {
             InitializeComponent();
+            EmployeeDataForm.DataContext = SessionHelper.Instance.CurrentEmployee;
         }
         protected void ButtonLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -139,6 +140,12 @@ namespace HurtowniaNapojow.Windows.Admin
         {
             var isDataEmpty = IsDataEmpty(DataSection_FisrtName, DataSection_LastName);
             if (isDataEmpty) return;
+
+            var firstName = DataSection_FisrtName.Text;
+            var lastName = DataSection_LastName.Text;
+            var result = SessionHelper.Instance.ChangeName(firstName, lastName);
+
+            ShowResult(result, "Dane osobowe zostały zmienione");
         }
         private void ShowResult(String messageIfError, String messageIfSuccess)
         {

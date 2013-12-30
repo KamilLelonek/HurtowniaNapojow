@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -119,14 +118,9 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB();
         }
 
-        public String ChangeFirstName(String newFirstName)
+        public String ChangeFirstName(String newFirstName, String newLastName)
         {
             CurrentEmployee.Imię = newFirstName;
-            return UpdateDB();
-        }
-
-        public String ChangeLasttName(String newLastName)
-        {
             CurrentEmployee.Nazwisko = newLastName;
             return UpdateDB();
         }

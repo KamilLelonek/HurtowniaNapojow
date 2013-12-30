@@ -11,7 +11,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Ustawienia">
-                <Grid>
+                <Grid x:Name="EmployeeDataForm">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />
@@ -28,7 +28,7 @@
                     <GroupBox Header="" Grid.Column="0" Grid.Row="1" x:Name="SectionEmail">
                         <Grid>
                             <Label Content="Email" HorizontalAlignment="Left" Margin="36,100,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Name="EmailSection_Email" Height="23" Margin="36,136,0,0"  VerticalAlignment="Top" Width="120"/>
+                            <TextBox HorizontalAlignment="Left" Name="EmailSection_Email" Text="{Binding Email}"  Height="23" Margin="36,136,0,0"  VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="" Grid.Column="1" Grid.Row="1" IsEnabled="False" x:Name="SectionPassword">
@@ -42,9 +42,9 @@
                     <GroupBox Header="" Grid.Column="2" Grid.Row="1"  IsEnabled="False" x:Name="SectionData">
                         <Grid>
                             <Label Content="Imię" HorizontalAlignment="Left" Margin="40,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,1.577"/>
-                            <TextBox HorizontalAlignment="Left" Name="DataSection_FisrtName" Height="23" Margin="40,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox HorizontalAlignment="Left" Text="{Binding Imię}" Name="DataSection_FisrtName" Height="23" Margin="40,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="40,140,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Name="DataSection_LastName" Height="23" Margin="40,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox HorizontalAlignment="Left" Text="{Binding Nazwisko}" Name="DataSection_LastName" Height="23" Margin="40,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                     <Label Content="Obecne Hasło" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Height="25" Grid.Column="0" Grid.Row="2"/>
