@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
 using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Windows.Admin;
@@ -11,7 +11,7 @@ namespace HurtowniaNapojow.Windows
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow
     {
         private const String EmailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
 
@@ -57,7 +57,7 @@ namespace HurtowniaNapojow.Windows
         {
             if (e.Key == Key.Return)
             {
-                ButtonLogin.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                ButtonLogin.PerformClick();
             }
         }
     }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -10,7 +10,7 @@ namespace HurtowniaNapojow.Windows.Admin
     /// <summary>
     /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class AdminWindow
     {
         private enum Section
         {
@@ -65,17 +65,17 @@ namespace HurtowniaNapojow.Windows.Admin
             switch (_currentSection)
             {
                     case Section.Email:
-                        ResetData(EmailSection_Email);
+                        EmailSection_Email.Text = "";
                         break;
 
                     case Section.Password:
-                        ResetData(PasswordSection_NewPassword);
-                        ResetData(PasswordSection_PasswordConfirmation);
+                        PasswordSection_NewPassword.Password = "";
+                        PasswordSection_PasswordConfirmation.Password = "";
                         break;
 
                     case Section.Data:
-                        ResetData(DataSection_FisrtName);
-                        ResetData(DataSection_LastName);
+                        DataSection_FisrtName.Text = "";
+                        DataSection_LastName.Text = "";
                         break;
             }
         }
@@ -151,6 +151,7 @@ namespace HurtowniaNapojow.Windows.Admin
         {
             if (messageIfError == null)
             {
+                ButtonReset.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 MessageBox.Show(messageIfSuccess, "Sukces");
             }
             else
@@ -172,26 +173,10 @@ namespace HurtowniaNapojow.Windows.Admin
         private String GetTextFromControl(Control control)
         {
             var textBox = control as TextBox;
-            if (textBox == null)
-            {
-                var passwordBox = control as PasswordBox;
-                return passwordBox != null ? passwordBox.Password : "";
-            }
-            else return textBox.Text;
-        }
-        private void ResetData(params Control[] args)
-        {
-            Array.ForEach(args, ResetTextFromControl);
-        }
-        private void ResetTextFromControl(Control control)
-        {
-            var textBox = control as TextBox;
-            if (textBox == null)
-            {
-                var passwordBox = control as PasswordBox;
-                if (passwordBox != null) passwordBox.Password = "";
-            }
-            else textBox.Text = "";
+            if (textBox != null) return textBox.Text;
+
+            var passwordBox = control as PasswordBox;
+            return passwordBox != null ? passwordBox.Password : "";
         }
     }
 }

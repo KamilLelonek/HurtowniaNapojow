@@ -79,6 +79,7 @@
       <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Utils\ControlsPlugins.cs" />
     <Compile Include="Windows\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>

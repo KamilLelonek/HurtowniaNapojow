@@ -103,12 +103,12 @@ namespace HurtowniaNapojow.Helpers
 
         public Boolean IsUserAuthenticated(String password)
         {
-            return CurrentEmployee.Field<String>("Hasło").Equals(password);
+            return CurrentEmployee.Hasło.Equals(password);
         }
 
         public String ChangePassword(String newPassword)
         {
-            CurrentEmployee.SetField("Hasło", newPassword);
+            CurrentEmployee.Hasło = newPassword;
             return UpdateDB();
         }
 
@@ -118,7 +118,7 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB();
         }
 
-        public String ChangeFirstName(String newFirstName, String newLastName)
+        public String ChangeName(String newFirstName, String newLastName)
         {
             CurrentEmployee.Imię = newFirstName;
             CurrentEmployee.Nazwisko = newLastName;
@@ -144,8 +144,8 @@ namespace HurtowniaNapojow.Helpers
         private bool AreDataValid(string email, string password)
         {
             var employeesTable = _employeesTableAdapter.GetData();
-            var employeesRows = from e in employeesTable where e.Field<String>("Email") == email select e;
-            var areDataValid = employeesRows.Count() != 0 && employeesRows.First().Field<String>("Hasło").Equals(password);
+            var employeesRows = from e in employeesTable where e.Email == email select e;
+            var areDataValid = employeesRows.Count() != 0 && employeesRows.First().Hasło.Equals(password);
 
             if (!areDataValid) return false;
 
@@ -156,7 +156,7 @@ namespace HurtowniaNapojow.Helpers
         private void SetSessionState(String email, String password)
         {
             IsUserSet = !String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password);
-            IsCurrentUserAdmin = IsUserSet && CurrentEmployee.Field<Boolean>("CzyAdministrator");
+            IsCurrentUserAdmin = IsUserSet && CurrentEmployee.CzyAdministrator;
         }
 
         private void ManageUserCookie(String email, String password, Boolean saveData)
