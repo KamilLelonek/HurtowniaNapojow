@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Navigation;
 using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -11,12 +13,20 @@ namespace HurtowniaNapojow.Windows.Admin
     /// </summary>
     public partial class EmployeeDetails
     {
-        private HurtowniaNapojówDataSet.PracownicyRow _employee;
+        private readonly HurtowniaNapojówDataSet.PracownicyRow _employee;
         public EmployeeDetails(ref HurtowniaNapojówDataSet.PracownicyRow employeeRow)
         {
             InitializeComponent();
             _employee = employeeRow;
             EmployeeDetailsGrid.DataContext = employeeRow;
+
+            var zakupyKlientaTableData = new ZakupyKlientaTableAdapter().GetData();
+            var zakupyKlientaTable = from zakupKlienta
+                                     in zakupyKlientaTableData
+                                     where zakupKlienta.id_pracownika == _employee.Identyfikator
+                                     select zakupKlienta;
+
+            EmployeeShoppingDataGrid.DataContext = zakupyKlientaTable.AsEnumerable();
         }
 
         private void ResetPasswordButton_Click(object sender, RoutedEventArgs e)
