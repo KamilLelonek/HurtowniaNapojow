@@ -43,13 +43,12 @@ namespace HurtowniaNapojow.Windows
             {
                 if (sessionHelper.IsCurrentUserAdmin)
                 {
-                    new AdminWindow().Show();
+                    this.OpenWindow(new AdminWindow());
                 }
                 else
                 {
-                    new EmployeeWindow().Show();
+                    this.OpenWindow(new EmployeeWindow());
                 }
-                Close();
             }
         }
 

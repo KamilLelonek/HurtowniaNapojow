@@ -36,7 +36,7 @@ namespace HurtowniaNapojow.Helpers
         private readonly PracownicyTableAdapter _employeesTableAdapter;
 
         public Boolean IsUserSet { get; private set; }
-        public bool IsCurrentUserAdmin { get; set; }
+        public bool IsCurrentUserAdmin { get; private set; }
         public HurtowniaNapojówDataSet.PracownicyRow CurrentEmployee { get; private set; }
 
         # region Initialization
@@ -84,13 +84,11 @@ namespace HurtowniaNapojow.Helpers
         #region Public methods
         public Boolean LoginUser(String email, String password, Boolean saveUserData)
         {
-            if (AreDataValid(email, password))
-            {
-                ManageUserCookie(email, password, saveUserData);
-                SetSessionState(email, password);
-                return true;
-            }
-            return false;
+            if (!AreDataValid(email, password)) return false;
+
+            ManageUserCookie(email, password, saveUserData);
+            SetSessionState(email, password);
+            return true;
         }
 
         public void LogoutUser()
@@ -103,41 +101,23 @@ namespace HurtowniaNapojow.Helpers
 
         public Boolean IsUserAuthenticated(String password)
         {
-            return CurrentEmployee.Hasło.Equals(password);
+            return DataBaseEmployeeHelper.IsUserAuthenticated(CurrentEmployee, password);
         }
 
-        public String ChangePassword(String newPassword)
+        public Boolean ChangePassword(String newPassword)
         {
-            CurrentEmployee.Hasło = newPassword;
-            return UpdateDB();
+            return DataBaseEmployeeHelper.ChangePassword(CurrentEmployee, newPassword);
         }
 
-        public String ChangeEmail(String newEmail)
+        public Boolean ChangeEmail(String newEmail)
         {
-            CurrentEmployee.Email = newEmail;
-            return UpdateDB();
+            return DataBaseEmployeeHelper.ChangeEmail(CurrentEmployee, newEmail);
         }
 
-        public String ChangeName(String newFirstName, String newLastName)
+        public Boolean ChangeName(String newFirstName, String newLastName)
         {
-            CurrentEmployee.Imię = newFirstName;
-            CurrentEmployee.Nazwisko = newLastName;
-            return UpdateDB();
+            return DataBaseEmployeeHelper.ChangeName(CurrentEmployee, newFirstName, newLastName);
         }
-
-        private String UpdateDB()
-        {
-            try
-            {
-                _employeesTableAdapter.Update(CurrentEmployee);
-                return null;
-            }
-            catch (OleDbException e)
-            {
-                return e.Message;
-            }
-        }
-
         #endregion Public methods
 
         #region Private methods

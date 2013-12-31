@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -23,61 +26,64 @@ namespace HurtowniaNapojow.Windows.Admin
         public AdminWindow()
         {
             InitializeComponent();
+            SetBinding();
+            EmployeesDataGrid.DataContext = Enumerable.AsEnumerable(new PracownicyTableAdapter().GetData());
+        }
+
+        #region Employees TAB
+        private void ShowDetails_Clicked(object sender, RoutedEventArgs e)
+        {
+            var employeeRow = (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojówDataSet.PracownicyRow;
+            if (employeeRow == null) return;
+
+            this.OpenWindow(new EmployeeDetails(ref employeeRow));
+        }
+
+        #endregion Employees TAB
+
+        #region Settings TAB
+        private void SetBinding()
+        {
+            EmployeeDataForm.DataContext = null;
             EmployeeDataForm.DataContext = SessionHelper.Instance.CurrentEmployee;
         }
-        protected void ButtonLogout_Click(object sender, RoutedEventArgs e)
+
+        private void MenuLogout_Click(object sender, RoutedEventArgs e)
         {
             SessionHelper.Instance.LogoutUser();
-            new LoginWindow().Show();
-            Close();
+            this.OpenWindow(new LoginWindow());
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (SectionEmail != null & SectionPassword != null && SectionData != null)
+            if (SectionEmail == null || SectionPassword == null || SectionData == null) return;
+
+            var sectionEmail = sender.Equals(RadioButtonEmailSection);
+            var sectionPassword = sender.Equals(RadioButtonPasswordSection);
+            var sectionData = sender.Equals(RadioButtonDataSection);
+
+            SectionEmail.IsEnabled = sectionEmail;
+            SectionPassword.IsEnabled = sectionPassword;
+            SectionData.IsEnabled = sectionData;
+
+            if (sectionEmail)
             {
-                var sectionEmail = sender.Equals(RadioButtonEmailSection);
-                var sectionPassword = sender.Equals(RadioButtonPasswordSection);
-                var sectionData = sender.Equals(RadioButtonDataSection);
-
-                SectionEmail.IsEnabled = sectionEmail;
-                SectionPassword.IsEnabled = sectionPassword;
-                SectionData.IsEnabled = sectionData;
-
-                if (sectionEmail)
-                {
-                    _currentSection = Section.Email;
-                }
-                else if (sectionPassword)
-                {
-                    _currentSection = Section.Password;
-                }
-                else if (sectionData)
-                {
-                    _currentSection = Section.Data;
-                }
+                _currentSection = Section.Email;
+            }
+            else if (sectionPassword)
+            {
+                _currentSection = Section.Password;
+            }
+            else if (sectionData)
+            {
+                _currentSection = Section.Data;
             }
         }
 
         private void ButtonReset_Click(object sender, RoutedEventArgs e)
         {
             CurrentPasswordTextBox.Password = "";
-            switch (_currentSection)
-            {
-                    case Section.Email:
-                        EmailSection_Email.Text = "";
-                        break;
-
-                    case Section.Password:
-                        PasswordSection_NewPassword.Password = "";
-                        PasswordSection_PasswordConfirmation.Password = "";
-                        break;
-
-                    case Section.Data:
-                        DataSection_FisrtName.Text = "";
-                        DataSection_LastName.Text = "";
-                        break;
-            }
+            SetBinding();
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -121,9 +127,8 @@ namespace HurtowniaNapojow.Windows.Admin
             var newEmail = EmailSection_Email.Text;
             var result = SessionHelper.Instance.ChangeEmail(newEmail);
 
-            ShowResult(result, "Email został zmieniony");
+            if (result) ButtonReset.PerformClick();
         }
-
 
         private void ChangePassword()
         {
@@ -131,9 +136,21 @@ namespace HurtowniaNapojow.Windows.Admin
             if (isDataEmpty) return;
 
             var newPassword = PasswordSection_NewPassword.Password;
-            var result = SessionHelper.Instance.ChangePassword(newPassword);
+            var passwordConfirmation = PasswordSection_PasswordConfirmation.Password;
+            var doPasswordsMatch = DoPasswordMatch(newPassword, passwordConfirmation);
 
-            ShowResult(result, "Hasło zostało zmienione");
+            if (!doPasswordsMatch) return;
+
+            var result = SessionHelper.Instance.ChangePassword(newPassword);
+            if (result) ButtonReset.PerformClick();
+        }
+
+        private Boolean DoPasswordMatch(string newPassword, string passwordConfirmation)
+        {
+            if (newPassword.Equals(passwordConfirmation)) return true;
+
+            MessageBox.Show("Podane hasła nie pasują do siebie", "Błąd");
+            return false;
         }
 
         private void ChangeData()
@@ -145,19 +162,7 @@ namespace HurtowniaNapojow.Windows.Admin
             var lastName = DataSection_LastName.Text;
             var result = SessionHelper.Instance.ChangeName(firstName, lastName);
 
-            ShowResult(result, "Dane osobowe zostały zmienione");
-        }
-        private void ShowResult(String messageIfError, String messageIfSuccess)
-        {
-            if (messageIfError == null)
-            {
-                ButtonReset.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-                MessageBox.Show(messageIfSuccess, "Sukces");
-            }
-            else
-            {
-                MessageBox.Show(messageIfError, "Błąd");
-            }
+            if (result) ButtonReset.PerformClick();
         }
 
         private Boolean IsDataEmpty(params Control[] args)
@@ -178,5 +183,6 @@ namespace HurtowniaNapojow.Windows.Admin
             var passwordBox = control as PasswordBox;
             return passwordBox != null ? passwordBox.Password : "";
         }
+        #endregion Settings TAB
     }
 }
