@@ -13,7 +13,7 @@ namespace HurtowniaNapojow.Windows
     /// </summary>
     public partial class LoginWindow
     {
-        private const String EmailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+        private readonly Validator _validator = Validator.Instance;
 
         public LoginWindow()
         {
@@ -22,22 +22,18 @@ namespace HurtowniaNapojow.Windows
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            SessionHelper sessionHelper = SessionHelper.Instance;
-            String email = TextBoxEmail.Text;
-            String password = PasswordBox.Password;
-
-            if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || !(email.Equals("admin") || Regex.IsMatch(email, EmailRegex)))
-            {
-                MessageBox.Show("Uzupełnij poprawnie wszystkie dane!", "Błąd logowania");
+            if (_validator.AreControlsEmpty(PasswordBox, TextBoxEmail) || !_validator.IsEmailValid(TextBoxEmail))
                 return;
-            }
 
-            Boolean saveUserData = CheckBoxRememberData.IsChecked.GetValueOrDefault(false);
-            Boolean loginSuccess = sessionHelper.LoginUser(email, password, saveUserData);
+            var sessionHelper = SessionHelper.Instance;
+            var email = TextBoxEmail.Text;
+            var password = PasswordBox.Password;
+            var saveUserData = CheckBoxRememberData.IsChecked.GetValueOrDefault(false);
+            var loginSuccess = sessionHelper.LoginUser(email, password, saveUserData);
 
             if (!loginSuccess)
             {
-                MessageBox.Show("Podane dane logowanie są niepoprawne!", "Błąd logowania");
+                MessageBox.Show("Podane dane logowanie są niepoprawne!", Globals.TITLE_ERROR);
             }
             else
             {

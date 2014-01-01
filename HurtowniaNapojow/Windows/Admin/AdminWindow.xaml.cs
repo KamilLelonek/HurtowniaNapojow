@@ -3,7 +3,6 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
@@ -23,29 +22,71 @@ namespace HurtowniaNapojow.Windows.Admin
         };
 
         private Section _currentSection;
+        private readonly Validator _validator = Validator.Instance;
+
         public AdminWindow()
         {
             InitializeComponent();
-            SetBinding();
-            EmployeesDataGrid.DataContext = Enumerable.AsEnumerable(new PracownicyTableAdapter().GetData());
+            SetSettingsBinding();
+            SetEmployeesBinding();
+            SetComponentsEvents();
+        }
+
+        private void SetEmployeesBinding()
+        {
+            EmployeesDataGrid.RebindContext(new PracownicyTableAdapter().GetData());
         }
 
         #region Employees TAB
+        #region Filter
+        private void SetComponentsEvents()
+        {
+            FilterTextBox.TextChanged += (sender, args) => FilterChanged();
+            FilterComboBox.SelectionChanged += (sender, args) => FilterChanged();
+        }
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterComboBox.Text = "Wybierz filtr";
+            FilterTextBox.Text = "";
+        }
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void FilterChanged()
+        {
+            var filterValue = FilterTextBox.Text;
+            var filterType = ((ComboBoxItem)FilterComboBox.SelectedItem).Content.ToString();
+        }
+        #endregion Filter
+
         private void ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
-            var employeeRow = (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojówDataSet.PracownicyRow;
+            var employeeRow =
+                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojówDataSet.PracownicyRow;
             if (employeeRow == null) return;
 
-            this.OpenWindow(new EmployeeDetails(ref employeeRow));
+            this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
+        }
+
+        private void AddNewEmployee_Clicked(object sender, RoutedEventArgs e)
+        {
+            new EmployeeNewWindow(ref EmployeesDataGrid).Show();
+        }
+
+        private void DeleteEmployees_Clicked(object sender, RoutedEventArgs e)
+        {
+            var employees = EmployeesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
+            employees.ForEach(employee => DataBaseEmployeeHelper.DeleteEmployeeRow(employee.Row));
         }
 
         #endregion Employees TAB
 
         #region Settings TAB
-        private void SetBinding()
+
+        private void SetSettingsBinding()
         {
-            EmployeeDataForm.DataContext = null;
-            EmployeeDataForm.DataContext = SessionHelper.Instance.CurrentEmployee;
+            EmployeeDataForm.RebindContext(SessionHelper.Instance.CurrentEmployee);
         }
 
         private void MenuLogout_Click(object sender, RoutedEventArgs e)
@@ -83,7 +124,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void ButtonReset_Click(object sender, RoutedEventArgs e)
         {
             CurrentPasswordTextBox.Password = "";
-            SetBinding();
+            SetSettingsBinding();
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -94,12 +135,12 @@ namespace HurtowniaNapojow.Windows.Admin
 
             if (!isUserAuthenticated)
             {
-                MessageBox.Show("Podane hasło różni się od obecnego", "Złe hasło");
+                MessageBox.Show("Podane hasło różni się od obecnego", Globals.TITLE_ERROR);
                 return;
             }
             if (isPasswordEmpty)
             {
-                MessageBox.Show("Podaj proszę bieżące hasło", "Brak danych");
+                MessageBox.Show("Podaj proszę bieżące hasło", Globals.TITLE_ERROR);
                 return;
             }
 
@@ -121,7 +162,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void ChangeEmail()
         {
-            var isDataEmpty = IsDataEmpty(EmailSection_Email);
+            var isDataEmpty = _validator.AreControlsEmpty(EmailSection_Email);
             if (isDataEmpty) return;
 
             var newEmail = EmailSection_Email.Text;
@@ -132,12 +173,13 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void ChangePassword()
         {
-            var isDataEmpty = IsDataEmpty(PasswordSection_NewPassword, PasswordSection_PasswordConfirmation);
+            var isDataEmpty = _validator.AreControlsEmpty(PasswordSection_NewPassword,
+                PasswordSection_PasswordConfirmation);
             if (isDataEmpty) return;
 
             var newPassword = PasswordSection_NewPassword.Password;
             var passwordConfirmation = PasswordSection_PasswordConfirmation.Password;
-            var doPasswordsMatch = DoPasswordMatch(newPassword, passwordConfirmation);
+            var doPasswordsMatch = _validator.DoPasswordMatch(newPassword, passwordConfirmation);
 
             if (!doPasswordsMatch) return;
 
@@ -145,17 +187,9 @@ namespace HurtowniaNapojow.Windows.Admin
             if (result) ButtonReset.PerformClick();
         }
 
-        private Boolean DoPasswordMatch(string newPassword, string passwordConfirmation)
-        {
-            if (newPassword.Equals(passwordConfirmation)) return true;
-
-            MessageBox.Show("Podane hasła nie pasują do siebie", "Błąd");
-            return false;
-        }
-
         private void ChangeData()
         {
-            var isDataEmpty = IsDataEmpty(DataSection_FisrtName, DataSection_LastName);
+            var isDataEmpty = _validator.AreControlsEmpty(DataSection_FisrtName, DataSection_LastName);
             if (isDataEmpty) return;
 
             var firstName = DataSection_FisrtName.Text;
@@ -165,24 +199,6 @@ namespace HurtowniaNapojow.Windows.Admin
             if (result) ButtonReset.PerformClick();
         }
 
-        private Boolean IsDataEmpty(params Control[] args)
-        {
-            var strings = args.Select(GetTextFromControl);
-            var isDataEmpty = strings.Any(String.IsNullOrEmpty);
-            if (!isDataEmpty) return false;
-
-            MessageBox.Show("Proszę wypełnij wszystkie pola", "Błąd");
-            return true;
-        }
-
-        private String GetTextFromControl(Control control)
-        {
-            var textBox = control as TextBox;
-            if (textBox != null) return textBox.Text;
-
-            var passwordBox = control as PasswordBox;
-            return passwordBox != null ? passwordBox.Password : "";
-        }
         #endregion Settings TAB
     }
 }

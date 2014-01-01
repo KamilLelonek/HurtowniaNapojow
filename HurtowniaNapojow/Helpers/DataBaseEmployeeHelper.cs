@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
@@ -13,6 +11,35 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseEmployeeHelper
     {
         private static readonly PracownicyTableAdapter EmployeesTableAdapter = new PracownicyTableAdapter();
+
+        public static HurtowniaNapojówDataSet.PracownicyDataTable GetEmployeesData()
+        {
+            return EmployeesTableAdapter.GetData();
+        }
+
+        #region Basic CRUD
+        public static Boolean AddNewEmployee(String newFirstName, String newLastName, String newEmail, Boolean hasAdminRole)
+        {
+            var doesEmployeeExist = GetEmployeesData().Any(employee => employee.Email == newEmail);
+            if (doesEmployeeExist)
+            {
+                MessageBox.Show("Pracownik o podanym adresie email już istnieje", Globals.TITLE_ERROR);
+                return false;
+            }
+            EmployeesTableAdapter.Insert(newLastName, newFirstName, Globals.DEFAULT_PASSWORD, newEmail, hasAdminRole);
+            MessageBox.Show("Pomyślnie dodano nowego pracownika", Globals.TITLE_SUCCESS);
+            return true;
+        }
+
+        public static Boolean DeleteEmployeeRow(DataRow employeeRow)
+        {
+            employeeRow.Delete();
+            return EmployeesTableAdapter.Update(employeeRow) == 1;
+        }
+
+        #endregion Basic CRUD
+
+        #region Extended CRUD
         public static Boolean IsUserAuthenticated(HurtowniaNapojówDataSet.PracownicyRow employee, String password)
         {
             return employee.Hasło.Equals(password);
@@ -30,25 +57,30 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB(employee, "Email został zmieniony");
         }
 
-        public static Boolean ChangeName(HurtowniaNapojówDataSet.PracownicyRow employee, String newFirstName, String newLastName)
+        public static Boolean ChangeName(HurtowniaNapojówDataSet.PracownicyRow employee, String newFirstName,
+            String newLastName)
         {
             employee.Imię = newFirstName;
             employee.Nazwisko = newLastName;
             return UpdateDB(employee, "Dane osobowe zostały zmienione");
         }
+        #endregion Extended CRUD
+
+        #region Common methods
         public static Boolean UpdateDB(HurtowniaNapojówDataSet.PracownicyRow employee, String messageIfSuccess)
         {
             try
             {
                 EmployeesTableAdapter.Update(employee);
-                MessageBox.Show(messageIfSuccess, "Sukces");
+                MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
                 return true;
             }
             catch (OleDbException e)
             {
-                MessageBox.Show(e.Message, "Błąd");
+                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
                 return false;
             }
         }
+        #endregion Common methods
     }
 }

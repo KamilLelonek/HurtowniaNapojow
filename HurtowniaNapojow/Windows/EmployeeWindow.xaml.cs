@@ -12,6 +12,7 @@ namespace HurtowniaNapojow.Windows
         {
             InitializeComponent();
         }
+
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
         {
             SessionHelper.Instance.LogoutUser();

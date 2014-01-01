@@ -8,9 +8,10 @@ using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
-    class SessionHelper
+    internal class SessionHelper
     {
         #region Class properties
+
         private static volatile SessionHelper _instance;
         private static readonly Object Lock = new object();
 
@@ -29,22 +30,24 @@ namespace HurtowniaNapojow.Helpers
                 return _instance;
             }
         }
+
         #endregion
 
         #region Instance properties
-        private readonly String _pathForCookie = Environment.CurrentDirectory + @"\cookie.hn";
-        private readonly PracownicyTableAdapter _employeesTableAdapter;
+
+        private readonly String _pathForCookie = Environment.CurrentDirectory + Globals.COOKIE_FILE_NAME;
 
         public Boolean IsUserSet { get; private set; }
         public bool IsCurrentUserAdmin { get; private set; }
         public HurtowniaNapojówDataSet.PracownicyRow CurrentEmployee { get; private set; }
 
         # region Initialization
+
         private SessionHelper()
         {
-            _employeesTableAdapter = new PracownicyTableAdapter();
             Initialize();
         }
+
         private void Initialize()
         {
             if (!File.Exists(_pathForCookie)) return;
@@ -62,12 +65,13 @@ namespace HurtowniaNapojow.Helpers
 
             LoginUser(login, password, true);
         }
+
         private void ReadUserData(string fileContent, out String login, out String password)
         {
             String[] fileData;
             try
             {
-                fileData = fileContent.Split('_');
+                fileData = fileContent.Split(Globals.COOKIE_DELIMETER);
             }
             catch (Exception)
             {
@@ -79,9 +83,11 @@ namespace HurtowniaNapojow.Helpers
             login = fileData[0];
             password = fileData[1];
         }
+
         #endregion Initialization
 
         #region Public methods
+
         public Boolean LoginUser(String email, String password, Boolean saveUserData)
         {
             if (!AreDataValid(email, password)) return false;
@@ -118,12 +124,14 @@ namespace HurtowniaNapojow.Helpers
         {
             return DataBaseEmployeeHelper.ChangeName(CurrentEmployee, newFirstName, newLastName);
         }
+
         #endregion Public methods
 
         #region Private methods
+
         private bool AreDataValid(string email, string password)
         {
-            var employeesTable = _employeesTableAdapter.GetData();
+            var employeesTable = DataBaseEmployeeHelper.GetEmployeesData();
             var employeesRows = from e in employeesTable where e.Email == email select e;
             var areDataValid = employeesRows.Count() != 0 && employeesRows.First().Hasło.Equals(password);
 
@@ -158,10 +166,12 @@ namespace HurtowniaNapojow.Helpers
             {
                 using (var writer = new StreamWriter(_pathForCookie))
                 {
-                    writer.Write(email + "_" + password);
+                    writer.Write(email + Globals.COOKIE_DELIMETER + password);
                 }
             }
-            catch (IOException) { }
+            catch (IOException)
+            {
+            }
         }
 
         private void DeleteUserCookie()
@@ -171,7 +181,9 @@ namespace HurtowniaNapojow.Helpers
                 File.Delete(_pathForCookie);
             }
         }
+
         #endregion Private methods
+
         #endregion Instance properties
     }
 }

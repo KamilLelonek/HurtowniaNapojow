@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,12 @@ namespace System.Windows.Controls
         public static void PerformClick(this Button button)
         {
             button.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        public static void RebindContext(this FrameworkElement control, object data)
+        {
+            control.DataContext = null;
+            control.DataContext = data;
         }
     }
 }

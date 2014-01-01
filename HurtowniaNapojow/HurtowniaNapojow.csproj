@@ -57,7 +57,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Admin\EmployeeDetails.xaml">
+    <Page Include="Windows\Admin\EmployeeDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\EmployeeNewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -79,14 +83,19 @@
       <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
+    <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Utils\ControlsPlugins.cs" />
     <Compile Include="Utils\WindowsPlugins.cs" />
     <Compile Include="Windows\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Admin\EmployeeDetails.xaml.cs">
-      <DependentUpon>EmployeeDetails.xaml</DependentUpon>
+    <Compile Include="Windows\Admin\EmployeeDetailsWindow.xaml.cs">
+      <DependentUpon>EmployeeDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Admin\EmployeeNewWindow.xaml.cs">
+      <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
@@ -137,6 +146,7 @@
   <ItemGroup>
     <Content Include="Database\HurtowniaNapojów.accdb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
