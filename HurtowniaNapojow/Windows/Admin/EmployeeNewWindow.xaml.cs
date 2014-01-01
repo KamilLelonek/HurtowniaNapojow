@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -12,11 +10,11 @@ namespace HurtowniaNapojow.Windows.Admin
     public partial class EmployeeNewWindow
     {
         private readonly Validator _validator = Validator.Instance;
-        private readonly DataGrid EmployeesDataGrid;
+        private readonly DataGrid _employeesDataGrid;
 
         public EmployeeNewWindow(ref DataGrid employeesDataGrid)
         {
-            EmployeesDataGrid = employeesDataGrid;
+            _employeesDataGrid = employeesDataGrid;
             InitializeComponent();
         }
 
@@ -38,7 +36,7 @@ namespace HurtowniaNapojow.Windows.Admin
             var result = DataBaseEmployeeHelper.AddNewEmployee(newFirstName, newLastName, newEmail, isAdmin);
             if (!result) return;
 
-            EmployeesDataGrid.RebindContext(DataBaseEmployeeHelper.GetEmployeesData());
+            _employeesDataGrid.RebindContext(DataBaseEmployeeHelper.GetEmployeesData());
             CloseButton.PerformClick();
         }
     }
