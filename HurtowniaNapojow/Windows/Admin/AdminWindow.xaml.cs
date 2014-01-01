@@ -46,18 +46,21 @@ namespace HurtowniaNapojow.Windows.Admin
         }
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterComboBox.Text = "Wybierz filtr";
+            FilterComboBox.Text = Globals.FILTER_SELECT;
             FilterTextBox.Text = "";
-        }
-        private void FilterButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            ((DataTable)EmployeesDataGrid.DataContext).DefaultView.RowFilter = "";
         }
         private void FilterChanged()
         {
+            var comboBoxItem = FilterComboBox.SelectedItem as ComboBoxItem;
+            if (comboBoxItem == null) return;
+
+            var filterType = comboBoxItem.Content.ToString();
             var filterValue = FilterTextBox.Text;
-            var filterType = ((ComboBoxItem)FilterComboBox.SelectedItem).Content.ToString();
+            var filter = String.Format("{0} LIKE '%{1}%'", filterType, filterValue);
+            ((DataTable)EmployeesDataGrid.DataContext).DefaultView.RowFilter = filter;
         }
+
         #endregion Filter
 
         private void ShowDetails_Clicked(object sender, RoutedEventArgs e)

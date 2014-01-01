@@ -21,8 +21,7 @@
             <ComboBoxItem Name="LastNameComboBoxItem">Nazwisko</ComboBoxItem>
             <ComboBoxItem Name="EmailComboBoxItem">Email</ComboBoxItem>
         </ComboBox>
-        <Button Content="Filtruj" Name="FilterButton" HorizontalAlignment="Left" Margin="260,31,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="FilterButton_Click" />
-        <Button Content="Resetuj" Name="ResetButton" HorizontalAlignment="Left" Margin="340,31,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
+        <Button Content="Resetuj" Name="ResetButton" HorizontalAlignment="Left" Margin="260,31,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
         <TabControl Margin="0,60,0,0">
             <TabItem Header="Pracownicy">
                 <Grid>

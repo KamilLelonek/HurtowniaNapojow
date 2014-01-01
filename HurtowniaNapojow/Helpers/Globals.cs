@@ -13,6 +13,7 @@ namespace HurtowniaNapojow.Helpers
         public static readonly String TITLE_ERROR = "Błąd";
         public static readonly String ADMIN_NAME = "admin";
         public static readonly String COOKIE_FILE_NAME = @"\cookie.hn";
+        public static readonly String FILTER_SELECT = "Wybierz filtr";
 
         public const String EMAIL_REGEX =
             @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
