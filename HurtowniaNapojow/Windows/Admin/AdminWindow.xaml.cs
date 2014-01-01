@@ -74,7 +74,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void AddNewEmployee_Clicked(object sender, RoutedEventArgs e)
         {
-            new EmployeeNewWindow(ref EmployeesDataGrid).Show();
+            new EmployeeNewWindow(ref EmployeesDataGrid).ShowDialog();
         }
 
         private void DeleteEmployees_Clicked(object sender, RoutedEventArgs e)

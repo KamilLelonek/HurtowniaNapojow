@@ -26,11 +26,22 @@ namespace HurtowniaNapojow.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database\\HurtowniaN" +
-            "apojów.accdb;Persist Security Info=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\Database\\HurtowniaNapojów.acc" +
+            "db;Persist Security Info=True")]
         public string HurtowniaNapojówConnectionString {
             get {
                 return ((string)(this["HurtowniaNapojówConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database\\HurtowniaN" +
+            "apojów.accdb;Persist Security Info=True")]
+        public string HurtowniaNapojówConnectionString1 {
+            get {
+                return ((string)(this["HurtowniaNapojówConnectionString1"]));
             }
         }
     }

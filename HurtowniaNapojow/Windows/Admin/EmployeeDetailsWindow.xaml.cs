@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
@@ -21,17 +22,12 @@ namespace HurtowniaNapojow.Windows.Admin
             InitDataContext(employeeRow);
         }
 
-        private void InitDataContext(HurtowniaNapojówDataSet.PracownicyRow employeeRow)
+        private void InitDataContext(HurtowniaNapojówDataSet.PracownicyRow employee)
         {
-            var zakupyKlientaTableData = new ZakupyKlientaTableAdapter().GetData();
-            var zakupyKlientaTable =
-                from zakupKlienta
-                    in zakupyKlientaTableData
-                where zakupKlienta.id_pracownika == _employee.Identyfikator
-                select zakupKlienta;
+            var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
 
-            EmployeeShoppingDataGrid.DataContext = zakupyKlientaTable.AsEnumerable();
-            EmployeeDetailsGrid.DataContext = employeeRow;
+            EmployeeShoppingDataGrid.DataContext = customerShoppingTable;
+            EmployeeDetailsGrid.DataContext = employee;
         }
 
         private void ResetPasswordButton_Click(object sender, RoutedEventArgs e)
@@ -49,6 +45,12 @@ namespace HurtowniaNapojow.Windows.Admin
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             this.OpenWindow(new AdminWindow());
+        }
+
+        private void ProfitsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var profits = DataBaseEmployeeHelper.CalculateEmployeeProfits(_employee);
+            MessageBox.Show(String.Format("Bieżące zyski pracownika wynoszą {0}zł", profits));
         }
     }
 }
