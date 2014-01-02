@@ -72,7 +72,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Admin\Reports\EmployeeReport.xaml">
+    <Page Include="Windows\Admin\Reports\EmployeesSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,8 +130,8 @@
       <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Admin\EmployeeShopping.cs" />
-    <Compile Include="Windows\Admin\Reports\EmployeeReport.xaml.cs">
-      <DependentUpon>EmployeeReport.xaml</DependentUpon>
+    <Compile Include="Windows\Admin\Reports\EmployeesSummary.xaml.cs">
+      <DependentUpon>EmployeesSummary.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
@@ -171,7 +171,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Admin\Reports\EmployeesReport.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
