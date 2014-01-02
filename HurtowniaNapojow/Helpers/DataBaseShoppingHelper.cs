@@ -26,9 +26,8 @@ namespace HurtowniaNapojow.Helpers
         public static float CalculateShoppingProfit(HurtowniaNapojówDataSet.ZakupyKlientaRow shopping)
         {
             var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);
-            var productsProfit =
-                customerProducts.Select(DataBaseProductHelper.GetProductProfit);
-            return (float) productsProfit.Aggregate(.0, (sum, profit) => sum + profit);
+            return (float)customerProducts.Aggregate(.0, (sum, customerProduct) =>
+                sum + DataBaseProductHelper.GetProductProfit(customerProduct));
         }
     }
 }

@@ -35,7 +35,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojówDataSet.PracownicyRow employee)
         {
-            var customerShoppingTableData = DataBaseShoppingHelper.GetShoppingData();
+            var customerShoppingTableData = DataBaseShoppingHelper.GetShoppingData().AsParallel();
             return
                 from customerShopping
                 in customerShoppingTableData
