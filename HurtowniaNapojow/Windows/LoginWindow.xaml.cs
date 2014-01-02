@@ -53,5 +53,20 @@ namespace HurtowniaNapojow.Windows
                 ButtonLogin.PerformClick();
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxEmail.Text = "admin";
+            PasswordBox.Password = "password";
+            ButtonLogin.PerformClick();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TextBoxEmail.Text = "barbi69@gmail.com";
+            PasswordBox.Password = "password";
+            ButtonLogin.PerformClick();
+
+        }
     }
 }
