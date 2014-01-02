@@ -32,9 +32,12 @@ namespace HurtowniaNapojow.Helpers
 
         public Boolean IsEmailValid(TextBox emailTextBox)
         {
-            if (emailTextBox.Text.Equals(Globals.ADMIN_NAME)) return true;
+            var email = emailTextBox.Text;
 
-            var match = Regex.IsMatch(emailTextBox.Text, Globals.EMAIL_REGEX);
+            if (String.IsNullOrEmpty(email)) return false;
+            if (email.Equals(Globals.ADMIN_NAME)) return true;
+
+            var match = Regex.IsMatch(email, Globals.EMAIL_REGEX);
             if (match) return true;
 
             MessageBox.Show("Podaj poprawny adres email", Globals.TITLE_ERROR);

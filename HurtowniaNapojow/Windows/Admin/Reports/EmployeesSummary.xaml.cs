@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HurtowniaNapojow.Windows.Admin.Reports
 {
     /// <summary>
-    /// Interaction logic for EmployeeReport.xaml
+    /// Interaction logic for EmployeesSummary.xaml
     /// </summary>
-    public partial class EmployeeReport : UserControl
+    public partial class EmployeesSummary : Window
     {
-        public EmployeeReport()
+        public EmployeesSummary()
         {
             InitializeComponent();
         }
