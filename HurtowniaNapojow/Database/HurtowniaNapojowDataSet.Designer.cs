@@ -5482,11 +5482,11 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NIP {
                 get {
-                    try {
-                        return ((string)(this[this.tableKlienci.NIPColumn]));
+                    if (this.IsNIPNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NIP\' in table \'Klienci\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableKlienci.NIPColumn]));
                     }
                 }
                 set {
@@ -5514,11 +5514,11 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Email {
                 get {
-                    try {
-                        return ((string)(this[this.tableKlienci.EmailColumn]));
+                    if (this.IsEmailNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'Klienci\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableKlienci.EmailColumn]));
                     }
                 }
                 set {
@@ -8045,7 +8045,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8490,7 +8490,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8827,7 +8827,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9235,7 +9235,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9608,7 +9608,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9918,7 +9918,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10231,7 +10231,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10551,7 +10551,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10878,7 +10878,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11224,7 +11224,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11627,7 +11627,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11957,7 +11957,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12288,7 +12288,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12609,7 +12609,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12965,7 +12965,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
