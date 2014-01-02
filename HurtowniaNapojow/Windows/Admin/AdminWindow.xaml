@@ -1,7 +1,8 @@
 ﻿<Window x:Class="HurtowniaNapojow.Windows.Admin.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Panel Administratora" Height="452" Width="639">
+        Title="Panel Administratora" Height="500" Width="640"
+        WindowStyle="ToolWindow" WindowStartupLocation="Manual" Left="0" Top="0">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <Menu.ItemsPanel>

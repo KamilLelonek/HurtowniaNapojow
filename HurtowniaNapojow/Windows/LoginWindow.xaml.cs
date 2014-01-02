@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Windows.Admin;
+using HurtowniaNapojow.Windows.Employee;
 
 namespace HurtowniaNapojow.Windows
 {

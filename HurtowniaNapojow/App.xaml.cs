@@ -2,6 +2,7 @@
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Windows;
 using HurtowniaNapojow.Windows.Admin;
+using HurtowniaNapojow.Windows.Employee;
 
 namespace HurtowniaNapojow
 {
