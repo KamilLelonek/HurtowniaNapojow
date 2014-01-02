@@ -10,9 +10,78 @@
                     <DockPanel HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" />
+            <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
             <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
+        <TabControl Margin="0,25,0,0">
+            <TabItem Header="Klienci">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="AddNewCustomer_Clicked"/>
+                    <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0" Click="DeleteCustomer_Clicked"/>
+                    <DataGrid Margin="0,20,0,0" x:Name="CustomersDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
+                            <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding NazwaKlienta}" Width="0.1*" />
+                            <DataGridTextColumn Header="NIP" Binding="{Binding NIP}" Width="0.1*" />
+                            <DataGridTextColumn Header="Nr Telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
+                            <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.1*" />
+                            <DataGridTextColumn Header="Ulica Nr" Binding="{Binding UlicaNumer}" Width="0.1*" />
+                            <DataGridTextColumn Header="Miasto Kod" Binding="{Binding MiastoKod}" Width="0.1*" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Customers_ShowDetails_Clicked">Szczegóły</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zakupy">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0" Click="DeleteShopping_Clicked"/>
+                    <DataGrid Margin="0,20,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
+                            <DataGridTextColumn Header="Id Klienta" Binding="{Binding id_klienta}" Width="0.1*" />
+                            <DataGridTextColumn Header="Id Pracownika" Binding="{Binding id_pracownika}" Width="0.1*" />
+                            <DataGridTextColumn Header="Data złożenia" Binding="{Binding DataZłożenia}" Width="0.1*" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Shopping_ShowDetails_Clicked">Szczegóły</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Produkty">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0"/>
+                    <DataGrid Margin="0,20,0,0" x:Name="ProductsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
+                            <DataGridTextColumn Header="Id Zakupu" Binding="{Binding id_zakupu_klienta}" Width="0.1*" />
+                            <DataGridTextColumn Header="Id Napoju" Binding="{Binding id_napoju_hurtowni}" Width="0.1*" />
+                            <DataGridTextColumn Header="Liczba" Binding="{Binding Liczba}" Width="0.1*" />
+                            <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota}" Width="0.1*" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Product_ShowDetails_Clicked">Szczegóły</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -28,5 +28,10 @@ namespace HurtowniaNapojow.Helpers
             var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
             return DataBaseWarehouseDrinkHelper.CalculateDrinkProfit(warehouseDrink);
         }
+
+        internal static object DeleteProductRow(System.Data.DataRow dataRow)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

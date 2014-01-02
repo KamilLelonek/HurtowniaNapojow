@@ -23,11 +23,26 @@ namespace HurtowniaNapojow.Helpers
                 select customerShopping;
         }
 
+        public static IEnumerable<HurtowniaNapojowDataSet.ZakupyKlientaRow> GetShoppingForCustomer(HurtowniaNapojowDataSet.KlienciRow customerRow)
+        {
+            var customerShoppingTableData = GetShoppingData();
+            return
+                from customerShopping
+                in customerShoppingTableData
+                where customerShopping.id_klienta == customerRow.Identyfikator
+                select customerShopping;
+        }
+
         public static float CalculateShoppingProfit(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
         {
             var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);
             return (float)customerProducts.Aggregate(.0, (sum, customerProduct) =>
                 sum + DataBaseProductHelper.GetProductProfit(customerProduct));
+        }
+
+        internal static object DeleteShoppingRow(System.Data.DataRow dataRow)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

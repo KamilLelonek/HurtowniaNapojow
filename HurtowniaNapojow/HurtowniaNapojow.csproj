@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml.cs">
+      <DependentUpon>CustomerNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerDetailsWindow.xaml.cs">
+      <DependentUpon>CustomerDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml.cs">
       <DependentUpon>ShoppingWindow.xaml</DependentUpon>
     </Compile>
@@ -75,6 +81,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Employee\EmployeeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\Customer\CustomerDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

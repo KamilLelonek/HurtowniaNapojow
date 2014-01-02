@@ -10,8 +10,8 @@
                     <DockPanel HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" />
-            <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
+            <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left"/>
+            <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,60,0,0"/>
