@@ -26,7 +26,7 @@ namespace HurtowniaNapojow.Database {
         
         private KlienciDataTable tableKlienci;
         
-        private ZakupyKlientaDataTable tableZakupyKlienta;
+        private SmakiDataTable tableSmaki;
         
         private NapojeHurtowniDataTable tableNapojeHurtowni;
         
@@ -52,11 +52,7 @@ namespace HurtowniaNapojow.Database {
         
         private RodzajeNapojuDataTable tableRodzajeNapoju;
         
-        private SmakiDataTable tableSmaki;
-        
-        private global::System.Data.DataRelation relationKlienciZakupyKlienta;
-        
-        private global::System.Data.DataRelation relationPracownicyZakupyKlienta;
+        private ZakupyKlientaDataTable tableZakupyKlienta;
         
         private global::System.Data.DataRelation relationNapojePozycjeMagazynu;
         
@@ -81,6 +77,10 @@ namespace HurtowniaNapojow.Database {
         private global::System.Data.DataRelation relationNapojeHurtowniProduktyKlienta;
         
         private global::System.Data.DataRelation relationZakupyKlientaProduktyKlienta;
+        
+        private global::System.Data.DataRelation relationKlienciZakupyKlienta;
+        
+        private global::System.Data.DataRelation relationPracownicyZakupyKlienta;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -113,8 +113,8 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["Klienci"] != null)) {
                     base.Tables.Add(new KlienciDataTable(ds.Tables["Klienci"]));
                 }
-                if ((ds.Tables["ZakupyKlienta"] != null)) {
-                    base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
+                if ((ds.Tables["Smaki"] != null)) {
+                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
                 }
                 if ((ds.Tables["NapojeHurtowni"] != null)) {
                     base.Tables.Add(new NapojeHurtowniDataTable(ds.Tables["NapojeHurtowni"]));
@@ -152,8 +152,8 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["RodzajeNapoju"] != null)) {
                     base.Tables.Add(new RodzajeNapojuDataTable(ds.Tables["RodzajeNapoju"]));
                 }
-                if ((ds.Tables["Smaki"] != null)) {
-                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
+                if ((ds.Tables["ZakupyKlienta"] != null)) {
+                    base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -187,9 +187,9 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ZakupyKlientaDataTable ZakupyKlienta {
+        public SmakiDataTable Smaki {
             get {
-                return this.tableZakupyKlienta;
+                return this.tableSmaki;
             }
         }
         
@@ -317,9 +317,9 @@ namespace HurtowniaNapojow.Database {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SmakiDataTable Smaki {
+        public ZakupyKlientaDataTable ZakupyKlienta {
             get {
-                return this.tableSmaki;
+                return this.tableZakupyKlienta;
             }
         }
         
@@ -393,8 +393,8 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["Klienci"] != null)) {
                     base.Tables.Add(new KlienciDataTable(ds.Tables["Klienci"]));
                 }
-                if ((ds.Tables["ZakupyKlienta"] != null)) {
-                    base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
+                if ((ds.Tables["Smaki"] != null)) {
+                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
                 }
                 if ((ds.Tables["NapojeHurtowni"] != null)) {
                     base.Tables.Add(new NapojeHurtowniDataTable(ds.Tables["NapojeHurtowni"]));
@@ -432,8 +432,8 @@ namespace HurtowniaNapojow.Database {
                 if ((ds.Tables["RodzajeNapoju"] != null)) {
                     base.Tables.Add(new RodzajeNapojuDataTable(ds.Tables["RodzajeNapoju"]));
                 }
-                if ((ds.Tables["Smaki"] != null)) {
-                    base.Tables.Add(new SmakiDataTable(ds.Tables["Smaki"]));
+                if ((ds.Tables["ZakupyKlienta"] != null)) {
+                    base.Tables.Add(new ZakupyKlientaDataTable(ds.Tables["ZakupyKlienta"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -474,10 +474,10 @@ namespace HurtowniaNapojow.Database {
                     this.tableKlienci.InitVars();
                 }
             }
-            this.tableZakupyKlienta = ((ZakupyKlientaDataTable)(base.Tables["ZakupyKlienta"]));
+            this.tableSmaki = ((SmakiDataTable)(base.Tables["Smaki"]));
             if ((initTable == true)) {
-                if ((this.tableZakupyKlienta != null)) {
-                    this.tableZakupyKlienta.InitVars();
+                if ((this.tableSmaki != null)) {
+                    this.tableSmaki.InitVars();
                 }
             }
             this.tableNapojeHurtowni = ((NapojeHurtowniDataTable)(base.Tables["NapojeHurtowni"]));
@@ -552,14 +552,12 @@ namespace HurtowniaNapojow.Database {
                     this.tableRodzajeNapoju.InitVars();
                 }
             }
-            this.tableSmaki = ((SmakiDataTable)(base.Tables["Smaki"]));
+            this.tableZakupyKlienta = ((ZakupyKlientaDataTable)(base.Tables["ZakupyKlienta"]));
             if ((initTable == true)) {
-                if ((this.tableSmaki != null)) {
-                    this.tableSmaki.InitVars();
+                if ((this.tableZakupyKlienta != null)) {
+                    this.tableZakupyKlienta.InitVars();
                 }
             }
-            this.relationKlienciZakupyKlienta = this.Relations["KlienciZakupyKlienta"];
-            this.relationPracownicyZakupyKlienta = this.Relations["PracownicyZakupyKlienta"];
             this.relationNapojePozycjeMagazynu = this.Relations["NapojePozycjeMagazynu"];
             this.relationNazwyNapojuNapoje = this.Relations["NazwyNapojuNapoje"];
             this.relationOpakowaniaSztukiNapoje = this.Relations["OpakowaniaSztukiNapoje"];
@@ -572,6 +570,8 @@ namespace HurtowniaNapojow.Database {
             this.relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze = this.Relations["NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze"];
             this.relationNapojeHurtowniProduktyKlienta = this.Relations["NapojeHurtowniProduktyKlienta"];
             this.relationZakupyKlientaProduktyKlienta = this.Relations["ZakupyKlientaProduktyKlienta"];
+            this.relationKlienciZakupyKlienta = this.Relations["KlienciZakupyKlienta"];
+            this.relationPracownicyZakupyKlienta = this.Relations["PracownicyZakupyKlienta"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -584,8 +584,8 @@ namespace HurtowniaNapojow.Database {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableKlienci = new KlienciDataTable();
             base.Tables.Add(this.tableKlienci);
-            this.tableZakupyKlienta = new ZakupyKlientaDataTable();
-            base.Tables.Add(this.tableZakupyKlienta);
+            this.tableSmaki = new SmakiDataTable();
+            base.Tables.Add(this.tableSmaki);
             this.tableNapojeHurtowni = new NapojeHurtowniDataTable();
             base.Tables.Add(this.tableNapojeHurtowni);
             this.tableNapojeProducenta = new NapojeProducentaDataTable();
@@ -610,16 +610,8 @@ namespace HurtowniaNapojow.Database {
             base.Tables.Add(this.tableRodzajeGazu);
             this.tableRodzajeNapoju = new RodzajeNapojuDataTable();
             base.Tables.Add(this.tableRodzajeNapoju);
-            this.tableSmaki = new SmakiDataTable();
-            base.Tables.Add(this.tableSmaki);
-            this.relationKlienciZakupyKlienta = new global::System.Data.DataRelation("KlienciZakupyKlienta", new global::System.Data.DataColumn[] {
-                        this.tableKlienci.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZakupyKlienta.id_klientaColumn}, false);
-            this.Relations.Add(this.relationKlienciZakupyKlienta);
-            this.relationPracownicyZakupyKlienta = new global::System.Data.DataRelation("PracownicyZakupyKlienta", new global::System.Data.DataColumn[] {
-                        this.tablePracownicy.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZakupyKlienta.id_pracownikaColumn}, false);
-            this.Relations.Add(this.relationPracownicyZakupyKlienta);
+            this.tableZakupyKlienta = new ZakupyKlientaDataTable();
+            base.Tables.Add(this.tableZakupyKlienta);
             this.relationNapojePozycjeMagazynu = new global::System.Data.DataRelation("NapojePozycjeMagazynu", new global::System.Data.DataColumn[] {
                         this.tableNapojeProducenta.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableNapojeHurtowni.id_napoju_producentaColumn}, false);
@@ -668,6 +660,14 @@ namespace HurtowniaNapojow.Database {
                         this.tableZakupyKlienta.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
                         this.tableProduktyKlienta.id_zakupu_klientaColumn}, false);
             this.Relations.Add(this.relationZakupyKlientaProduktyKlienta);
+            this.relationKlienciZakupyKlienta = new global::System.Data.DataRelation("KlienciZakupyKlienta", new global::System.Data.DataColumn[] {
+                        this.tableKlienci.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZakupyKlienta.id_klientaColumn}, false);
+            this.Relations.Add(this.relationKlienciZakupyKlienta);
+            this.relationPracownicyZakupyKlienta = new global::System.Data.DataRelation("PracownicyZakupyKlienta", new global::System.Data.DataColumn[] {
+                        this.tablePracownicy.IdentyfikatorColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZakupyKlienta.id_pracownikaColumn}, false);
+            this.Relations.Add(this.relationPracownicyZakupyKlienta);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -678,7 +678,7 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeZakupyKlienta() {
+        private bool ShouldSerializeSmaki() {
             return false;
         }
         
@@ -756,7 +756,7 @@ namespace HurtowniaNapojow.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSmaki() {
+        private bool ShouldSerializeZakupyKlienta() {
             return false;
         }
         
@@ -819,7 +819,7 @@ namespace HurtowniaNapojow.Database {
         public delegate void KlienciRowChangeEventHandler(object sender, KlienciRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ZakupyKlientaRowChangeEventHandler(object sender, ZakupyKlientaRowChangeEvent e);
+        public delegate void SmakiRowChangeEventHandler(object sender, SmakiRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void NapojeHurtowniRowChangeEventHandler(object sender, NapojeHurtowniRowChangeEvent e);
@@ -858,7 +858,7 @@ namespace HurtowniaNapojow.Database {
         public delegate void RodzajeNapojuRowChangeEventHandler(object sender, RodzajeNapojuRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SmakiRowChangeEventHandler(object sender, SmakiRowChangeEvent e);
+        public delegate void ZakupyKlientaRowChangeEventHandler(object sender, ZakupyKlientaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1216,20 +1216,16 @@ namespace HurtowniaNapojow.Database {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ZakupyKlientaDataTable : global::System.Data.TypedTableBase<ZakupyKlientaRow> {
+        public partial class SmakiDataTable : global::System.Data.TypedTableBase<SmakiRow> {
             
             private global::System.Data.DataColumn columnIdentyfikator;
             
-            private global::System.Data.DataColumn columnid_klienta;
-            
-            private global::System.Data.DataColumn columnid_pracownika;
-            
-            private global::System.Data.DataColumn columnDataZłożenia;
+            private global::System.Data.DataColumn columnNazwaSmaku;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaDataTable() {
-                this.TableName = "ZakupyKlienta";
+            public SmakiDataTable() {
+                this.TableName = "Smaki";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1237,7 +1233,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZakupyKlientaDataTable(global::System.Data.DataTable table) {
+            internal SmakiDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1254,7 +1250,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ZakupyKlientaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SmakiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1269,25 +1265,9 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_klientaColumn {
+            public global::System.Data.DataColumn NazwaSmakuColumn {
                 get {
-                    return this.columnid_klienta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_pracownikaColumn {
-                get {
-                    return this.columnid_pracownika;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DataZłożeniaColumn {
-                get {
-                    return this.columnDataZłożenia;
+                    return this.columnNazwaSmaku;
                 }
             }
             
@@ -1302,61 +1282,53 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow this[int index] {
+            public SmakiRow this[int index] {
                 get {
-                    return ((ZakupyKlientaRow)(this.Rows[index]));
+                    return ((SmakiRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowChanging;
+            public event SmakiRowChangeEventHandler SmakiRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowChanged;
+            public event SmakiRowChangeEventHandler SmakiRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowDeleting;
+            public event SmakiRowChangeEventHandler SmakiRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowDeleted;
+            public event SmakiRowChangeEventHandler SmakiRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddZakupyKlientaRow(ZakupyKlientaRow row) {
+            public void AddSmakiRow(SmakiRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow AddZakupyKlientaRow(KlienciRow parentKlienciRowByKlienciZakupyKlienta, PracownicyRow parentPracownicyRowByPracownicyZakupyKlienta, System.DateTime DataZłożenia) {
-                ZakupyKlientaRow rowZakupyKlientaRow = ((ZakupyKlientaRow)(this.NewRow()));
+            public SmakiRow AddSmakiRow(string NazwaSmaku) {
+                SmakiRow rowSmakiRow = ((SmakiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
-                        null,
-                        DataZłożenia};
-                if ((parentKlienciRowByKlienciZakupyKlienta != null)) {
-                    columnValuesArray[1] = parentKlienciRowByKlienciZakupyKlienta[0];
-                }
-                if ((parentPracownicyRowByPracownicyZakupyKlienta != null)) {
-                    columnValuesArray[2] = parentPracownicyRowByPracownicyZakupyKlienta[0];
-                }
-                rowZakupyKlientaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowZakupyKlientaRow);
-                return rowZakupyKlientaRow;
+                        NazwaSmaku};
+                rowSmakiRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSmakiRow);
+                return rowSmakiRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow FindByIdentyfikator(int Identyfikator) {
-                return ((ZakupyKlientaRow)(this.Rows.Find(new object[] {
+            public SmakiRow FindByIdentyfikator(int Identyfikator) {
+                return ((SmakiRow)(this.Rows.Find(new object[] {
                             Identyfikator})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ZakupyKlientaDataTable cln = ((ZakupyKlientaDataTable)(base.Clone()));
+                SmakiDataTable cln = ((SmakiDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1364,16 +1336,14 @@ namespace HurtowniaNapojow.Database {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ZakupyKlientaDataTable();
+                return new SmakiDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnid_klienta = base.Columns["id_klienta"];
-                this.columnid_pracownika = base.Columns["id_pracownika"];
-                this.columnDataZłożenia = base.Columns["DataZłożenia"];
+                this.columnNazwaSmaku = base.Columns["NazwaSmaku"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1381,12 +1351,8 @@ namespace HurtowniaNapojow.Database {
             private void InitClass() {
                 this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdentyfikator);
-                this.columnid_klienta = new global::System.Data.DataColumn("id_klienta", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_klienta);
-                this.columnid_pracownika = new global::System.Data.DataColumn("id_pracownika", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_pracownika);
-                this.columnDataZłożenia = new global::System.Data.DataColumn("DataZłożenia", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataZłożenia);
+                this.columnNazwaSmaku = new global::System.Data.DataColumn("NazwaSmaku", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwaSmaku);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdentyfikator}, true));
                 this.columnIdentyfikator.AutoIncrement = true;
@@ -1394,32 +1360,33 @@ namespace HurtowniaNapojow.Database {
                 this.columnIdentyfikator.AutoIncrementStep = -1;
                 this.columnIdentyfikator.AllowDBNull = false;
                 this.columnIdentyfikator.Unique = true;
+                this.columnNazwaSmaku.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow NewZakupyKlientaRow() {
-                return ((ZakupyKlientaRow)(this.NewRow()));
+            public SmakiRow NewSmakiRow() {
+                return ((SmakiRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ZakupyKlientaRow(builder);
+                return new SmakiRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ZakupyKlientaRow);
+                return typeof(SmakiRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ZakupyKlientaRowChanged != null)) {
-                    this.ZakupyKlientaRowChanged(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
+                if ((this.SmakiRowChanged != null)) {
+                    this.SmakiRowChanged(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1427,8 +1394,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ZakupyKlientaRowChanging != null)) {
-                    this.ZakupyKlientaRowChanging(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
+                if ((this.SmakiRowChanging != null)) {
+                    this.SmakiRowChanging(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1436,8 +1403,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ZakupyKlientaRowDeleted != null)) {
-                    this.ZakupyKlientaRowDeleted(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
+                if ((this.SmakiRowDeleted != null)) {
+                    this.SmakiRowDeleted(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1445,14 +1412,14 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ZakupyKlientaRowDeleting != null)) {
-                    this.ZakupyKlientaRowDeleting(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
+                if ((this.SmakiRowDeleting != null)) {
+                    this.SmakiRowDeleting(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveZakupyKlientaRow(ZakupyKlientaRow row) {
+            public void RemoveSmakiRow(SmakiRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1479,7 +1446,7 @@ namespace HurtowniaNapojow.Database {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ZakupyKlientaDataTable";
+                attribute2.FixedValue = "SmakiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5166,16 +5133,20 @@ namespace HurtowniaNapojow.Database {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SmakiDataTable : global::System.Data.TypedTableBase<SmakiRow> {
+        public partial class ZakupyKlientaDataTable : global::System.Data.TypedTableBase<ZakupyKlientaRow> {
             
             private global::System.Data.DataColumn columnIdentyfikator;
             
-            private global::System.Data.DataColumn columnNazwaSmaku;
+            private global::System.Data.DataColumn columnid_klienta;
+            
+            private global::System.Data.DataColumn columnid_pracownika;
+            
+            private global::System.Data.DataColumn columnDataZłożenia;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiDataTable() {
-                this.TableName = "Smaki";
+            public ZakupyKlientaDataTable() {
+                this.TableName = "ZakupyKlienta";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -5183,7 +5154,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SmakiDataTable(global::System.Data.DataTable table) {
+            internal ZakupyKlientaDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -5200,7 +5171,7 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SmakiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ZakupyKlientaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -5215,9 +5186,25 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NazwaSmakuColumn {
+            public global::System.Data.DataColumn id_klientaColumn {
                 get {
-                    return this.columnNazwaSmaku;
+                    return this.columnid_klienta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_pracownikaColumn {
+                get {
+                    return this.columnid_pracownika;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DataZłożeniaColumn {
+                get {
+                    return this.columnDataZłożenia;
                 }
             }
             
@@ -5232,53 +5219,61 @@ namespace HurtowniaNapojow.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow this[int index] {
+            public ZakupyKlientaRow this[int index] {
                 get {
-                    return ((SmakiRow)(this.Rows[index]));
+                    return ((ZakupyKlientaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowChanging;
+            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowChanged;
+            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowDeleting;
+            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SmakiRowChangeEventHandler SmakiRowDeleted;
+            public event ZakupyKlientaRowChangeEventHandler ZakupyKlientaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSmakiRow(SmakiRow row) {
+            public void AddZakupyKlientaRow(ZakupyKlientaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow AddSmakiRow(string NazwaSmaku) {
-                SmakiRow rowSmakiRow = ((SmakiRow)(this.NewRow()));
+            public ZakupyKlientaRow AddZakupyKlientaRow(KlienciRow parentKlienciRowByKlienciZakupyKlienta, PracownicyRow parentPracownicyRowByPracownicyZakupyKlienta, System.DateTime DataZłożenia) {
+                ZakupyKlientaRow rowZakupyKlientaRow = ((ZakupyKlientaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NazwaSmaku};
-                rowSmakiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSmakiRow);
-                return rowSmakiRow;
+                        null,
+                        null,
+                        DataZłożenia};
+                if ((parentKlienciRowByKlienciZakupyKlienta != null)) {
+                    columnValuesArray[1] = parentKlienciRowByKlienciZakupyKlienta[0];
+                }
+                if ((parentPracownicyRowByPracownicyZakupyKlienta != null)) {
+                    columnValuesArray[2] = parentPracownicyRowByPracownicyZakupyKlienta[0];
+                }
+                rowZakupyKlientaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowZakupyKlientaRow);
+                return rowZakupyKlientaRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow FindByIdentyfikator(int Identyfikator) {
-                return ((SmakiRow)(this.Rows.Find(new object[] {
+            public ZakupyKlientaRow FindByIdentyfikator(int Identyfikator) {
+                return ((ZakupyKlientaRow)(this.Rows.Find(new object[] {
                             Identyfikator})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SmakiDataTable cln = ((SmakiDataTable)(base.Clone()));
+                ZakupyKlientaDataTable cln = ((ZakupyKlientaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -5286,14 +5281,16 @@ namespace HurtowniaNapojow.Database {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SmakiDataTable();
+                return new ZakupyKlientaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnIdentyfikator = base.Columns["Identyfikator"];
-                this.columnNazwaSmaku = base.Columns["NazwaSmaku"];
+                this.columnid_klienta = base.Columns["id_klienta"];
+                this.columnid_pracownika = base.Columns["id_pracownika"];
+                this.columnDataZłożenia = base.Columns["DataZłożenia"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5301,8 +5298,12 @@ namespace HurtowniaNapojow.Database {
             private void InitClass() {
                 this.columnIdentyfikator = new global::System.Data.DataColumn("Identyfikator", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdentyfikator);
-                this.columnNazwaSmaku = new global::System.Data.DataColumn("NazwaSmaku", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNazwaSmaku);
+                this.columnid_klienta = new global::System.Data.DataColumn("id_klienta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_klienta);
+                this.columnid_pracownika = new global::System.Data.DataColumn("id_pracownika", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_pracownika);
+                this.columnDataZłożenia = new global::System.Data.DataColumn("DataZłożenia", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataZłożenia);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdentyfikator}, true));
                 this.columnIdentyfikator.AutoIncrement = true;
@@ -5310,33 +5311,32 @@ namespace HurtowniaNapojow.Database {
                 this.columnIdentyfikator.AutoIncrementStep = -1;
                 this.columnIdentyfikator.AllowDBNull = false;
                 this.columnIdentyfikator.Unique = true;
-                this.columnNazwaSmaku.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow NewSmakiRow() {
-                return ((SmakiRow)(this.NewRow()));
+            public ZakupyKlientaRow NewZakupyKlientaRow() {
+                return ((ZakupyKlientaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SmakiRow(builder);
+                return new ZakupyKlientaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SmakiRow);
+                return typeof(ZakupyKlientaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SmakiRowChanged != null)) {
-                    this.SmakiRowChanged(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                if ((this.ZakupyKlientaRowChanged != null)) {
+                    this.ZakupyKlientaRowChanged(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5344,8 +5344,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SmakiRowChanging != null)) {
-                    this.SmakiRowChanging(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                if ((this.ZakupyKlientaRowChanging != null)) {
+                    this.ZakupyKlientaRowChanging(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5353,8 +5353,8 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SmakiRowDeleted != null)) {
-                    this.SmakiRowDeleted(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                if ((this.ZakupyKlientaRowDeleted != null)) {
+                    this.ZakupyKlientaRowDeleted(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5362,14 +5362,14 @@ namespace HurtowniaNapojow.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SmakiRowDeleting != null)) {
-                    this.SmakiRowDeleting(this, new SmakiRowChangeEvent(((SmakiRow)(e.Row)), e.Action));
+                if ((this.ZakupyKlientaRowDeleting != null)) {
+                    this.ZakupyKlientaRowDeleting(this, new ZakupyKlientaRowChangeEvent(((ZakupyKlientaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSmakiRow(SmakiRow row) {
+            public void RemoveZakupyKlientaRow(ZakupyKlientaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -5396,7 +5396,7 @@ namespace HurtowniaNapojow.Database {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SmakiDataTable";
+                attribute2.FixedValue = "ZakupyKlientaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5645,142 +5645,64 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ZakupyKlientaRow : global::System.Data.DataRow {
+        public partial class SmakiRow : global::System.Data.DataRow {
             
-            private ZakupyKlientaDataTable tableZakupyKlienta;
+            private SmakiDataTable tableSmaki;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZakupyKlientaRow(global::System.Data.DataRowBuilder rb) : 
+            internal SmakiRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableZakupyKlienta = ((ZakupyKlientaDataTable)(this.Table));
+                this.tableSmaki = ((SmakiDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableZakupyKlienta.IdentyfikatorColumn]));
+                    return ((int)(this[this.tableSmaki.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableZakupyKlienta.IdentyfikatorColumn] = value;
+                    this[this.tableSmaki.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_klienta {
+            public string NazwaSmaku {
                 get {
                     try {
-                        return ((int)(this[this.tableZakupyKlienta.id_klientaColumn]));
+                        return ((string)(this[this.tableSmaki.NazwaSmakuColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_klienta\' in table \'ZakupyKlienta\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaSmaku\' in table \'Smaki\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableZakupyKlienta.id_klientaColumn] = value;
+                    this[this.tableSmaki.NazwaSmakuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_pracownika {
-                get {
-                    try {
-                        return ((int)(this[this.tableZakupyKlienta.id_pracownikaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_pracownika\' in table \'ZakupyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableZakupyKlienta.id_pracownikaColumn] = value;
-                }
+            public bool IsNazwaSmakuNull() {
+                return this.IsNull(this.tableSmaki.NazwaSmakuColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DataZłożenia {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableZakupyKlienta.DataZłożeniaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataZłożenia\' in table \'ZakupyKlienta\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableZakupyKlienta.DataZłożeniaColumn] = value;
-                }
+            public void SetNazwaSmakuNull() {
+                this[this.tableSmaki.NazwaSmakuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KlienciRow KlienciRow {
-                get {
-                    return ((KlienciRow)(this.GetParentRow(this.Table.ParentRelations["KlienciZakupyKlienta"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["KlienciZakupyKlienta"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PracownicyRow PracownicyRow {
-                get {
-                    return ((PracownicyRow)(this.GetParentRow(this.Table.ParentRelations["PracownicyZakupyKlienta"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["PracownicyZakupyKlienta"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_klientaNull() {
-                return this.IsNull(this.tableZakupyKlienta.id_klientaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_klientaNull() {
-                this[this.tableZakupyKlienta.id_klientaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_pracownikaNull() {
-                return this.IsNull(this.tableZakupyKlienta.id_pracownikaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_pracownikaNull() {
-                this[this.tableZakupyKlienta.id_pracownikaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDataZłożeniaNull() {
-                return this.IsNull(this.tableZakupyKlienta.DataZłożeniaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDataZłożeniaNull() {
-                this[this.tableZakupyKlienta.DataZłożeniaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProduktyKlientaRow[] GetProduktyKlientaRows() {
-                if ((this.Table.ChildRelations["ZakupyKlientaProduktyKlienta"] == null)) {
-                    return new ProduktyKlientaRow[0];
+            public NapojeProducentaRow[] GetNapojeProducentaRows() {
+                if ((this.Table.ChildRelations["SmakiNapoje"] == null)) {
+                    return new NapojeProducentaRow[0];
                 }
                 else {
-                    return ((ProduktyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["ZakupyKlientaProduktyKlienta"])));
+                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["SmakiNapoje"])));
                 }
             }
         }
@@ -7283,64 +7205,142 @@ namespace HurtowniaNapojow.Database {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SmakiRow : global::System.Data.DataRow {
+        public partial class ZakupyKlientaRow : global::System.Data.DataRow {
             
-            private SmakiDataTable tableSmaki;
+            private ZakupyKlientaDataTable tableZakupyKlienta;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SmakiRow(global::System.Data.DataRowBuilder rb) : 
+            internal ZakupyKlientaRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSmaki = ((SmakiDataTable)(this.Table));
+                this.tableZakupyKlienta = ((ZakupyKlientaDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Identyfikator {
                 get {
-                    return ((int)(this[this.tableSmaki.IdentyfikatorColumn]));
+                    return ((int)(this[this.tableZakupyKlienta.IdentyfikatorColumn]));
                 }
                 set {
-                    this[this.tableSmaki.IdentyfikatorColumn] = value;
+                    this[this.tableZakupyKlienta.IdentyfikatorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NazwaSmaku {
+            public int id_klienta {
                 get {
                     try {
-                        return ((string)(this[this.tableSmaki.NazwaSmakuColumn]));
+                        return ((int)(this[this.tableZakupyKlienta.id_klientaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NazwaSmaku\' in table \'Smaki\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_klienta\' in table \'ZakupyKlienta\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSmaki.NazwaSmakuColumn] = value;
+                    this[this.tableZakupyKlienta.id_klientaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNazwaSmakuNull() {
-                return this.IsNull(this.tableSmaki.NazwaSmakuColumn);
+            public int id_pracownika {
+                get {
+                    try {
+                        return ((int)(this[this.tableZakupyKlienta.id_pracownikaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_pracownika\' in table \'ZakupyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZakupyKlienta.id_pracownikaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNazwaSmakuNull() {
-                this[this.tableSmaki.NazwaSmakuColumn] = global::System.Convert.DBNull;
+            public System.DateTime DataZłożenia {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableZakupyKlienta.DataZłożeniaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DataZłożenia\' in table \'ZakupyKlienta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZakupyKlienta.DataZłożeniaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NapojeProducentaRow[] GetNapojeProducentaRows() {
-                if ((this.Table.ChildRelations["SmakiNapoje"] == null)) {
-                    return new NapojeProducentaRow[0];
+            public KlienciRow KlienciRow {
+                get {
+                    return ((KlienciRow)(this.GetParentRow(this.Table.ParentRelations["KlienciZakupyKlienta"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["KlienciZakupyKlienta"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PracownicyRow PracownicyRow {
+                get {
+                    return ((PracownicyRow)(this.GetParentRow(this.Table.ParentRelations["PracownicyZakupyKlienta"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["PracownicyZakupyKlienta"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_klientaNull() {
+                return this.IsNull(this.tableZakupyKlienta.id_klientaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_klientaNull() {
+                this[this.tableZakupyKlienta.id_klientaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_pracownikaNull() {
+                return this.IsNull(this.tableZakupyKlienta.id_pracownikaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_pracownikaNull() {
+                this[this.tableZakupyKlienta.id_pracownikaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDataZłożeniaNull() {
+                return this.IsNull(this.tableZakupyKlienta.DataZłożeniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDataZłożeniaNull() {
+                this[this.tableZakupyKlienta.DataZłożeniaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ProduktyKlientaRow[] GetProduktyKlientaRows() {
+                if ((this.Table.ChildRelations["ZakupyKlientaProduktyKlienta"] == null)) {
+                    return new ProduktyKlientaRow[0];
                 }
                 else {
-                    return ((NapojeProducentaRow[])(base.GetChildRows(this.Table.ChildRelations["SmakiNapoje"])));
+                    return ((ProduktyKlientaRow[])(base.GetChildRows(this.Table.ChildRelations["ZakupyKlientaProduktyKlienta"])));
                 }
             }
         }
@@ -7383,22 +7383,22 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ZakupyKlientaRowChangeEvent : global::System.EventArgs {
+        public class SmakiRowChangeEvent : global::System.EventArgs {
             
-            private ZakupyKlientaRow eventRow;
+            private SmakiRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRowChangeEvent(ZakupyKlientaRow row, global::System.Data.DataRowAction action) {
+            public SmakiRowChangeEvent(SmakiRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZakupyKlientaRow Row {
+            public SmakiRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7825,22 +7825,22 @@ namespace HurtowniaNapojow.Database {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SmakiRowChangeEvent : global::System.EventArgs {
+        public class ZakupyKlientaRowChangeEvent : global::System.EventArgs {
             
-            private SmakiRow eventRow;
+            private ZakupyKlientaRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRowChangeEvent(SmakiRow row, global::System.Data.DataRowAction action) {
+            public ZakupyKlientaRowChangeEvent(ZakupyKlientaRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SmakiRow Row {
+            public ZakupyKlientaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -8045,7 +8045,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8347,7 +8347,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ZakupyKlientaTableAdapter : global::System.ComponentModel.Component {
+    public partial class SmakiTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -8361,7 +8361,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ZakupyKlientaTableAdapter() {
+        public SmakiTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -8458,55 +8458,39 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ZakupyKlienta";
+            tableMapping.DataSetTable = "Smaki";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("id_klienta", "id_klienta");
-            tableMapping.ColumnMappings.Add("id_pracownika", "id_pracownika");
-            tableMapping.ColumnMappings.Add("DataZłożenia", "DataZłożenia");
+            tableMapping.ColumnMappings.Add("NazwaSmaku", "NazwaSmaku");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `ZakupyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klie" +
-                "nta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR" +
-                " (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożeni" +
-                "a` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS " +
+                "NULL) OR (`NazwaSmaku` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DataZłożenia", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `ZakupyKlienta` (`id_klienta`, `id_pracownika`, `DataZłożenia`) VALUE" +
-                "S (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `ZakupyKlienta` SET `id_klienta` = ?, `id_pracownika` = ?, `DataZłożenia` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
+                "`NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DataZłożenia", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8515,7 +8499,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, id_klienta, id_pracownika, DataZłożenia FROM ZakupyKlienta";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaSmaku FROM Smaki";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8523,7 +8507,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojowDataSet.SmakiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8536,9 +8520,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojowDataSet.ZakupyKlientaDataTable GetData() {
+        public virtual HurtowniaNapojowDataSet.SmakiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable = new HurtowniaNapojowDataSet.ZakupyKlientaDataTable();
+            HurtowniaNapojowDataSet.SmakiDataTable dataTable = new HurtowniaNapojowDataSet.SmakiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8546,7 +8530,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojowDataSet.SmakiDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -8554,7 +8538,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(HurtowniaNapojowDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ZakupyKlienta");
+            return this.Adapter.Update(dataSet, "Smaki");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8576,20 +8560,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, int Original_id_klienta, global::System.Nullable<int> Original_id_pracownika, System.DateTime Original_DataZłożenia) {
+        public virtual int Delete(int Original_Identyfikator, string Original_NazwaSmaku) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_klienta));
-            if ((Original_id_pracownika.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_pracownika.Value));
+            if ((Original_NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaSmaku));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8610,15 +8589,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int id_klienta, global::System.Nullable<int> id_pracownika, System.DateTime DataZłożenia) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_klienta));
-            if ((id_pracownika.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_pracownika.Value));
+        public virtual int Insert(string NazwaSmaku) {
+            if ((NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("NazwaSmaku");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaSmaku));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8639,28 +8616,21 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int id_klienta, global::System.Nullable<int> id_pracownika, System.DateTime DataZłożenia, int Original_Identyfikator, int Original_id_klienta, global::System.Nullable<int> Original_id_pracownika, System.DateTime Original_DataZłożenia) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_klienta));
-            if ((id_pracownika.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_pracownika.Value));
+        public virtual int Update(string NazwaSmaku, int Original_Identyfikator, string Original_NazwaSmaku) {
+            if ((NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("NazwaSmaku");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaSmaku));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DataZłożenia));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Identyfikator));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id_klienta));
-            if ((Original_id_pracownika.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_id_pracownika.Value));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
+            if ((Original_NazwaSmaku == null)) {
+                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaSmaku));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8857,7 +8827,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9265,7 +9235,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9638,7 +9608,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9948,7 +9918,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10261,7 +10231,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10581,7 +10551,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10908,7 +10878,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11254,7 +11224,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11657,7 +11627,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11987,7 +11957,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12318,7 +12288,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12639,7 +12609,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12836,7 +12806,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SmakiTableAdapter : global::System.ComponentModel.Component {
+    public partial class ZakupyKlientaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -12850,7 +12820,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SmakiTableAdapter() {
+        public ZakupyKlientaTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -12947,39 +12917,55 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Smaki";
+            tableMapping.DataSetTable = "ZakupyKlienta";
             tableMapping.ColumnMappings.Add("Identyfikator", "Identyfikator");
-            tableMapping.ColumnMappings.Add("NazwaSmaku", "NazwaSmaku");
+            tableMapping.ColumnMappings.Add("id_klienta", "id_klienta");
+            tableMapping.ColumnMappings.Add("id_pracownika", "id_pracownika");
+            tableMapping.ColumnMappings.Add("DataZłożenia", "DataZłożenia");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS " +
-                "NULL) OR (`NazwaSmaku` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `ZakupyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klie" +
+                "nta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR" +
+                " (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożeni" +
+                "a` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DataZłożenia", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `ZakupyKlienta` (`id_klienta`, `id_pracownika`, `DataZłożenia`) VALUE" +
+                "S (?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND " +
-                "`NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `ZakupyKlienta` SET `id_klienta` = ?, `id_pracownika` = ?, `DataZłożenia` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Identyfikator", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Identyfikator", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NazwaSmaku", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NazwaSmaku", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NazwaSmaku", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_klienta", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_klienta", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_pracownika", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_pracownika", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DataZłożenia", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DataZłożenia", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DataZłożenia", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString2;
+            this._connection.ConnectionString = global::HurtowniaNapojow.Properties.Settings.Default.HurtowniaNapojowConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12988,7 +12974,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Identyfikator, NazwaSmaku FROM Smaki";
+            this._commandCollection[0].CommandText = "SELECT Identyfikator, id_klienta, id_pracownika, DataZłożenia FROM ZakupyKlienta";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12996,7 +12982,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HurtowniaNapojowDataSet.SmakiDataTable dataTable) {
+        public virtual int Fill(HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13009,9 +12995,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HurtowniaNapojowDataSet.SmakiDataTable GetData() {
+        public virtual HurtowniaNapojowDataSet.ZakupyKlientaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HurtowniaNapojowDataSet.SmakiDataTable dataTable = new HurtowniaNapojowDataSet.SmakiDataTable();
+            HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable = new HurtowniaNapojowDataSet.ZakupyKlientaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -13019,7 +13005,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HurtowniaNapojowDataSet.SmakiDataTable dataTable) {
+        public virtual int Update(HurtowniaNapojowDataSet.ZakupyKlientaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -13027,7 +13013,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(HurtowniaNapojowDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Smaki");
+            return this.Adapter.Update(dataSet, "ZakupyKlienta");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13049,15 +13035,20 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Identyfikator, string Original_NazwaSmaku) {
+        public virtual int Delete(int Original_Identyfikator, int Original_id_klienta, global::System.Nullable<int> Original_id_pracownika, System.DateTime Original_DataZłożenia) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_klienta));
+            if ((Original_id_pracownika.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_pracownika.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NazwaSmaku));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13078,13 +13069,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NazwaSmaku) {
-            if ((NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("NazwaSmaku");
+        public virtual int Insert(int id_klienta, global::System.Nullable<int> id_pracownika, System.DateTime DataZłożenia) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_klienta));
+            if ((id_pracownika.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_pracownika.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NazwaSmaku));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13105,21 +13098,28 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NazwaSmaku, int Original_Identyfikator, string Original_NazwaSmaku) {
-            if ((NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("NazwaSmaku");
+        public virtual int Update(int id_klienta, global::System.Nullable<int> id_pracownika, System.DateTime DataZłożenia, int Original_Identyfikator, int Original_id_klienta, global::System.Nullable<int> Original_id_pracownika, System.DateTime Original_DataZłożenia) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_klienta));
+            if ((id_pracownika.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_pracownika.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NazwaSmaku));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Identyfikator));
-            if ((Original_NazwaSmaku == null)) {
-                throw new global::System.ArgumentNullException("Original_NazwaSmaku");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DataZłożenia));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Identyfikator));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id_klienta));
+            if ((Original_id_pracownika.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_id_pracownika.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NazwaSmaku));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DataZłożenia));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13151,7 +13151,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         
         private KlienciTableAdapter _klienciTableAdapter;
         
-        private ZakupyKlientaTableAdapter _zakupyKlientaTableAdapter;
+        private SmakiTableAdapter _smakiTableAdapter;
         
         private NapojeHurtowniTableAdapter _napojeHurtowniTableAdapter;
         
@@ -13177,7 +13177,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         
         private RodzajeNapojuTableAdapter _rodzajeNapojuTableAdapter;
         
-        private SmakiTableAdapter _smakiTableAdapter;
+        private ZakupyKlientaTableAdapter _zakupyKlientaTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -13213,12 +13213,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ZakupyKlientaTableAdapter ZakupyKlientaTableAdapter {
+        public SmakiTableAdapter SmakiTableAdapter {
             get {
-                return this._zakupyKlientaTableAdapter;
+                return this._smakiTableAdapter;
             }
             set {
-                this._zakupyKlientaTableAdapter = value;
+                this._smakiTableAdapter = value;
             }
         }
         
@@ -13395,12 +13395,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SmakiTableAdapter SmakiTableAdapter {
+        public ZakupyKlientaTableAdapter ZakupyKlientaTableAdapter {
             get {
-                return this._smakiTableAdapter;
+                return this._zakupyKlientaTableAdapter;
             }
             set {
-                this._smakiTableAdapter = value;
+                this._zakupyKlientaTableAdapter = value;
             }
         }
         
@@ -13427,9 +13427,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                             && (this._klienciTableAdapter.Connection != null))) {
                     return this._klienciTableAdapter.Connection;
                 }
-                if (((this._zakupyKlientaTableAdapter != null) 
-                            && (this._zakupyKlientaTableAdapter.Connection != null))) {
-                    return this._zakupyKlientaTableAdapter.Connection;
+                if (((this._smakiTableAdapter != null) 
+                            && (this._smakiTableAdapter.Connection != null))) {
+                    return this._smakiTableAdapter.Connection;
                 }
                 if (((this._napojeHurtowniTableAdapter != null) 
                             && (this._napojeHurtowniTableAdapter.Connection != null))) {
@@ -13479,9 +13479,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                             && (this._rodzajeNapojuTableAdapter.Connection != null))) {
                     return this._rodzajeNapojuTableAdapter.Connection;
                 }
-                if (((this._smakiTableAdapter != null) 
-                            && (this._smakiTableAdapter.Connection != null))) {
-                    return this._smakiTableAdapter.Connection;
+                if (((this._zakupyKlientaTableAdapter != null) 
+                            && (this._zakupyKlientaTableAdapter.Connection != null))) {
+                    return this._zakupyKlientaTableAdapter.Connection;
                 }
                 return null;
             }
@@ -13499,7 +13499,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 if ((this._klienciTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._zakupyKlientaTableAdapter != null)) {
+                if ((this._smakiTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._napojeHurtowniTableAdapter != null)) {
@@ -13538,7 +13538,7 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 if ((this._rodzajeNapojuTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._smakiTableAdapter != null)) {
+                if ((this._zakupyKlientaTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -13567,6 +13567,15 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._nazwyOpakowaniaZbiorczegoTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._smakiTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13624,12 +13633,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(updatedRows));
+                    result = (result + this._klienciTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13642,21 +13651,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._zakupyKlientaTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._zakupyKlientaTableAdapter.Update(updatedRows));
+                    result = (result + this._pracownicyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13669,12 +13669,12 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._zakupyKlientaTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(updatedRows));
+                    result = (result + this._zakupyKlientaTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13710,6 +13710,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._nazwyOpakowaniaZbiorczegoTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._smakiTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13761,11 +13769,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(addedRows));
+                    result = (result + this._klienciTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13777,19 +13785,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._zakupyKlientaTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._zakupyKlientaTableAdapter.Update(addedRows));
+                    result = (result + this._pracownicyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13801,11 +13801,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._zakupyKlientaTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(addedRows));
+                    result = (result + this._zakupyKlientaTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -13835,11 +13835,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._pracownicyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._zakupyKlientaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._pracownicyTableAdapter.Update(deletedRows));
+                    result = (result + this._zakupyKlientaTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13851,19 +13851,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._zakupyKlientaTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ZakupyKlienta.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pracownicyTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Pracownicy.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._zakupyKlientaTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._klienciTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._klienciTableAdapter.Update(deletedRows));
+                    result = (result + this._pracownicyTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13875,11 +13867,11 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._smakiTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._klienciTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Klienci.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._smakiTableAdapter.Update(deletedRows));
+                    result = (result + this._klienciTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13928,6 +13920,14 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._nazwyNapojuTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._smakiTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Smaki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._smakiTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13991,8 +13991,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._zakupyKlientaTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._zakupyKlientaTableAdapter.Connection) == false))) {
+            if (((this._smakiTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._smakiTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -14056,8 +14056,8 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._smakiTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._smakiTableAdapter.Connection) == false))) {
+            if (((this._zakupyKlientaTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._zakupyKlientaTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -14102,13 +14102,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._klienciTableAdapter.Adapter);
                     }
                 }
-                if ((this._zakupyKlientaTableAdapter != null)) {
-                    revertConnections.Add(this._zakupyKlientaTableAdapter, this._zakupyKlientaTableAdapter.Connection);
-                    this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._zakupyKlientaTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._zakupyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._zakupyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._zakupyKlientaTableAdapter.Adapter);
+                if ((this._smakiTableAdapter != null)) {
+                    revertConnections.Add(this._smakiTableAdapter, this._smakiTableAdapter.Connection);
+                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._smakiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._smakiTableAdapter.Adapter);
                     }
                 }
                 if ((this._napojeHurtowniTableAdapter != null)) {
@@ -14219,13 +14219,13 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._rodzajeNapojuTableAdapter.Adapter);
                     }
                 }
-                if ((this._smakiTableAdapter != null)) {
-                    revertConnections.Add(this._smakiTableAdapter, this._smakiTableAdapter.Connection);
-                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._smakiTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._smakiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._smakiTableAdapter.Adapter);
+                if ((this._zakupyKlientaTableAdapter != null)) {
+                    revertConnections.Add(this._zakupyKlientaTableAdapter, this._zakupyKlientaTableAdapter.Connection);
+                    this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._zakupyKlientaTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._zakupyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._zakupyKlientaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._zakupyKlientaTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -14290,9 +14290,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     this._klienciTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._klienciTableAdapter]));
                     this._klienciTableAdapter.Transaction = null;
                 }
-                if ((this._zakupyKlientaTableAdapter != null)) {
-                    this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._zakupyKlientaTableAdapter]));
-                    this._zakupyKlientaTableAdapter.Transaction = null;
+                if ((this._smakiTableAdapter != null)) {
+                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._smakiTableAdapter]));
+                    this._smakiTableAdapter.Transaction = null;
                 }
                 if ((this._napojeHurtowniTableAdapter != null)) {
                     this._napojeHurtowniTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._napojeHurtowniTableAdapter]));
@@ -14342,9 +14342,9 @@ namespace HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters {
                     this._rodzajeNapojuTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._rodzajeNapojuTableAdapter]));
                     this._rodzajeNapojuTableAdapter.Transaction = null;
                 }
-                if ((this._smakiTableAdapter != null)) {
-                    this._smakiTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._smakiTableAdapter]));
-                    this._smakiTableAdapter.Transaction = null;
+                if ((this._zakupyKlientaTableAdapter != null)) {
+                    this._zakupyKlientaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._zakupyKlientaTableAdapter]));
+                    this._zakupyKlientaTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
