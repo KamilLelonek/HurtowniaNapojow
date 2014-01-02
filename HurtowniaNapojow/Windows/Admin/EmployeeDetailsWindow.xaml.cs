@@ -24,7 +24,8 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void InitDataContext(HurtowniaNapojówDataSet.PracownicyRow employee)
         {
-            var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
+            //            var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
+            var customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employee);
 
             EmployeeShoppingDataGrid.DataContext = customerShoppingTable;
             EmployeeDetailsGrid.DataContext = employee;

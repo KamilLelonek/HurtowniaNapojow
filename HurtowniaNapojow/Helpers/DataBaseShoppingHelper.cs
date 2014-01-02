@@ -8,7 +8,7 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseShoppingHelper
     {
         private static readonly ZakupyKlientaTableAdapter ShoppingTableAdapter = new ZakupyKlientaTableAdapter();
-        public static HurtowniaNapojówDataSet.ZakupyKlientaDataTable GetShoppingData()
+        public static IEnumerable<HurtowniaNapojówDataSet.ZakupyKlientaRow> GetShoppingData()
         {
             return ShoppingTableAdapter.GetData();
         }

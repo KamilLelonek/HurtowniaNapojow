@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
     <Compile Include="Helpers\DataBaseProductHelper.cs" />
     <Compile Include="Helpers\DataBaseShoppingHelper.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Windows\Admin\EmployeeNewWindow.xaml.cs">
       <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Admin\EmployeeShopping.cs" />
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>

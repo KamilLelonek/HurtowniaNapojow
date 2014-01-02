@@ -8,7 +8,7 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseProductHelper
     {
         private static readonly ProduktyKlientaTableAdapter ProductsTableAdapter = new ProduktyKlientaTableAdapter();
-        public static HurtowniaNapojówDataSet.ProduktyKlientaDataTable GetProductsData()
+        public static IEnumerable<HurtowniaNapojówDataSet.ProduktyKlientaRow> GetProductsData()
         {
             return ProductsTableAdapter.GetData();
         }
@@ -25,7 +25,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static float GetProductProfit(HurtowniaNapojówDataSet.ProduktyKlientaRow product)
         {
-            var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkByID(product.id_napoju_hurtowni);
+            var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
             return DataBaseWarehouseDrinkHelper.CalculateDrinkProfit(warehouseDrink);
         }
     }

@@ -27,9 +27,10 @@
                   VerticalAlignment="Top" Width="521" AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.1*" />
-                <DataGridTextColumn Header="Id klienta" Binding="{Binding id_klienta}" Width="0.2*" />
-                <DataGridTextColumn Header="Data złożenia" Binding="{Binding DataZłożenia}" Width="0.2*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.1*" />
+                <DataGridTextColumn Header="Klient" Binding="{Binding CustomerName}" Width="0.2*" />
+                <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.2*" />
+                <DataGridTextColumn Header="Zysk" Binding="{Binding Profit}" Width="0.2*" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Zyski" Name="ProfitsButton" HorizontalAlignment="Left" Margin="104,305,0,0" VerticalAlignment="Top" Width="75" Click="ProfitsButton_Click"/>

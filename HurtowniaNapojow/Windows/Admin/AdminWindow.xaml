@@ -13,6 +13,10 @@
                 <MenuItem Header="_Nowy" Click="AddNewEmployee_Clicked" />
                 <MenuItem Header="_Usuń" Click="DeleteEmployees_Clicked" />
             </MenuItem>
+            <MenuItem Header="_Raporty">
+                <MenuItem Header="_Lista pracowników"></MenuItem>
+                <MenuItem Header="_Zyski pracowników"></MenuItem>
+            </MenuItem>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TextBox Name="FilterTextBox" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" />

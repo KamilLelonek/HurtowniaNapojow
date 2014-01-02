@@ -12,7 +12,7 @@ namespace HurtowniaNapojow.Helpers
             return WarehouseDrinkTableAdapter.GetData();
         }
 
-        public static HurtowniaNapojówDataSet.NapojeHurtowniRow GetDrinkByID(int drinkId)
+        public static HurtowniaNapojówDataSet.NapojeHurtowniRow GetDrinkById(int drinkId)
         {
             return GetWarehouseDrinkData().FindByIdentyfikator(drinkId);
         }
