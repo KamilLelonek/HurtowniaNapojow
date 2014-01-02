@@ -19,18 +19,18 @@
             </MenuItem>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
-        <TextBox Name="FilterTextBox" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" />
-        <ComboBox Text="Wybierz filtr" Name="FilterComboBox" HorizontalAlignment="Left" Margin="135,31,0,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
-            <ComboBoxItem Name="FirstNameComboBoxItem">Imię</ComboBoxItem>
-            <ComboBoxItem Name="LastNameComboBoxItem">Nazwisko</ComboBoxItem>
-            <ComboBoxItem Name="EmailComboBoxItem">Email</ComboBoxItem>
-        </ComboBox>
-        <Button Content="Resetuj" Name="ResetButton" HorizontalAlignment="Left" Margin="260,31,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
-        <TabControl Margin="0,60,0,0">
+        <TabControl Margin="0,30,0,0">
             <TabItem Header="Pracownicy">
                 <Grid>
+                    <TextBox x:Name="FilterTextBox" HorizontalAlignment="Left" Height="23" Margin="10,5,0,0" VerticalAlignment="Top" Width="120" />
+                    <ComboBox Text="Wybierz filtr" x:Name="FilterComboBox" HorizontalAlignment="Left" Margin="135,5,0,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
+                        <ComboBoxItem x:Name="FirstNameComboBoxItem" Content="Imię"/>
+                        <ComboBoxItem x:Name="LastNameComboBoxItem" Content="Nazwisko"/>
+                        <ComboBoxItem x:Name="EmailComboBoxItem" Content="Email"/>
+                    </ComboBox>
+                    <Button Content="Resetuj" x:Name="ResetButton" HorizontalAlignment="Left" Margin="260,5,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
                     <DataGrid x:Name="EmployeesDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}"
-                              IsReadOnly="True" Margin="10">
+                              IsReadOnly="True" Margin="10,35,10,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.1*" />
                             <DataGridTextColumn Header="Imię" Binding="{Binding Imię}" Width="0.2*" />
