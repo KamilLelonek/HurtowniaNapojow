@@ -1,6 +1,0 @@
-﻿<Window x:Class="HurtowniaNapojow.Windows.Admin.Reports.EmployeesSummary"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Podsumowanie pracowników" Height="347" Width="484">
-    <WindowsFormsHost/>
-</Window>

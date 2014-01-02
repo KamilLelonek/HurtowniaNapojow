@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
@@ -203,5 +204,11 @@ namespace HurtowniaNapojow.Windows.Admin
         }
 
         #endregion Settings TAB
+
+        private void EmployeesSummaryReport_Click(object sender, RoutedEventArgs e)
+        {
+            var dataTable = DataBaseEmployeeHelper.GetEmployeesData();
+            new ReportWindow(dataTable, @"Admin/EmployeeSummary.rdlc").ShowDialog();
+        }
     }
 }
