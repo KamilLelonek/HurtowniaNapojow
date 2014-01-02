@@ -71,8 +71,12 @@ namespace HurtowniaNapojow.Windows.Admin
 
         public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojówDataSet.PracownicyRow employee)
         {
-            var employeeShopping = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
-            return employeeShopping.Select(shopping => new EmployeeShopping(shopping));
+            var customerShoppingTableData = DataBaseShoppingHelper.GetShoppingData();
+            return
+                from customerShopping
+                in customerShoppingTableData
+                where customerShopping.id_pracownika == employee.Identyfikator
+                select new EmployeeShopping(customerShopping);
         }
     }
 }
