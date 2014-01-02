@@ -1,5 +1,5 @@
 ﻿using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -7,12 +7,12 @@ namespace HurtowniaNapojow.Helpers
     {
         private static readonly NapojeProducentaTableAdapter ProducerDrinkTableAdapter = new NapojeProducentaTableAdapter();
 
-        public static HurtowniaNapojówDataSet.NapojeProducentaDataTable GetProducerDrinkData()
+        public static HurtowniaNapojowDataSet.NapojeProducentaDataTable GetProducerDrinkData()
         {
             return ProducerDrinkTableAdapter.GetData();
         }
 
-        public static HurtowniaNapojówDataSet.NapojeProducentaRow GetDrinkByID(int drinkId)
+        public static HurtowniaNapojowDataSet.NapojeProducentaRow GetDrinkByID(int drinkId)
         {
             return GetProducerDrinkData().FindByIdentyfikator(drinkId);
         }

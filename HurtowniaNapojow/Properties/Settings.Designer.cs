@@ -26,22 +26,22 @@ namespace HurtowniaNapojow.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\Database\\HurtowniaNapojów.acc" +
-            "db;Persist Security Info=True")]
-        public string HurtowniaNapojówConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database\\HurtowniaN" +
+            "apojow.accdb;Persist Security Info=True")]
+        public string HurtowniaNapojowConnectionString1 {
             get {
-                return ((string)(this["HurtowniaNapojówConnectionString"]));
+                return ((string)(this["HurtowniaNapojowConnectionString1"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database\\HurtowniaN" +
-            "apojów.accdb;Persist Security Info=True")]
-        public string HurtowniaNapojówConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\Database\\HurtowniaNapojow.acc" +
+            "db;Persist Security Info=True")]
+        public string HurtowniaNapojowConnectionString {
             get {
-                return ((string)(this["HurtowniaNapojówConnectionString1"]));
+                return ((string)(this["HurtowniaNapojowConnectionString"]));
             }
         }
     }

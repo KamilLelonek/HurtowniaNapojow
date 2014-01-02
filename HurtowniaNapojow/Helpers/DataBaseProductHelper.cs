@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
     public static class DataBaseProductHelper
     {
         private static readonly ProduktyKlientaTableAdapter ProductsTableAdapter = new ProduktyKlientaTableAdapter();
-        public static IEnumerable<HurtowniaNapojówDataSet.ProduktyKlientaRow> GetProductsData()
+        public static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> GetProductsData()
         {
             return ProductsTableAdapter.GetData();
         }
 
-        public static IEnumerable<HurtowniaNapojówDataSet.ProduktyKlientaRow> GetProductsForShopping(HurtowniaNapojówDataSet.ZakupyKlientaRow shopping)
+        public static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> GetProductsForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
         {
             var customerProductsDataTable = GetProductsData();
             return
@@ -23,7 +23,7 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
-        public static float GetProductProfit(HurtowniaNapojówDataSet.ProduktyKlientaRow product)
+        public static float GetProductProfit(HurtowniaNapojowDataSet.ProduktyKlientaRow product)
         {
             var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
             return DataBaseWarehouseDrinkHelper.CalculateDrinkProfit(warehouseDrink);

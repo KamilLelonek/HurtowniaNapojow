@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -12,19 +12,18 @@ namespace HurtowniaNapojow.Windows.Admin
     /// </summary>
     public partial class EmployeeDetailsWindow
     {
-        private readonly HurtowniaNapojówDataSet.PracownicyRow _employee;
+        private readonly HurtowniaNapojowDataSet.PracownicyRow _employee;
         private readonly Validator _validator = Validator.Instance;
 
-        public EmployeeDetailsWindow(ref HurtowniaNapojówDataSet.PracownicyRow employeeRow)
+        public EmployeeDetailsWindow(ref HurtowniaNapojowDataSet.PracownicyRow employeeRow)
         {
             InitializeComponent();
             _employee = employeeRow;
             InitDataContext(employeeRow);
         }
 
-        private void InitDataContext(HurtowniaNapojówDataSet.PracownicyRow employee)
+        private void InitDataContext(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
-            //            var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
             var customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employee);
 
             EmployeeShoppingDataGrid.DataContext = customerShoppingTable;

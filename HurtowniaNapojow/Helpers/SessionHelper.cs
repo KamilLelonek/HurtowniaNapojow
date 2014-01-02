@@ -37,7 +37,7 @@ namespace HurtowniaNapojow.Helpers
 
         public Boolean IsUserSet { get; private set; }
         public bool IsCurrentUserAdmin { get; private set; }
-        public HurtowniaNapojówDataSet.PracownicyRow CurrentEmployee { get; private set; }
+        public HurtowniaNapojowDataSet.PracownicyRow CurrentEmployee { get; private set; }
 
         # region Initialization
 

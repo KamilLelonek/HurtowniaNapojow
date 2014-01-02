@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+﻿using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -9,12 +7,12 @@ namespace HurtowniaNapojow.Helpers
     {
         private static readonly KlienciTableAdapter CustomerTableAdapter = new KlienciTableAdapter();
 
-        public static HurtowniaNapojówDataSet.KlienciDataTable GetCustomersData()
+        public static HurtowniaNapojowDataSet.KlienciDataTable GetCustomersData()
         {
             return CustomerTableAdapter.GetData();
         }
 
-        public static HurtowniaNapojówDataSet.KlienciRow GetCustomerForShopping(HurtowniaNapojówDataSet.ZakupyKlientaRow shoppingRow)
+        public static HurtowniaNapojowDataSet.KlienciRow GetCustomerForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
             return GetCustomersData().FindByIdentyfikator(shoppingRow.id_klienta);
         }

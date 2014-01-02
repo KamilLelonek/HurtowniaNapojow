@@ -80,10 +80,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Database\HurtowniaNapojówDataSet.Designer.cs">
+    <Compile Include="Database\HurtowniaNapojowDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
+      <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
@@ -132,16 +132,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Database\HurtowniaNapojówDataSet.xsc">
-      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
+    <None Include="Database\HurtowniaNapojowDataSet.xsc">
+      <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Database\HurtowniaNapojówDataSet.xsd">
+    <None Include="Database\HurtowniaNapojowDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HurtowniaNapojówDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>HurtowniaNapojowDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Database\HurtowniaNapojówDataSet.xss">
-      <DependentUpon>HurtowniaNapojówDataSet.xsd</DependentUpon>
+    <None Include="Database\HurtowniaNapojowDataSet.xss">
+      <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,7 +153,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\HurtowniaNapojów.accdb" />
+    <Content Include="Database\HurtowniaNapojow.accdb" />
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />

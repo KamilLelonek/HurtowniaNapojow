@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -66,7 +66,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
             var employeeRow =
-                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojówDataSet.PracownicyRow;
+                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.PracownicyRow;
             if (employeeRow == null) return;
 
             this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
@@ -138,7 +138,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
             if (!isUserAuthenticated)
             {
-                MessageBox.Show("Podane hasło różni się od obecnego", Globals.TITLE_ERROR);
+                MessageBox.Show("Podane hasło rożni się od obecnego", Globals.TITLE_ERROR);
                 return;
             }
             if (isPasswordEmpty)

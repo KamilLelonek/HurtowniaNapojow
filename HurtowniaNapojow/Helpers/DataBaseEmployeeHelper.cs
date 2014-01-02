@@ -4,7 +4,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojówDataSetTableAdapters;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -12,7 +12,7 @@ namespace HurtowniaNapojow.Helpers
     {
         private static readonly PracownicyTableAdapter EmployeesTableAdapter = new PracownicyTableAdapter();
 
-        public static HurtowniaNapojówDataSet.PracownicyDataTable GetEmployeesData()
+        public static HurtowniaNapojowDataSet.PracownicyDataTable GetEmployeesData()
         {
             return EmployeesTableAdapter.GetData();
         }
@@ -40,24 +40,24 @@ namespace HurtowniaNapojow.Helpers
         #endregion Basic CRUD
 
         #region Extended CRUD
-        public static Boolean IsUserAuthenticated(HurtowniaNapojówDataSet.PracownicyRow employee, String password)
+        public static Boolean IsUserAuthenticated(HurtowniaNapojowDataSet.PracownicyRow employee, String password)
         {
             return employee.Hasło.Equals(password);
         }
 
-        public static Boolean ChangePassword(HurtowniaNapojówDataSet.PracownicyRow employee, String newPassword)
+        public static Boolean ChangePassword(HurtowniaNapojowDataSet.PracownicyRow employee, String newPassword)
         {
             employee.Hasło = newPassword;
             return UpdateDB(employee, "Hasło zostało zmienione");
         }
 
-        public static Boolean ChangeEmail(HurtowniaNapojówDataSet.PracownicyRow employee, String newEmail)
+        public static Boolean ChangeEmail(HurtowniaNapojowDataSet.PracownicyRow employee, String newEmail)
         {
             employee.Email = newEmail;
             return UpdateDB(employee, "Email został zmieniony");
         }
 
-        public static Boolean ChangeName(HurtowniaNapojówDataSet.PracownicyRow employee, String newFirstName,
+        public static Boolean ChangeName(HurtowniaNapojowDataSet.PracownicyRow employee, String newFirstName,
             String newLastName)
         {
             employee.Imię = newFirstName;
@@ -65,7 +65,7 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB(employee, "Dane osobowe zostały zmienione");
         }
 
-        public static float CalculateEmployeeProfits(HurtowniaNapojówDataSet.PracownicyRow employee)
+        public static float CalculateEmployeeProfits(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
             var employeeShoppings = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
             return (float)employeeShoppings.Aggregate(.0, (sum, profit) => sum + DataBaseShoppingHelper.CalculateShoppingProfit(profit));
@@ -73,7 +73,7 @@ namespace HurtowniaNapojow.Helpers
         #endregion Extended CRUD
 
         #region Common methods
-        public static Boolean UpdateDB(HurtowniaNapojówDataSet.PracownicyRow employee, String messageIfSuccess)
+        public static Boolean UpdateDB(HurtowniaNapojowDataSet.PracownicyRow employee, String messageIfSuccess)
         {
             try
             {
