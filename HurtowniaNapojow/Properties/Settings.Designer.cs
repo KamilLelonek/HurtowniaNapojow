@@ -44,5 +44,16 @@ namespace HurtowniaNapojow.Properties {
                 return ((string)(this["HurtowniaNapojowConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\HurtowniaNapojow.ac" +
+            "cdb")]
+        public string HurtowniaNapojowConnectionString2 {
+            get {
+                return ((string)(this["HurtowniaNapojowConnectionString2"]));
+            }
+        }
     }
 }
