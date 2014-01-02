@@ -151,9 +151,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Access Database files
-HurtowniaNapojow/Database/*.accdb
-HurtowniaNapojow/Database/*.laccdb
-HurtowniaNapojow/Database/*.cs
-HurtowniaNapojow/Database/*.xsc
-HurtowniaNapojow/Database/*.xss
-HurtowniaNapojow/Database/*.xsd
+HurtowniaNapojow/Database/
