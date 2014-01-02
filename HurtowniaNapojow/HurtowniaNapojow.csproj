@@ -39,6 +39,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,27 +49,17 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml.cs">
-      <DependentUpon>CustomerNewWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerDetailsWindow.xaml.cs">
-      <DependentUpon>CustomerDetailsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml.cs">
-      <DependentUpon>ShoppingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
-      <DependentUpon>WarehouseWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="Windows\Admin\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,11 +72,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Employee\EmployeeWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Windows\Admin\Reports\EmployeeReport.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml">
+    <Page Include="Windows\Employee\EmployeeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -92,7 +84,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -130,17 +130,28 @@
       <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Admin\EmployeeShopping.cs" />
+    <Compile Include="Windows\Admin\Reports\EmployeeReport.xaml.cs">
+      <DependentUpon>EmployeeReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerDetailsWindow.xaml.cs">
+      <DependentUpon>CustomerDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerNewWindow.xaml.cs">
+      <DependentUpon>CustomerNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml.cs">
+      <DependentUpon>ShoppingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
+      <DependentUpon>WarehouseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -160,6 +171,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Admin\Reports\EmployeesReport.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
