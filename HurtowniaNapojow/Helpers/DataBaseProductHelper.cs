@@ -23,10 +23,10 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
-        public static float GetProductProfit(HurtowniaNapojowDataSet.ProduktyKlientaRow product)
+        public static float GetProductValue(HurtowniaNapojowDataSet.ProduktyKlientaRow product)
         {
             var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
-            return DataBaseWarehouseDrinkHelper.CalculateDrinkProfit(warehouseDrink);
+            return DataBaseWarehouseDrinkHelper.CalculateDrinkValue(warehouseDrink);
         }
 
         internal static object DeleteProductRow(System.Data.DataRow dataRow)

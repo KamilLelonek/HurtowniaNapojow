@@ -16,7 +16,7 @@
             </MenuItem>
             <MenuItem Header="_Raporty">
                 <MenuItem Name="ReportEmployeesSummary" Header="_Lista pracownikow"  Click="EmployeesSummaryReport_Click"></MenuItem>
-                <MenuItem Name="ReportEmployeesProfits" Header="_Zyski pracownikow"></MenuItem>
+                <MenuItem Name="ReportEmployeesValue" Header="_Zyski pracownikow"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>

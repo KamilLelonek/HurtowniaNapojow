@@ -33,11 +33,10 @@ namespace HurtowniaNapojow.Helpers
                 select customerShopping;
         }
 
-        public static float CalculateShoppingProfit(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
+        public static float CalculateShoppingValue(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
         {
             var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);
-            return (float)customerProducts.Aggregate(.0, (sum, customerProduct) =>
-                sum + DataBaseProductHelper.GetProductProfit(customerProduct));
+            return (float)customerProducts.Aggregate(.0, (sum, customerProduct) => sum + customerProduct.Kwota);
         }
 
         public static float CalculateShoppingPrice(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
