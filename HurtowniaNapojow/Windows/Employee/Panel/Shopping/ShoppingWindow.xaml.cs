@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;

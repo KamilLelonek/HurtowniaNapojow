@@ -12,10 +12,11 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseCustomerHelper
     {
         private static readonly KlienciTableAdapter CustomerTableAdapter = new KlienciTableAdapter();
+        private static IEnumerable<HurtowniaNapojowDataSet.KlienciRow> _customersData = CustomerTableAdapter.GetData();
 
         public static IEnumerable<HurtowniaNapojowDataSet.KlienciRow> GetCustomersData()
         {
-            return CustomerTableAdapter.GetData();
+            return _customersData;
         }
 
         public static HurtowniaNapojowDataSet.KlienciRow GetCustomerForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
@@ -32,6 +33,7 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             CustomerTableAdapter.Insert(newNazwaKlienta, newNIP, newNrTelefonu, newEmail, newUlicaNr, newMiastoKod);
+            _customersData = CustomerTableAdapter.GetData();
             MessageBox.Show("Pomyślnie dodano nowego klienta", Globals.TITLE_SUCCESS);
             return true;
         }

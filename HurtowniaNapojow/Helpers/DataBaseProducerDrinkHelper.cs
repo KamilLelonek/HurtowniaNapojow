@@ -8,10 +8,11 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseProducerDrinkHelper
     {
         private static readonly NapojeProducentaTableAdapter ProducerDrinkTableAdapter = new NapojeProducentaTableAdapter();
+        private static IEnumerable<HurtowniaNapojowDataSet.NapojeProducentaRow> _producerDrinksData = ProducerDrinkTableAdapter.GetData();
 
         public static IEnumerable<HurtowniaNapojowDataSet.NapojeProducentaRow> GetProducerDrinkData()
         {
-            return ProducerDrinkTableAdapter.GetData();
+            return _producerDrinksData;
         }
 
         public static HurtowniaNapojowDataSet.NapojeProducentaRow GetDrinkByID(int drinkId)

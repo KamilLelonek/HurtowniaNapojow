@@ -8,9 +8,11 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseProductHelper
     {
         private static readonly ProduktyKlientaTableAdapter ProductsTableAdapter = new ProduktyKlientaTableAdapter();
+        private static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> _productsData = ProductsTableAdapter.GetData();
+
         public static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> GetProductsData()
         {
-            return ProductsTableAdapter.GetData();
+            return _productsData;
         }
 
         public static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> GetProductsForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)

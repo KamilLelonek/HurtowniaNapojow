@@ -12,10 +12,11 @@ namespace HurtowniaNapojow.Helpers
     public static class DataBaseEmployeeHelper
     {
         private static readonly PracownicyTableAdapter EmployeesTableAdapter = new PracownicyTableAdapter();
+        private static IEnumerable<HurtowniaNapojowDataSet.PracownicyRow> _employeesData = EmployeesTableAdapter.GetData();
 
         public static IEnumerable<HurtowniaNapojowDataSet.PracownicyRow> GetEmployeesData()
         {
-            return EmployeesTableAdapter.GetData();
+            return _employeesData;
         }
 
         #region Basic CRUD
@@ -28,6 +29,7 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             EmployeesTableAdapter.Insert(newLastName, newFirstName, Globals.DEFAULT_PASSWORD, newEmail, hasAdminRole);
+            _employeesData = EmployeesTableAdapter.GetData();
             MessageBox.Show("Pomyślnie dodano nowego pracownika", Globals.TITLE_SUCCESS);
             return true;
         }

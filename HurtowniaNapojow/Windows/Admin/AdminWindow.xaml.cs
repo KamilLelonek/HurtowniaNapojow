@@ -7,6 +7,7 @@ using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Reports;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
