@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace HurtowniaNapojow.Helpers
     {
         private static readonly PracownicyTableAdapter EmployeesTableAdapter = new PracownicyTableAdapter();
 
-        public static HurtowniaNapojowDataSet.PracownicyDataTable GetEmployeesData()
+        public static IEnumerable<HurtowniaNapojowDataSet.PracownicyRow> GetEmployeesData()
         {
             return EmployeesTableAdapter.GetData();
         }

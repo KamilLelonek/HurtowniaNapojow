@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
@@ -8,18 +9,18 @@ using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
 namespace HurtowniaNapojow.Helpers
 {
-    class DataBaseCustomerHelper
+    public static class DataBaseCustomerHelper
     {
         private static readonly KlienciTableAdapter CustomerTableAdapter = new KlienciTableAdapter();
 
-        public static HurtowniaNapojowDataSet.KlienciDataTable GetCustomersData()
+        public static IEnumerable<HurtowniaNapojowDataSet.KlienciRow> GetCustomersData()
         {
             return CustomerTableAdapter.GetData();
         }
 
         public static HurtowniaNapojowDataSet.KlienciRow GetCustomerForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
-            return GetCustomersData().FindByIdentyfikator(shoppingRow.id_klienta);
+            return GetCustomersData().First(customer => customer.Identyfikator == shoppingRow.id_klienta);
         }
 
         public static Boolean AddNewCustomer(String newNazwaKlienta, String newNIP, String newNrTelefonu, String newEmail, String newUlicaNr, String newMiastoKod)

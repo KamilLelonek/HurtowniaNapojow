@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace HurtowniaNapojow.Reports
     public partial class ReportWindow : Window
     {
         private Boolean _isReportViewerLoaded;
-        public ReportWindow(DataTable dataTable, String reportRelativePath)
+        public ReportWindow(IEnumerable dataTable, String reportRelativePath)
         {
             InitializeComponent();
             ReportViewer.Load +=
@@ -31,7 +32,7 @@ namespace HurtowniaNapojow.Reports
         }
 
 
-        private void ReportViewerOnLoad(DataTable dataTable, String reportPath)
+        private void ReportViewerOnLoad(IEnumerable dataTable, String reportPath)
         {
             if (_isReportViewerLoaded) return;
 

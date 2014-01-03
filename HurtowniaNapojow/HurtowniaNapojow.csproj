@@ -124,6 +124,7 @@
       <DependentUpon>ReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ControlsPlugins.cs" />
+    <Compile Include="Utils\Timer.cs" />
     <Compile Include="Utils\WindowsPlugins.cs" />
     <Compile Include="Windows\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
