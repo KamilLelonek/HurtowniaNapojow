@@ -1,7 +1,7 @@
 ﻿<Window x:Class="HurtowniaNapojow.Windows.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hurtownia Napojow | Logowanie do systemu" Height="320" Width="300"
+        Title="Hurtownia Napojow | Logowanie" Height="320" Width="300"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <Label Margin="0,10,0,0" Content="Hurtownia Napojow" HorizontalAlignment="Center" VerticalAlignment="Top" TabIndex="1" Height="28" Width="116" HorizontalContentAlignment="Center"  />
