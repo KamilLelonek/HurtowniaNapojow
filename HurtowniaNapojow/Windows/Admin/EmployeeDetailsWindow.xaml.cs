@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports;
 using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -15,19 +17,20 @@ namespace HurtowniaNapojow.Windows.Admin
     {
         private readonly HurtowniaNapojowDataSet.PracownicyRow _employee;
         private readonly Validator _validator = Validator.Instance;
+        private readonly IEnumerable<EmployeeShopping> _customerShoppingTable;
 
         public EmployeeDetailsWindow(ref HurtowniaNapojowDataSet.PracownicyRow employeeRow)
         {
             InitializeComponent();
             _employee = employeeRow;
+            _customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employeeRow);
+
             InitDataContext(employeeRow);
         }
 
         private void InitDataContext(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
-            var customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employee);
-
-            EmployeeShoppingDataGrid.DataContext = customerShoppingTable;
+            EmployeeShoppingDataGrid.DataContext = _customerShoppingTable;
             EmployeeDetailsGrid.DataContext = employee;
         }
 
@@ -48,10 +51,9 @@ namespace HurtowniaNapojow.Windows.Admin
             this.OpenWindow(new AdminWindow());
         }
 
-        private void ValueButton_Click(object sender, RoutedEventArgs e)
+        private void SummaryButton_Click(object sender, RoutedEventArgs e)
         {
-            var income = DataBaseEmployeeHelper.CalculateEmployeeIncome(_employee);
-            MessageBox.Show(String.Format("Bieżące kwota zrealizowanych zakupów wynosi {0}zł", income));
+            this.OpenWindow(new ReportWindow(_customerShoppingTable, @"Admin/EmployeeShoppings.rdlc"), blockPrevious: true);
         }
     }
 }
