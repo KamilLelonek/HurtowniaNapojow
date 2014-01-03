@@ -6,8 +6,6 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
-using HurtowniaNapojow.Reports;
-using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
@@ -209,7 +207,13 @@ namespace HurtowniaNapojow.Windows.Admin
         private void EmployeesSummaryReport_Click(object sender, RoutedEventArgs e)
         {
             var dataTable = DataBaseEmployeeHelper.GetEmployeesData();
-            this.OpenWindow(new ReportWindow(dataTable, @"Admin/EmployeesSummary.rdlc"), blockPrevious: true);
+            this.OpenReport(dataTable, @"Admin/EmployeesSummary.rdlc");
+        }
+
+        private void EmployeesIncomeReport_Click(object sender, RoutedEventArgs e)
+        {
+            var dataTable = EmployeeIncome.GetEmployeesIncome();
+            this.OpenReport(dataTable, @"Admin/EmployeesIncome.rdlc");
         }
     }
 }

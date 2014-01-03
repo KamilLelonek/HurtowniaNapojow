@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Windows;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
-using HurtowniaNapojow.Reports;
-using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
@@ -53,7 +48,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void SummaryButton_Click(object sender, RoutedEventArgs e)
         {
-            this.OpenWindow(new ReportWindow(_customerShoppingTable, @"Admin/EmployeeShoppings.rdlc"), blockPrevious: true);
+            this.OpenReport(_customerShoppingTable, @"Admin/EmployeeShoppings.rdlc");
         }
     }
 }
