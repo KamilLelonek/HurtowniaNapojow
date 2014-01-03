@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;
 
@@ -81,9 +82,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
-            var employeeRow =
-                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.ZakupyKlientaRow;
-            if (employeeRow == null) return;
+            var employeeShopping = ((EmployeeShopping)((Button)sender).DataContext);
 
             //this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
         }
