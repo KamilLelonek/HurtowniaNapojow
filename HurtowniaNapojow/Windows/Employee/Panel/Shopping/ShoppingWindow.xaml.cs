@@ -8,6 +8,7 @@ using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
@@ -18,13 +19,28 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
     public partial class ShoppingWindow
     {
         private readonly Validator _validator = Validator.Instance;
+        private bool _customersFilled = false;
+        private bool _shoppingsFilled = false;
 
         public ShoppingWindow()
         {
             InitializeComponent();
-            SetCustomersBinding();
-            SetShoppingBinding();
-            SetProductBinding();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            if (CustomersTab.IsSelected && !_customersFilled)
+            {
+                _customersFilled = true;
+                SetCustomersBinding();
+            }
+            if (ShoppingsTab.IsSelected && !_shoppingsFilled)
+            {
+                _shoppingsFilled = true;
+                SetShoppingBinding();
+            }
         }
 
         private void MenuShoppingPanel_Click(object sender, RoutedEventArgs e)
@@ -83,37 +99,19 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
-            var employeeShopping = ((EmployeeShopping)((Button)sender).DataContext);
+            var shopping = ((EmployeeShopping)((Button)sender).DataContext);
+            (new CustomerShoppingDetailsWindow(this, shopping)).ShowDialog();
+        }
 
-            //this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
+        private void AddNewCustomerShopping_Clicked(object sender, RoutedEventArgs e)
+        {
+            (new CustomerShoppingDetailsWindow(this, null)).ShowDialog();
         }
 
         private void DeleteShopping_Clicked(object sender, RoutedEventArgs e)
         {
             var shoppings = ShoppingsDataGrid.SelectedItems.OfType<DataRowView>().ToList();
             shoppings.ForEach(shopping => DataBaseShoppingHelper.DeleteShoppingRow(shopping.Row));
-        }
-        #endregion
-
-        #region TAB_Product
-        public void SetProductBinding()
-        {
-            ProductsDataGrid.RebindContext(new ProduktyKlientaTableAdapter().GetData());
-        }
-
-        private void Product_ShowDetails_Clicked(object sender, RoutedEventArgs e)
-        {
-            var employeeRow =
-                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.ProduktyKlientaRow;
-            if (employeeRow == null) return;
-
-            //this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
-        }
-
-        private void DeleteProduct_Clicked(object sender, RoutedEventArgs e)
-        {
-            var products = ProductsDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            products.ForEach(product => DataBaseProductHelper.DeleteProductRow(product.Row));
         }
         #endregion
     }
