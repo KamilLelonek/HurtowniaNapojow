@@ -6,15 +6,15 @@ namespace System.Windows
     {
         public static void OpenWindow(this Window window, Window newWindow, bool closePrevious = true, bool blockPrevious = false)
         {
-            window.Cursor = Cursors.Wait;
-            newWindow.Loaded += (sender, args) => newWindow.Cursor = Cursors.Arrow;
-
             if (blockPrevious)
             {
                 newWindow.ShowDialog();
             }
             else
             {
+                window.Cursor = Cursors.Wait;
+                newWindow.Loaded += (sender, args) => newWindow.Cursor = Cursors.Arrow;
+
                 newWindow.Show();
                 if (closePrevious)
                 {
