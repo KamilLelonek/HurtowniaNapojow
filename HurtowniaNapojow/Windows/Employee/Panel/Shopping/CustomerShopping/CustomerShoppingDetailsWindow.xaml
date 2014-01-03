@@ -1,0 +1,40 @@
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.CustomerShoppingDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Zakupy klienta" Height="372" Width="559"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen">
+    <Grid x:Name="CustomerDetailsGrid">
+        <Label Content="Id Klienta" HorizontalAlignment="Left" Margin="12,7,0,0" VerticalAlignment="Top" />
+        <Label Content="Data Złożenia" HorizontalAlignment="Left" Margin="120,7,0,0" VerticalAlignment="Top"
+               RenderTransformOrigin="0.658,3" />
+        <TextBox Name="IdKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding CustomerName}"
+                 VerticalAlignment="Top" Width="100" />
+        <TextBox Name="DataZlozeniaTextBox" HorizontalAlignment="Left" Height="23" Margin="120,37,0,0" Text="{Binding Date}"
+                 VerticalAlignment="Top" Width="100" IsEnabled="False" />
+        <Label Content="Produkty" HorizontalAlignment="Left" Margin="10,60,0,0"
+               VerticalAlignment="Top" />
+        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5"
+                VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
+        <Button Content="Zapisz" x:Name="SaveButton" HorizontalAlignment="Right" Margin="0,0,90,5"
+                VerticalAlignment="Bottom" Width="75" Click="SaveButton_Click" />
+        <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="12,85,0,0"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="92,85,0,0"/>
+        <DataGrid x:Name="ProductsDataGrid" Margin="0,110,0,30" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
+                <DataGridTextColumn Header="Id Zakupu" Binding="{Binding id_zakupu_klienta}" Width="0.1*" />
+                <DataGridTextColumn Header="Id Napoju" Binding="{Binding id_napoju_hurtowni}" Width="0.1*" />
+                <DataGridTextColumn Header="Liczba" Binding="{Binding Liczba}" Width="0.1*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota}" Width="0.1*" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button>Szczegóły</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

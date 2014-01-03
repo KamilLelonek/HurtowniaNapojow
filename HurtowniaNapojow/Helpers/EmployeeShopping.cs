@@ -5,13 +5,13 @@ using HurtowniaNapojow.Database;
 
 namespace HurtowniaNapojow.Helpers
 {
-    class EmployeeShopping
+    public class EmployeeShopping
     {
         private readonly HurtowniaNapojowDataSet.ZakupyKlientaRow _shoppingRow;
         private readonly HurtowniaNapojowDataSet.KlienciRow _customerRow;
 
         public int Id { get; set; }
-        public String CustomerName { get; private set; }
+        public String CustomerName { get; set; }
         public String Date { get; set; }
         public float Price { get; set; }
 
