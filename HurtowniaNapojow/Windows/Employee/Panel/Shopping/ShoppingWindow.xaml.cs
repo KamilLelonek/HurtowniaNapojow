@@ -65,7 +65,7 @@ namespace HurtowniaNapojow.Windows.Employee
 
         private void AddNewCustomer_Clicked(object sender, RoutedEventArgs e)
         {
-            new CustomerNewWindow(ref CustomersDataGrid).ShowDialog();
+            this.OpenWindow(new CustomerNewWindow(ref CustomersDataGrid), blockPrevious: true);
         }
         
         private void DeleteCustomer_Clicked(object sender, RoutedEventArgs e)
