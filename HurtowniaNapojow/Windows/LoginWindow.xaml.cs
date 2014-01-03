@@ -1,13 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
-using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee;
 
