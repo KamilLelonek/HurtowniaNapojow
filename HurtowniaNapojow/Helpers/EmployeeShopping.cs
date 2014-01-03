@@ -29,7 +29,7 @@ namespace HurtowniaNapojow.Helpers
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
             Price = computePrice ? DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow) : 0;
-            Profit = computeProfit ? DataBaseShoppingHelper.CalculateShoppingProfit(_shoppingRow) : 0;
+            Profit = computeProfit ? DataBaseShoppingHelper.CalculateShoppingValue(_shoppingRow) : 0;
             Date = _shoppingRow.DataZłożenia.ToShortDateString();
         }
 
