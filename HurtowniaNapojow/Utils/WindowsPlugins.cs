@@ -2,11 +2,20 @@
 {
     public static class WindowsPlugins
     {
-        public static void OpenWindow(this Window window, Window newWindow, bool closePreviousWindow = true)
+        public static void OpenWindow(this Window window, Window newWindow, bool closePrevious = true, bool blockPrevious = false)
         {
-            newWindow.Show();
-            if(closePreviousWindow)
-                window.Close();
+            if (blockPrevious)
+            {
+                newWindow.ShowDialog();
+            }
+            else
+            {
+                newWindow.Show();
+                if (closePrevious)
+                {
+                    window.Close();
+                }
+            }
         }
     }
 }

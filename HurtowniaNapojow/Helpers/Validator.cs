@@ -11,9 +11,7 @@ namespace HurtowniaNapojow.Helpers
         private static volatile Validator _instance;
         private static readonly object Lock = new Object();
 
-        private Validator()
-        {
-        }
+        private Validator() { }
 
         public static Validator Instance
         {

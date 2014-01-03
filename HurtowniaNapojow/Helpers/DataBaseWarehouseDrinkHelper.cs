@@ -16,11 +16,5 @@ namespace HurtowniaNapojow.Helpers
         {
             return GetWarehouseDrinkData().FindByIdentyfikator(drinkId);
         }
-
-        public static float CalculateDrinkValue(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink)
-        {
-            var producerDrink = DataBaseProducerDrinkHelper.GetDrinkByID(warehouseDrink.id_napoju_producenta);
-            return warehouseDrink.CenaHurtowni - producerDrink.CenaProducenta;
-        }
     }
 }

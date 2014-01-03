@@ -23,12 +23,6 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
-        public static float GetProductValue(HurtowniaNapojowDataSet.ProduktyKlientaRow product)
-        {
-            var warehouseDrink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
-            return DataBaseWarehouseDrinkHelper.CalculateDrinkValue(warehouseDrink);
-        }
-
         internal static object DeleteProductRow(System.Data.DataRow dataRow)
         {
             throw new System.NotImplementedException();

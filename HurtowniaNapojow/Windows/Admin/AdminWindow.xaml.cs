@@ -75,7 +75,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void AddNewEmployee_Clicked(object sender, RoutedEventArgs e)
         {
-            new EmployeeNewWindow(ref EmployeesDataGrid).ShowDialog();
+            this.OpenWindow(new EmployeeNewWindow(ref EmployeesDataGrid), blockPrevious: true);
         }
 
         private void DeleteEmployees_Clicked(object sender, RoutedEventArgs e)
@@ -208,7 +208,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void EmployeesSummaryReport_Click(object sender, RoutedEventArgs e)
         {
             var dataTable = DataBaseEmployeeHelper.GetEmployeesData();
-            new ReportWindow(dataTable, @"Admin/EmployeeSummary.rdlc").ShowDialog();
+            this.OpenWindow(new ReportWindow(dataTable, @"Admin/EmployeeSummary.rdlc"), blockPrevious: true);
         }
     }
 }
