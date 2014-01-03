@@ -47,10 +47,10 @@ namespace HurtowniaNapojow.Windows.Admin
             this.OpenWindow(new AdminWindow());
         }
 
-        private void ProfitsButton_Click(object sender, RoutedEventArgs e)
+        private void ValueButton_Click(object sender, RoutedEventArgs e)
         {
-            var profits = DataBaseEmployeeHelper.CalculateEmployeeProfits(_employee);
-            MessageBox.Show(String.Format("Bieżące zyski pracownika wynoszą {0}zł", profits));
+            var income = DataBaseEmployeeHelper.CalculateEmployeeIncome(_employee);
+            MessageBox.Show(String.Format("Bieżące kwota zrealizowanych zakupów wynosi {0}zł", income));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace HurtowniaNapojow.Windows.Admin
         public int Id { get; set; }
         public String CustomerName { get; private set; }
         public String Date { get; set; }
-        public float Profit { get; set; }
+        public float Value { get; set; }
 
         public EmployeeShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
@@ -27,7 +27,7 @@ namespace HurtowniaNapojow.Windows.Admin
         {
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
-            Profit = DataBaseShoppingHelper.CalculateShoppingProfit(_shoppingRow);
+            Value = DataBaseShoppingHelper.CalculateShoppingValue(_shoppingRow);
             Date = _shoppingRow.DataZłożenia.ToShortDateString();
         }
 

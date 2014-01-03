@@ -65,10 +65,10 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB(employee, "Dane osobowe zostały zmienione");
         }
 
-        public static float CalculateEmployeeProfits(HurtowniaNapojowDataSet.PracownicyRow employee)
+        public static float CalculateEmployeeIncome(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
             var employeeShoppings = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
-            return (float)employeeShoppings.Aggregate(.0, (sum, profit) => sum + DataBaseShoppingHelper.CalculateShoppingProfit(profit));
+            return (float)employeeShoppings.Aggregate(.0, (sum, income) => sum + DataBaseShoppingHelper.CalculateShoppingValue(income));
         }
         #endregion Extended CRUD
 
