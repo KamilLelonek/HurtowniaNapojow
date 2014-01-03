@@ -54,7 +54,7 @@ namespace HurtowniaNapojow.Windows.Employee
         }
 
         #region TAB_Customers
-        private void SetCustomersBinding()
+        public void SetCustomersBinding()
         {
             CustomersDataGrid.RebindContext(new KlienciTableAdapter().GetData());
         }
@@ -65,7 +65,7 @@ namespace HurtowniaNapojow.Windows.Employee
                 (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.KlienciRow;
             if (customerRow == null) return;
 
-            this.OpenWindow(new CustomerDetailsWindow(ref customerRow));
+            (new CustomerDetailsWindow(this, ref customerRow)).ShowDialog();
         }
 
         private void AddNewCustomer_Clicked(object sender, RoutedEventArgs e)
@@ -81,9 +81,9 @@ namespace HurtowniaNapojow.Windows.Employee
         #endregion
 
         #region TAB_Shopping
-        private void SetShoppingBinding()
+        public void SetShoppingBinding()
         {
-            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee, true, false));
+            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee, false, false));
         }
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)
@@ -103,7 +103,7 @@ namespace HurtowniaNapojow.Windows.Employee
         #endregion
 
         #region TAB_Product
-        private void SetProductBinding()
+        public void SetProductBinding()
         {
             ProductsDataGrid.RebindContext(new ProduktyKlientaTableAdapter().GetData());
         }
