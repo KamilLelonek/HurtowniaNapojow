@@ -45,10 +45,10 @@
                     <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0" Click="DeleteShopping_Clicked"/>
                     <DataGrid Margin="0,20,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
-                            <DataGridTextColumn Header="Id Klienta" Binding="{Binding id_klienta}" Width="0.1*" />
-                            <DataGridTextColumn Header="Id Pracownika" Binding="{Binding id_pracownika}" Width="0.1*" />
-                            <DataGridTextColumn Header="Data złożenia" Binding="{Binding DataZłożenia}" Width="0.1*" />
+                            <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
+                            <DataGridTextColumn Header="Nazwa Klienta" Binding="{Binding CustomerName}" Width="0.1*" />
+                            <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
+                            <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price}" Width="0.05*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
