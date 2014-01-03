@@ -12,11 +12,13 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
     {
         private readonly HurtowniaNapojowDataSet.KlienciRow _customer;
         private readonly Validator _validator = Validator.Instance;
+        private readonly ShoppingWindow _parentWindow;
 
-        public CustomerDetailsWindow(ref HurtowniaNapojowDataSet.KlienciRow customerRow)
+        public CustomerDetailsWindow(ShoppingWindow parentWindow, ref HurtowniaNapojowDataSet.KlienciRow customerRow)
         {
             InitializeComponent();
             _customer = customerRow;
+            _parentWindow = parentWindow;
             SetShoppingBinding(_customer);
         }
 
@@ -34,11 +36,12 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             if (_validator.AreControlsEmpty(NazwaKlientaTextBox, NrTelefonuTextBox, UlicaNrTextBox)) return;
             if (!String.IsNullOrEmpty(EmailTextBox.Text) && !_validator.IsEmailValid(EmailTextBox)) return;
             DataBaseCustomerHelper.UpdateDB(_customer, "Dane klienta zaktualizowane pomyślnie");
+            _parentWindow.SetCustomersBinding();
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.OpenWindow(new ShoppingWindow());
+            this.Close();
         }
     }
 }
