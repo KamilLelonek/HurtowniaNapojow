@@ -42,6 +42,11 @@ namespace HurtowniaNapojow.Windows.Employee
             this.OpenWindow(new WarehouseWindow());
         }
 
+        private void MenuBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new EmployeeWindow());
+        }
+
         private void MenuLogout_Click(object sender, RoutedEventArgs e)
         {
             SessionHelper.Instance.LogoutUser();
