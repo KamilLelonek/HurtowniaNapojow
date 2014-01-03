@@ -25,8 +25,6 @@ namespace HurtowniaNapojow.Windows.Employee
         private void SetShoppingBinding(HurtowniaNapojowDataSet.KlienciRow customer)
         {
             var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForCustomer(customer);
-            if (String.IsNullOrEmpty(customer.NIP)) customer.NIP = "s";
-            if (String.IsNullOrEmpty(customer.Email)) customer.Email = "d";
 
             CustomerShoppingDataGrid.DataContext = customerShoppingTable;
             CustomerDetailsGrid.DataContext = customer;
@@ -42,7 +40,7 @@ namespace HurtowniaNapojow.Windows.Employee
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.OpenWindow(new EmployeeWindow());
+            this.OpenWindow(new ShoppingWindow());
         }
     }
 }

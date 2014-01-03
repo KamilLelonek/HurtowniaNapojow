@@ -39,6 +39,13 @@ namespace HurtowniaNapojow.Helpers
             return (float)customerProducts.Aggregate(.0, (sum, customerProduct) => sum + customerProduct.Kwota);
         }
 
+        public static float CalculateShoppingPrice(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
+        {
+            var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);
+            return (float)customerProducts.Aggregate(.0, (sum, customerProduct) =>
+                sum + customerProduct.Kwota);
+        }
+
         internal static object DeleteShoppingRow(System.Data.DataRow dataRow)
         {
             throw new System.NotImplementedException();

@@ -134,7 +134,7 @@
     <Compile Include="Windows\Admin\EmployeeNewWindow.xaml.cs">
       <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Admin\EmployeeShopping.cs" />
+    <Compile Include="Helpers\EmployeeShopping.cs" />
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>

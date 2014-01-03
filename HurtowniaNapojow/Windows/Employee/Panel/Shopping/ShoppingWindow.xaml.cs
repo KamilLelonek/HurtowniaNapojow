@@ -78,7 +78,7 @@ namespace HurtowniaNapojow.Windows.Employee
         #region TAB_Shopping
         private void SetShoppingBinding()
         {
-            ShoppingsDataGrid.RebindContext(new ZakupyKlientaTableAdapter().GetData());
+            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee, true, false));
         }
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)
