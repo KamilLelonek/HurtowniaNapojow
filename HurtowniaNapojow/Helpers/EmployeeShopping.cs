@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -15,32 +14,30 @@ namespace HurtowniaNapojow.Helpers
         public String CustomerName { get; private set; }
         public String Date { get; set; }
         public float Price { get; set; }
-        public float Profit { get; set; }
 
-        public EmployeeShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow, bool computePrice = true, bool computeProfit = true)
+        public EmployeeShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
             _shoppingRow = shoppingRow;
             _customerRow = DataBaseCustomerHelper.GetCustomerForShopping(shoppingRow);
-            InjectData(computeProfit);
+            InjectData();
         }
 
-        private void InjectData(bool computePrice = true, bool computeProfit = true)
+        private void InjectData()
         {
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
-            Price = computePrice ? DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow) : 0;
-            Profit = computeProfit ? DataBaseShoppingHelper.CalculateShoppingValue(_shoppingRow) : 0;
+            Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);
             Date = _shoppingRow.DataZłożenia.ToShortDateString();
         }
 
-        public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojowDataSet.PracownicyRow employee, bool computePrice = false, bool computeProfit = true)
+        public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
             var customerShoppingTableData = DataBaseShoppingHelper.GetShoppingData();
             return
                 from customerShopping
                 in customerShoppingTableData
                 where customerShopping.id_pracownika == employee.Identyfikator
-                select new EmployeeShopping(customerShopping, computePrice, computeProfit);
+                select new EmployeeShopping(customerShopping);
         }
     }
 }

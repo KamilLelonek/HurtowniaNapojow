@@ -208,7 +208,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void EmployeesSummaryReport_Click(object sender, RoutedEventArgs e)
         {
             var dataTable = DataBaseEmployeeHelper.GetEmployeesData();
-            this.OpenWindow(new ReportWindow(dataTable, @"Admin/EmployeeSummary.rdlc"), blockPrevious: true);
+            this.OpenWindow(new ReportWindow(dataTable, @"Admin/EmployeesSummary.rdlc"), blockPrevious: true);
         }
     }
 }

@@ -1,27 +1,14 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+﻿using System.Windows;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
 
-namespace HurtowniaNapojow.Windows.Employee
+namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
     /// <summary>
     /// Interaction logic for AdminWindow.xaml
     /// </summary>
     public partial class WarehouseWindow
     {
-        private enum Section
-        {
-            Email,
-            Password,
-            Data
-        };
-
-        private Section _currentSection;
         private readonly Validator _validator = Validator.Instance;
 
         public WarehouseWindow()

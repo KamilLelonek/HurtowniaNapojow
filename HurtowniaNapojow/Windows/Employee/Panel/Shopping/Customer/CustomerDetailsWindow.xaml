@@ -1,4 +1,4 @@
-﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.CustomerDetailsWindow"
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer.CustomerDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Szczegoły klienta" Height="372" Width="559"

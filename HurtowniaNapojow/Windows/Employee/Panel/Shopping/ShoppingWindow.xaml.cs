@@ -1,27 +1,20 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;
 
-namespace HurtowniaNapojow.Windows.Employee
+namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
 {
     /// <summary>
     /// Interaction logic for AdminWindow.xaml
     /// </summary>
     public partial class ShoppingWindow
     {
-        private enum Section
-        {
-            Email,
-            Password,
-            Data
-        };
-
-        private Section _currentSection;
         private readonly Validator _validator = Validator.Instance;
 
         public ShoppingWindow()
@@ -83,7 +76,7 @@ namespace HurtowniaNapojow.Windows.Employee
         #region TAB_Shopping
         private void SetShoppingBinding()
         {
-            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee, true, false));
+            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee));
         }
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.WarehouseWindow"
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.WarehouseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Hurtownia Napojow | Panel Magazynu" Height="500" Width="640"

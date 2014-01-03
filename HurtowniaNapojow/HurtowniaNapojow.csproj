@@ -173,7 +173,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Admin\EmployeeSummary.rdlc" />
+    <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>

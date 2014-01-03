@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
 
-namespace HurtowniaNapojow.Windows.Employee
+namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 {
     /// <summary>
     /// Interaction logic for EmployeeDetail.xaml

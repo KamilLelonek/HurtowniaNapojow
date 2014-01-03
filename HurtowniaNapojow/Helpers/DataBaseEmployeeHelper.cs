@@ -68,7 +68,7 @@ namespace HurtowniaNapojow.Helpers
         public static float CalculateEmployeeIncome(HurtowniaNapojowDataSet.PracownicyRow employee)
         {
             var employeeShoppings = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
-            return (float)employeeShoppings.Aggregate(.0, (sum, income) => sum + DataBaseShoppingHelper.CalculateShoppingValue(income));
+            return (float)employeeShoppings.Aggregate(.0, (sum, income) => sum + DataBaseShoppingHelper.CalculateShoppingPrice(income));
         }
         #endregion Extended CRUD
 

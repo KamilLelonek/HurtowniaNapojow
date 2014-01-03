@@ -1,11 +1,7 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+﻿using System.Windows;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;
 
 namespace HurtowniaNapojow.Windows.Employee
 {
@@ -14,14 +10,6 @@ namespace HurtowniaNapojow.Windows.Employee
     /// </summary>
     public partial class EmployeeWindow
     {
-        private enum Section
-        {
-            Email,
-            Password,
-            Data
-        };
-
-        private Section _currentSection;
         private readonly Validator _validator = Validator.Instance;
 
         public EmployeeWindow()
