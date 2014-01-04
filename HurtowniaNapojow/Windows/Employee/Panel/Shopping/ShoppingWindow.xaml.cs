@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,12 +26,12 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         public ShoppingWindow()
         {
             InitializeComponent();
+            SetCustomersComponentsEvents();
+            SetShoppingsComponentsEvents();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
             if (CustomersTab.IsSelected && !_customersFilled)
             {
                 _customersFilled = true;
@@ -65,6 +66,30 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         }
 
         #region TAB_Customers
+        #region TAB_CustomersFilter
+        private void SetCustomersComponentsEvents()
+        {
+            CustomersFilterTextBox.TextChanged += (sender, args) => CustomersFilterChanged();
+            CustomersFilterComboBox.SelectionChanged += (sender, args) => CustomersFilterChanged();
+        }
+        private void CustomersResetFilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomersFilterComboBox.Text = Globals.FILTER_SELECT;
+            CustomersFilterTextBox.Text = "";
+            ((DataTable)CustomersDataGrid.DataContext).DefaultView.RowFilter = "";
+        }
+        private void CustomersFilterChanged()
+        {
+            var comboBoxItem = CustomersFilterComboBox.SelectedItem as ComboBoxItem;
+            if (comboBoxItem == null) CustomersFilterComboBox.SelectedIndex = 0;
+            comboBoxItem = CustomersFilterComboBox.SelectedItem as ComboBoxItem;
+
+            var filterType = comboBoxItem.Content.ToString();
+            var filterValue = CustomersFilterTextBox.Text;
+            var filter = String.Format("{0} LIKE '%{1}%'", filterType, filterValue);
+            ((DataTable)CustomersDataGrid.DataContext).DefaultView.RowFilter = filter;
+        }
+        #endregion
         public void SetCustomersBinding()
         {
             CustomersDataGrid.RebindContext(new KlienciTableAdapter().GetData());
@@ -92,6 +117,22 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         #endregion
 
         #region TAB_Shopping
+        #region TAB_CustomersFilter
+        private void SetShoppingsComponentsEvents()
+        {
+            ShoppingsFilterTextBox.TextChanged += (sender, args) => ShoppingsFilterChanged();
+        }
+        private void ShoppingsResetFilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShoppingsFilterTextBox.Text = "";
+            SetShoppingBinding();
+        }
+        private void ShoppingsFilterChanged()
+        {
+            var filterValue = ShoppingsFilterTextBox.Text.ToLower();
+            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee).Where(e => e.CustomerName.ToLower().Contains(filterValue)));
+        }
+        #endregion
         public void SetShoppingBinding()
         {
             ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee));
@@ -105,13 +146,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
 
         private void AddNewCustomerShopping_Clicked(object sender, RoutedEventArgs e)
         {
-            (new CustomerShoppingDetailsWindow(this, null)).ShowDialog();
+            (new CustomerShoppingNewWindow(this)).ShowDialog();
         }
 
         private void DeleteShopping_Clicked(object sender, RoutedEventArgs e)
         {
-            var shoppings = ShoppingsDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            shoppings.ForEach(shopping => DataBaseShoppingHelper.DeleteShoppingRow(shopping.Row));
+            var shoppings = ShoppingsDataGrid.SelectedItems.OfType<EmployeeShopping>().ToList();
+            int count = shoppings.Count();
+            shoppings.ForEach(shopping => DataBaseShoppingHelper.DeleteShoppingRow(shopping._shoppingRow));
+            if(count > 0)
+                SetShoppingBinding();
         }
         #endregion
     }

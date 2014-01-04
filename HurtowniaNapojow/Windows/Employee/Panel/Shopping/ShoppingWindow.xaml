@@ -13,14 +13,26 @@
             <MenuItem Header="Powrót" Click="MenuBack_Click" HorizontalAlignment="Left" Background="LightGray"/>
             <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
             <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
+            <MenuItem Header="Raporty">
+            </MenuItem>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,25,0,0" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Klienci" x:Name="CustomersTab">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="AddNewCustomer_Clicked"/>
-                    <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0" Click="DeleteCustomer_Clicked"/>
-                    <DataGrid Margin="0,20,0,0" x:Name="CustomersDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                    <Button Content="_Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,0,0" Click="AddNewCustomer_Clicked"/>
+                    <Button Content="_Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="85,5,0,0" Click="DeleteCustomer_Clicked"/>
+                    <ComboBox Text="Wybierz filtr" x:Name="CustomersFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
+                        <ComboBoxItem Content="NazwaKlienta"/>
+                        <ComboBoxItem Content="NIP"/>
+                        <ComboBoxItem Content="NrTelefonu"/>
+                        <ComboBoxItem Content="Email"/>
+                        <ComboBoxItem Content="UlicaNumer"/>
+                        <ComboBoxItem Content="MiastoKod"/>
+                    </ComboBox>
+                    <TextBox x:Name="CustomersFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
+                    <Button Content="_Resetuj" x:Name="CustomersResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="CustomersResetFilterButton_Click" />                    
+                    <DataGrid Margin="0,30,0,0" x:Name="CustomersDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding NazwaKlienta}" Width="0.1*" />
@@ -28,7 +40,7 @@
                             <DataGridTextColumn Header="Nr Telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
                             <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.1*" />
                             <DataGridTextColumn Header="Ulica Nr" Binding="{Binding UlicaNumer}" Width="0.1*" />
-                            <DataGridTextColumn Header="Miasto Kod" Binding="{Binding MiastoKod}" Width="0.1*" />
+                            <DataGridTextColumn Header="Kod Miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -42,9 +54,11 @@
             </TabItem>
             <TabItem Header="Zakupy" x:Name="ShoppingsTab">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="AddNewCustomerShopping_Clicked"/>
-                    <Button Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,0,0,0" Click="DeleteShopping_Clicked"/>
-                    <DataGrid Margin="0,20,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                    <Button Content="_Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,0,0" Click="AddNewCustomerShopping_Clicked"/>
+                    <Button Content="_Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="85,5,0,0" Click="DeleteShopping_Clicked"/>
+                    <TextBox x:Name="ShoppingsFilterTextBox" ToolTip="Szukaj" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
+                    <Button Content="Resetuj" x:Name="ShoppingsResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="ShoppingsResetFilterButton_Click" />
+                    <DataGrid Margin="0,30,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa Klienta" Binding="{Binding CustomerName}" Width="0.1*" />
