@@ -82,7 +82,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductNewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -115,6 +127,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CustomerShopping.cs" />
+    <Compile Include="Helpers\DataBaseDrinkTypeHelper.cs" />
+    <Compile Include="Helpers\DataBaseProducerHelper.cs" />
+    <Compile Include="Helpers\DataBaseGasTypeHelper.cs" />
+    <Compile Include="Helpers\DataBaseTasteHelper.cs" />
+    <Compile Include="Helpers\DataBaseDrinkNameHelper.cs" />
     <Compile Include="Helpers\EmployeeIncome.cs" />
     <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
@@ -124,6 +142,8 @@
     <Compile Include="Helpers\DataBaseWarehouseDrinkHelper.cs" />
     <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Helpers\WarehouseDrink.cs" />
+    <Compile Include="Helpers\ShoppingProduct.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Reports\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
@@ -144,8 +164,17 @@
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml.cs">
+      <DependentUpon>CustomerShoppingNewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingDetailsWindow.xaml.cs">
       <DependentUpon>CustomerShoppingDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml.cs">
+      <DependentUpon>ProductDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductNewWindow.xaml.cs">
+      <DependentUpon>ProductNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\Customer\CustomerDetailsWindow.xaml.cs">
       <DependentUpon>CustomerDetailsWindow.xaml</DependentUpon>
