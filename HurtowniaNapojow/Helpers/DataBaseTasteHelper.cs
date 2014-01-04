@@ -19,6 +19,11 @@ namespace HurtowniaNapojow.Helpers
             return _tastesData;
         }
 
+        public static HurtowniaNapojowDataSet.SmakiRow GetTasteByID(int tasteId)
+        {
+            return GetTastesData().First(taste => taste.Identyfikator == tasteId);
+        }
+
         public static Boolean AddNewTaste(String newTaste)
         {
             var doesTasteExist = GetTastesData().Any(taste => taste.NazwaSmaku == newTaste);

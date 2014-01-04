@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
+using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 
@@ -25,9 +29,10 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
-        internal static object DeleteProductRow(System.Data.DataRow dataRow)
+        public static Boolean DeleteProductRow(HurtowniaNapojowDataSet.ProduktyKlientaRow productRow)
         {
-            throw new System.NotImplementedException();
+            productRow.Delete();
+            return ProductsTableAdapter.Update(productRow) == 1;
         }
     }
 }

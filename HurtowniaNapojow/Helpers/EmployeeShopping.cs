@@ -7,8 +7,8 @@ namespace HurtowniaNapojow.Helpers
 {
     public class EmployeeShopping
     {
-        private readonly HurtowniaNapojowDataSet.ZakupyKlientaRow _shoppingRow;
-        private readonly HurtowniaNapojowDataSet.KlienciRow _customerRow;
+        public HurtowniaNapojowDataSet.ZakupyKlientaRow _shoppingRow;
+        public HurtowniaNapojowDataSet.KlienciRow _customerRow;
 
         public int Id { get; set; }
         public String CustomerName { get; set; }
@@ -18,7 +18,12 @@ namespace HurtowniaNapojow.Helpers
         public EmployeeShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
             _shoppingRow = shoppingRow;
-            _customerRow = DataBaseCustomerHelper.GetCustomerForShopping(shoppingRow);
+            Update();
+        }
+
+        public void Update()
+        {
+            _customerRow = DataBaseCustomerHelper.GetCustomerForShopping(_shoppingRow);
             InjectData();
         }
 
