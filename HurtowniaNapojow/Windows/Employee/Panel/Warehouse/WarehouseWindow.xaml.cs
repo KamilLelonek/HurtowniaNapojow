@@ -2,6 +2,8 @@
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste;
+using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -36,6 +38,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         {
             SessionHelper.Instance.LogoutUser();
             this.OpenWindow(new LoginWindow());
+        }
+
+        private void TasteButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new TasteDetailsWindow(), blockPrevious: true);
+        }
+
+        private void PlusTaste_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new TasteNewWindow(), blockPrevious: true);
         }
     }
 }

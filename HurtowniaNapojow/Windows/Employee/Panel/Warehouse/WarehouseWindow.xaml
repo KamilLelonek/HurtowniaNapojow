@@ -15,6 +15,12 @@
             <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
-        <TabControl Margin="0,60,0,0"/>
+        <TabControl Margin="0,40,0,0">
+            <Grid>
+                <Button x:Name="TasteButton"  Content="Smaki" HorizontalAlignment="Left" Height="30" Margin="479,34,0,0" VerticalAlignment="Top" Width="82" Click="TasteButton_Click"/>
+                <Button x:Name="PlusTaste" Content="+" Margin="575,34,20,354" Click="PlusTaste_Click"/>
+            </Grid>
+
+        </TabControl>
     </Grid>
 </Window>
