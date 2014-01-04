@@ -86,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,6 +178,9 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingDetailsWindow.xaml.cs">
       <DependentUpon>CustomerShoppingDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml.cs">
+      <DependentUpon>CustomerShoppingNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml.cs">
       <DependentUpon>ProductDetailsWindow.xaml</DependentUpon>

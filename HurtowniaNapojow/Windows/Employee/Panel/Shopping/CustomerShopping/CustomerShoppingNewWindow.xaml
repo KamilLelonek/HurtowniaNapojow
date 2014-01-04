@@ -1,0 +1,27 @@
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.CustomerShoppingNewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nowe zakupy dla klienta" Height="500" Width="640"
+        WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid Margin="5,5,5,30" x:Name="CustomersDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
+                <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding NazwaKlienta}" Width="0.1*" />
+                <DataGridTextColumn Header="NIP" Binding="{Binding NIP}" Width="0.1*" />
+                <DataGridTextColumn Header="Nr Telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.1*" />
+                <DataGridTextColumn Header="Ulica Nr" Binding="{Binding UlicaNumer}" Width="0.1*" />
+                <DataGridTextColumn Header="Kod Miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="CustomersChoose_Clicked">Wybierz</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_Click" />
+    </Grid>
+</Window>
