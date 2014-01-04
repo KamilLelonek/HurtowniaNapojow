@@ -1,9 +1,11 @@
-﻿using System.Windows;
+using System.Windows;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste;
 using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
+using HurtowniaNapojow.Windows.Employee.Warehouse.GasType;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -49,5 +51,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         {
             this.OpenWindow(new TasteNewWindow(), blockPrevious: true);
         }
+
+        private void GasTypeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new GasTypeDetailsWindow(), blockPrevious: true);
+        }
+        private void PlusGasType_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new GasTypeNewWindow(), blockPrevious: true);
+        }
+
     }
+
 }

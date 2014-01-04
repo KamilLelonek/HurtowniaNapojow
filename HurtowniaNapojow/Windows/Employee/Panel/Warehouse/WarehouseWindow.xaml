@@ -1,4 +1,4 @@
-﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.WarehouseWindow"
+<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.WarehouseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Hurtownia Napojow | Panel Magazynu" Height="500" Width="640"
@@ -19,8 +19,12 @@
             <Grid>
                 <Button x:Name="TasteButton"  Content="Smaki" HorizontalAlignment="Left" Height="30" Margin="479,34,0,0" VerticalAlignment="Top" Width="82" Click="TasteButton_Click"/>
                 <Button x:Name="PlusTaste" Content="+" Margin="575,34,20,354" Click="PlusTaste_Click"/>
+                <Button x:Name="GasTypeButton" Content="Rodzaje Gazu" HorizontalAlignment="Left" Margin="479,80,0,0" VerticalAlignment="Top" Width="82" Click="GasTypeButton_Click"/>
+                <Button x:Name="PlusGasType" Content="+" HorizontalAlignment="Left" Margin="576,80,0,0" VerticalAlignment="Top" Width="30" Click="PlusGasType_Click"/>
+
             </Grid>
 
         </TabControl>
     </Grid>
+
 </Window>
