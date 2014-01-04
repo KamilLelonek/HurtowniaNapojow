@@ -82,10 +82,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +103,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\Taste\TasteDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\Taste\TasteEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\Taste\TasteNewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -164,9 +172,6 @@
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingNewWindow.xaml.cs">
-      <DependentUpon>CustomerShoppingNewWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\CustomerShoppingDetailsWindow.xaml.cs">
       <DependentUpon>CustomerShoppingDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -184,6 +189,15 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Shopping\ShoppingWindow.xaml.cs">
       <DependentUpon>ShoppingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\Taste\TasteDetailsWindow.xaml.cs">
+      <DependentUpon>TasteDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\Taste\TasteEditWindow.xaml.cs">
+      <DependentUpon>TasteEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\Taste\TasteNewWindow.xaml.cs">
+      <DependentUpon>TasteNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>
