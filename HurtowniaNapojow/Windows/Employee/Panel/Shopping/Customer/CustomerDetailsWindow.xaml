@@ -5,39 +5,31 @@
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid x:Name="CustomerDetailsGrid">
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="12,7,0,0" VerticalAlignment="Top" />
+        <TextBox Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding NazwaKlienta}" VerticalAlignment="Top" Width="100" />
         <Label Content="NIP" HorizontalAlignment="Left" Margin="119,6,0,0" VerticalAlignment="Top" />
-        <Label Content="Nr Telefonu" HorizontalAlignment="Left" Margin="226,7,0,0" VerticalAlignment="Top"
-               RenderTransformOrigin="0.658,3" />
-        <TextBox Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding NazwaKlienta}"
-                 VerticalAlignment="Top" Width="100" />
-        <TextBox Name="NrTelefonuTextBox" HorizontalAlignment="Left" Height="23" Margin="226,37,0,0" Text="{Binding NrTelefonu}"
-                 VerticalAlignment="Top" Width="100" />
-        <TextBox Name="NIPTextBox" HorizontalAlignment="Left" Height="23" Margin="119,37,0,0" Text="{Binding NIP, TargetNullValue=''}"
-                 VerticalAlignment="Top" Width="100" />
-        <Label Content="Zakupy klienta" HorizontalAlignment="Left" Margin="10,122,0,0"
-               VerticalAlignment="Top" />
-        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Left" Margin="457,306,0,0"
-                VerticalAlignment="Top" Width="75" Click="CloseButton_OnClick" />
-        <Button Content="Zapisz" x:Name="SaveButton" HorizontalAlignment="Left" Margin="367,306,0,0"
-                VerticalAlignment="Top" Width="75" Click="SaveButton_Click" />
-        <DataGrid x:Name="CustomerShoppingDataGrid" HorizontalAlignment="Left" Height="155" Margin="10,145,0,0"
-                  VerticalAlignment="Top" Width="521" AutoGenerateColumns="False" ItemsSource="{Binding}"
+        <TextBox Name="NIPTextBox" HorizontalAlignment="Left" Height="23" Margin="119,37,0,0" Text="{Binding NIP, TargetNullValue=''}" VerticalAlignment="Top" Width="100" />
+        <Label Content="Nr Telefonu" HorizontalAlignment="Left" Margin="226,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
+        <TextBox Name="NrTelefonuTextBox" HorizontalAlignment="Left" Height="23" Margin="226,37,0,0" Text="{Binding NrTelefonu}" VerticalAlignment="Top" Width="100" />
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="12,64,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="12,94,0,0" Text="{Binding Email, TargetNullValue=''}" VerticalAlignment="Top" Width="100" />
+        <Label Content="Ulica Nr" HorizontalAlignment="Left" Margin="119,64,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="UlicaNrTextBox" HorizontalAlignment="Left" Height="23" Margin="119,94,0,0" Text="{Binding UlicaNumer}" VerticalAlignment="Top" Width="100" />
+        <Label Content="Miasto Kod" HorizontalAlignment="Left" Margin="226,63,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="MiastoKodTextBox" HorizontalAlignment="Left" Height="23" Margin="226,94,0,0" Text="{Binding MiastoKod}" VerticalAlignment="Top" Width="100" />
+        <Label Content="Zakupy klienta" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" />
+        <DataGrid x:Name="CustomerShoppingDataGrid" Margin="10,145,10,40"
+                  AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.05*" />
-                <DataGridTextColumn Header="Id Klienta" Binding="{Binding id_klienta}" Width="0.1*" />
-                <DataGridTextColumn Header="Id Pracownika" Binding="{Binding id_pracownika}" Width="0.1*" />
-                <DataGridTextColumn Header="Data złożenia" Binding="{Binding DataZłożenia}" Width="0.1*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.05*" />
+                <DataGridTextColumn Header="Pracownik" Binding="{Binding EmployeeName}" Width="0.1*" />
+                <DataGridTextColumn Header="Liczba produktów" Binding="{Binding ProductsCount}" Width="0.1*" />
+                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding ProductsTotalAmount}" Width="0.1*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Price}" Width="0.1*" />
+                <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Ulica Nr" HorizontalAlignment="Left" Margin="119,64,0,0" VerticalAlignment="Top" />
-        <Label Content="Miasto Kod" HorizontalAlignment="Left" Margin="226,63,0,0" VerticalAlignment="Top" />
-        <TextBox x:Name="UlicaNrTextBox" HorizontalAlignment="Left" Height="23" Margin="119,94,0,0" Text="{Binding UlicaNumer}"
-        	VerticalAlignment="Top" Width="100" />
-        <TextBox x:Name="MiastoKodTextBox" HorizontalAlignment="Left" Height="23" Margin="226,94,0,0" Text="{Binding MiastoKod}"
-        	VerticalAlignment="Top" Width="100" />
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="12,64,0,0" VerticalAlignment="Top" />
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="12,94,0,0" Text="{Binding Email, TargetNullValue=''}"
-        	VerticalAlignment="Top" Width="100" />
+        <Button Content="Zapisz" x:Name="SaveButton" HorizontalAlignment="Right" Margin="0,0,5,10"  VerticalAlignment="Bottom" Width="75" Click="SaveButton_Click" />
+        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,85,10" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
     </Grid>
 </Window>

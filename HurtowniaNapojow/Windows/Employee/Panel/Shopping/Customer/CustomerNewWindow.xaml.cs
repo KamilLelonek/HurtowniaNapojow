@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
 
-namespace HurtowniaNapojow.Windows.Employee
+namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 {
     /// <summary>
     /// Interaction logic for EmployeeNewWindow.xaml
@@ -26,7 +26,7 @@ namespace HurtowniaNapojow.Windows.Employee
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(NameTextBox, NrTelefonuTextBox, UlicaNrTextBox)) return;
+            if (_validator.AreControlsEmpty(NameTextBox, NrTelefonuTextBox, UlicaNrTextBox, MiastoKodTextBox)) return;
             if (!String.IsNullOrEmpty(EmailTextBox.Text) && !_validator.IsEmailValid(EmailTextBox)) return;
 
             var newNazwaKlienta = NameTextBox.Text;

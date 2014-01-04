@@ -24,8 +24,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void SetShoppingBinding(HurtowniaNapojowDataSet.KlienciRow customer)
         {
-            var customerShoppingTable = DataBaseShoppingHelper.GetShoppingForCustomer(customer);
-
+            var customerShoppingTable = Helpers.CustomerShopping.GetCustomerShoppings(customer);
             CustomerShoppingDataGrid.DataContext = customerShoppingTable;
             CustomerDetailsGrid.DataContext = customer;
         }
