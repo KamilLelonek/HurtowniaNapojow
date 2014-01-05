@@ -13,8 +13,6 @@
             <MenuItem Header="Powrót" Click="MenuBack_Click" HorizontalAlignment="Left" Background="LightGray"/>
             <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
             <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
-            <MenuItem Header="Raporty">
-            </MenuItem>
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,25,0,0" SelectionChanged="TabControl_SelectionChanged">
