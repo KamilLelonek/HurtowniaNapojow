@@ -37,6 +37,7 @@ namespace HurtowniaNapojow.Helpers
             _producerRow = DataBaseProducerHelper.GetProducerByID(_producerDrinkRow.id_procuenta);
             _drinkTypeRow = DataBaseDrinkTypeHelper.GetDrinkTypeByID(_producerDrinkRow.id_rodzaju_napoju);
 
+            Id = _warehouseDrinkRow.Identyfikator;
             Name = _drinkNameRow.NazwaNapoju;
             TasteName = _tasteRow.NazwaSmaku;
             GasName = _gasTypeRow.NazwaRodzaju;
@@ -46,7 +47,6 @@ namespace HurtowniaNapojow.Helpers
             Price = _warehouseDrinkRow.CenaHurtowni;
             Date = _warehouseDrinkRow.DataWażności.ToShortDateString();
         }
-
 
         public static IEnumerable<WarehouseDrink> GetWarehouseDrinks()
         {

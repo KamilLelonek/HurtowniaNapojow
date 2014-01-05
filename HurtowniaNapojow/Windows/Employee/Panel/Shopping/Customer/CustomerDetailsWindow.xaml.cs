@@ -14,7 +14,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
         private readonly Validator _validator = Validator.Instance;
         private readonly ShoppingWindow _parentWindow;
 
-        public CustomerDetailsWindow(ShoppingWindow parentWindow, ref HurtowniaNapojowDataSet.KlienciRow customerRow)
+        public CustomerDetailsWindow(ShoppingWindow parentWindow, HurtowniaNapojowDataSet.KlienciRow customerRow)
         {
             InitializeComponent();
             _customer = customerRow;

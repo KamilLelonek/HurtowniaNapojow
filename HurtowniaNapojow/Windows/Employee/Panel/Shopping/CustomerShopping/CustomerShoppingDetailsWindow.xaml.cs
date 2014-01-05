@@ -38,13 +38,6 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         }
 
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_validator.AreControlsEmpty(NazwaKlientaTextBox, NrTelefonuTextBox, UlicaNrTextBox)) return;
-            //if (!String.IsNullOrEmpty(EmailTextBox.Text) && !_validator.IsEmailValid(EmailTextBox)) return;
-            //DataBaseCustomerHelper.UpdateDB(_customer, "Dane klienta zaktualizowane pomyślnie");
-        }
-
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             _shoppingWindow.SetShoppingBinding();
@@ -53,7 +46,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
 
         private void CustomerDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            (new CustomerDetailsWindow(_shoppingWindow, ref _shopping._customerRow)).ShowDialog();
+            (new CustomerDetailsWindow(_shoppingWindow, _shopping._customerRow)).ShowDialog();
             SetShoppingBinding();
         }
 
@@ -68,6 +61,11 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             var shopping = ((ShoppingProduct)((Button)sender).DataContext);
             (new ProductDetailsWindow(this, ref shopping._productRow)).ShowDialog();
+        }
+
+        private void ProductNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new ProductNewWindow(this, _shopping)).ShowDialog();
         }
     }
 }

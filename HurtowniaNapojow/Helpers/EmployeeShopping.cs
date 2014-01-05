@@ -15,7 +15,7 @@ namespace HurtowniaNapojow.Helpers
         public String Date { get; set; }
         public float Price { get; set; }
 
-        public EmployeeShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
+        public EmployeeShopping(ref HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
             _shoppingRow = shoppingRow;
             Update();
@@ -42,7 +42,7 @@ namespace HurtowniaNapojow.Helpers
                 from customerShopping
                 in customerShoppingTableData
                 where customerShopping.id_pracownika == employee.Identyfikator
-                select new EmployeeShopping(customerShopping);
+                select new EmployeeShopping(ref customerShopping);
         }
     }
 }

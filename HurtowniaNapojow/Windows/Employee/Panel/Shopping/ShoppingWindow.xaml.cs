@@ -101,7 +101,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
                 (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.KlienciRow;
             if (customerRow == null) return;
 
-            (new CustomerDetailsWindow(this, ref customerRow)).ShowDialog();
+            (new CustomerDetailsWindow(this, customerRow)).ShowDialog();
         }
 
         private void AddNewCustomer_Clicked(object sender, RoutedEventArgs e)

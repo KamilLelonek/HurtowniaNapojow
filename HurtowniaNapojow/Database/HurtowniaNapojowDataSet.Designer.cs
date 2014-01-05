@@ -6969,7 +6969,7 @@ namespace HurtowniaNapojow.Database {
                     }
                 }
                 set {
-                    this[this.tableProduktyKlienta.KwotaColumn] = value;
+                   this[this.tableProduktyKlienta.KwotaColumn] = value;
                 }
             }
             

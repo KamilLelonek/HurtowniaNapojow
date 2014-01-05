@@ -29,10 +29,31 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
+        public static HurtowniaNapojowDataSet.ProduktyKlientaRow AddNewProduct(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow, HurtowniaNapojowDataSet.NapojeHurtowniRow drinkRow)
+        {
+            ProductsTableAdapter.Insert(shoppingRow.Identyfikator, drinkRow.Identyfikator, 0, 0);
+            _productsData = ProductsTableAdapter.GetData();
+            return _productsData.First(p => p.id_zakupu_klienta == shoppingRow.Identyfikator && p.id_napoju_hurtowni == drinkRow.Identyfikator && p.Kwota == 0 && p.Liczba == 0);
+        }
+
         public static Boolean DeleteProductRow(HurtowniaNapojowDataSet.ProduktyKlientaRow productRow)
         {
             productRow.Delete();
             return ProductsTableAdapter.Update(productRow) == 1;
+        }
+
+        public static Boolean UpdateDB(HurtowniaNapojowDataSet.ProduktyKlientaRow productRow, String messageIfSuccess)
+        {
+            try
+            {
+                ProductsTableAdapter.Update(productRow);
+                return true;
+            }
+            catch (OleDbException e)
+            {
+                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                return false;
+            }
         }
     }
 }
