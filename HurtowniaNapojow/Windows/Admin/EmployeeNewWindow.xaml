@@ -6,14 +6,14 @@
     <Grid>
         <Label Content="Imię" HorizontalAlignment="Left" Margin="40,24,0,0" VerticalAlignment="Top" />
         <TextBox Name="FirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="100,27,0,0"
-                 VerticalAlignment="Top" Width="120" />
+                 VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top" />
         <TextBox Name="LastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="100,55,0,0"
-                 VerticalAlignment="Top" Width="120" />
+                 VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
         <Label Content="E-mail" HorizontalAlignment="Left" Margin="40,80,0,0" VerticalAlignment="Top"
                RenderTransformOrigin="0.132,0" />
         <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="100,83,0,0" VerticalAlignment="Top"
-                 Width="120" />
+                 Width="120" KeyDown="OnKeyDownHandler" />
         <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="57,150,0,0" VerticalAlignment="Top"
                 Width="75" Click="AddButton_Click" />
         <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Left" Margin="145,150,0,0"

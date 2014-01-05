@@ -6,7 +6,7 @@
     <Grid Margin="0,0,0,4">
         <Label Content="Nazwa Smaku" HorizontalAlignment="Left" Margin="40,24,0,0" VerticalAlignment="Top" />
         <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="129,27,0,0"
-                 VerticalAlignment="Top" Width="124" />
+                 VerticalAlignment="Top" Width="124" KeyDown="OnKeyDownHandler" />
         <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="40,71,0,0" VerticalAlignment="Top"
                 Width="75" Click="AddButton_Click" />
         <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Left" Margin="178,71,0,0"

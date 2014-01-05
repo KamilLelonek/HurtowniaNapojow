@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.GasType
@@ -38,6 +39,14 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.GasType
 
             _gasTypeDataGrid.RebindContext(DataBaseGasTypeHelper.GetGasTypeData());
             CloseButton.PerformClick();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton.PerformClick();
+            }
         }
     }
 }

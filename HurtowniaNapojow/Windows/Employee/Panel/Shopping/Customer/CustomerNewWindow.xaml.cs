@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
@@ -41,6 +42,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
             _customerDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData());
             CloseButton.PerformClick();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton.PerformClick();
+            }
         }
     }
 }

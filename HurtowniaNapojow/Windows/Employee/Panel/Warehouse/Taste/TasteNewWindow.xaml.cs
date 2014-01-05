@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.Taste
@@ -38,6 +39,14 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.Taste
 
             _tasteDataGrid.RebindContext(DataBaseTasteHelper.GetTastesData());
             CloseButton.PerformClick();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton.PerformClick();
+            }
         }
     }
 }

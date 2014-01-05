@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 
 namespace HurtowniaNapojow.Windows.Admin
@@ -38,6 +39,14 @@ namespace HurtowniaNapojow.Windows.Admin
 
             _employeesDataGrid.RebindContext(DataBaseEmployeeHelper.GetEmployeesData());
             CloseButton.PerformClick();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton.PerformClick();
+            }
         }
     }
 }
