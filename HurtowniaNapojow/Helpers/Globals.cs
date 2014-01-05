@@ -16,6 +16,6 @@ namespace HurtowniaNapojow.Helpers
 
         public static readonly Char COOKIE_DELIMETER = '_';
 
-        public const String CODE_CITY_REGEX = @"[0-9]{2}-[0-9]{3} [ a-zA-Z]{1,100}";
+        public const String CODE_CITY_REGEX = @"[0-9]{2}-[0-9]{3} [ a-zA-Z]{1,92}";
     }
 }
