@@ -27,8 +27,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(NameTextBox, NrTelefonuTextBox, UlicaNrTextBox, MiastoKodTextBox)) return;
+            if (_validator.AreControlsEmpty(NameTextBox, NrTelefonuTextBox, UlicaNrTextBox, MiastoKodTextBox) || !_validator.IsCityCodeValid(MiastoKodTextBox)) return;
             if (!String.IsNullOrEmpty(EmailTextBox.Text) && !_validator.IsEmailValid(EmailTextBox)) return;
+            if (!String.IsNullOrEmpty(NIPTextBox.Text) && !_validator.IsNIPValid(NIPTextBox)) return;
 
             var newNazwaKlienta = NameTextBox.Text;
             var newNIP = NIPTextBox.Text;

@@ -6,16 +6,17 @@
     <Grid>
         <Grid x:Name="DrinkDetailsGrid">
             <Label Content="Nazwa napoju" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding Name}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="100,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"/>
+            <TextBox Text="{Binding Name, Mode=OneWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="100,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"/>
         </Grid>
         <Grid x:Name="ProductDetailsGrid">
             <Label Content="Liczba" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" x:Name="ProductAmount" Text="{Binding Liczba}" Height="22" Margin="100,44,0,0" VerticalAlignment="Top" Width="219"/>
+            <TextBox HorizontalAlignment="Left" x:Name="ProductAmount" Text="{Binding Liczba, Mode=OneTime}" Height="22" Margin="100,44,0,0" VerticalAlignment="Top" Width="219"/>
             <Label Content="Kwota" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="25"/>
-            <TextBox HorizontalAlignment="Left" x:Name="ProductPrice" Text="{Binding Kwota}" Height="22" Margin="100,74,0,10" VerticalAlignment="Top" Width="150"/>
+            <TextBox HorizontalAlignment="Left" x:Name="ProductPrice" Text="{Binding Kwota, Mode=OneTime}" Height="22" Margin="100,74,0,10" VerticalAlignment="Top" Width="150"/>
             <Button Content="Oblicz" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Click="ProductAmountCompute_OnClick" Height="22" Margin="255,74,0,0" />
         </Grid>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="DeleteButton_OnClick" />
-        <Button Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="SaveButton_OnClick" />
+        <Button Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75" Click="SaveButton_OnClick" />
+        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
     </Grid>
 </Window>

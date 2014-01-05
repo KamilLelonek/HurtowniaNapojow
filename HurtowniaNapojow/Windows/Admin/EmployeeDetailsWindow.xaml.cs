@@ -38,6 +38,9 @@ namespace HurtowniaNapojow.Windows.Admin
         {
             if (_validator.AreControlsEmpty(FirstNameTextBox, LastNameTextBox, EmailTextBox) ||
                 !_validator.IsEmailValid(EmailTextBox)) return;
+            _employee.Imię = FirstNameTextBox.Text;
+            _employee.Nazwisko = LastNameTextBox.Text;
+            _employee.Email = EmailTextBox.Text;
             DataBaseEmployeeHelper.UpdateDB(_employee, "Dane użytkownika zaktualizowane pomyślnie");
         }
 

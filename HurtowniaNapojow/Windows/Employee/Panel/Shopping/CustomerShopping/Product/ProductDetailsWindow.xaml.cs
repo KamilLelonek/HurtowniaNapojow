@@ -33,10 +33,17 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             ProductDetailsGrid.DataContext = _product;
         }
 
-      
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (_validator.AreControlsEmpty(ProductPrice, ProductAmount)) return;
+            int amount = _product.Liczba;
+            float price = _product.Kwota;
+            bool validAmount = int.TryParse(ProductAmount.Text, out amount);
+            bool validPrice = float.TryParse(ProductPrice.Text, out price);
+            if (!validAmount || !validPrice) return;
+            _product.Liczba = amount;
+            _product.Kwota = price;
+            DataBaseProductHelper.UpdateDB(_product, "Dane produktu zaktualizowane pomyślnie");
             _parentWindow.SetShoppingBinding();
         }
 
@@ -47,18 +54,22 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             this.Close();
         }
 
-        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(ProductAmount, ProductPrice)) return;
-            DataBaseProductHelper.UpdateDB(_product, "Dane produktu pomyślnie zaktualizowane");
-            _parentWindow.SetShoppingBinding();
-            this.Close();
+            if (_product.Liczba == 0 && _product.Kwota == 0)
+                DeleteButton_OnClick(sender, e);
+            else
+                this.Close();
         }
 
         private void ProductAmountCompute_OnClick(object sender, RoutedEventArgs e)
         {
-            _product.Kwota = _product.Liczba * _drink.Price;
-            ProductPrice.Text = _product.Kwota + "";
+            int amount = _product.Liczba;
+            bool validAmount = int.TryParse(ProductAmount.Text, out amount);
+            if (validAmount)
+            {
+                ProductPrice.Text = amount * _drink.Price + "";
+            }            
         }
     }
 }

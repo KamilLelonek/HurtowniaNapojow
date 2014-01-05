@@ -68,5 +68,31 @@ namespace HurtowniaNapojow.Helpers
             var passwordBox = control as PasswordBox;
             return passwordBox != null ? passwordBox.Password : "";
         }
+
+        public bool IsCityCodeValid(TextBox MiastoKodTextBox)
+        {
+            var kodMiasto = MiastoKodTextBox.Text;
+
+            if (String.IsNullOrEmpty(kodMiasto)) return false;
+
+            var match = Regex.IsMatch(kodMiasto, Globals.CODE_CITY_REGEX);
+            if (match) return true;
+
+            MessageBox.Show("Podaj poprawnie Kod Miasto (00-000 Miasto)", Globals.TITLE_ERROR);
+            return false;
+        }
+
+        public bool IsNIPValid(TextBox NIPTextBox)
+        {
+            var nip = NIPTextBox.Text;
+
+            if (String.IsNullOrEmpty(nip)) return false;
+
+            var match = Regex.IsMatch(nip, Globals.NIP_REGEX);
+            if (match) return true;
+
+            MessageBox.Show("Podaj poprawny NIP", Globals.TITLE_ERROR);
+            return false;
+        }
     }
 }

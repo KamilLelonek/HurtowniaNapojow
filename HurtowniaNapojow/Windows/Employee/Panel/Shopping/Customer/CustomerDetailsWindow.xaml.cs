@@ -32,8 +32,15 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(NazwaKlientaTextBox, NrTelefonuTextBox, UlicaNrTextBox)) return;
+            if (_validator.AreControlsEmpty(NazwaKlientaTextBox, NrTelefonuTextBox, UlicaNrTextBox, MiastoKodTextBox) || !_validator.IsCityCodeValid(MiastoKodTextBox)) return;
             if (!String.IsNullOrEmpty(EmailTextBox.Text) && !_validator.IsEmailValid(EmailTextBox)) return;
+            if (!String.IsNullOrEmpty(NIPTextBox.Text) && !_validator.IsNIPValid(NIPTextBox)) return;
+            _customer.NazwaKlienta = NazwaKlientaTextBox.Text;
+            _customer.NrTelefonu = NrTelefonuTextBox.Text;
+            _customer.UlicaNumer = UlicaNrTextBox.Text;
+            _customer.MiastoKod = MiastoKodTextBox.Text;
+            _customer.Email = EmailTextBox.Text;
+            _customer.NIP = NIPTextBox.Text;
             DataBaseCustomerHelper.UpdateDB(_customer, "Dane klienta zaktualizowane pomyślnie");
             _parentWindow.SetCustomersBinding();
         }
