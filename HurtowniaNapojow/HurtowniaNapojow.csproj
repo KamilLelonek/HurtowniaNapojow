@@ -267,6 +267,7 @@
     <None Include="Database\HurtowniaNapojowDataSet.xss">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeIncome.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeShopping.datasource" />
     <None Include="Properties\Settings.settings">

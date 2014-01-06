@@ -22,7 +22,13 @@ namespace HurtowniaNapojow.Helpers
         {
             _shoppingRow = shoppingRow;
             _productRow = productRow;
-            _drinkRow = DataBaseProducerDrinkHelper.GetDrinkByID(DataBaseWarehouseDrinkHelper.GetDrinkById(productRow.id_napoju_hurtowni).id_napoju_producenta);
+
+            var idNapojuHurtowni = productRow.id_napoju_hurtowni;
+            var napojHurtowni = DataBaseWarehouseDrinkHelper.GetDrinkById(idNapojuHurtowni);
+            var idNapojuProducenta = napojHurtowni.id_napoju_producenta;
+            var napojProducenta = DataBaseProducerDrinkHelper.GetDrinkByID(idNapojuProducenta);
+
+            _drinkRow = napojProducenta;
 
             Id = _productRow.Identyfikator;
             DrinkName = DataBaseDrinkNameHelper.GetDrinkNameByID(_drinkRow.id_nazwy_napoju).NazwaNapoju;
