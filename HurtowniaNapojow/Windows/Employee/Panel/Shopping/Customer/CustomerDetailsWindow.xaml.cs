@@ -39,8 +39,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             _customer.NrTelefonu = NrTelefonuTextBox.Text;
             _customer.UlicaNumer = UlicaNrTextBox.Text;
             _customer.MiastoKod = MiastoKodTextBox.Text;
-            _customer.Email = EmailTextBox.Text;
-            _customer.NIP = NIPTextBox.Text;
+            _customer.Email = String.IsNullOrEmpty(EmailTextBox.Text) ? null : EmailTextBox.Text;
+            _customer.NIP = String.IsNullOrEmpty(NIPTextBox.Text) ? null : NIPTextBox.Text;
             DataBaseCustomerHelper.UpdateDB(_customer, "Dane klienta zaktualizowane pomyślnie");
             _parentWindow.SetCustomersBinding();
         }

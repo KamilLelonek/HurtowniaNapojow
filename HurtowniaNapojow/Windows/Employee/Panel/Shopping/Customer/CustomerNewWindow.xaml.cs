@@ -32,9 +32,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             if (!String.IsNullOrEmpty(NIPTextBox.Text) && !_validator.IsNIPValid(NIPTextBox)) return;
 
             var newNazwaKlienta = NameTextBox.Text;
-            var newNIP = NIPTextBox.Text;
+            var newNIP = String.IsNullOrEmpty(NIPTextBox.Text) ? null : NIPTextBox.Text;
             var newNrTelefonu = NrTelefonuTextBox.Text;
-            var newEmail = EmailTextBox.Text;
+            var newEmail = String.IsNullOrEmpty(EmailTextBox.Text) ? null : EmailTextBox.Text;
             var newUlicaNr = UlicaNrTextBox.Text;
             var newMiastoKod = MiastoKodTextBox.Text;
 
