@@ -53,7 +53,8 @@ namespace HurtowniaNapojow.Windows.Admin
         private void FilterChanged()
         {
             var comboBoxItem = FilterComboBox.SelectedItem as ComboBoxItem;
-            if (comboBoxItem == null) return;
+            if (comboBoxItem == null) FilterComboBox.SelectedIndex = 0;
+            comboBoxItem = FilterComboBox.SelectedItem as ComboBoxItem;
 
             var filterType = comboBoxItem.Content.ToString();
             var filterValue = FilterTextBox.Text;
