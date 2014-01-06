@@ -58,15 +58,15 @@ namespace HurtowniaNapojow.Windows
 
         private void FakeAdminButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxEmail.Text = "admin";
+            TextBoxEmail.Text = "admin@admin.pl";
             PasswordBox.Password = "password";
             ButtonLogin.PerformClick();
         }
 
         private void FakeEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxEmail.Text = "barbi69@gmail.com";
-            PasswordBox.Password = "password";
+            TextBoxEmail.Text = "barbi69@hotmail.com";
+            PasswordBox.Password = "barbara1";
             ButtonLogin.PerformClick();
         }
     }
