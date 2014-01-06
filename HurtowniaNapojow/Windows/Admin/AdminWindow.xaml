@@ -25,16 +25,16 @@
                 <Grid>
                     <TextBox x:Name="FilterTextBox" HorizontalAlignment="Left" Height="23" Margin="10,5,0,0" VerticalAlignment="Top" Width="120" />
                     <ComboBox Text="Wybierz filtr" x:Name="FilterComboBox" HorizontalAlignment="Left" Margin="135,5,0,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
-                        <ComboBoxItem x:Name="FirstNameComboBoxItem" Content="Imię"/>
-                        <ComboBoxItem x:Name="LastNameComboBoxItem" Content="Nazwisko"/>
+                        <ComboBoxItem x:Name="FirstNameComboBoxItem" Content="Nazwisko"/>
+                        <ComboBoxItem x:Name="LastNameComboBoxItem" Content="Imię"/>
                         <ComboBoxItem x:Name="EmailComboBoxItem" Content="Email"/>
                     </ComboBox>
                     <Button Content="Resetuj" x:Name="ResetButton" HorizontalAlignment="Left" Margin="260,5,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
                     <DataGrid x:Name="EmployeesDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" Margin="10,35,10,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.1*" />
-                            <DataGridTextColumn Header="Imię" Binding="{Binding Imię}" Width="0.2*" />
                             <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}" Width="0.2*" />
+                            <DataGridTextColumn Header="Imię" Binding="{Binding Imię}" Width="0.2*" />
                             <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.3*" />
                             <DataGridCheckBoxColumn Header="Administrator" Binding="{Binding CzyAdministrator}"
                                                     Width="0.2*" />
