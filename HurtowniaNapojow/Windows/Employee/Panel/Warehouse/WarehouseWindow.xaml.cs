@@ -6,6 +6,8 @@ using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste;
 using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
 using HurtowniaNapojow.Windows.Employee.Warehouse.GasType;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -59,6 +61,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         private void PlusGasType_Click(object sender, RoutedEventArgs e)
         {
             this.OpenWindow(new GasTypeNewWindow(), blockPrevious: true);
+        }
+
+        private void DrinkNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new DrinkNameDetailsWindow(), blockPrevious: true);
+        }
+
+        private void DrinkNameType_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new DrinkNameNewWindow(), blockPrevious: true);
         }
 
     }

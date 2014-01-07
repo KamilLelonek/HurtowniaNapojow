@@ -1,0 +1,16 @@
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName.BulkPackageNameNewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dodawanie Nazwy Opakowania Zbiorczego" Height="149.346" Width="361"
+        WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-6,0">
+        
+        <Label Content="Nazwa Opakowania Zbiorczego" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="189" />
+        <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="203,24,0,0"
+                 VerticalAlignment="Top" Width="124"  KeyDown="OnKeyDownHandler" />
+        <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="43,71,0,0" VerticalAlignment="Top"
+                Width="75" Click="AddButton_Click"  Height="20" />
+        <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Left" Margin="231,71,0,0"
+                VerticalAlignment="Top" Width="75" Click="CloseButton_Click"  Height="20" />
+    </Grid>
+</Window>

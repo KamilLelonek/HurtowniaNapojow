@@ -21,6 +21,8 @@
                 <Button x:Name="PlusTaste" Content="+" Margin="575,34,20,354" Click="PlusTaste_Click"/>
                 <Button x:Name="GasTypeButton" Content="Rodzaje Gazu" HorizontalAlignment="Left" Margin="479,80,0,0" VerticalAlignment="Top" Width="82" Click="GasTypeButton_Click"/>
                 <Button x:Name="PlusGasType" Content="+" HorizontalAlignment="Left" Margin="576,80,0,0" VerticalAlignment="Top" Width="30" Click="PlusGasType_Click"/>
+                <Button x:Name="DrinkNameButton" Content="Nazwa Napoju" HorizontalAlignment="Left" Margin="479,121,0,0" VerticalAlignment="Top" Width="82" Click="DrinkNameButton_Click"/>
+                <Button x:Name="PlusDrinkName" Content="+" HorizontalAlignment="Left" Margin="576,121,0,0" VerticalAlignment="Top" Width="30" Click="DrinkNameType_Click"/>
 
             </Grid>
 
