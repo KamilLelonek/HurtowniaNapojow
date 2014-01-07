@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.OleDb;
 using System.Linq;
-using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+using System;
+using System.Windows;
+using System.Data;
+using System.Data.OleDb;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -39,15 +39,30 @@ namespace HurtowniaNapojow.Helpers
         }
 
         public static Boolean DeleteBulkPackageNameRow(DataRow bulkPackageNameRow)
-        {   //tu zmienić na DataBaseBulkPackageHelper 
-            var bulkPackageExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_rodzaju_gazu == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
+        {
+            
+            var bulkPackageExists = DataBaseBulkPackageHelper.GetBulkPackageData().Any(bulk => bulk.id_nazwy_opakowania_zbiorczego == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
+           // var bulkPackageExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_procuenta == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
+          
             if (bulkPackageExists)
             {
-                MessageBox.Show("Do wybranej nazwy rodzaju opakowania zbiorczego'" + (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).NazwaOpakowania + "' są przypisane opakowania zbiorcze. Nazwa opakowania zbiorczego nie zostanie usunięta.", Globals.TITLE_ERROR);
+               MessageBox.Show("Do wybranej nazwy rodzaju opakowania zbiorczego'" + (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).NazwaOpakowania + "' są przypisane opakowania zbiorcze. Nazwa opakowania zbiorczego nie zostanie usunięta.", Globals.TITLE_ERROR);
                 return false;
-            }
-            bulkPackageNameRow.Delete();
-            return BulkPackageNameTableAdapter.Update(bulkPackageNameRow) == 1;
+           }
+            
+               
+                try
+                {
+                    bulkPackageNameRow.Delete();
+                    return BulkPackageNameTableAdapter.Update(bulkPackageNameRow) == 1;
+                }
+                catch (OleDbException e)
+                {
+                    MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                    return false;
+                }
+            
+            
         }
 
         public static Boolean EditBulkPackageName(HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow bulkPackageName, String newbulkPackageName)

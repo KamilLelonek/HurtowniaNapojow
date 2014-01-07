@@ -8,6 +8,14 @@ using HurtowniaNapojow.Windows.Employee.Warehouse.GasType;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
 using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.Producer;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Producer;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -71,6 +79,46 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         private void DrinkNameType_Click(object sender, RoutedEventArgs e)
         {
             this.OpenWindow(new DrinkNameNewWindow(), blockPrevious: true);
+        }
+
+        private void BulkPackageNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new BulkPackageNameDetailsWindow(), blockPrevious: true);
+        }
+
+        private void PiecePackageNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new PiecePackageNameDetailsWindow(), blockPrevious: true);
+        }
+
+        private void PiecePackageNamePlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new PiecePackageNameNewWindow(), blockPrevious: true);
+        }
+
+        private void BulkPackageNamePlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new BulkPackageNameNewWindow(), blockPrevious: true);
+        }
+
+        private void ProducerButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new ProducerDetailsWindow(), blockPrevious: true);
+        }
+
+        private void ProducerPlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new ProducerNewWindow(), blockPrevious: true);
+        }
+
+        private void DrinkTypeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new DrinkTypeDetailsWindow(), blockPrevious: true);
+        }
+
+        private void DrinkTypePlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new DrinkTypeNewWindow(), blockPrevious: true);
         }
 
     }

@@ -76,6 +76,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName
                 //do yes stuff
                 var bulkPackageNames = BulkPackageNameDataGrid.SelectedItems.OfType<DataRowView>().ToList();
                 bulkPackageNames.ForEach(bulkPackageName => DataBaseBulkPackageNameHelper.DeleteBulkPackageNameRow(bulkPackageName.Row));
+              
             }
             
         }

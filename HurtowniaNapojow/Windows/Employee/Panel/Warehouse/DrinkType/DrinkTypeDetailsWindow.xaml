@@ -1,0 +1,25 @@
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType.DrinkTypeDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Rodzaje Napojów" Height="332.928" Width="302.432"
+        WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="0,0,0,0">
+        <DataGrid x:Name="DrinkTypeDataGrid" HorizontalAlignment="Center" Margin="10,10,10,80"
+                  VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.15*" />
+                <DataGridTextColumn Header="Nazwa Rodzaju " Binding="{Binding NazwaRodzajuNapoju}" Width="0.40*" />
+                <DataGridTextColumn Header="Stawka Podatku" Binding="{Binding StawkaPodatkowa}" Width="0.45*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button Content="Nowy" x:Name="NewButton" Click="NewButton_OnClick" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="20,0,0,50"/>
+        <Button Content="Edytuj" x:Name="EditButton" Click="EditButton_OnClick" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
+        <Button Content="Usuń" x:Name="DeleteButton" Click="DeleteButton_OnClick" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,20,50"/>
+        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Center" Margin="0,0,0,20"
+                VerticalAlignment="Bottom" Width="76" Click="CloseButton_OnClick" />
+    </Grid>
+</Window>

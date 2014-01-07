@@ -21,8 +21,16 @@
                 <Button x:Name="PlusTaste" Content="+" Margin="575,34,20,354" Click="PlusTaste_Click"/>
                 <Button x:Name="GasTypeButton" Content="Rodzaje Gazu" HorizontalAlignment="Left" Margin="479,80,0,0" VerticalAlignment="Top" Width="82" Click="GasTypeButton_Click"/>
                 <Button x:Name="PlusGasType" Content="+" HorizontalAlignment="Left" Margin="576,80,0,0" VerticalAlignment="Top" Width="30" Click="PlusGasType_Click"/>
-                <Button x:Name="DrinkNameButton" Content="Nazwa Napoju" HorizontalAlignment="Left" Margin="479,121,0,0" VerticalAlignment="Top" Width="82" Click="DrinkNameButton_Click"/>
+                <Button x:Name="DrinkNameButton" Content="Nazwa Napoju" HorizontalAlignment="Left" Margin="433,121,0,0" VerticalAlignment="Top" Width="128" Click="DrinkNameButton_Click"/>
                 <Button x:Name="PlusDrinkName" Content="+" HorizontalAlignment="Left" Margin="576,121,0,0" VerticalAlignment="Top" Width="30" Click="DrinkNameType_Click"/>
+                <Button x:Name="BulkPackageNameButton" Content="Nazwa opakowania Zbiorczego" HorizontalAlignment="Left" Margin="386,150,0,0" VerticalAlignment="Top" Width="175" Click="BulkPackageNameButton_Click"/>
+                <Button x:Name="PlusBulkPackageName" Content="+" HorizontalAlignment="Left" Margin="576,150,0,0" VerticalAlignment="Top" Width="30" Click="BulkPackageNamePlus_Click"/>
+                <Button x:Name="PiecePackageNameButton" Content="Nazwa opakowania sztuki" HorizontalAlignment="Left" Margin="386,180,0,0" VerticalAlignment="Top" Width="175" Click="PiecePackageNameButton_Click"/>
+                <Button x:Name="PlusPiecePackageName" Content="+" HorizontalAlignment="Left" Margin="576,180,0,0" VerticalAlignment="Top" Width="30" Click="PiecePackageNamePlus_Click"/>
+                <Button x:Name="ProducerButton" Content="Producent" HorizontalAlignment="Left" Margin="386,236,0,0" VerticalAlignment="Top" Width="175" Click="ProducerButton_Click"/>
+                <Button x:Name="PlusProducerName" Content="+" HorizontalAlignment="Left" Margin="576,236,0,0" VerticalAlignment="Top" Width="30" Click="ProducerPlus_Click"/>
+                <Button x:Name="DrinkTypeButton" Content="Rodzaj napoju" HorizontalAlignment="Left" Margin="386,273,0,0" VerticalAlignment="Top" Width="175" Click="DrinkTypeButton_Click"/>
+                <Button x:Name="PlusDrinkTypeName" Content="+" HorizontalAlignment="Left" Margin="576,273,0,0" VerticalAlignment="Top" Width="30" Click="DrinkTypePlus_Click"/>
 
             </Grid>
 
