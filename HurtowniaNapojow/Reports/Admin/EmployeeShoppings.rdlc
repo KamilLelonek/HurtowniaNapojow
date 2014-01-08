@@ -345,7 +345,6 @@
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <FontWeight>Bold</FontWeight>
-                                      <Format>D</Format>
                                       <Color>#4c68a2</Color>
                                     </Style>
                                   </TextRun>
@@ -366,6 +365,7 @@
                               <PaddingBottom>2pt</PaddingBottom>
                             </Style>
                           </Textbox>
+                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                       <TablixMembers>

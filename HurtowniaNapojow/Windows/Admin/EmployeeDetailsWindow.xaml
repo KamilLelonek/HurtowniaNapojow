@@ -29,9 +29,9 @@
                   IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.1*" />
-                <DataGridTextColumn Header="Klient" Binding="{Binding CustomerName}" Width="0.2*" />
+                <DataGridTextColumn Header="Klient" Binding="{Binding CustomerName}" Width="0.2*" /> 
                 <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.2*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price}" Width="0.2*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat={}{0:#,#.00} zł}" Width="0.2*" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Podsumowanie" Name="ValueButton" HorizontalAlignment="Left" Margin="104,305,0,0" VerticalAlignment="Top" Width="95" Click="SummaryButton_Click"/>
