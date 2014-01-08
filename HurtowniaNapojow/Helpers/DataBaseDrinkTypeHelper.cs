@@ -22,7 +22,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static HurtowniaNapojowDataSet.RodzajeNapojuRow GetDrinkTypeByID(int drinkTypeId)
         {
-            return GetDrinkTypesData().First(drinkTType => drinkTType.Identyfikator == drinkTypeId);
+            return GetDrinkTypesData().First(drinkType => drinkType.Identyfikator == drinkTypeId);
         }
 
         public static Boolean AddNewDrinkType(String newDrinkType, float newTaxRate )
@@ -33,10 +33,19 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzany rodzaj gazu już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            DrinkTypeTableAdapter.Insert(newDrinkType,newTaxRate);
-            _drinkTypesData = DrinkTypeTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
-            return true;
+            
+            try
+            {
+                DrinkTypeTableAdapter.Insert(newDrinkType, newTaxRate);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException e)
+            {
+                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                return false;
+            }
         }
 
         public static Boolean DeleteDrinkTypeRow(DataRow drinkTypeRow)
@@ -56,7 +65,6 @@ namespace HurtowniaNapojow.Helpers
             drinkType.NazwaRodzajuNapoju = newDrinkTypeName;
             drinkType.StawkaPodatkowa = newTaxRate;
             return UpdateDB(drinkType, "Rodzaj napoju został zmieniony");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String messageIfSuccess)
@@ -65,7 +73,7 @@ namespace HurtowniaNapojow.Helpers
             {
                 DrinkTypeTableAdapter.Update(drinkType);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _drinkTypesData = DrinkTypeTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
             catch (OleDbException e)
@@ -73,6 +81,11 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show(e.Message, Globals.TITLE_ERROR);
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _drinkTypesData = DrinkTypeTableAdapter.GetData();
         }
 
     }

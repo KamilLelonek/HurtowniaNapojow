@@ -32,29 +32,39 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzana nazwa rodzaju opakowania sztuki już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            PiecePackageNameTableAdapter.Insert(newPiecePackageName);
-            _piecePackageNameData = PiecePackageNameTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nową nazwę rodzaju opakowania sztuki", Globals.TITLE_SUCCESS);
-            return true;
+           
+            try
+            {
+                PiecePackageNameTableAdapter.Insert(newPiecePackageName);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nową nazwę rodzaju opakowania sztuki", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju opakowania sztuki nie może być puste!", "Błąd");
+                return false;
+            }
         }
 
         public static Boolean DeletePiecePackageNameRow(DataRow piecePackageNameRow)
         {
-            var piecePackageExists = DataBasePiecePackageHelper.GetPiecePackageData().Any(piecePackage => piecePackage.id_nazwy_opakowania_sztuki == (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).Identyfikator);
+            var piecePackageExists = DataBasePiecePackageHelper.GetPiecePackageData().Any(piecePackage => piecePackage.id_rodzaju_opakowania_sztuki == (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).Identyfikator);
             if (piecePackageExists)
             {
                 MessageBox.Show("Do wybranej nazwy rodzaju opakowania sztuki'" + (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).NazwaOpakowania + "' są przypisane opakowania sztuki. Nazwa rodzaju opakowania sztuki nie zostanie usunięta.", Globals.TITLE_ERROR);
                 return false;
             }
             piecePackageNameRow.Delete();
-            return PiecePackageNameTableAdapter.Update(piecePackageNameRow) == 1;
+            var result = PiecePackageNameTableAdapter.Update(piecePackageNameRow) == 1;
+            if (result) RefreshData();
+            return result;
         }
 
         public static Boolean EditPiecePackageName(HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow piecePackageName, String newPiecePackageName)
         {
             piecePackageName.NazwaOpakowania = newPiecePackageName;
             return UpdateDB(piecePackageName, "Nazwa rodzaju opakowania sztuki została zmieniona");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow piecePackageName, String messageIfSuccess)
@@ -63,14 +73,19 @@ namespace HurtowniaNapojow.Helpers
             {
                 PiecePackageNameTableAdapter.Update(piecePackageName);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _piecePackageNameData = PiecePackageNameTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _piecePackageNameData = PiecePackageNameTableAdapter.GetData();
         }
 
     }

@@ -2,20 +2,24 @@ using System.Windows;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Producer;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste;
-using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType;
-using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackageName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.Producer;
 using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
 using HurtowniaNapojow.Windows.Employee.Warehouse.GasType;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.Producer;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Producer;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackage;
+using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage;
+using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -119,6 +123,26 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         private void DrinkTypePlus_Click(object sender, RoutedEventArgs e)
         {
             this.OpenWindow(new DrinkTypeNewWindow(), blockPrevious: true);
+        }
+
+        private void PiecePackageButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new PiecePackageDetailsWindow(), blockPrevious: true);
+        }
+
+        private void PiecePackagePlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new PiecePackageNewWindow(), blockPrevious: true);
+        }
+
+        private void BulkPackageButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new BulkPackageDetailsWindow(), blockPrevious: true);
+        }
+
+        private void BulkPackagePlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new BulkPackageNewWindow(), blockPrevious: true);
         }
 
     }

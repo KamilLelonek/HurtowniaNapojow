@@ -20,6 +20,6 @@
         <Button Content="Edytuj" x:Name="EditButton" Click="EditButton_OnClick" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,50"/>
         <Button Content="Usuń" x:Name="DeleteButton" Click="DeleteButton_OnClick" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,20,50"/>
         <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Center" Margin="0,0,0,20"
-                VerticalAlignment="Bottom" Width="76" Click="CloseButton_OnClick" />
+                VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
     </Grid>
 </Window>

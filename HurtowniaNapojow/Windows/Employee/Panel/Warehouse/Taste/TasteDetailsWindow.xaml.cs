@@ -1,8 +1,21 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 using System.Data;
 using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
 
@@ -27,7 +40,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste
 
         public void SetTastesBinding()
         {
-           TastesDataGrid.RebindContext(DataBaseTasteHelper.GetTastesData());
+           TastesDataGrid.RebindContext(new SmakiTableAdapter().GetData());
         }
 
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
@@ -38,11 +51,21 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
             var tastes = TastesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            tastes.ForEach(taste => {
-             HurtowniaNapojowDataSet.SmakiRow editTaste = (HurtowniaNapojowDataSet.SmakiRow)taste.Row;
-             this.OpenWindow(new TasteEditWindow(ref TastesDataGrid, ref editTaste), blockPrevious: true);
-            });
-            SetTastesBinding();
+            if (tastes.Count > 0)
+            {
+                    tastes.ForEach(taste =>
+                    {
+                        HurtowniaNapojowDataSet.SmakiRow editTaste = (HurtowniaNapojowDataSet.SmakiRow)taste.Row;
+                        this.OpenWindow(new TasteEditWindow(ref TastesDataGrid, ref editTaste), blockPrevious: true);
+                    });
+                    SetTastesBinding();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
+
+            
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -52,16 +75,23 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            var tastes = TastesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
+
+            if (tastes.Count > 0)
             {
-                //do no stuff
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    //do no stuff
+                }
+                else
+                {
+                    // do yes
+                    tastes.ForEach(taste => DataBaseTasteHelper.DeleteTasteRow(taste.Row));
+                }
             }
-            else
-            {
-                //do yes stuff
-                var tastes = TastesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-                tastes.ForEach(taste => DataBaseTasteHelper.DeleteTasteRow(taste.Row));
-            }
+            else {
+                MessageBox.Show("Nie wybrano danych do usunięcia, zaznacz rekord(y) przeznaczone do usunięcia.","Uwaga");
+                }
             
         }
     }

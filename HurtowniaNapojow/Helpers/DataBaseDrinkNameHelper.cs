@@ -36,16 +36,15 @@ namespace HurtowniaNapojow.Helpers
             try
             {
                 DrinkNameTableAdapter.Insert(newDrinkName);
-                _drinkNamesData = DrinkNameTableAdapter.GetData();
+                RefreshData();
                 MessageBox.Show("Pomyślnie dodano nową nazwę napoju", Globals.TITLE_SUCCESS);
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa napoju nie może być puste!", "Błąd");
                 return false;
             }
-                
         }
 
         public static Boolean DeleteDrinkNameRow(DataRow drinkNameRow)
@@ -57,14 +56,15 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             drinkNameRow.Delete();
-            return DrinkNameTableAdapter.Update(drinkNameRow) == 1;
+            var result = DrinkNameTableAdapter.Update(drinkNameRow) == 1;
+            if (result) RefreshData();
+            return result;
         }
 
         public static Boolean EditDrinkName(HurtowniaNapojowDataSet.NazwyNapojuRow drinkName, String newDrinkName)
         {
             drinkName.NazwaNapoju = newDrinkName;
             return UpdateDB(drinkName, "Nazwa napoju została zmieniona");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.NazwyNapojuRow drinkName, String messageIfSuccess)
@@ -73,17 +73,20 @@ namespace HurtowniaNapojow.Helpers
             {
                 DrinkNameTableAdapter.Update(drinkName);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _drinkNamesData = DrinkNameTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
+                RefreshData();
                 return false;
             }
         }
 
-    
-
+        private static void RefreshData()
+        {
+            _drinkNamesData = DrinkNameTableAdapter.GetData();
+        }
     }
 }

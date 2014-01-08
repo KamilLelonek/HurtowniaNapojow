@@ -31,6 +31,10 @@
                 <Button x:Name="PlusProducerName" Content="+" HorizontalAlignment="Left" Margin="576,236,0,0" VerticalAlignment="Top" Width="30" Click="ProducerPlus_Click"/>
                 <Button x:Name="DrinkTypeButton" Content="Rodzaj napoju" HorizontalAlignment="Left" Margin="386,273,0,0" VerticalAlignment="Top" Width="175" Click="DrinkTypeButton_Click"/>
                 <Button x:Name="PlusDrinkTypeName" Content="+" HorizontalAlignment="Left" Margin="576,273,0,0" VerticalAlignment="Top" Width="30" Click="DrinkTypePlus_Click"/>
+                <Button x:Name="PiecePackageButton" Content="Opakowanie sztuki" HorizontalAlignment="Left" Margin="386,317,0,0" VerticalAlignment="Top" Width="175" Click="PiecePackageButton_Click"/>
+                <Button x:Name="PlusPiecePackage" Content="+" HorizontalAlignment="Left" Margin="575,317,0,0" VerticalAlignment="Top" Width="30" Click="PiecePackagePlus_Click" />
+                <Button x:Name="BulkPackageButton" Content="Opakowania Zbiorcze" HorizontalAlignment="Left" Margin="386,353,0,0" VerticalAlignment="Top" Width="175" Click="BulkPackageButton_Click"/>
+                <Button x:Name="BulkPiecePackage" Content="+" HorizontalAlignment="Left" Margin="575,353,0,0" VerticalAlignment="Top" Width="30" Click="BulkPackagePlus_Click" />
 
             </Grid>
 

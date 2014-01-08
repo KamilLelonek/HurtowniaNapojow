@@ -122,6 +122,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\DrinkName\DrinkNameDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,6 +182,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\Producer\ProducerDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -211,20 +235,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BulkPackageHelper.cs" />
     <Compile Include="Helpers\CustomerShopping.cs" />
     <Compile Include="Helpers\DataBaseBulkPackageHelper.cs" />
     <Compile Include="Helpers\DataBaseBulkPackageNameHelper.cs" />
+    <Compile Include="Helpers\DataBaseDrinkNameHelper.cs" />
     <Compile Include="Helpers\DataBaseDrinkTypeHelper.cs" />
     <Compile Include="Helpers\DataBaseGasTypeHelper.cs" />
     <Compile Include="Helpers\DataBasePiecePackageHelper.cs" />
     <Compile Include="Helpers\DataBasePiecePackageNameHelper.cs" />
     <Compile Include="Helpers\DataBaseProducerHelper.cs" />
+    <Compile Include="Helpers\DataBaseProductHelper.cs" />
     <Compile Include="Helpers\DataBaseTasteHelper.cs" />
-    <Compile Include="Helpers\DataBaseDrinkNameHelper.cs" />
+    <Compile Include="Helpers\PiecePackageHelper.cs" />
     <Compile Include="Reports\Admin\EmployeeIncome.cs" />
     <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
-    <Compile Include="Helpers\DataBaseProductHelper.cs" />
     <Compile Include="Helpers\DataBaseShoppingHelper.cs" />
     <Compile Include="Helpers\DataBaseProducerDrinkHelper.cs" />
     <Compile Include="Helpers\DataBaseWarehouseDrinkHelper.cs" />
@@ -282,6 +308,15 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\BulkPackageName\BulkPackageNameNewWindow.xaml.cs">
       <DependentUpon>BulkPackageNameNewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageDetailsWindow.xaml.cs">
+      <DependentUpon>BulkPackageDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageEditWindow.xaml.cs">
+      <DependentUpon>BulkPackageEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\BulkPackage\BulkPackageNewWindow.xaml.cs">
+      <DependentUpon>BulkPackageNewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\DrinkName\DrinkNameDetailsWindow.xaml.cs">
       <DependentUpon>DrinkNameDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -300,6 +335,7 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeNewWindow.xaml.cs">
       <DependentUpon>DrinkTypeNewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\Float.cs" />
     <Compile Include="Windows\Employee\Panel\Warehouse\GasType\GasTypeDetailsWindow.xaml.cs">
       <DependentUpon>GasTypeDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -317,6 +353,15 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackageName\PiecePackageNameNewWindow.xaml.cs">
       <DependentUpon>PiecePackageNameNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageDetailsWindow.xaml.cs">
+      <DependentUpon>PiecePackageDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageEditWindow.xaml.cs">
+      <DependentUpon>PiecePackageEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageNewWindow.xaml.cs">
+      <DependentUpon>PiecePackageNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\Producer\ProducerDetailsWindow.xaml.cs">
       <DependentUpon>ProducerDetailsWindow.xaml</DependentUpon>
@@ -387,7 +432,9 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\HurtowniaNapojow.accdb" />
+    <Content Include="Database\HurtowniaNapojow.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

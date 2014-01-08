@@ -17,7 +17,6 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.Taste
 
         public TasteEditWindow(ref DataGrid tasteDataGrid, ref HurtowniaNapojowDataSet.SmakiRow editTaste)
         {
-           
             _tasteDataGrid = tasteDataGrid;
             _editTaste = editTaste;
             InitializeComponent();

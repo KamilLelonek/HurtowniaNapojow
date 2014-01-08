@@ -21,12 +21,12 @@ namespace HurtowniaNapojow.Helpers
 
         public static HurtowniaNapojowDataSet.OpakowaniaSztukiRow GetPiecePackageByID(int piecePackageId)
         {
-            return GetPiecePackageData().First(piecePackage => piecePackage.Idenidtyfikator == piecePackageId);
+            return GetPiecePackageData().First(piecePackage => piecePackage.Identyfikator == piecePackageId);
         }
 
-        public static Boolean AddNewPiecePackage(HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow piecePackageName, int newPieceCapacity)
+        public static Boolean AddNewPiecePackage(HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow piecePackageName, float newPieceCapacity)
         {
-            var doesPiecePackageExist = GetPiecePackageData().Any(piecePackage => (piecePackage.id_nazwy_opakowania_sztuki == piecePackageName.Identyfikator && piecePackage.Pojemność == newPieceCapacity));
+            var doesPiecePackageExist = GetPiecePackageData().Any(piecePackage => (piecePackage.id_rodzaju_opakowania_sztuki == piecePackageName.Identyfikator && piecePackage.Pojemność == newPieceCapacity));
             if (doesPiecePackageExist)
             {
                 MessageBox.Show("Wprowadzany rodzaj opakowania sztuki już istnieje", Globals.TITLE_ERROR);
@@ -48,10 +48,10 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean DeletePiecePackageRow(DataRow piecePackageRow)
         {   
-            var productExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_opakowania_sztuki == (piecePackageRow as HurtowniaNapojowDataSet.OpakowaniaSztukiRow).Idenidtyfikator);
+            var productExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_opakowania_sztuki == (piecePackageRow as HurtowniaNapojowDataSet.OpakowaniaSztukiRow).Identyfikator);
             if (productExists)
             {
-                HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow tempPiecePackageName = DataBasePiecePackageNameHelper.GetPiecePackageNameByID((piecePackageRow as HurtowniaNapojowDataSet.OpakowaniaSztukiRow).id_nazwy_opakowania_sztuki);
+                HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow tempPiecePackageName = DataBasePiecePackageNameHelper.GetPiecePackageNameByID((piecePackageRow as HurtowniaNapojowDataSet.OpakowaniaSztukiRow).id_rodzaju_opakowania_sztuki);
                 MessageBox.Show("Do wybranego rodzaju opakowania sztuki'"+tempPiecePackageName.NazwaOpakowania+", "+ (piecePackageRow as HurtowniaNapojowDataSet.OpakowaniaSztukiRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania sztuki nie zostanie usunięty.", Globals.TITLE_ERROR);
                 return false;
             }
@@ -61,7 +61,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean EditPiecePackage(HurtowniaNapojowDataSet.OpakowaniaSztukiRow piecePackage, HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow newPiecePackageName, int newPieceCapacity)
         {
-            piecePackage.id_nazwy_opakowania_sztuki = newPiecePackageName.Identyfikator;
+            piecePackage.id_rodzaju_opakowania_sztuki = newPiecePackageName.Identyfikator;
             piecePackage.Pojemność = newPieceCapacity;
             return UpdateDB(piecePackage, "Rodzaju opakowania sztuki został zmieniony");
         }

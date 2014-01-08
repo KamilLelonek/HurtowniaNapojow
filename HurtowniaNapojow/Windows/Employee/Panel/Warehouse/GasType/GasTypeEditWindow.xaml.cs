@@ -34,7 +34,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.GasType
         {
             var newNameGasType = NewNameTextBox.Text;
 
-            var result = DataBaseGasTypeHelper.EditTaste(_editGasType,newNameGasType);
+            var result = DataBaseGasTypeHelper.EditGasType(_editGasType,newNameGasType);
             if (!result) return;
 
             _gasTypeDataGrid.RebindContext(DataBaseGasTypeHelper.GetGasTypeData());

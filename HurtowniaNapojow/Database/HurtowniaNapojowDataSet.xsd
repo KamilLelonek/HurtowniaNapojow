@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="HurtowniaNapojowConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="HurtowniaNapojowConnectionString2 (Settings)" PropertyReference="ApplicationSettings.HurtowniaNapojow.Properties.Settings.GlobalReference.Default.HurtowniaNapojowConnectionString2" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="HurtowniaNapojowConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="HurtowniaNapojowConnectionString1 (Settings)" PropertyReference="ApplicationSettings.HurtowniaNapojow.Properties.Settings.GlobalReference.Default.HurtowniaNapojowConnectionString1" Provider="System.Data.OleDb" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KlienciTableAdapter" GeneratorDataComponentClassName="KlienciTableAdapter" Name="Klienci" UserDataComponentName="KlienciTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="Klienci" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="Klienci" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Klienci` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaKlienta` IS NULL) OR (`NazwaKlienta` = ?)) AND ((? = 1 AND `NIP` IS NULL) OR (`NIP` = ?)) AND ((? = 1 AND `NrTelefonu` IS NULL) OR (`NrTelefonu` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `UlicaNumer` IS NULL) OR (`UlicaNumer` = ?)) AND ((? = 1 AND `MiastoKod` IS NULL) OR (`MiastoKod` = ?)))</CommandText>
@@ -88,41 +88,53 @@
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SmakiTableAdapter" GeneratorDataComponentClassName="SmakiTableAdapter" Name="Smaki" UserDataComponentName="SmakiTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ZakupyKlientaTableAdapter" GeneratorDataComponentClassName="ZakupyKlientaTableAdapter" Name="ZakupyKlienta" UserDataComponentName="ZakupyKlientaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="Smaki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="ZakupyKlienta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))</CommandText>
+                    <CommandText>DELETE FROM `ZakupyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaSmaku" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DataZłożenia" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)</CommandText>
+                    <CommandText>INSERT INTO `ZakupyKlienta` (`id_klienta`, `id_pracownika`, `DataZłożenia`) VALUES (?, ?, ?)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Identyfikator, NazwaSmaku FROM Smaki</CommandText>
+                    <CommandText>SELECT Identyfikator, id_klienta, id_pracownika, DataZłożenia FROM ZakupyKlienta</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))</CommandText>
+                    <CommandText>UPDATE `ZakupyKlienta` SET `id_klienta` = ?, `id_pracownika` = ?, `DataZłożenia` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaSmaku" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DataZłożenia" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -130,13 +142,15 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Identyfikator" DataSetColumn="Identyfikator" />
-              <Mapping SourceColumn="NazwaSmaku" DataSetColumn="NazwaSmaku" />
+              <Mapping SourceColumn="id_klienta" DataSetColumn="id_klienta" />
+              <Mapping SourceColumn="id_pracownika" DataSetColumn="id_pracownika" />
+              <Mapping SourceColumn="DataZłożenia" DataSetColumn="DataZłożenia" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NapojeHurtowniTableAdapter" GeneratorDataComponentClassName="NapojeHurtowniTableAdapter" Name="NapojeHurtowni" UserDataComponentName="NapojeHurtowniTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="NapojeHurtowni" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="NapojeHurtowni" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `NapojeHurtowni` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_napoju_producenta` IS NULL) OR (`id_napoju_producenta` = ?)) AND ((? = 1 AND `LiczbaSztuk` IS NULL) OR (`LiczbaSztuk` = ?)) AND ((? = 1 AND `CenaHurtowni` IS NULL) OR (`CenaHurtowni` = ?)) AND ((? = 1 AND `Położenie` IS NULL) OR (`Położenie` = ?)) AND ((? = 1 AND `DataWażności` IS NULL) OR (`DataWażności` = ?)))</CommandText>
@@ -210,7 +224,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NapojeProducentaTableAdapter" GeneratorDataComponentClassName="NapojeProducentaTableAdapter" Name="NapojeProducenta" UserDataComponentName="NapojeProducentaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="NapojeProducenta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="NapojeProducenta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `NapojeProducenta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_nazwy_napoju` IS NULL) OR (`id_nazwy_napoju` = ?)) AND ((? = 1 AND `id_smaku` IS NULL) OR (`id_smaku` = ?)) AND ((? = 1 AND `id_rodzaju_gazu` IS NULL) OR (`id_rodzaju_gazu` = ?)) AND ((? = 1 AND `id_procuenta` IS NULL) OR (`id_procuenta` = ?)) AND ((? = 1 AND `id_rodzaju_napoju` IS NULL) OR (`id_rodzaju_napoju` = ?)) AND ((? = 1 AND `id_opakowania_sztuki` IS NULL) OR (`id_opakowania_sztuki` = ?)) AND ((? = 1 AND `id_opakowania_zbiorczego` IS NULL) OR (`id_opakowania_zbiorczego` = ?)) AND ((? = 1 AND `CenaProducenta` IS NULL) OR (`CenaProducenta` = ?)))</CommandText>
@@ -231,7 +245,7 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CenaProducenta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_CenaProducenta" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="Original_CenaProducenta" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
@@ -246,7 +260,7 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_napoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_napoju" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="CenaProducenta" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="CenaProducenta" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -267,7 +281,7 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_napoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_napoju" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="CenaProducenta" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="CenaProducenta" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_nazwy_napoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_napoju" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_nazwy_napoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_napoju" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -284,7 +298,7 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CenaProducenta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_CenaProducenta" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="Original_CenaProducenta" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="CenaProducenta" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -305,7 +319,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NazwyNapojuTableAdapter" GeneratorDataComponentClassName="NazwyNapojuTableAdapter" Name="NazwyNapoju" UserDataComponentName="NazwyNapojuTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="NazwyNapoju" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="NazwyNapoju" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `NazwyNapoju` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaNapoju` IS NULL) OR (`NazwaNapoju` = ?)))</CommandText>
@@ -351,7 +365,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NazwyOpakowaniaSztukiTableAdapter" GeneratorDataComponentClassName="NazwyOpakowaniaSztukiTableAdapter" Name="NazwyOpakowaniaSztuki" UserDataComponentName="NazwyOpakowaniaSztukiTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="NazwyOpakowaniaSztuki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="NazwyOpakowaniaSztuki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `NazwyOpakowaniaSztuki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))</CommandText>
@@ -397,7 +411,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NazwyOpakowaniaZbiorczegoTableAdapter" GeneratorDataComponentClassName="NazwyOpakowaniaZbiorczegoTableAdapter" Name="NazwyOpakowaniaZbiorczego" UserDataComponentName="NazwyOpakowaniaZbiorczegoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="NazwyOpakowaniaZbiorczego" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="NazwyOpakowaniaZbiorczego" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `NazwyOpakowaniaZbiorczego` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaOpakowania` IS NULL) OR (`NazwaOpakowania` = ?)))</CommandText>
@@ -443,98 +457,98 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OpakowaniaSztukiTableAdapter" GeneratorDataComponentClassName="OpakowaniaSztukiTableAdapter" Name="OpakowaniaSztuki" UserDataComponentName="OpakowaniaSztukiTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="OpakowaniaSztuki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="OpakowaniaSztuki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM `OpakowaniaSztuki` WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_sztuki` IS NULL) OR (`id_nazwy_opakowania_sztuki` = ?)))</CommandText>
+                    <CommandText>DELETE FROM `OpakowaniaSztuki` WHERE (((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_sztuki` IS NULL) OR (`id_rodzaju_opakowania_sztuki` = ?)) AND (`Identyfikator` = ?))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Idenidtyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Idenidtyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO `OpakowaniaSztuki` (`Pojemność`, `id_nazwy_opakowania_sztuki`) VALUES (?, ?)</CommandText>
+                    <CommandText>INSERT INTO `OpakowaniaSztuki` (`Pojemność`, `id_rodzaju_opakowania_sztuki`) VALUES (?, ?)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Idenidtyfikator, Pojemność, id_nazwy_opakowania_sztuki FROM OpakowaniaSztuki</CommandText>
+                    <CommandText>SELECT Pojemność, id_rodzaju_opakowania_sztuki, Identyfikator FROM OpakowaniaSztuki</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE `OpakowaniaSztuki` SET `Pojemność` = ?, `id_nazwy_opakowania_sztuki` = ? WHERE ((`Idenidtyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_sztuki` IS NULL) OR (`id_nazwy_opakowania_sztuki` = ?)))</CommandText>
+                    <CommandText>UPDATE `OpakowaniaSztuki` SET `Pojemność` = ?, `id_rodzaju_opakowania_sztuki` = ? WHERE (((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_sztuki` IS NULL) OR (`id_rodzaju_opakowania_sztuki` = ?)) AND (`Identyfikator` = ?))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Idenidtyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Idenidtyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_nazwy_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_rodzaju_opakowania_sztuki" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_sztuki" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="Idenidtyfikator" DataSetColumn="Idenidtyfikator" />
               <Mapping SourceColumn="Pojemność" DataSetColumn="Pojemność" />
-              <Mapping SourceColumn="id_nazwy_opakowania_sztuki" DataSetColumn="id_nazwy_opakowania_sztuki" />
+              <Mapping SourceColumn="id_rodzaju_opakowania_sztuki" DataSetColumn="id_rodzaju_opakowania_sztuki" />
+              <Mapping SourceColumn="Identyfikator" DataSetColumn="Identyfikator" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OpakowaniaZbiorczeTableAdapter" GeneratorDataComponentClassName="OpakowaniaZbiorczeTableAdapter" Name="OpakowaniaZbiorcze" UserDataComponentName="OpakowaniaZbiorczeTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="OpakowaniaZbiorcze" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="OpakowaniaZbiorcze" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM `OpakowaniaZbiorcze` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_zbiorczego` IS NULL) OR (`id_nazwy_opakowania_zbiorczego` = ?)))</CommandText>
+                    <CommandText>DELETE FROM `OpakowaniaZbiorcze` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_zbiorczego` IS NULL) OR (`id_rodzaju_opakowania_zbiorczego` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO `OpakowaniaZbiorcze` (`Pojemność`, `id_nazwy_opakowania_zbiorczego`) VALUES (?, ?)</CommandText>
+                    <CommandText>INSERT INTO `OpakowaniaZbiorcze` (`Pojemność`, `id_rodzaju_opakowania_zbiorczego`) VALUES (?, ?)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Identyfikator, Pojemność, id_nazwy_opakowania_zbiorczego FROM OpakowaniaZbiorcze</CommandText>
+                    <CommandText>SELECT Identyfikator, Pojemność, id_rodzaju_opakowania_zbiorczego FROM OpakowaniaZbiorcze</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE `OpakowaniaZbiorcze` SET `Pojemność` = ?, `id_nazwy_opakowania_zbiorczego` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_nazwy_opakowania_zbiorczego` IS NULL) OR (`id_nazwy_opakowania_zbiorczego` = ?)))</CommandText>
+                    <CommandText>UPDATE `OpakowaniaZbiorcze` SET `Pojemność` = ?, `id_rodzaju_opakowania_zbiorczego` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Pojemność` IS NULL) OR (`Pojemność` = ?)) AND ((? = 1 AND `id_rodzaju_opakowania_zbiorczego` IS NULL) OR (`id_rodzaju_opakowania_zbiorczego` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Pojemność" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Pojemność" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_nazwy_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_nazwy_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_rodzaju_opakowania_zbiorczego" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_rodzaju_opakowania_zbiorczego" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -543,13 +557,13 @@
             <Mappings>
               <Mapping SourceColumn="Identyfikator" DataSetColumn="Identyfikator" />
               <Mapping SourceColumn="Pojemność" DataSetColumn="Pojemność" />
-              <Mapping SourceColumn="id_nazwy_opakowania_zbiorczego" DataSetColumn="id_nazwy_opakowania_zbiorczego" />
+              <Mapping SourceColumn="id_rodzaju_opakowania_zbiorczego" DataSetColumn="id_rodzaju_opakowania_zbiorczego" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PracownicyTableAdapter" GeneratorDataComponentClassName="PracownicyTableAdapter" Name="Pracownicy" UserDataComponentName="PracownicyTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="Pracownicy" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="Pracownicy" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Pracownicy` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `Nazwisko` IS NULL) OR (`Nazwisko` = ?)) AND ((? = 1 AND `Imię` IS NULL) OR (`Imię` = ?)) AND ((? = 1 AND `Hasło` IS NULL) OR (`Hasło` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `CzyAdministrator` IS NULL) OR (`CzyAdministrator` = ?)))</CommandText>
@@ -623,7 +637,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProducenciTableAdapter" GeneratorDataComponentClassName="ProducenciTableAdapter" Name="Producenci" UserDataComponentName="ProducenciTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="Producenci" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="Producenci" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Producenci` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaProducenta` IS NULL) OR (`NazwaProducenta` = ?)))</CommandText>
@@ -669,7 +683,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProduktyKlientaTableAdapter" GeneratorDataComponentClassName="ProduktyKlientaTableAdapter" Name="ProduktyKlienta" UserDataComponentName="ProduktyKlientaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="ProduktyKlienta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="ProduktyKlienta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `ProduktyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))</CommandText>
@@ -677,8 +691,8 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Kwota" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Kwota" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -691,7 +705,7 @@
                     <CommandText>INSERT INTO `ProduktyKlienta` (`id_zakupu_klienta`, `id_napoju_hurtowni`, `Liczba`, `Kwota`) VALUES (?, ?, ?, ?)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Kwota" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Kwota" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -708,14 +722,14 @@
                     <CommandText>UPDATE `ProduktyKlienta` SET `id_zakupu_klienta` = ?, `id_napoju_hurtowni` = ?, `Liczba` = ?, `Kwota` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_zakupu_klienta` IS NULL) OR (`id_zakupu_klienta` = ?)) AND ((? = 1 AND `id_napoju_hurtowni` IS NULL) OR (`id_napoju_hurtowni` = ?)) AND ((? = 1 AND `Liczba` IS NULL) OR (`Liczba` = ?)) AND ((? = 1 AND `Kwota` IS NULL) OR (`Kwota` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Kwota" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="Kwota" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_zakupu_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_zakupu_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_napoju_hurtowni" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_napoju_hurtowni" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Liczba" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Liczba" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Kwota" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Kwota" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -736,7 +750,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RodzajeGazuTableAdapter" GeneratorDataComponentClassName="RodzajeGazuTableAdapter" Name="RodzajeGazu" UserDataComponentName="RodzajeGazuTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="RodzajeGazu" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="RodzajeGazu" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `RodzajeGazu` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaRodzaju` IS NULL) OR (`NazwaRodzaju` = ?)))</CommandText>
@@ -782,16 +796,16 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RodzajeNapojuTableAdapter" GeneratorDataComponentClassName="RodzajeNapojuTableAdapter" Name="RodzajeNapoju" UserDataComponentName="RodzajeNapojuTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="RodzajeNapoju" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="RodzajeNapoju" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `RodzajeNapoju` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaRodzajuNapoju` IS NULL) OR (`NazwaRodzajuNapoju` = ?)) AND ((? = 1 AND `StawkaPodatkowa` IS NULL) OR (`StawkaPodatkowa` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaRodzajuNapoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_StawkaPodatkowa" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaRodzajuNapoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_StawkaPodatkowa" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
@@ -799,8 +813,8 @@
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO `RodzajeNapoju` (`NazwaRodzajuNapoju`, `StawkaPodatkowa`) VALUES (?, ?)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -814,13 +828,13 @@
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>UPDATE `RodzajeNapoju` SET `NazwaRodzajuNapoju` = ?, `StawkaPodatkowa` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaRodzajuNapoju` IS NULL) OR (`NazwaRodzajuNapoju` = ?)) AND ((? = 1 AND `StawkaPodatkowa` IS NULL) OR (`StawkaPodatkowa` = ?)))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaRodzajuNapoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_StawkaPodatkowa" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaRodzajuNapoju" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaRodzajuNapoju" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaRodzajuNapoju" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_StawkaPodatkowa" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Single" Direction="Input" ParameterName="Original_StawkaPodatkowa" Precision="0" ProviderType="Single" Scale="0" Size="0" SourceColumn="StawkaPodatkowa" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -833,53 +847,41 @@
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ZakupyKlientaTableAdapter" GeneratorDataComponentClassName="ZakupyKlientaTableAdapter" Name="ZakupyKlienta" UserDataComponentName="ZakupyKlientaTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SmakiTableAdapter" GeneratorDataComponentClassName="SmakiTableAdapter" Name="Smaki" UserDataComponentName="SmakiTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="HurtowniaNapojowConnectionString2 (Settings)" DbObjectName="ZakupyKlienta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="HurtowniaNapojowConnectionString1 (Settings)" DbObjectName="Smaki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM `ZakupyKlienta` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))</CommandText>
+                    <CommandText>DELETE FROM `Smaki` WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DataZłożenia" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaSmaku" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO `ZakupyKlienta` (`id_klienta`, `id_pracownika`, `DataZłożenia`) VALUES (?, ?, ?)</CommandText>
+                    <CommandText>INSERT INTO `Smaki` (`NazwaSmaku`) VALUES (?)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Identyfikator, id_klienta, id_pracownika, DataZłożenia FROM ZakupyKlienta</CommandText>
+                    <CommandText>SELECT Identyfikator, NazwaSmaku FROM Smaki</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE `ZakupyKlienta` SET `id_klienta` = ?, `id_pracownika` = ?, `DataZłożenia` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `id_klienta` IS NULL) OR (`id_klienta` = ?)) AND ((? = 1 AND `id_pracownika` IS NULL) OR (`id_pracownika` = ?)) AND ((? = 1 AND `DataZłożenia` IS NULL) OR (`DataZłożenia` = ?)))</CommandText>
+                    <CommandText>UPDATE `Smaki` SET `NazwaSmaku` = ? WHERE ((`Identyfikator` = ?) AND ((? = 1 AND `NazwaSmaku` IS NULL) OR (`NazwaSmaku` = ?)))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_Identyfikator" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Identyfikator" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_klienta" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_klienta" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_id_pracownika" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="id_pracownika" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DataZłożenia" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DataZłożenia" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DataZłożenia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NazwaSmaku" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NazwaSmaku" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NazwaSmaku" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -887,9 +889,7 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Identyfikator" DataSetColumn="Identyfikator" />
-              <Mapping SourceColumn="id_klienta" DataSetColumn="id_klienta" />
-              <Mapping SourceColumn="id_pracownika" DataSetColumn="id_pracownika" />
-              <Mapping SourceColumn="DataZłożenia" DataSetColumn="DataZłożenia" />
+              <Mapping SourceColumn="NazwaSmaku" DataSetColumn="NazwaSmaku" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -901,7 +901,7 @@
   <xs:element name="HurtowniaNapojowDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="HurtowniaNapojowDataSet" msprop:Generator_UserDSName="HurtowniaNapojowDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Klienci" msprop:Generator_TableClassName="KlienciDataTable" msprop:Generator_TableVarName="tableKlienci" msprop:Generator_RowChangedName="KlienciRowChanged" msprop:Generator_TablePropName="Klienci" msprop:Generator_RowDeletingName="KlienciRowDeleting" msprop:Generator_RowChangingName="KlienciRowChanging" msprop:Generator_RowEvHandlerName="KlienciRowChangeEventHandler" msprop:Generator_RowDeletedName="KlienciRowDeleted" msprop:Generator_RowClassName="KlienciRow" msprop:Generator_UserTableName="Klienci" msprop:Generator_RowEvArgName="KlienciRowChangeEvent">
+        <xs:element name="Klienci" msprop:Generator_TableClassName="KlienciDataTable" msprop:Generator_TableVarName="tableKlienci" msprop:Generator_TablePropName="Klienci" msprop:Generator_RowDeletingName="KlienciRowDeleting" msprop:Generator_RowChangingName="KlienciRowChanging" msprop:Generator_RowEvHandlerName="KlienciRowChangeEventHandler" msprop:Generator_RowDeletedName="KlienciRowDeleted" msprop:Generator_UserTableName="Klienci" msprop:Generator_RowChangedName="KlienciRowChanged" msprop:Generator_RowEvArgName="KlienciRowChangeEvent" msprop:Generator_RowClassName="KlienciRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -912,7 +912,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="NIP" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="NIP" msprop:Generator_ColumnVarNameInTable="columnNIP" msprop:Generator_ColumnPropNameInTable="NIPColumn" msprop:Generator_UserColumnName="NIP" minOccurs="0">
+              <xs:element name="NIP" msprop:Generator_ColumnVarNameInTable="columnNIP" msprop:Generator_ColumnPropNameInRow="NIP" msprop:Generator_ColumnPropNameInTable="NIPColumn" msprop:Generator_UserColumnName="NIP" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
@@ -926,7 +926,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Email" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
@@ -950,21 +950,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Smaki" msprop:Generator_TableClassName="SmakiDataTable" msprop:Generator_TableVarName="tableSmaki" msprop:Generator_RowChangedName="SmakiRowChanged" msprop:Generator_TablePropName="Smaki" msprop:Generator_RowDeletingName="SmakiRowDeleting" msprop:Generator_RowChangingName="SmakiRowChanging" msprop:Generator_RowEvHandlerName="SmakiRowChangeEventHandler" msprop:Generator_RowDeletedName="SmakiRowDeleted" msprop:Generator_RowClassName="SmakiRow" msprop:Generator_UserTableName="Smaki" msprop:Generator_RowEvArgName="SmakiRowChangeEvent">
+        <xs:element name="ZakupyKlienta" msprop:Generator_TableClassName="ZakupyKlientaDataTable" msprop:Generator_TableVarName="tableZakupyKlienta" msprop:Generator_TablePropName="ZakupyKlienta" msprop:Generator_RowDeletingName="ZakupyKlientaRowDeleting" msprop:Generator_RowChangingName="ZakupyKlientaRowChanging" msprop:Generator_RowEvHandlerName="ZakupyKlientaRowChangeEventHandler" msprop:Generator_RowDeletedName="ZakupyKlientaRowDeleted" msprop:Generator_UserTableName="ZakupyKlienta" msprop:Generator_RowChangedName="ZakupyKlientaRowChanged" msprop:Generator_RowEvArgName="ZakupyKlientaRowChangeEvent" msprop:Generator_RowClassName="ZakupyKlientaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
-              <xs:element name="NazwaSmaku" msprop:Generator_ColumnVarNameInTable="columnNazwaSmaku" msprop:Generator_ColumnPropNameInRow="NazwaSmaku" msprop:Generator_ColumnPropNameInTable="NazwaSmakuColumn" msprop:Generator_UserColumnName="NazwaSmaku" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="id_klienta" msprop:Generator_ColumnVarNameInTable="columnid_klienta" msprop:Generator_ColumnPropNameInRow="id_klienta" msprop:Generator_ColumnPropNameInTable="id_klientaColumn" msprop:Generator_UserColumnName="id_klienta" type="xs:int" minOccurs="0" />
+              <xs:element name="id_pracownika" msprop:Generator_ColumnVarNameInTable="columnid_pracownika" msprop:Generator_ColumnPropNameInRow="id_pracownika" msprop:Generator_ColumnPropNameInTable="id_pracownikaColumn" msprop:Generator_UserColumnName="id_pracownika" type="xs:int" minOccurs="0" />
+              <xs:element name="DataZłożenia" msprop:Generator_ColumnVarNameInTable="columnDataZłożenia" msprop:Generator_ColumnPropNameInRow="DataZłożenia" msprop:Generator_ColumnPropNameInTable="DataZłożeniaColumn" msprop:Generator_UserColumnName="DataZłożenia" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NapojeHurtowni" msprop:Generator_TableClassName="NapojeHurtowniDataTable" msprop:Generator_TableVarName="tableNapojeHurtowni" msprop:Generator_RowChangedName="NapojeHurtowniRowChanged" msprop:Generator_TablePropName="NapojeHurtowni" msprop:Generator_RowDeletingName="NapojeHurtowniRowDeleting" msprop:Generator_RowChangingName="NapojeHurtowniRowChanging" msprop:Generator_RowEvHandlerName="NapojeHurtowniRowChangeEventHandler" msprop:Generator_RowDeletedName="NapojeHurtowniRowDeleted" msprop:Generator_RowClassName="NapojeHurtowniRow" msprop:Generator_UserTableName="NapojeHurtowni" msprop:Generator_RowEvArgName="NapojeHurtowniRowChangeEvent">
+        <xs:element name="NapojeHurtowni" msprop:Generator_TableClassName="NapojeHurtowniDataTable" msprop:Generator_TableVarName="tableNapojeHurtowni" msprop:Generator_TablePropName="NapojeHurtowni" msprop:Generator_RowDeletingName="NapojeHurtowniRowDeleting" msprop:Generator_RowChangingName="NapojeHurtowniRowChanging" msprop:Generator_RowEvHandlerName="NapojeHurtowniRowChangeEventHandler" msprop:Generator_RowDeletedName="NapojeHurtowniRowDeleted" msprop:Generator_UserTableName="NapojeHurtowni" msprop:Generator_RowChangedName="NapojeHurtowniRowChanged" msprop:Generator_RowEvArgName="NapojeHurtowniRowChangeEvent" msprop:Generator_RowClassName="NapojeHurtowniRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -982,7 +978,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NapojeProducenta" msprop:Generator_TableClassName="NapojeProducentaDataTable" msprop:Generator_TableVarName="tableNapojeProducenta" msprop:Generator_RowChangedName="NapojeProducentaRowChanged" msprop:Generator_TablePropName="NapojeProducenta" msprop:Generator_RowDeletingName="NapojeProducentaRowDeleting" msprop:Generator_RowChangingName="NapojeProducentaRowChanging" msprop:Generator_RowEvHandlerName="NapojeProducentaRowChangeEventHandler" msprop:Generator_RowDeletedName="NapojeProducentaRowDeleted" msprop:Generator_RowClassName="NapojeProducentaRow" msprop:Generator_UserTableName="NapojeProducenta" msprop:Generator_RowEvArgName="NapojeProducentaRowChangeEvent">
+        <xs:element name="NapojeProducenta" msprop:Generator_TableClassName="NapojeProducentaDataTable" msprop:Generator_TableVarName="tableNapojeProducenta" msprop:Generator_TablePropName="NapojeProducenta" msprop:Generator_RowDeletingName="NapojeProducentaRowDeleting" msprop:Generator_RowChangingName="NapojeProducentaRowChanging" msprop:Generator_RowEvHandlerName="NapojeProducentaRowChangeEventHandler" msprop:Generator_RowDeletedName="NapojeProducentaRowDeleted" msprop:Generator_UserTableName="NapojeProducenta" msprop:Generator_RowChangedName="NapojeProducentaRowChanged" msprop:Generator_RowEvArgName="NapojeProducentaRowChangeEvent" msprop:Generator_RowClassName="NapojeProducentaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -993,11 +989,11 @@
               <xs:element name="id_rodzaju_napoju" msprop:Generator_ColumnVarNameInTable="columnid_rodzaju_napoju" msprop:Generator_ColumnPropNameInRow="id_rodzaju_napoju" msprop:Generator_ColumnPropNameInTable="id_rodzaju_napojuColumn" msprop:Generator_UserColumnName="id_rodzaju_napoju" type="xs:int" minOccurs="0" />
               <xs:element name="id_opakowania_sztuki" msprop:Generator_ColumnVarNameInTable="columnid_opakowania_sztuki" msprop:Generator_ColumnPropNameInRow="id_opakowania_sztuki" msprop:Generator_ColumnPropNameInTable="id_opakowania_sztukiColumn" msprop:Generator_UserColumnName="id_opakowania_sztuki" type="xs:int" minOccurs="0" />
               <xs:element name="id_opakowania_zbiorczego" msprop:Generator_ColumnVarNameInTable="columnid_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInRow="id_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInTable="id_opakowania_zbiorczegoColumn" msprop:Generator_UserColumnName="id_opakowania_zbiorczego" type="xs:int" minOccurs="0" />
-              <xs:element name="CenaProducenta" msprop:Generator_ColumnVarNameInTable="columnCenaProducenta" msprop:Generator_ColumnPropNameInRow="CenaProducenta" msprop:Generator_ColumnPropNameInTable="CenaProducentaColumn" msprop:Generator_UserColumnName="CenaProducenta" type="xs:float" minOccurs="0" />
+              <xs:element name="CenaProducenta" msprop:Generator_ColumnVarNameInTable="columnCenaProducenta" msprop:Generator_ColumnPropNameInRow="CenaProducenta" msprop:Generator_ColumnPropNameInTable="CenaProducentaColumn" msprop:Generator_UserColumnName="CenaProducenta" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NazwyNapoju" msprop:Generator_TableClassName="NazwyNapojuDataTable" msprop:Generator_TableVarName="tableNazwyNapoju" msprop:Generator_RowChangedName="NazwyNapojuRowChanged" msprop:Generator_TablePropName="NazwyNapoju" msprop:Generator_RowDeletingName="NazwyNapojuRowDeleting" msprop:Generator_RowChangingName="NazwyNapojuRowChanging" msprop:Generator_RowEvHandlerName="NazwyNapojuRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyNapojuRowDeleted" msprop:Generator_RowClassName="NazwyNapojuRow" msprop:Generator_UserTableName="NazwyNapoju" msprop:Generator_RowEvArgName="NazwyNapojuRowChangeEvent">
+        <xs:element name="NazwyNapoju" msprop:Generator_TableClassName="NazwyNapojuDataTable" msprop:Generator_TableVarName="tableNazwyNapoju" msprop:Generator_TablePropName="NazwyNapoju" msprop:Generator_RowDeletingName="NazwyNapojuRowDeleting" msprop:Generator_RowChangingName="NazwyNapojuRowChanging" msprop:Generator_RowEvHandlerName="NazwyNapojuRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyNapojuRowDeleted" msprop:Generator_UserTableName="NazwyNapoju" msprop:Generator_RowChangedName="NazwyNapojuRowChanged" msprop:Generator_RowEvArgName="NazwyNapojuRowChangeEvent" msprop:Generator_RowClassName="NazwyNapojuRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1011,7 +1007,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NazwyOpakowaniaSztuki" msprop:Generator_TableClassName="NazwyOpakowaniaSztukiDataTable" msprop:Generator_TableVarName="tableNazwyOpakowaniaSztuki" msprop:Generator_RowChangedName="NazwyOpakowaniaSztukiRowChanged" msprop:Generator_TablePropName="NazwyOpakowaniaSztuki" msprop:Generator_RowDeletingName="NazwyOpakowaniaSztukiRowDeleting" msprop:Generator_RowChangingName="NazwyOpakowaniaSztukiRowChanging" msprop:Generator_RowEvHandlerName="NazwyOpakowaniaSztukiRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyOpakowaniaSztukiRowDeleted" msprop:Generator_RowClassName="NazwyOpakowaniaSztukiRow" msprop:Generator_UserTableName="NazwyOpakowaniaSztuki" msprop:Generator_RowEvArgName="NazwyOpakowaniaSztukiRowChangeEvent">
+        <xs:element name="NazwyOpakowaniaSztuki" msprop:Generator_TableClassName="NazwyOpakowaniaSztukiDataTable" msprop:Generator_TableVarName="tableNazwyOpakowaniaSztuki" msprop:Generator_TablePropName="NazwyOpakowaniaSztuki" msprop:Generator_RowDeletingName="NazwyOpakowaniaSztukiRowDeleting" msprop:Generator_RowChangingName="NazwyOpakowaniaSztukiRowChanging" msprop:Generator_RowEvHandlerName="NazwyOpakowaniaSztukiRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyOpakowaniaSztukiRowDeleted" msprop:Generator_UserTableName="NazwyOpakowaniaSztuki" msprop:Generator_RowChangedName="NazwyOpakowaniaSztukiRowChanged" msprop:Generator_RowEvArgName="NazwyOpakowaniaSztukiRowChangeEvent" msprop:Generator_RowClassName="NazwyOpakowaniaSztukiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1025,7 +1021,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NazwyOpakowaniaZbiorczego" msprop:Generator_TableClassName="NazwyOpakowaniaZbiorczegoDataTable" msprop:Generator_TableVarName="tableNazwyOpakowaniaZbiorczego" msprop:Generator_RowChangedName="NazwyOpakowaniaZbiorczegoRowChanged" msprop:Generator_TablePropName="NazwyOpakowaniaZbiorczego" msprop:Generator_RowDeletingName="NazwyOpakowaniaZbiorczegoRowDeleting" msprop:Generator_RowChangingName="NazwyOpakowaniaZbiorczegoRowChanging" msprop:Generator_RowEvHandlerName="NazwyOpakowaniaZbiorczegoRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyOpakowaniaZbiorczegoRowDeleted" msprop:Generator_RowClassName="NazwyOpakowaniaZbiorczegoRow" msprop:Generator_UserTableName="NazwyOpakowaniaZbiorczego" msprop:Generator_RowEvArgName="NazwyOpakowaniaZbiorczegoRowChangeEvent">
+        <xs:element name="NazwyOpakowaniaZbiorczego" msprop:Generator_TableClassName="NazwyOpakowaniaZbiorczegoDataTable" msprop:Generator_TableVarName="tableNazwyOpakowaniaZbiorczego" msprop:Generator_TablePropName="NazwyOpakowaniaZbiorczego" msprop:Generator_RowDeletingName="NazwyOpakowaniaZbiorczegoRowDeleting" msprop:Generator_RowChangingName="NazwyOpakowaniaZbiorczegoRowChanging" msprop:Generator_RowEvHandlerName="NazwyOpakowaniaZbiorczegoRowChangeEventHandler" msprop:Generator_RowDeletedName="NazwyOpakowaniaZbiorczegoRowDeleted" msprop:Generator_UserTableName="NazwyOpakowaniaZbiorczego" msprop:Generator_RowChangedName="NazwyOpakowaniaZbiorczegoRowChanged" msprop:Generator_RowEvArgName="NazwyOpakowaniaZbiorczegoRowChangeEvent" msprop:Generator_RowClassName="NazwyOpakowaniaZbiorczegoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1039,25 +1035,25 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="OpakowaniaSztuki" msprop:Generator_TableClassName="OpakowaniaSztukiDataTable" msprop:Generator_TableVarName="tableOpakowaniaSztuki" msprop:Generator_RowChangedName="OpakowaniaSztukiRowChanged" msprop:Generator_TablePropName="OpakowaniaSztuki" msprop:Generator_RowDeletingName="OpakowaniaSztukiRowDeleting" msprop:Generator_RowChangingName="OpakowaniaSztukiRowChanging" msprop:Generator_RowEvHandlerName="OpakowaniaSztukiRowChangeEventHandler" msprop:Generator_RowDeletedName="OpakowaniaSztukiRowDeleted" msprop:Generator_RowClassName="OpakowaniaSztukiRow" msprop:Generator_UserTableName="OpakowaniaSztuki" msprop:Generator_RowEvArgName="OpakowaniaSztukiRowChangeEvent">
+        <xs:element name="OpakowaniaSztuki" msprop:Generator_TableClassName="OpakowaniaSztukiDataTable" msprop:Generator_TableVarName="tableOpakowaniaSztuki" msprop:Generator_TablePropName="OpakowaniaSztuki" msprop:Generator_RowDeletingName="OpakowaniaSztukiRowDeleting" msprop:Generator_RowChangingName="OpakowaniaSztukiRowChanging" msprop:Generator_RowEvHandlerName="OpakowaniaSztukiRowChangeEventHandler" msprop:Generator_RowDeletedName="OpakowaniaSztukiRowDeleted" msprop:Generator_UserTableName="OpakowaniaSztuki" msprop:Generator_RowChangedName="OpakowaniaSztukiRowChanged" msprop:Generator_RowEvArgName="OpakowaniaSztukiRowChangeEvent" msprop:Generator_RowClassName="OpakowaniaSztukiRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Idenidtyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdenidtyfikator" msprop:Generator_ColumnPropNameInRow="Idenidtyfikator" msprop:Generator_ColumnPropNameInTable="IdenidtyfikatorColumn" msprop:Generator_UserColumnName="Idenidtyfikator" type="xs:int" />
-              <xs:element name="Pojemność" msprop:Generator_ColumnVarNameInTable="columnPojemność" msprop:Generator_ColumnPropNameInRow="Pojemność" msprop:Generator_ColumnPropNameInTable="PojemnośćColumn" msprop:Generator_UserColumnName="Pojemność" type="xs:int" minOccurs="0" />
-              <xs:element name="id_nazwy_opakowania_sztuki" msprop:Generator_ColumnVarNameInTable="columnid_nazwy_opakowania_sztuki" msprop:Generator_ColumnPropNameInRow="id_nazwy_opakowania_sztuki" msprop:Generator_ColumnPropNameInTable="id_nazwy_opakowania_sztukiColumn" msprop:Generator_UserColumnName="id_nazwy_opakowania_sztuki" type="xs:int" minOccurs="0" />
+              <xs:element name="Pojemność" msprop:Generator_ColumnVarNameInTable="columnPojemność" msprop:Generator_ColumnPropNameInRow="Pojemność" msprop:Generator_ColumnPropNameInTable="PojemnośćColumn" msprop:Generator_UserColumnName="Pojemność" type="xs:float" minOccurs="0" />
+              <xs:element name="id_rodzaju_opakowania_sztuki" msprop:Generator_ColumnVarNameInTable="columnid_rodzaju_opakowania_sztuki" msprop:Generator_ColumnPropNameInRow="id_rodzaju_opakowania_sztuki" msprop:Generator_ColumnPropNameInTable="id_rodzaju_opakowania_sztukiColumn" msprop:Generator_UserColumnName="id_rodzaju_opakowania_sztuki" type="xs:int" minOccurs="0" />
+              <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="OpakowaniaZbiorcze" msprop:Generator_TableClassName="OpakowaniaZbiorczeDataTable" msprop:Generator_TableVarName="tableOpakowaniaZbiorcze" msprop:Generator_RowChangedName="OpakowaniaZbiorczeRowChanged" msprop:Generator_TablePropName="OpakowaniaZbiorcze" msprop:Generator_RowDeletingName="OpakowaniaZbiorczeRowDeleting" msprop:Generator_RowChangingName="OpakowaniaZbiorczeRowChanging" msprop:Generator_RowEvHandlerName="OpakowaniaZbiorczeRowChangeEventHandler" msprop:Generator_RowDeletedName="OpakowaniaZbiorczeRowDeleted" msprop:Generator_RowClassName="OpakowaniaZbiorczeRow" msprop:Generator_UserTableName="OpakowaniaZbiorcze" msprop:Generator_RowEvArgName="OpakowaniaZbiorczeRowChangeEvent">
+        <xs:element name="OpakowaniaZbiorcze" msprop:Generator_TableClassName="OpakowaniaZbiorczeDataTable" msprop:Generator_TableVarName="tableOpakowaniaZbiorcze" msprop:Generator_TablePropName="OpakowaniaZbiorcze" msprop:Generator_RowDeletingName="OpakowaniaZbiorczeRowDeleting" msprop:Generator_RowChangingName="OpakowaniaZbiorczeRowChanging" msprop:Generator_RowEvHandlerName="OpakowaniaZbiorczeRowChangeEventHandler" msprop:Generator_RowDeletedName="OpakowaniaZbiorczeRowDeleted" msprop:Generator_UserTableName="OpakowaniaZbiorcze" msprop:Generator_RowChangedName="OpakowaniaZbiorczeRowChanged" msprop:Generator_RowEvArgName="OpakowaniaZbiorczeRowChangeEvent" msprop:Generator_RowClassName="OpakowaniaZbiorczeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
               <xs:element name="Pojemność" msprop:Generator_ColumnVarNameInTable="columnPojemność" msprop:Generator_ColumnPropNameInRow="Pojemność" msprop:Generator_ColumnPropNameInTable="PojemnośćColumn" msprop:Generator_UserColumnName="Pojemność" type="xs:int" minOccurs="0" />
-              <xs:element name="id_nazwy_opakowania_zbiorczego" msprop:Generator_ColumnVarNameInTable="columnid_nazwy_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInRow="id_nazwy_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInTable="id_nazwy_opakowania_zbiorczegoColumn" msprop:Generator_UserColumnName="id_nazwy_opakowania_zbiorczego" type="xs:int" minOccurs="0" />
+              <xs:element name="id_rodzaju_opakowania_zbiorczego" msprop:Generator_ColumnVarNameInTable="columnid_rodzaju_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInRow="id_rodzaju_opakowania_zbiorczego" msprop:Generator_ColumnPropNameInTable="id_rodzaju_opakowania_zbiorczegoColumn" msprop:Generator_UserColumnName="id_rodzaju_opakowania_zbiorczego" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Pracownicy" msprop:Generator_TableClassName="PracownicyDataTable" msprop:Generator_TableVarName="tablePracownicy" msprop:Generator_RowChangedName="PracownicyRowChanged" msprop:Generator_TablePropName="Pracownicy" msprop:Generator_RowDeletingName="PracownicyRowDeleting" msprop:Generator_RowChangingName="PracownicyRowChanging" msprop:Generator_RowEvHandlerName="PracownicyRowChangeEventHandler" msprop:Generator_RowDeletedName="PracownicyRowDeleted" msprop:Generator_RowClassName="PracownicyRow" msprop:Generator_UserTableName="Pracownicy" msprop:Generator_RowEvArgName="PracownicyRowChangeEvent">
+        <xs:element name="Pracownicy" msprop:Generator_TableClassName="PracownicyDataTable" msprop:Generator_TableVarName="tablePracownicy" msprop:Generator_TablePropName="Pracownicy" msprop:Generator_RowDeletingName="PracownicyRowDeleting" msprop:Generator_RowChangingName="PracownicyRowChanging" msprop:Generator_RowEvHandlerName="PracownicyRowChangeEventHandler" msprop:Generator_RowDeletedName="PracownicyRowDeleted" msprop:Generator_UserTableName="Pracownicy" msprop:Generator_RowChangedName="PracownicyRowChanged" msprop:Generator_RowEvArgName="PracownicyRowChangeEvent" msprop:Generator_RowClassName="PracownicyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1093,7 +1089,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Producenci" msprop:Generator_TableClassName="ProducenciDataTable" msprop:Generator_TableVarName="tableProducenci" msprop:Generator_RowChangedName="ProducenciRowChanged" msprop:Generator_TablePropName="Producenci" msprop:Generator_RowDeletingName="ProducenciRowDeleting" msprop:Generator_RowChangingName="ProducenciRowChanging" msprop:Generator_RowEvHandlerName="ProducenciRowChangeEventHandler" msprop:Generator_RowDeletedName="ProducenciRowDeleted" msprop:Generator_RowClassName="ProducenciRow" msprop:Generator_UserTableName="Producenci" msprop:Generator_RowEvArgName="ProducenciRowChangeEvent">
+        <xs:element name="Producenci" msprop:Generator_TableClassName="ProducenciDataTable" msprop:Generator_TableVarName="tableProducenci" msprop:Generator_TablePropName="Producenci" msprop:Generator_RowDeletingName="ProducenciRowDeleting" msprop:Generator_RowChangingName="ProducenciRowChanging" msprop:Generator_RowEvHandlerName="ProducenciRowChangeEventHandler" msprop:Generator_RowDeletedName="ProducenciRowDeleted" msprop:Generator_UserTableName="Producenci" msprop:Generator_RowChangedName="ProducenciRowChanged" msprop:Generator_RowEvArgName="ProducenciRowChangeEvent" msprop:Generator_RowClassName="ProducenciRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1107,7 +1103,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProduktyKlienta" msprop:Generator_TableClassName="ProduktyKlientaDataTable" msprop:Generator_TableVarName="tableProduktyKlienta" msprop:Generator_RowChangedName="ProduktyKlientaRowChanged" msprop:Generator_TablePropName="ProduktyKlienta" msprop:Generator_RowDeletingName="ProduktyKlientaRowDeleting" msprop:Generator_RowChangingName="ProduktyKlientaRowChanging" msprop:Generator_RowEvHandlerName="ProduktyKlientaRowChangeEventHandler" msprop:Generator_RowDeletedName="ProduktyKlientaRowDeleted" msprop:Generator_RowClassName="ProduktyKlientaRow" msprop:Generator_UserTableName="ProduktyKlienta" msprop:Generator_RowEvArgName="ProduktyKlientaRowChangeEvent">
+        <xs:element name="ProduktyKlienta" msprop:Generator_TableClassName="ProduktyKlientaDataTable" msprop:Generator_TableVarName="tableProduktyKlienta" msprop:Generator_TablePropName="ProduktyKlienta" msprop:Generator_RowDeletingName="ProduktyKlientaRowDeleting" msprop:Generator_RowChangingName="ProduktyKlientaRowChanging" msprop:Generator_RowEvHandlerName="ProduktyKlientaRowChangeEventHandler" msprop:Generator_RowDeletedName="ProduktyKlientaRowDeleted" msprop:Generator_UserTableName="ProduktyKlienta" msprop:Generator_RowChangedName="ProduktyKlientaRowChanged" msprop:Generator_RowEvArgName="ProduktyKlientaRowChangeEvent" msprop:Generator_RowClassName="ProduktyKlientaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1118,7 +1114,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RodzajeGazu" msprop:Generator_TableClassName="RodzajeGazuDataTable" msprop:Generator_TableVarName="tableRodzajeGazu" msprop:Generator_RowChangedName="RodzajeGazuRowChanged" msprop:Generator_TablePropName="RodzajeGazu" msprop:Generator_RowDeletingName="RodzajeGazuRowDeleting" msprop:Generator_RowChangingName="RodzajeGazuRowChanging" msprop:Generator_RowEvHandlerName="RodzajeGazuRowChangeEventHandler" msprop:Generator_RowDeletedName="RodzajeGazuRowDeleted" msprop:Generator_RowClassName="RodzajeGazuRow" msprop:Generator_UserTableName="RodzajeGazu" msprop:Generator_RowEvArgName="RodzajeGazuRowChangeEvent">
+        <xs:element name="RodzajeGazu" msprop:Generator_TableClassName="RodzajeGazuDataTable" msprop:Generator_TableVarName="tableRodzajeGazu" msprop:Generator_TablePropName="RodzajeGazu" msprop:Generator_RowDeletingName="RodzajeGazuRowDeleting" msprop:Generator_RowChangingName="RodzajeGazuRowChanging" msprop:Generator_RowEvHandlerName="RodzajeGazuRowChangeEventHandler" msprop:Generator_RowDeletedName="RodzajeGazuRowDeleted" msprop:Generator_UserTableName="RodzajeGazu" msprop:Generator_RowChangedName="RodzajeGazuRowChanged" msprop:Generator_RowEvArgName="RodzajeGazuRowChangeEvent" msprop:Generator_RowClassName="RodzajeGazuRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1132,7 +1128,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RodzajeNapoju" msprop:Generator_TableClassName="RodzajeNapojuDataTable" msprop:Generator_TableVarName="tableRodzajeNapoju" msprop:Generator_RowChangedName="RodzajeNapojuRowChanged" msprop:Generator_TablePropName="RodzajeNapoju" msprop:Generator_RowDeletingName="RodzajeNapojuRowDeleting" msprop:Generator_RowChangingName="RodzajeNapojuRowChanging" msprop:Generator_RowEvHandlerName="RodzajeNapojuRowChangeEventHandler" msprop:Generator_RowDeletedName="RodzajeNapojuRowDeleted" msprop:Generator_RowClassName="RodzajeNapojuRow" msprop:Generator_UserTableName="RodzajeNapoju" msprop:Generator_RowEvArgName="RodzajeNapojuRowChangeEvent">
+        <xs:element name="RodzajeNapoju" msprop:Generator_TableClassName="RodzajeNapojuDataTable" msprop:Generator_TableVarName="tableRodzajeNapoju" msprop:Generator_TablePropName="RodzajeNapoju" msprop:Generator_RowDeletingName="RodzajeNapojuRowDeleting" msprop:Generator_RowChangingName="RodzajeNapojuRowChanging" msprop:Generator_RowEvHandlerName="RodzajeNapojuRowChangeEventHandler" msprop:Generator_RowDeletedName="RodzajeNapojuRowDeleted" msprop:Generator_UserTableName="RodzajeNapoju" msprop:Generator_RowChangedName="RodzajeNapojuRowChanged" msprop:Generator_RowEvArgName="RodzajeNapojuRowChangeEvent" msprop:Generator_RowClassName="RodzajeNapojuRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
@@ -1147,13 +1143,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ZakupyKlienta" msprop:Generator_TableClassName="ZakupyKlientaDataTable" msprop:Generator_TableVarName="tableZakupyKlienta" msprop:Generator_RowChangedName="ZakupyKlientaRowChanged" msprop:Generator_TablePropName="ZakupyKlienta" msprop:Generator_RowDeletingName="ZakupyKlientaRowDeleting" msprop:Generator_RowChangingName="ZakupyKlientaRowChanging" msprop:Generator_RowEvHandlerName="ZakupyKlientaRowChangeEventHandler" msprop:Generator_RowDeletedName="ZakupyKlientaRowDeleted" msprop:Generator_RowClassName="ZakupyKlientaRow" msprop:Generator_UserTableName="ZakupyKlienta" msprop:Generator_RowEvArgName="ZakupyKlientaRowChangeEvent">
+        <xs:element name="Smaki" msprop:Generator_TableClassName="SmakiDataTable" msprop:Generator_TableVarName="tableSmaki" msprop:Generator_TablePropName="Smaki" msprop:Generator_RowDeletingName="SmakiRowDeleting" msprop:Generator_RowChangingName="SmakiRowChanging" msprop:Generator_RowEvHandlerName="SmakiRowChangeEventHandler" msprop:Generator_RowDeletedName="SmakiRowDeleted" msprop:Generator_UserTableName="Smaki" msprop:Generator_RowChangedName="SmakiRowChanged" msprop:Generator_RowEvArgName="SmakiRowChangeEvent" msprop:Generator_RowClassName="SmakiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Identyfikator" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdentyfikator" msprop:Generator_ColumnPropNameInRow="Identyfikator" msprop:Generator_ColumnPropNameInTable="IdentyfikatorColumn" msprop:Generator_UserColumnName="Identyfikator" type="xs:int" />
-              <xs:element name="id_klienta" msprop:Generator_ColumnVarNameInTable="columnid_klienta" msprop:Generator_ColumnPropNameInRow="id_klienta" msprop:Generator_ColumnPropNameInTable="id_klientaColumn" msprop:Generator_UserColumnName="id_klienta" type="xs:int" minOccurs="0" />
-              <xs:element name="id_pracownika" msprop:Generator_ColumnVarNameInTable="columnid_pracownika" msprop:Generator_ColumnPropNameInRow="id_pracownika" msprop:Generator_ColumnPropNameInTable="id_pracownikaColumn" msprop:Generator_UserColumnName="id_pracownika" type="xs:int" minOccurs="0" />
-              <xs:element name="DataZłożenia" msprop:Generator_ColumnVarNameInTable="columnDataZłożenia" msprop:Generator_ColumnPropNameInRow="DataZłożenia" msprop:Generator_ColumnPropNameInTable="DataZłożeniaColumn" msprop:Generator_UserColumnName="DataZłożenia" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NazwaSmaku" msprop:Generator_ColumnVarNameInTable="columnNazwaSmaku" msprop:Generator_ColumnPropNameInRow="NazwaSmaku" msprop:Generator_ColumnPropNameInTable="NazwaSmakuColumn" msprop:Generator_UserColumnName="NazwaSmaku" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1163,8 +1163,8 @@
       <xs:selector xpath=".//mstns:Klienci" />
       <xs:field xpath="mstns:Identyfikator" />
     </xs:unique>
-    <xs:unique name="Smaki_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Smaki" />
+    <xs:unique name="ZakupyKlienta_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ZakupyKlienta" />
       <xs:field xpath="mstns:Identyfikator" />
     </xs:unique>
     <xs:unique name="NapojeHurtowni_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -1189,7 +1189,7 @@
     </xs:unique>
     <xs:unique name="OpakowaniaSztuki_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:OpakowaniaSztuki" />
-      <xs:field xpath="mstns:Idenidtyfikator" />
+      <xs:field xpath="mstns:Identyfikator" />
     </xs:unique>
     <xs:unique name="OpakowaniaZbiorcze_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:OpakowaniaZbiorcze" />
@@ -1215,27 +1215,26 @@
       <xs:selector xpath=".//mstns:RodzajeNapoju" />
       <xs:field xpath="mstns:Identyfikator" />
     </xs:unique>
-    <xs:unique name="ZakupyKlienta_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:ZakupyKlienta" />
+    <xs:unique name="Smaki_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Smaki" />
       <xs:field xpath="mstns:Identyfikator" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="NapojePozycjeMagazynu" msdata:parent="NapojeProducenta" msdata:child="NapojeHurtowni" msdata:parentkey="Identyfikator" msdata:childkey="id_napoju_producenta" msprop:Generator_UserChildTable="NapojeHurtowni" msprop:Generator_ChildPropName="GetNapojeHurtowniRows" msprop:Generator_UserRelationName="NapojePozycjeMagazynu" msprop:Generator_ParentPropName="NapojeProducentaRow" msprop:Generator_RelationVarName="relationNapojePozycjeMagazynu" msprop:Generator_UserParentTable="NapojeProducenta" />
-      <msdata:Relationship name="NazwyNapojuNapoje" msdata:parent="NazwyNapoju" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_nazwy_napoju" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="NazwyNapojuNapoje" msprop:Generator_ParentPropName="NazwyNapojuRow" msprop:Generator_RelationVarName="relationNazwyNapojuNapoje" msprop:Generator_UserParentTable="NazwyNapoju" />
-      <msdata:Relationship name="OpakowaniaSztukiNapoje" msdata:parent="OpakowaniaSztuki" msdata:child="NapojeProducenta" msdata:parentkey="Idenidtyfikator" msdata:childkey="id_opakowania_sztuki" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="OpakowaniaSztukiNapoje" msprop:Generator_ParentPropName="OpakowaniaSztukiRow" msprop:Generator_RelationVarName="relationOpakowaniaSztukiNapoje" msprop:Generator_UserParentTable="OpakowaniaSztuki" />
-      <msdata:Relationship name="OpakowaniaZbiorczeNapoje" msdata:parent="OpakowaniaZbiorcze" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_opakowania_zbiorczego" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="OpakowaniaZbiorczeNapoje" msprop:Generator_ParentPropName="OpakowaniaZbiorczeRow" msprop:Generator_RelationVarName="relationOpakowaniaZbiorczeNapoje" msprop:Generator_UserParentTable="OpakowaniaZbiorcze" />
-      <msdata:Relationship name="ProducenciNapoje" msdata:parent="Producenci" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_procuenta" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="ProducenciNapoje" msprop:Generator_ParentPropName="ProducenciRow" msprop:Generator_RelationVarName="relationProducenciNapoje" msprop:Generator_UserParentTable="Producenci" />
-      <msdata:Relationship name="RodzajeGazuNapoje" msdata:parent="RodzajeGazu" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_gazu" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="RodzajeGazuNapoje" msprop:Generator_ParentPropName="RodzajeGazuRow" msprop:Generator_RelationVarName="relationRodzajeGazuNapoje" msprop:Generator_UserParentTable="RodzajeGazu" />
-      <msdata:Relationship name="RodzajeNapojuNapoje" msdata:parent="RodzajeNapoju" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_napoju" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="RodzajeNapojuNapoje" msprop:Generator_ParentPropName="RodzajeNapojuRow" msprop:Generator_RelationVarName="relationRodzajeNapojuNapoje" msprop:Generator_UserParentTable="RodzajeNapoju" />
-      <msdata:Relationship name="SmakiNapoje" msdata:parent="Smaki" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_smaku" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="SmakiNapoje" msprop:Generator_RelationVarName="relationSmakiNapoje" msprop:Generator_UserParentTable="Smaki" msprop:Generator_ParentPropName="SmakiRow" />
-      <msdata:Relationship name="NazwyOpakowaniaSztukiOpakowaniaSztuki" msdata:parent="NazwyOpakowaniaSztuki" msdata:child="OpakowaniaSztuki" msdata:parentkey="Identyfikator" msdata:childkey="id_nazwy_opakowania_sztuki" msprop:Generator_UserChildTable="OpakowaniaSztuki" msprop:Generator_ChildPropName="GetOpakowaniaSztukiRows" msprop:Generator_UserRelationName="NazwyOpakowaniaSztukiOpakowaniaSztuki" msprop:Generator_RelationVarName="relationNazwyOpakowaniaSztukiOpakowaniaSztuki" msprop:Generator_UserParentTable="NazwyOpakowaniaSztuki" msprop:Generator_ParentPropName="NazwyOpakowaniaSztukiRow" />
-      <msdata:Relationship name="NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msdata:parent="NazwyOpakowaniaZbiorczego" msdata:child="OpakowaniaZbiorcze" msdata:parentkey="Identyfikator" msdata:childkey="id_nazwy_opakowania_zbiorczego" msprop:Generator_UserChildTable="OpakowaniaZbiorcze" msprop:Generator_ChildPropName="GetOpakowaniaZbiorczeRows" msprop:Generator_UserRelationName="NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msprop:Generator_RelationVarName="relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msprop:Generator_UserParentTable="NazwyOpakowaniaZbiorczego" msprop:Generator_ParentPropName="NazwyOpakowaniaZbiorczegoRow" />
-      <msdata:Relationship name="NapojeHurtowniProduktyKlienta" msdata:parent="NapojeHurtowni" msdata:child="ProduktyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_napoju_hurtowni" msprop:Generator_UserChildTable="ProduktyKlienta" msprop:Generator_ChildPropName="GetProduktyKlientaRows" msprop:Generator_UserRelationName="NapojeHurtowniProduktyKlienta" msprop:Generator_RelationVarName="relationNapojeHurtowniProduktyKlienta" msprop:Generator_UserParentTable="NapojeHurtowni" msprop:Generator_ParentPropName="NapojeHurtowniRow" />
-      <msdata:Relationship name="ZakupyKlientaProduktyKlienta" msdata:parent="ZakupyKlienta" msdata:child="ProduktyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_zakupu_klienta" msprop:Generator_UserChildTable="ProduktyKlienta" msprop:Generator_ChildPropName="GetProduktyKlientaRows" msprop:Generator_UserRelationName="ZakupyKlientaProduktyKlienta" msprop:Generator_ParentPropName="ZakupyKlientaRow" msprop:Generator_RelationVarName="relationZakupyKlientaProduktyKlienta" msprop:Generator_UserParentTable="ZakupyKlienta" />
-      <msdata:Relationship name="KlienciZakupyKlienta" msdata:parent="Klienci" msdata:child="ZakupyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_klienta" msprop:Generator_UserChildTable="ZakupyKlienta" msprop:Generator_ChildPropName="GetZakupyKlientaRows" msprop:Generator_UserRelationName="KlienciZakupyKlienta" msprop:Generator_RelationVarName="relationKlienciZakupyKlienta" msprop:Generator_UserParentTable="Klienci" msprop:Generator_ParentPropName="KlienciRow" />
+      <msdata:Relationship name="KlienciZakupyKlienta" msdata:parent="Klienci" msdata:child="ZakupyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_klienta" msprop:Generator_UserChildTable="ZakupyKlienta" msprop:Generator_ChildPropName="GetZakupyKlientaRows" msprop:Generator_UserRelationName="KlienciZakupyKlienta" msprop:Generator_ParentPropName="KlienciRow" msprop:Generator_RelationVarName="relationKlienciZakupyKlienta" msprop:Generator_UserParentTable="Klienci" />
       <msdata:Relationship name="PracownicyZakupyKlienta" msdata:parent="Pracownicy" msdata:child="ZakupyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_pracownika" msprop:Generator_UserChildTable="ZakupyKlienta" msprop:Generator_ChildPropName="GetZakupyKlientaRows" msprop:Generator_UserRelationName="PracownicyZakupyKlienta" msprop:Generator_RelationVarName="relationPracownicyZakupyKlienta" msprop:Generator_UserParentTable="Pracownicy" msprop:Generator_ParentPropName="PracownicyRow" />
+      <msdata:Relationship name="NapojeProducentaNapojeHurtowni" msdata:parent="NapojeProducenta" msdata:child="NapojeHurtowni" msdata:parentkey="Identyfikator" msdata:childkey="id_napoju_producenta" msprop:Generator_UserChildTable="NapojeHurtowni" msprop:Generator_ChildPropName="GetNapojeHurtowniRows" msprop:Generator_UserRelationName="NapojeProducentaNapojeHurtowni" msprop:Generator_RelationVarName="relationNapojeProducentaNapojeHurtowni" msprop:Generator_UserParentTable="NapojeProducenta" msprop:Generator_ParentPropName="NapojeProducentaRow" />
+      <msdata:Relationship name="OpakowaniaSztukiNapojeProducenta" msdata:parent="OpakowaniaSztuki" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_opakowania_sztuki" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="OpakowaniaSztukiNapojeProducenta" msprop:Generator_RelationVarName="relationOpakowaniaSztukiNapojeProducenta" msprop:Generator_UserParentTable="OpakowaniaSztuki" msprop:Generator_ParentPropName="OpakowaniaSztukiRow" />
+      <msdata:Relationship name="OpakowaniaZbiorczeNapojeProducenta" msdata:parent="OpakowaniaZbiorcze" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_opakowania_zbiorczego" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="OpakowaniaZbiorczeNapojeProducenta" msprop:Generator_RelationVarName="relationOpakowaniaZbiorczeNapojeProducenta" msprop:Generator_UserParentTable="OpakowaniaZbiorcze" msprop:Generator_ParentPropName="OpakowaniaZbiorczeRow" />
+      <msdata:Relationship name="ProducenciNapojeProducenta" msdata:parent="Producenci" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_procuenta" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="ProducenciNapojeProducenta" msprop:Generator_RelationVarName="relationProducenciNapojeProducenta" msprop:Generator_UserParentTable="Producenci" msprop:Generator_ParentPropName="ProducenciRow" />
+      <msdata:Relationship name="RodzajeGazuNapojeProducenta" msdata:parent="RodzajeGazu" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_gazu" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="RodzajeGazuNapojeProducenta" msprop:Generator_RelationVarName="relationRodzajeGazuNapojeProducenta" msprop:Generator_UserParentTable="RodzajeGazu" msprop:Generator_ParentPropName="RodzajeGazuRow" />
+      <msdata:Relationship name="RodzajeNapojuNapojeProducenta" msdata:parent="RodzajeNapoju" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_napoju" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="RodzajeNapojuNapojeProducenta" msprop:Generator_RelationVarName="relationRodzajeNapojuNapojeProducenta" msprop:Generator_UserParentTable="RodzajeNapoju" msprop:Generator_ParentPropName="RodzajeNapojuRow" />
+      <msdata:Relationship name="SmakiNapojeProducenta" msdata:parent="Smaki" msdata:child="NapojeProducenta" msdata:parentkey="Identyfikator" msdata:childkey="id_smaku" msprop:Generator_UserChildTable="NapojeProducenta" msprop:Generator_ChildPropName="GetNapojeProducentaRows" msprop:Generator_UserRelationName="SmakiNapojeProducenta" msprop:Generator_RelationVarName="relationSmakiNapojeProducenta" msprop:Generator_UserParentTable="Smaki" msprop:Generator_ParentPropName="SmakiRow" />
+      <msdata:Relationship name="NazwyOpakowaniaSztukiOpakowaniaSztuki" msdata:parent="NazwyOpakowaniaSztuki" msdata:child="OpakowaniaSztuki" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_opakowania_sztuki" msprop:Generator_UserChildTable="OpakowaniaSztuki" msprop:Generator_ChildPropName="GetOpakowaniaSztukiRows" msprop:Generator_UserRelationName="NazwyOpakowaniaSztukiOpakowaniaSztuki" msprop:Generator_ParentPropName="NazwyOpakowaniaSztukiRow" msprop:Generator_RelationVarName="relationNazwyOpakowaniaSztukiOpakowaniaSztuki" msprop:Generator_UserParentTable="NazwyOpakowaniaSztuki" />
+      <msdata:Relationship name="NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msdata:parent="NazwyOpakowaniaZbiorczego" msdata:child="OpakowaniaZbiorcze" msdata:parentkey="Identyfikator" msdata:childkey="id_rodzaju_opakowania_zbiorczego" msprop:Generator_UserChildTable="OpakowaniaZbiorcze" msprop:Generator_ChildPropName="GetOpakowaniaZbiorczeRows" msprop:Generator_UserRelationName="NazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msprop:Generator_ParentPropName="NazwyOpakowaniaZbiorczegoRow" msprop:Generator_RelationVarName="relationNazwyOpakowaniaZbiorczegoOpakowaniaZbiorcze" msprop:Generator_UserParentTable="NazwyOpakowaniaZbiorczego" />
+      <msdata:Relationship name="NapojeHurtowniProduktyKlienta" msdata:parent="NapojeHurtowni" msdata:child="ProduktyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_napoju_hurtowni" msprop:Generator_UserChildTable="ProduktyKlienta" msprop:Generator_ChildPropName="GetProduktyKlientaRows" msprop:Generator_UserRelationName="NapojeHurtowniProduktyKlienta" msprop:Generator_ParentPropName="NapojeHurtowniRow" msprop:Generator_RelationVarName="relationNapojeHurtowniProduktyKlienta" msprop:Generator_UserParentTable="NapojeHurtowni" />
+      <msdata:Relationship name="ZakupyKlientaProduktyKlienta" msdata:parent="ZakupyKlienta" msdata:child="ProduktyKlienta" msdata:parentkey="Identyfikator" msdata:childkey="id_zakupu_klienta" msprop:Generator_UserChildTable="ProduktyKlienta" msprop:Generator_ChildPropName="GetProduktyKlientaRows" msprop:Generator_UserRelationName="ZakupyKlientaProduktyKlienta" msprop:Generator_ParentPropName="ZakupyKlientaRow" msprop:Generator_RelationVarName="relationZakupyKlientaProduktyKlienta" msprop:Generator_UserParentTable="ZakupyKlienta" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

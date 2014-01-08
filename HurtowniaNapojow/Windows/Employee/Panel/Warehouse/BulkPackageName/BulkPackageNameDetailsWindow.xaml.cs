@@ -1,9 +1,23 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 using System.Data;
+using HurtowniaNapojow.Windows.Employee.Warehouse;
 using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName
@@ -27,7 +41,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName
 
         public void SetBulkPackageNameBinding()
         {
-            BulkPackageNameDataGrid.RebindContext(DataBaseBulkPackageHelper.GetBulkPackageData());
+            BulkPackageNameDataGrid.RebindContext(new NazwyOpakowaniaZbiorczegoTableAdapter().GetData());
         }
 
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
@@ -38,12 +52,19 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
             var bulkPackageNames = BulkPackageNameDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            bulkPackageNames.ForEach(bulkPackageName =>
+            if (bulkPackageNames.Count > 0)
             {
-                HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow editBulkPackageName = (HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow)bulkPackageName.Row;
-                this.OpenWindow(new BulkPackageNameEditWindow(ref BulkPackageNameDataGrid, ref editBulkPackageName), blockPrevious: true);
-            });
-            SetBulkPackageNameBinding();
+                bulkPackageNames.ForEach(bulkPackageName =>
+                {
+                    HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow editBulkPackageName = (HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow)bulkPackageName.Row;
+                    this.OpenWindow(new BulkPackageNameEditWindow(ref BulkPackageNameDataGrid, ref editBulkPackageName), blockPrevious: true);
+                });
+                SetBulkPackageNameBinding();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -53,18 +74,23 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            var bulkPackageNames = BulkPackageNameDataGrid.SelectedItems.OfType<DataRowView>().ToList();
+            if (bulkPackageNames.Count > 0)
             {
-                //do no stuff
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    //do no stuff
+                }
+                else
+                {
+                    //do yes stuff
+                    bulkPackageNames.ForEach(bulkPackageName => DataBaseBulkPackageNameHelper.DeleteBulkPackageNameRow(bulkPackageName.Row));
+                }
             }
             else
             {
-                //do yes stuff
-                var bulkPackageNames = BulkPackageNameDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-                bulkPackageNames.ForEach(bulkPackageName => DataBaseBulkPackageNameHelper.DeleteBulkPackageNameRow(bulkPackageName.Row));
-              
+                MessageBox.Show("Nie wybrano danych do usunięcia, zaznacz rekord(y) przeznaczone do usunięcia.", "Uwaga");
             }
-            
         }
     }
 }

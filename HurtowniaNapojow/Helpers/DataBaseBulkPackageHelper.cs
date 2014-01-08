@@ -27,7 +27,7 @@ namespace HurtowniaNapojow.Helpers
         //Zmienić int na float
         public static Boolean AddNewBulkPackage(HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow newBulkPackageName, int newBulkCapacity)
         {
-            var doesBulkPackageExist = GetBulkPackageData().Any(bulkPackage => (bulkPackage.id_nazwy_opakowania_zbiorczego == newBulkPackageName.Identyfikator && bulkPackage.Pojemność == newBulkCapacity));
+            var doesBulkPackageExist = GetBulkPackageData().Any(bulkPackage => (bulkPackage.id_rodzaju_opakowania_zbiorczego == newBulkPackageName.Identyfikator && bulkPackage.Pojemność == newBulkCapacity));
             if (doesBulkPackageExist)
             {
                 MessageBox.Show("Wprowadzany rodzaj opakowania zbiorczego już istnieje", Globals.TITLE_ERROR);
@@ -53,7 +53,7 @@ namespace HurtowniaNapojow.Helpers
             var productExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_opakowania_zbiorczego == (bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Identyfikator);
             if (productExists)
             {
-                HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow tempBulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID((bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).id_nazwy_opakowania_zbiorczego);
+                HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow tempBulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID((bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).id_rodzaju_opakowania_zbiorczego);
                 MessageBox.Show("Do wybranego rodzaju opakowania zbiorczego'" +tempBulkPackageName.NazwaOpakowania+ ", " +(bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania zbiorczego nie zostanie usunięty.", Globals.TITLE_ERROR);
                 return false;
             }

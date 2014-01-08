@@ -32,44 +32,47 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzany rodzaj opakowania zbiorczego już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            BulkPackageNameTableAdapter.Insert(newBulkPackageName);
-            _bulkPackageNameData = BulkPackageNameTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nowy rodzaj opakowania zbiorczego", Globals.TITLE_SUCCESS);
-            return true;
+           
+            try
+            {
+                BulkPackageNameTableAdapter.Insert(newBulkPackageName);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nowy rodzaj opakowania zbiorczego", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa opakowania zbiorczego nie może być puste!", "Błąd");
+                return false;
+            }
         }
 
         public static Boolean DeleteBulkPackageNameRow(DataRow bulkPackageNameRow)
         {
-            
-            var bulkPackageExists = DataBaseBulkPackageHelper.GetBulkPackageData().Any(bulk => bulk.id_nazwy_opakowania_zbiorczego == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
-           // var bulkPackageExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_procuenta == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
-          
+            var bulkPackageExists = DataBaseBulkPackageHelper.GetBulkPackageData().Any(bulk => bulk.id_rodzaju_opakowania_zbiorczego == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
             if (bulkPackageExists)
             {
                MessageBox.Show("Do wybranej nazwy rodzaju opakowania zbiorczego'" + (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).NazwaOpakowania + "' są przypisane opakowania zbiorcze. Nazwa opakowania zbiorczego nie zostanie usunięta.", Globals.TITLE_ERROR);
-                return false;
-           }
-            
-               
-                try
+               return false;
+            }
+            try
                 {
                     bulkPackageNameRow.Delete();
-                    return BulkPackageNameTableAdapter.Update(bulkPackageNameRow) == 1;
+                    var result = BulkPackageNameTableAdapter.Update(bulkPackageNameRow) == 1;
+                    if (result) RefreshData();
+                    return result;
                 }
                 catch (OleDbException e)
                 {
                     MessageBox.Show(e.Message, Globals.TITLE_ERROR);
                     return false;
                 }
-            
-            
         }
 
         public static Boolean EditBulkPackageName(HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow bulkPackageName, String newbulkPackageName)
         {
             bulkPackageName.NazwaOpakowania = newbulkPackageName;
             return UpdateDB(bulkPackageName, "Nazwa rodzaju opakowania zbiorczego została zmieniona");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow bulkPackageName, String messageIfSuccess)
@@ -78,14 +81,19 @@ namespace HurtowniaNapojow.Helpers
             {
                 BulkPackageNameTableAdapter.Update(bulkPackageName);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _bulkPackageNameData = BulkPackageNameTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _bulkPackageNameData = BulkPackageNameTableAdapter.GetData();
         }
 
     }

@@ -32,10 +32,18 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Smak o podanej nazwie już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            TasteTableAdapter.Insert(newTaste);
-            _tastesData = TasteTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nowy smak", Globals.TITLE_SUCCESS);
-            return true;
+            try
+            {
+                TasteTableAdapter.Insert(newTaste);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nowy smak", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa smaku nie może być puste!", "Błąd");
+                return false;
+            }
         }
 
         public static Boolean DeleteTasteRow(DataRow tasteRow)
@@ -47,14 +55,15 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             tasteRow.Delete();
-            return TasteTableAdapter.Update(tasteRow) == 1;
+            var result = TasteTableAdapter.Update(tasteRow) == 1;
+            if (result) RefreshData();
+            return result;
         }
 
         public static Boolean EditTaste(HurtowniaNapojowDataSet.SmakiRow taste, String newTasteName)
         {
             taste.NazwaSmaku = newTasteName;
             return UpdateDB(taste, "Dane smaku zostały zmienione");
-           
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.SmakiRow taste, String messageIfSuccess)
@@ -63,14 +72,19 @@ namespace HurtowniaNapojow.Helpers
             {
                 TasteTableAdapter.Update(taste);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _tastesData = TasteTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _tastesData = TasteTableAdapter.GetData();
         }
     }
 }

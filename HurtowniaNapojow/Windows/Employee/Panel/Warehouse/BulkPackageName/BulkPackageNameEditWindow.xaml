@@ -8,7 +8,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Obecna nazwa opakowania" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="26" Width="148" />
+        <Label Content="Obecna nazwa opakowania" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="26" Width="166" />
         <Label Content="Nowa nazwa opakowania" HorizontalAlignment="Left" Margin="27,55,0,0" VerticalAlignment="Top" Height="26" Width="148" />
         <TextBox Name="OldNameTextBox" HorizontalAlignment="Left" Height="23" Margin="198,30,0,0"
                  VerticalAlignment="Top" Width="149" IsEnabled="False" />

@@ -32,10 +32,19 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzany rodzaj gazu już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            GasTypeTableAdapter.Insert(newGasType);
-            _gasTypesData = GasTypeTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nowy rodzaj gazu", Globals.TITLE_SUCCESS);
-            return true;
+            
+            try
+            {
+                GasTypeTableAdapter.Insert(newGasType);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nowy rodzaj gazu", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju gazu nie może być puste!", "Błąd");
+                return false;
+            }
         }
 
         public static Boolean DeleteGasTypeRow(DataRow gasTypeRow)
@@ -47,14 +56,15 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             gasTypeRow.Delete();
-            return GasTypeTableAdapter.Update(gasTypeRow) == 1;
+            var result = GasTypeTableAdapter.Update(gasTypeRow) == 1;
+            if (result) RefreshData();
+            return result;
         }
 
-        public static Boolean EditTaste(HurtowniaNapojowDataSet.RodzajeGazuRow taste, String newGasTypeName)
+        public static Boolean EditGasType(HurtowniaNapojowDataSet.RodzajeGazuRow taste, String newGasTypeName)
         {
             taste.NazwaRodzaju = newGasTypeName;
             return UpdateDB(taste, "Rodzaj Gazu został zmieniony");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.RodzajeGazuRow taste, String messageIfSuccess)
@@ -63,15 +73,19 @@ namespace HurtowniaNapojow.Helpers
             {
                 GasTypeTableAdapter.Update(taste);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _gasTypesData = GasTypeTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
         }
 
+        private static void RefreshData()
+        {
+            _gasTypesData = GasTypeTableAdapter.GetData();
+        }
     }
 }

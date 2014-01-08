@@ -35,16 +35,15 @@ namespace HurtowniaNapojow.Helpers
             try
             {
                 ProducerTableAdapter.Insert(newProducer);
-                _producersData = ProducerTableAdapter.GetData();
+                RefreshData();
                 MessageBox.Show("Pomyślnie dodano nowego producenta napojów", Globals.TITLE_SUCCESS);
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa producenta nie może być puste!", "Błąd");
                 return false;
             }
-           
         }
 
         public static Boolean DeleteProducerRow(DataRow producerRow)
@@ -56,14 +55,15 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             producerRow.Delete();
-            return ProducerTableAdapter.Update(producerRow) == 1;
+            var result = ProducerTableAdapter.Update(producerRow) == 1;
+            if (result) RefreshData();
+            return result;
         }
 
         public static Boolean EditProducer(HurtowniaNapojowDataSet.ProducenciRow producer, String newProducerName)
         {
             producer.NazwaProducenta = newProducerName;
             return UpdateDB(producer, "Producent został zmieniony");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.ProducenciRow producer, String messageIfSuccess)
@@ -72,14 +72,19 @@ namespace HurtowniaNapojow.Helpers
             {
                 ProducerTableAdapter.Update(producer);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _producersData = ProducerTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException)
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _producersData = ProducerTableAdapter.GetData();
         }
     }
 }

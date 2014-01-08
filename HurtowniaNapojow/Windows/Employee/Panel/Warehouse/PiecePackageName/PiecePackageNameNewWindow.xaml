@@ -5,7 +5,7 @@
         WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-6,0">
         
-        <Label Content="Nazwa Opakowania Sztuki" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="189" />
+        <Label Content="Nazwa opakowania sztuki" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="189" />
         <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="203,24,0,0"
                  VerticalAlignment="Top" Width="124"  KeyDown="OnKeyDownHandler" />
         <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="43,71,0,0" VerticalAlignment="Top"

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName.DrinkNameEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Edytuj Nazwę Napoju" Height="183.229" Width="407.028"
+        Title="Edycja nazwy napoju" Height="183.229" Width="407.028"
         WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,4,5">
         <Grid.ColumnDefinitions>

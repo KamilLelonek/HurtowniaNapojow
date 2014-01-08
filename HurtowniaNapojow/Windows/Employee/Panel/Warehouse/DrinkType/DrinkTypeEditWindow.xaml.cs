@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
 using System.Data;
 using HurtowniaNapojow.Database;
+using System.Text.RegularExpressions;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 {
@@ -24,6 +25,8 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 
             OldNameTextBox.Text = _editDrinkType.NazwaRodzajuNapoju;
             OldTaxRateTextBox.Text = _editDrinkType.StawkaPodatkowa.ToString();
+            NewNameTextBox.Text = OldNameTextBox.Text;
+            NewTaxRateTextBox.Text = OldTaxRateTextBox.Text;
          }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -34,10 +37,13 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             var newNameDrinkType = NewNameTextBox.Text;
-            var newTaxRate = float.Parse(NewTaxRateTextBox.Text);
-
-            var result = DataBaseDrinkTypeHelper.EditDrinkType(_editDrinkType,newNameDrinkType,newTaxRate);
-            if (!result) return;
+            var regex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
+            if (regex.IsMatch(NewTaxRateTextBox.Text) && newNameDrinkType.Length > 0 && NewNameTextBox.Text.Length > 0)
+            {
+                var newTaxRate = float.Parse(NewTaxRateTextBox.Text);
+                var result = DataBaseDrinkTypeHelper.EditDrinkType(_editDrinkType, newNameDrinkType, newTaxRate);
+                if (!result) return;
+            }
 
             _DrinkTypeDataGrid.RebindContext(DataBaseDrinkTypeHelper.GetDrinkTypesData());
             CloseButton.PerformClick();

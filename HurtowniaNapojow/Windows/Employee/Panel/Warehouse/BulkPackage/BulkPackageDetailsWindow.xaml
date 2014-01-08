@@ -1,16 +1,17 @@
-﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName.PiecePackageNameDetailsWindow"
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage.BulkPackageDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nazwy opakowań sztuki" Height="332.928" Width="302.432"
+        Title="Opakowania Zbiorcze" Height="332.928" Width="302.432"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
 
     <Grid Margin="0,0,0,0">
-        <DataGrid x:Name="PiecePackageNameDataGrid" Margin="10,10,10,80"
+        <DataGrid x:Name="BulkPackageDataGrid" Margin="10,10,10,85"
                   VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.20*" />
-                <DataGridTextColumn Header="Nazwa opakowania" Binding="{Binding NazwaOpakowania}" Width="0.80*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.20*" Visibility="Visible" />
+                <DataGridTextColumn Header="Nazwa opakowania" Binding="{Binding PackageName}" Width="0.50*" />
+                <DataGridTextColumn Header="Pojemność" Binding="{Binding Capacity}" Width="0.30*" />
             </DataGrid.Columns>
         </DataGrid>
 
