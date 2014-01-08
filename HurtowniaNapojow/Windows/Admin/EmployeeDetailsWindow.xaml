@@ -4,19 +4,19 @@
         Title="Szczegoły pracownika" Height="372" Width="559"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid x:Name="EmployeeDetailsGrid">
-        <Label Content="Imię" HorizontalAlignment="Left" Margin="12,7,0,0" VerticalAlignment="Top" />
-        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="142,7,0,0" VerticalAlignment="Top" />
+        <Label Content="Imię" HorizontalAlignment="Left" Margin="142,7,0,0" VerticalAlignment="Top" />
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="12,7,0,0" VerticalAlignment="Top" />
         <Label Content="Email" HorizontalAlignment="Left" Margin="272,7,0,0" VerticalAlignment="Top"
                RenderTransformOrigin="0.658,3" />
-        <TextBox Name="FirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding Imię, Mode=OneWay}"
+        <TextBox Name="FirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="142,37,0,0" Text="{Binding Imię, Mode=OneWay}"
                  VerticalAlignment="Top" Width="120" />
         <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="272,37,0,0" Text="{Binding Email, Mode=OneWay}"
                  VerticalAlignment="Top" Width="158" />
-        <TextBox Name="LastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="142,37,0,0" Text="{Binding Nazwisko, Mode=OneWay}"
+        <TextBox Name="LastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding Nazwisko, Mode=OneWay}"
                  VerticalAlignment="Top" Width="120" />
         <CheckBox Content="Administrator" IsChecked="{Binding CzyAdministrator}" Name="AdminCheckBox"
                   HorizontalAlignment="Left" Margin="440,41,0,0" VerticalAlignment="Top" />
-        <Label Content="Zrealizowane zakupy klientow" HorizontalAlignment="Left" Margin="11,71,0,0"
+        <Label Content="Zrealizowane sprzedaże klientow" HorizontalAlignment="Left" Margin="11,71,0,0"
                VerticalAlignment="Top" />
         <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Left" Margin="457,306,0,0"
                 VerticalAlignment="Top" Width="75" Click="CloseButton_OnClick" />

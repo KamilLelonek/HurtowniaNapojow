@@ -231,7 +231,7 @@
     <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\WarehouseDrink.cs" />
-    <Compile Include="Properties\ShoppingProduct.cs" />
+    <Compile Include="Helpers\ShoppingProduct.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Compile Include="Reports\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
@@ -356,7 +356,9 @@
     <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="Reports\Admin\EmployeeShoppings.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesIncome.rdlc" />
+    <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByLastName.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
+    <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByIncome.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
@@ -371,6 +373,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeIncome.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeShopping.datasource" />
+    <None Include="Properties\DataSources\HurtowniaNapojow.Reports.Admin.EmployeeIncome.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

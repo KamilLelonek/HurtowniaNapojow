@@ -56,7 +56,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Price">
+                    <Textbox Name="Price2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -66,6 +66,7 @@
                               <Value>=Fields!Price.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -83,6 +84,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -343,6 +345,7 @@
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <FontWeight>Bold</FontWeight>
+                                      <Format>D</Format>
                                       <Color>#4c68a2</Color>
                                     </Style>
                                   </TextRun>
@@ -377,18 +380,132 @@
         </TablixRowHierarchy>
         <DataSetName>HurtowniaNapojowDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>11.85208cm</Width>
+        <Width>11.85209cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Price">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!Price.Value)</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
+                  <Color>#4d4d4d</Color>
+                  <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Price</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>9.35209cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Date2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Łącznie</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>D</Format>
+                  <Color>#4c68a2</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Date</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>6.34938cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.00271cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <BackgroundColor>#e6eefc</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>4.66617in</Width>
+  <Width>4.68701in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

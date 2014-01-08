@@ -22,7 +22,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Rola</Value>
+                              <Value>Przychód</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -56,16 +56,17 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="CzyAdministrator">
+                    <Textbox Name="Income">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIf(Fields!CzyAdministrator.Value, "Administrator", "Pracownik")</Value>
+                              <Value>=Fields!Income.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -73,7 +74,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>CzyAdministrator</rd:DefaultName>
+                      <rd:DefaultName>Income</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -83,6 +84,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -100,9 +102,9 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>0.9125cm</Size>
+                <Size>0.99187cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox11">
+                  <Textbox Name="Textbox7">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -121,7 +123,7 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox11</rd:DefaultName>
+                    <rd:DefaultName>Textbox7</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>#7292cc</Color>
@@ -139,9 +141,9 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.00271cm</Size>
+                    <Size>2.63229cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox9">
+                      <Textbox Name="Textbox5">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -160,7 +162,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox9</rd:DefaultName>
+                        <rd:DefaultName>Textbox5</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>#7292cc</Color>
@@ -178,9 +180,9 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.87042cm</Size>
+                        <Size>2.71167cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox7">
+                          <Textbox Name="Textbox3">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -199,7 +201,7 @@
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox7</rd:DefaultName>
+                            <rd:DefaultName>Textbox3</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>#7292cc</Color>
@@ -215,49 +217,7 @@
                         </CellContents>
                       </TablixHeader>
                       <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>5.25167cm</Size>
-                            <CellContents>
-                              <Textbox Name="Textbox5">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>Email</Value>
-                                        <Style>
-                                          <FontFamily>Tahoma</FontFamily>
-                                          <FontSize>11pt</FontSize>
-                                          <FontWeight>Bold</FontWeight>
-                                          <Color>White</Color>
-                                        </Style>
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Textbox5</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>#7292cc</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <BackgroundColor>#4c68a2</BackgroundColor>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                              <rd:Selected>true</rd:Selected>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember />
-                          </TablixMembers>
-                        </TablixMember>
+                        <TablixMember />
                       </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
@@ -265,27 +225,27 @@
               </TablixMembers>
             </TablixMember>
             <TablixMember>
-              <Group Name="Nazwisko">
+              <Group Name="LastName">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!Nazwisko.Value</GroupExpression>
+                  <GroupExpression>=Fields!LastName.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
               <SortExpressions>
                 <SortExpression>
-                  <Value>=Fields!Nazwisko.Value</Value>
+                  <Value>=Fields!LastName.Value</Value>
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>0.9125cm</Size>
+                <Size>0.99187cm</Size>
                 <CellContents>
-                  <Textbox Name="Identyfikator1">
+                  <Textbox Name="Id">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!Identyfikator.Value</Value>
+                            <Value>=Fields!Id.Value</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
                               <FontWeight>Bold</FontWeight>
@@ -296,7 +256,7 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Identyfikator1</rd:DefaultName>
+                    <rd:DefaultName>Id</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>#c6daf8</Color>
@@ -313,27 +273,27 @@
               </TablixHeader>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="Identyfikator">
+                  <Group Name="Id">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Identyfikator.Value</GroupExpression>
+                      <GroupExpression>=Fields!Id.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Identyfikator.Value</Value>
+                      <Value>=Fields!Id.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.00271cm</Size>
+                    <Size>2.63229cm</Size>
                     <CellContents>
-                      <Textbox Name="Nazwisko1">
+                      <Textbox Name="LastName1">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!Nazwisko.Value</Value>
+                                <Value>=Fields!LastName.Value</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
                                   <FontWeight>Bold</FontWeight>
@@ -344,7 +304,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Nazwisko1</rd:DefaultName>
+                        <rd:DefaultName>LastName1</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>#e6eefc</Color>
@@ -361,27 +321,27 @@
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <Group Name="Imię">
+                      <Group Name="FirstName">
                         <GroupExpressions>
-                          <GroupExpression>=Fields!Imię.Value</GroupExpression>
+                          <GroupExpression>=Fields!FirstName.Value</GroupExpression>
                         </GroupExpressions>
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!Imię.Value</Value>
+                          <Value>=Fields!FirstName.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.87042cm</Size>
+                        <Size>2.71167cm</Size>
                         <CellContents>
-                          <Textbox Name="Imię">
+                          <Textbox Name="FirstName">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!Imię.Value</Value>
+                                    <Value>=Fields!FirstName.Value</Value>
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <FontWeight>Bold</FontWeight>
@@ -392,7 +352,7 @@
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Imię</rd:DefaultName>
+                            <rd:DefaultName>FirstName</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>White</Color>
@@ -408,71 +368,7 @@
                         </CellContents>
                       </TablixHeader>
                       <TablixMembers>
-                        <TablixMember>
-                          <Group Name="Email">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!Email.Value</GroupExpression>
-                            </GroupExpressions>
-                          </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!Email.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
-                          <TablixHeader>
-                            <Size>5.25167cm</Size>
-                            <CellContents>
-                              <Textbox Name="Email">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Fields!Email.Value</Value>
-                                        <Style>
-                                          <FontFamily>Tahoma</FontFamily>
-                                          <FontWeight>Bold</FontWeight>
-                                          <Color>#4c68a2</Color>
-                                        </Style>
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Email</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>White</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <BackgroundColor>#e6eefc</BackgroundColor>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <Group Name="CzyAdministrator">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!CzyAdministrator.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!CzyAdministrator.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
-                              <TablixMembers>
-                                <TablixMember />
-                              </TablixMembers>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
+                        <TablixMember />
                       </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
@@ -483,13 +379,126 @@
         </TablixRowHierarchy>
         <DataSetName>HurtowniaNapojowDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>14.53729cm</Width>
+        <Width>8.83583cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="LastName2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Całkowita kwota</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>#4c68a2</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>LastName</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>3.12145cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.21438cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <BackgroundColor>#e6eefc</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Income2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!Income.Value)</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
+                  <Color>#4d4d4d</Color>
+                  <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Income</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>6.33583cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>2in</Height>
     <Style />
@@ -507,56 +516,45 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="HurtowniaNapojowDataSet">
+    <DataSource Name="HurtowniaNapojowReportsAdmin">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>bf31ad22-7ed6-49ba-bdf4-a1d476d0f6be</rd:DataSourceID>
+      <rd:DataSourceID>5027b76a-01ca-4c46-96fd-760920162581</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="HurtowniaNapojowDataSet">
       <Query>
-        <DataSourceName>HurtowniaNapojowDataSet</DataSourceName>
+        <DataSourceName>HurtowniaNapojowReportsAdmin</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Identyfikator">
-          <DataField>Identyfikator</DataField>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Nazwisko">
-          <DataField>Nazwisko</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Income">
+          <DataField>Income</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
         </Field>
-        <Field Name="Imię">
-          <DataField>Imię</DataField>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Hasło">
-          <DataField>Hasło</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Email">
-          <DataField>Email</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CzyAdministrator">
-          <DataField>CzyAdministrator</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>HurtowniaNapojowDataSet</rd:DataSetName>
-        <rd:SchemaPath>\\psf\Dropbox\Programowanie\WPF\HurtowniaNapojow\HurtowniaNapojow\Database\HurtowniaNapojowDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>Pracownicy</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>PracownicyTableAdapter</rd:TableAdapterName>
+        <rd:DataSetName>HurtowniaNapojow.Reports.Admin</rd:DataSetName>
+        <rd:TableName>EmployeeIncome</rd:TableName>
+        <rd:ObjectDataSourceType>HurtowniaNapojow.Reports.Admin.EmployeeIncome, HurtowniaNapojow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>ce15f76d-9aac-440a-8e36-2bcf64381402</rd:ReportID>
+  <rd:ReportID>3a900b5f-2394-4616-a3c1-4b500ffa741d</rd:ReportID>
 </Report>

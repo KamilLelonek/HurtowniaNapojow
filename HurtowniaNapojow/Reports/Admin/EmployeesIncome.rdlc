@@ -66,6 +66,7 @@
                               <Value>=Fields!Income.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -83,6 +84,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -398,8 +400,121 @@
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Income2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!Income.Value)</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
+                  <Color>#4d4d4d</Color>
+                  <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Income</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>8.00271cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="LastName2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Całkowita kwota</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>#4c68a2</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>LastName</rd:DefaultName>
+        <Top>1.37639cm</Top>
+        <Left>4.78833cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.21438cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Navy</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Navy</Color>
+            <Style>None</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <BackgroundColor>#e6eefc</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>1in</Height>
     <Style />
   </Body>
   <Width>5.11918in</Width>

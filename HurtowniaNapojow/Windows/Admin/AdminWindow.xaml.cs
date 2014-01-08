@@ -209,16 +209,24 @@ namespace HurtowniaNapojow.Windows.Admin
 
         #endregion Settings TAB
 
+        #region Reports
         private void EmployeesSummaryReport_Click(object sender, RoutedEventArgs e)
         {
             var dataTable = DataBaseEmployeeHelper.GetEmployeesData();
             this.OpenReport(dataTable, @"Admin/EmployeesSummary.rdlc");
         }
 
-        private void EmployeesIncomeReport_Click(object sender, RoutedEventArgs e)
+        private void EmployeesIncomeByIncomeReport_Click(object sender, RoutedEventArgs e)
         {
             var dataTable = EmployeeIncome.GetEmployeesIncome();
-            this.OpenReport(dataTable, @"Admin/EmployeesIncome.rdlc");
+            this.OpenReport(dataTable, @"Admin/EmployeesIncomeByIncome.rdlc");
         }
+
+        private void EmployeesIncomeByLastNameReport_Click(object sender, RoutedEventArgs e)
+        {
+            var dataTable = EmployeeIncome.GetEmployeesIncome();
+            this.OpenReport(dataTable, @"Admin/EmployeesIncomeByLastName.rdlc");
+        }
+        #endregion Reports
     }
 }
