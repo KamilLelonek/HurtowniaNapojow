@@ -1,12 +1,8 @@
-﻿using System;
-using System.Data;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
-using HurtowniaNapojow.Utils;
+using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Product;
 

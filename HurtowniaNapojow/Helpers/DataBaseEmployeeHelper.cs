@@ -16,7 +16,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static IEnumerable<HurtowniaNapojowDataSet.PracownicyRow> GetEmployeesData()
         {
-            return _employeesData;
+            return _employeesData.OrderBy(e => e.Nazwisko);
         }
 
         #region Basic CRUD

@@ -2,20 +2,20 @@ using System.Windows;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Producer;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Taste;
+using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType;
+using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackageName;
+using HurtowniaNapojow.Windows.Employee.Warehouse.Producer;
 using HurtowniaNapojow.Windows.Employee.Warehouse.Taste;
 using HurtowniaNapojow.Windows.Employee.Warehouse.GasType;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkName;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackageName;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackageName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackageName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackageName;
-using HurtowniaNapojow.Windows.Employee.Warehouse.Producer;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.Producer;
-using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType;
-using HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {

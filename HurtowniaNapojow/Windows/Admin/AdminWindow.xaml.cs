@@ -4,8 +4,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports.Admin;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
@@ -34,7 +35,7 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void SetEmployeesBinding()
         {
-            EmployeesDataGrid.RebindContext(new PracownicyTableAdapter().GetData());
+            EmployeesDataGrid.RebindContext(DataBaseEmployeeHelper.GetEmployeesData());
         }
 
         #region Employees TAB
@@ -67,7 +68,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
             var employeeRow =
-                (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.PracownicyRow;
+                (((Button)sender).DataContext) as HurtowniaNapojowDataSet.PracownicyRow;
             if (employeeRow == null) return;
 
             this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));

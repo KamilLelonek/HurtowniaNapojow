@@ -11,11 +11,10 @@ namespace HurtowniaNapojow.Helpers
         public static readonly String COOKIE_FILE_NAME = @"\cookie.hn";
         public static readonly String FILTER_SELECT = "Wybierz filtr";
 
+        public const String CODE_CITY_REGEX = @"[0-9]{2}-[0-9]{3} [ a-zA-Z]{1,92}";
         public const String EMAIL_REGEX = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
         public const String NIP_REGEX = @"^((\d{3}[- ]\d{3}[- ]\d{2}[- ]\d{2})|(\d{3}[- ]\d{2}[- ]\d{2}[- ]\d{3}))$";
 
         public static readonly Char COOKIE_DELIMETER = '_';
-
-        public const String CODE_CITY_REGEX = @"[0-9]{2}-[0-9]{3} [ a-zA-Z]{1,92}";
     }
 }

@@ -7,6 +7,8 @@ using HurtowniaNapojow.Database;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports.Admin;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Product
 {

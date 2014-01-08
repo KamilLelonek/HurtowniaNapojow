@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Data;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+using HurtowniaNapojow.Reports.Admin;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
 {
@@ -20,7 +19,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             InitializeComponent();
             _shoppingWindow = shoppingWindow;
-            CustomersDataGrid.RebindContext(new KlienciTableAdapter().GetData());
+            CustomersDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData());
             SetCustomersComponentsEvents();
         }
 

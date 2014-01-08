@@ -4,10 +4,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Database;
-using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Utils;
-using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse;
@@ -92,7 +91,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         #endregion
         public void SetCustomersBinding()
         {
-            CustomersDataGrid.RebindContext(new KlienciTableAdapter().GetData());
+            CustomersDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData());
         }
 
         private void Customers_ShowDetails_Clicked(object sender, RoutedEventArgs e)

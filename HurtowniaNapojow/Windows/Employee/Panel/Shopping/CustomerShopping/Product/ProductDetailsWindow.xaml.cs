@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Product

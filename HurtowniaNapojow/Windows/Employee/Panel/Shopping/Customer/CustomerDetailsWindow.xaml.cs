@@ -2,6 +2,7 @@
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 {

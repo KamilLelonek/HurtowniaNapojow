@@ -2,6 +2,8 @@
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports.Admin;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Admin
 {

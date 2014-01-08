@@ -134,6 +134,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\GasType\GasTypeDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -201,15 +213,15 @@
     </Compile>
     <Compile Include="Helpers\CustomerShopping.cs" />
     <Compile Include="Helpers\DataBaseBulkPackageHelper.cs" />
-    <Compile Include="Helpers\DataBasePiecePackageHelper.cs" />
-    <Compile Include="Helpers\DataBasePiecePackageNameHelper.cs" />
     <Compile Include="Helpers\DataBaseBulkPackageNameHelper.cs" />
     <Compile Include="Helpers\DataBaseDrinkTypeHelper.cs" />
     <Compile Include="Helpers\DataBaseGasTypeHelper.cs" />
+    <Compile Include="Helpers\DataBasePiecePackageHelper.cs" />
+    <Compile Include="Helpers\DataBasePiecePackageNameHelper.cs" />
     <Compile Include="Helpers\DataBaseProducerHelper.cs" />
     <Compile Include="Helpers\DataBaseTasteHelper.cs" />
     <Compile Include="Helpers\DataBaseDrinkNameHelper.cs" />
-    <Compile Include="Helpers\EmployeeIncome.cs" />
+    <Compile Include="Reports\Admin\EmployeeIncome.cs" />
     <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
     <Compile Include="Helpers\DataBaseProductHelper.cs" />
@@ -219,8 +231,8 @@
     <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\WarehouseDrink.cs" />
-    <Compile Include="Helpers\ShoppingProduct.cs" />
-    <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Properties\ShoppingProduct.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <Compile Include="Reports\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
     </Compile>
@@ -236,7 +248,7 @@
     <Compile Include="Windows\Admin\EmployeeNewWindow.xaml.cs">
       <DependentUpon>EmployeeNewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\EmployeeShopping.cs" />
+    <Compile Include="Reports\Admin\EmployeeShopping.cs" />
     <Compile Include="Windows\Employee\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -278,6 +290,15 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\DrinkName\DrinkNameNewWindow.xaml.cs">
       <DependentUpon>DrinkNameNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeDetailsWindow.xaml.cs">
+      <DependentUpon>DrinkTypeDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeEditWindow.xaml.cs">
+      <DependentUpon>DrinkTypeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeNewWindow.xaml.cs">
+      <DependentUpon>DrinkTypeNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\GasType\GasTypeDetailsWindow.xaml.cs">
       <DependentUpon>GasTypeDetailsWindow.xaml</DependentUpon>
@@ -327,20 +348,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="Reports\Admin\EmployeeShoppings.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesIncome.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
@@ -372,11 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\HurtowniaNapojow.accdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\Employee\Panel\Warehouse\BulkPackage\" />
-    <Folder Include="Windows\Employee\Panel\Warehouse\DrinkType\" />
-    <Folder Include="Windows\Employee\Panel\Warehouse\PiecePackage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

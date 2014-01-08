@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HurtowniaNapojow.Database;
 
 namespace HurtowniaNapojow.Helpers
@@ -15,9 +13,7 @@ namespace HurtowniaNapojow.Helpers
         public int ProductsCount { get; set; }
         public int ProductsTotalAmount { get; set; }
         public float Price { get; set; }
-
         public String Date { get; set; }
-
 
         public HurtowniaNapojowDataSet.KlienciRow       _customerRow;
         public HurtowniaNapojowDataSet.PracownicyRow    _employeeRow;

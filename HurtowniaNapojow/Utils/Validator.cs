@@ -3,8 +3,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using HurtowniaNapojow.Helpers;
 
-namespace HurtowniaNapojow.Helpers
+namespace HurtowniaNapojow.Utils
 {
     public sealed class Validator
     {
@@ -69,9 +70,9 @@ namespace HurtowniaNapojow.Helpers
             return passwordBox != null ? passwordBox.Password : "";
         }
 
-        public bool IsCityCodeValid(TextBox MiastoKodTextBox)
+        public bool IsCityCodeValid(TextBox miastoKodTextBox)
         {
-            var kodMiasto = MiastoKodTextBox.Text;
+            var kodMiasto = miastoKodTextBox.Text;
 
             if (String.IsNullOrEmpty(kodMiasto)) return false;
 
@@ -82,9 +83,9 @@ namespace HurtowniaNapojow.Helpers
             return false;
         }
 
-        public bool IsNIPValid(TextBox NIPTextBox)
+        public bool IsNIPValid(TextBox nipTextBox)
         {
-            var nip = NIPTextBox.Text;
+            var nip = nipTextBox.Text;
 
             if (String.IsNullOrEmpty(nip)) return false;
 
