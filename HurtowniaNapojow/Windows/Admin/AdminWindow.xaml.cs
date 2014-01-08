@@ -36,6 +36,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void SetEmployeesBinding()
         {
             EmployeesDataGrid.RebindContext(DataBaseEmployeeHelper.GetEmployeesData());
+            ((DataTable)EmployeesDataGrid.DataContext).DefaultView.Sort = EmployeesDataGrid.Columns[1].Header.ToString();
         }
 
         #region Employees TAB
@@ -67,9 +68,11 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void ShowDetails_Clicked(object sender, RoutedEventArgs e)
         {
-            var employeeRow =
-                (((Button)sender).DataContext) as HurtowniaNapojowDataSet.PracownicyRow;
-            if (employeeRow == null) return;
+            var button = (Button)sender;
+            var dataContext = button.DataContext;
+            var dataRowView = (DataRowView)dataContext;
+            var dataRow = dataRowView.Row;
+            var employeeRow = dataRow as HurtowniaNapojowDataSet.PracownicyRow;
 
             this.OpenWindow(new EmployeeDetailsWindow(ref employeeRow));
         }
