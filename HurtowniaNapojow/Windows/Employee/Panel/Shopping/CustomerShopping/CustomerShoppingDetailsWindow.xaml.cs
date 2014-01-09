@@ -63,5 +63,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             (new ProductNewWindow(this, _shopping)).ShowDialog();
         }
+
+        private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DataBaseShoppingHelper.DeleteShoppingRow(_shopping._shoppingRow))
+            {
+                _shoppingWindow.SetShoppingBinding();
+                Close();
+            }         
+        }
     }
 }

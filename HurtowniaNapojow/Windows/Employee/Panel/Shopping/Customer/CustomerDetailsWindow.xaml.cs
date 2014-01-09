@@ -53,5 +53,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
         {
             this.Close();
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataBaseCustomerHelper.DeleteCustomerRow(_customer))
+            {
+                _parentWindow.SetCustomersBinding();
+                Close();
+            }
+        }
     }
 }

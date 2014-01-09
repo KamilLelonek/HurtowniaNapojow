@@ -9,11 +9,11 @@
             <RowDefinition Height="166*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label Content="Nazwa klienta" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="94" />
-        <TextBox x:Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="111,13,0,0" Text="{Binding CustomerName, Mode=OneWay}" VerticalAlignment="Top" Width="150" IsReadOnly="True"/>
+        <Label Content="Nazwa klienta" IsEnabled="False" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="94" />
+        <Label x:Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="26" Margin="111,10,0,0" Content="{Binding CustomerName, Mode=OneWay}" VerticalAlignment="Top" Width="150"/>
         <Button Content="Pokaż szczegóły klienta" HorizontalAlignment="Left" Margin="280,13,0,0" VerticalAlignment="Top" Width="142" Click="CustomerDetailsButton_Click" Height="23"/>
-        <Label Content="Data złożenia" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
-        <TextBox Name="DataZlozeniaTextBox" HorizontalAlignment="Left" Height="23" Margin="111,41,0,0" Text="{Binding Date, Mode=OneWay}" VerticalAlignment="Top" Width="150" IsReadOnly="True" />
+        <Label Content="Data złożenia" IsEnabled="False" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
+        <Label Name="DataZlozeniaTextBox" HorizontalAlignment="Left" Height="26" Margin="111,36,0,0" Content="{Binding Date, Mode=OneWay}" VerticalAlignment="Top" Width="150" />
         <Label Content="Produkty" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" IsEnabled="False" />
         <Button Content="Dodaj produkt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="20,98,0,0" Click="ProductNewButton_Click"/>
         <Button Content="Usuń zazaczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="125,98,0,0" Click="DeleteProductButton_Click"/>
@@ -32,6 +32,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" Grid.RowSpan="2" />
+        <Button Content="Usuń" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Bottom" Width="75" Click="DeleteButton_OnClick" Grid.RowSpan="2" />
+        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" Grid.RowSpan="2" />
     </Grid>
 </Window>
