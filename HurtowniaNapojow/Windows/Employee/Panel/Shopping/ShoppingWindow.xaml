@@ -46,6 +46,13 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Customers_AddNewShopping_Clicked">Nowe zakupy</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -61,7 +68,7 @@
                             <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding CustomerName}" Width="0.1*" />
                             <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
-                            <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price}" Width="0.05*" />
+                            <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price, StringFormat={}{0:#,#.00} zł}" Width="0.05*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -71,7 +78,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Nazwa klienta" HorizontalAlignment="Right" Margin="0,3,205,0" IsEnabled="False" VerticalAlignment="Top" Height="25" Width="86"/>
+                    <Label Content="Nazwie klienta" HorizontalAlignment="Right" Margin="0,3,200,0" IsEnabled="False" VerticalAlignment="Top" Height="25" Width="92"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -122,6 +122,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
             if(count > 0)
                 SetCustomersBinding();
         }
+        private void Customers_AddNewShopping_Clicked(object sender, RoutedEventArgs e)
+        {
+            var customerRow = (((HurtowniaNapojowDataSet.KlienciRow)((Button)sender).DataContext));
+            if (customerRow == null) return;
+            HurtowniaNapojowDataSet.ZakupyKlientaRow shopingRow = DataBaseShoppingHelper.AddNewShopping(SessionHelper.Instance.CurrentEmployee, customerRow);
+            (new CustomerShoppingDetailsWindow(this, new EmployeeShopping(ref shopingRow))).ShowDialog();
+            SetShoppingBinding();
+        }
         #endregion
 
         #region TAB_Shopping
@@ -166,5 +174,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
                 SetShoppingBinding();
         }
         #endregion
+
+        
     }
 }
