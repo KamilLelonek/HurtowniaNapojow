@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
 {
@@ -13,6 +14,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
     public partial class PiecePackageNewWindow
     {
         private readonly DataGrid _PiecePackageDataGrid;
+        private readonly Validator _validator = Validator.Instance;
 
         public PiecePackageNewWindow()
         {
@@ -31,6 +33,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
         { 
             var piecePackageNames = DataBasePiecePackageNameHelper.GetPiecePackageNameData();
             NamePiecePackageComboBox.ItemsSource= piecePackageNames;
+            
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -40,17 +43,27 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (_validator.AreControlsEmpty(CapacityPiecePackageTextBox)) return;
+            if (_validator.IsFloatValid(CapacityPiecePackageTextBox)) return;
+            //if (NamePiecePackageComboBox.SelectedValue == null)
+            //{
+            //    MessageBox.Show("Null");
+            //}
+            //else {
+            //    MessageBox.Show(NamePiecePackageComboBox.SelectedValue.ToString());
+            //}
+
             var newPiecePackageID = (int)NamePiecePackageComboBox.SelectedValue;
             var newPiecePackageCapacity = float.Parse(CapacityPiecePackageTextBox.Text);
             try
             {
                 var piecePackageName = DataBasePiecePackageNameHelper.GetPiecePackageNameByID(newPiecePackageID);
-                var result = DataBasePiecePackageHelper.AddNewPiecePackage(piecePackageName,newPiecePackageCapacity);
+                var result = DataBasePiecePackageHelper.AddNewPiecePackage(piecePackageName, newPiecePackageCapacity);
                 if (!result)
-                    {
-                     MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
+                {
+                    MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
                     return;
-                    }
+                }
             }
             catch (NullReferenceException)
             {

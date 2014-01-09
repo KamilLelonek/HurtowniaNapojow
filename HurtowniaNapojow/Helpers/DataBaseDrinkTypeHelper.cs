@@ -6,8 +6,6 @@ using System;
 using System.Windows;
 using System.Data;
 using System.Data.OleDb;
-using System.Text.RegularExpressions;
-
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -26,7 +24,7 @@ namespace HurtowniaNapojow.Helpers
             return GetDrinkTypesData().First(drinkType => drinkType.Identyfikator == drinkTypeId);
         }
 
-        public static Boolean AddNewDrinkType(String newDrinkType, string newTaxRate)
+        public static Boolean AddNewDrinkType(String newDrinkType, float newTaxRate)
         {
             var doesDrinkTypeExist = GetDrinkTypesData().Any(drinkType => drinkType.NazwaRodzajuNapoju == newDrinkType);
             if (doesDrinkTypeExist)
@@ -34,25 +32,14 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzany rodzaj gazu już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-            
-            float TaxRate = 0;
-            var regex = new Regex(@"^[0-9]*(?:\,[0-9]*)?$");
-            if (regex.IsMatch(newTaxRate) && newDrinkType.Length > 0 && float.TryParse(newTaxRate, out TaxRate))
+            try
             {
-                try
-                {
-                    DrinkTypeTableAdapter.Insert(newDrinkType, TaxRate);
-                    RefreshData();
-                    MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
-                    return true;
-                }
-                catch (OleDbException)
-                {
-                    MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju napoju i stawka podatku nie mogą być puste!", "Błąd");
-                    return false;
-                }
+                DrinkTypeTableAdapter.Insert(newDrinkType, newTaxRate);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
+                return true;
             }
-            else
+            catch (OleDbException)
             {
                 MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju napoju i stawka podatku nie mogą być puste!", "Błąd");
                 return false;
@@ -71,21 +58,11 @@ namespace HurtowniaNapojow.Helpers
             return DrinkTypeTableAdapter.Update(drinkTypeRow) == 1;
         }
 
-        public static Boolean EditDrinkType(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String newDrinkTypeName, String newTaxRate)
+        public static Boolean EditDrinkType(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String newDrinkTypeName, float newTaxRate)
         {
-            float TaxRate = 0;
-            var regex = new Regex(@"^[0-9]*(?:\,[0-9]*)?$");
-            if (regex.IsMatch(newTaxRate) && newDrinkTypeName.Length > 0 && float.TryParse(newTaxRate, out TaxRate))
-            {
-                drinkType.NazwaRodzajuNapoju = newDrinkTypeName;
-                drinkType.StawkaPodatkowa = TaxRate;
-                return UpdateDB(drinkType, "Rodzaj napoju został zmieniony");
-            }
-            else {
-                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPola nie może być puste!", "Błąd");
-                return false;
-            }
-           
+            drinkType.NazwaRodzajuNapoju = newDrinkTypeName;
+            drinkType.StawkaPodatkowa = newTaxRate;
+            return UpdateDB(drinkType, "Rodzaj napoju został zmieniony");
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String messageIfSuccess)
@@ -97,7 +74,7 @@ namespace HurtowniaNapojow.Helpers
                 RefreshData();
                 return true;
             }
-            catch (OleDbException )
+            catch (OleDbException)
             {
                 MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
@@ -108,6 +85,5 @@ namespace HurtowniaNapojow.Helpers
         {
             _drinkTypesData = DrinkTypeTableAdapter.GetData();
         }
-
     }
 }

@@ -24,7 +24,6 @@ namespace HurtowniaNapojow.Helpers
             return GetBulkPackageData().First(bulkPackage => bulkPackage.Identyfikator == bulkPackageId);
         }
 
-        //Zmienić int na float
         public static Boolean AddNewBulkPackage(HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow newBulkPackageName, int newBulkCapacity)
         {
             var doesBulkPackageExist = GetBulkPackageData().Any(bulkPackage => (bulkPackage.id_rodzaju_opakowania_zbiorczego == newBulkPackageName.Identyfikator && bulkPackage.Pojemność == newBulkCapacity));

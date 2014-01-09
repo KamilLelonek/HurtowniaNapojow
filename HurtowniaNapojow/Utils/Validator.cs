@@ -95,5 +95,19 @@ namespace HurtowniaNapojow.Utils
             MessageBox.Show("Podaj poprawny NIP", Globals.TITLE_ERROR);
             return false;
         }
+
+        public Boolean IsFloatValid(TextBox floatTextBox)
+        {
+            var floatValue = floatTextBox.Text;
+            float value = 0;
+            if (String.IsNullOrEmpty(floatValue)) return true;
+
+            bool ifParse = float.TryParse(floatValue, out value);
+            if (ifParse) return false;
+
+            MessageBox.Show("Podaj poprawną wartość", Globals.TITLE_ERROR);
+            return true;
+        }
+
     }
 }

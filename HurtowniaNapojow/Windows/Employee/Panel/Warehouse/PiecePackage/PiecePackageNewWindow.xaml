@@ -9,7 +9,7 @@
         <Label Content="Pojemność Opakowania Sztuki" HorizontalAlignment="Left" Margin="9,60,0,0" VerticalAlignment="Top"  Height="26" Width="175" />
         <ComboBox Name="NamePiecePackageComboBox" HorizontalAlignment="Left" Height="23" Margin="189,24,0,0"
                  VerticalAlignment="Top" Width="139"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaOpakowania"
-                 SelectedValuePath = "Identyfikator"/>
+                 SelectedValuePath = "Identyfikator" />
         <TextBox Name="CapacityPiecePackageTextBox" HorizontalAlignment="Left" Height="23" Margin="189,63,0,0"
                  VerticalAlignment="Top" Width="139"  KeyDown="OnKeyDownHandler" />
         <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="43,100,0,0" VerticalAlignment="Top"

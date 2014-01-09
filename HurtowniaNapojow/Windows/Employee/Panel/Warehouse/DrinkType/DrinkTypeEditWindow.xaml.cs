@@ -5,6 +5,7 @@ using HurtowniaNapojow.Helpers;
 using System.Data;
 using HurtowniaNapojow.Database;
 using System.Text.RegularExpressions;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 {
@@ -15,6 +16,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
     {
         private readonly DataGrid _DrinkTypeDataGrid;
         private HurtowniaNapojowDataSet.RodzajeNapojuRow _editDrinkType;
+        private readonly Validator _validator = Validator.Instance;
 
         public DrinkTypeEditWindow(ref DataGrid DrinkTypeDataGrid, ref HurtowniaNapojowDataSet.RodzajeNapojuRow editDrinkType)
         {
@@ -36,8 +38,11 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
+            if (_validator.AreControlsEmpty(NewNameTextBox, NewTaxRateTextBox)) return;
+            if (_validator.IsFloatValid(NewTaxRateTextBox)) return;
             var newNameDrinkType = NewNameTextBox.Text;
-            var newTaxRate = NewTaxRateTextBox.Text;
+            var newTaxRate = float.Parse(NewTaxRateTextBox.Text);
+            
             var result = DataBaseDrinkTypeHelper.EditDrinkType(_editDrinkType, newNameDrinkType, newTaxRate);
             if (!result) return;
 

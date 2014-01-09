@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 using System.Text.RegularExpressions;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 {
@@ -12,6 +13,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
     /// </summary>
     public partial class DrinkTypeNewWindow
     {
+        private readonly Validator _validator = Validator.Instance;
         private readonly DataGrid _DrinkTypeDataGrid;
 
         public DrinkTypeNewWindow()
@@ -32,9 +34,11 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var newNameDrinkType = NameTextBox.Text;
-            var newTaxRate = TaxRateTextBox.Text;
+            if (_validator.AreControlsEmpty(NameTextBox, TaxRateTextBox)) return;
+            if (_validator.IsFloatValid(TaxRateTextBox)) return;
 
+            var newNameDrinkType = NameTextBox.Text;
+            var newTaxRate = float.Parse(TaxRateTextBox.Text);
             var result = DataBaseDrinkTypeHelper.AddNewDrinkType(newNameDrinkType, newTaxRate);
             if (!result) return;
 
