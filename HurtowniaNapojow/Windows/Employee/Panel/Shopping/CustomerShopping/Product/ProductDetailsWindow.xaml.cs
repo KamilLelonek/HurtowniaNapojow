@@ -63,7 +63,27 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
                 this.Close();
         }
 
-        private void ProductAmountCompute_OnClick(object sender, RoutedEventArgs e)
+        private void ProductAmountDecrease_OnClick(object sender, RoutedEventArgs e)
+        {
+            int amount = 0;
+            bool validAmount = int.TryParse(ProductAmount.Text, out amount);
+            if (validAmount && amount > 0) amount -= 1;
+            else amount = 0;
+
+            ProductAmount.Text = amount + "";
+        }
+
+        private void ProductAmountIncrease_OnClick(object sender, RoutedEventArgs e)
+        {
+            int amount = 0;
+            bool validAmount = int.TryParse(ProductAmount.Text, out amount);
+            if (validAmount) amount += 1;
+            else amount = 1;
+
+            ProductAmount.Text = amount + "";
+        }
+
+        private void ProductPriceCompute_OnClick(object sender, RoutedEventArgs e)
         {
             int amount = _product.Liczba;
             bool validAmount = int.TryParse(ProductAmount.Text, out amount);

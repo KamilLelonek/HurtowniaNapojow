@@ -15,17 +15,29 @@ namespace HurtowniaNapojow.Helpers
         public String GasName { get; set; }
         public String ProducerName { get; set; }
         public String TypeName { get; set; }
+
+        public String PiecePackageName { get; set; }
+        public float  PiecePackageVolume { get; set; }
+        public String BulkPackageName { get; set; }
+
+        public float  BulkPackageVolume { get; set; }
+        public String PiecePackageFull { get; set; }
+        public String BulkPackageFull { get; set; }
         public float BasePrice { get; set; }
         public float Price { get; set; }
         public String Date { get; set; }
 
-        public HurtowniaNapojowDataSet.NapojeHurtowniRow    _warehouseDrinkRow;
-        public HurtowniaNapojowDataSet.NapojeProducentaRow  _producerDrinkRow;
-        public HurtowniaNapojowDataSet.NazwyNapojuRow       _drinkNameRow;
-        public HurtowniaNapojowDataSet.SmakiRow             _tasteRow;
-        public HurtowniaNapojowDataSet.RodzajeGazuRow       _gasTypeRow;
-        public HurtowniaNapojowDataSet.ProducenciRow        _producerRow;
-        public HurtowniaNapojowDataSet.RodzajeNapojuRow     _drinkTypeRow;
+        public HurtowniaNapojowDataSet.NapojeHurtowniRow            _warehouseDrinkRow;
+        public HurtowniaNapojowDataSet.NapojeProducentaRow          _producerDrinkRow;
+        public HurtowniaNapojowDataSet.NazwyNapojuRow               _drinkNameRow;
+        public HurtowniaNapojowDataSet.SmakiRow                     _tasteRow;
+        public HurtowniaNapojowDataSet.RodzajeGazuRow               _gasTypeRow;
+        public HurtowniaNapojowDataSet.ProducenciRow                _producerRow;
+        public HurtowniaNapojowDataSet.RodzajeNapojuRow             _drinkTypeRow;
+        public HurtowniaNapojowDataSet.OpakowaniaSztukiRow          _piecePackageRow;
+        public HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow     _piecePackageNameRow;
+        public HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow        _bulkPackageRow;
+        public HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow _bulkPackageNameRow;
 
         public WarehouseDrink(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrinkRow)
         {
@@ -36,6 +48,10 @@ namespace HurtowniaNapojow.Helpers
             _gasTypeRow = DataBaseGasTypeHelper.GetGasTypeByID(_producerDrinkRow.id_rodzaju_gazu);
             _producerRow = DataBaseProducerHelper.GetProducerByID(_producerDrinkRow.id_procuenta);
             _drinkTypeRow = DataBaseDrinkTypeHelper.GetDrinkTypeByID(_producerDrinkRow.id_rodzaju_napoju);
+            _piecePackageRow = DataBasePiecePackageHelper.GetPiecePackageByID(_producerDrinkRow.id_opakowania_sztuki);
+            _piecePackageNameRow = DataBasePiecePackageNameHelper.GetPiecePackageNameByID(_piecePackageRow.id_rodzaju_opakowania_sztuki);
+            _bulkPackageRow = DataBaseBulkPackageHelper.GetBulkPackageByID(_producerDrinkRow.id_opakowania_zbiorczego);
+            _bulkPackageNameRow = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID(_bulkPackageRow.id_rodzaju_opakowania_zbiorczego);
 
             Id = _warehouseDrinkRow.Identyfikator;
             Name = _drinkNameRow.NazwaNapoju;
@@ -46,6 +62,12 @@ namespace HurtowniaNapojow.Helpers
             BasePrice = _drinkTypeRow.StawkaPodatkowa;
             Price = _warehouseDrinkRow.CenaHurtowni;
             Date = _warehouseDrinkRow.DataWażności.ToShortDateString();
+            PiecePackageName = _piecePackageNameRow.NazwaOpakowania;
+            PiecePackageVolume = _piecePackageRow.Pojemność;
+            PiecePackageFull = PiecePackageName + " " + PiecePackageVolume;
+            BulkPackageName = _bulkPackageNameRow.NazwaOpakowania;
+            BulkPackageVolume = _bulkPackageRow.Pojemność;
+            BulkPackageFull = BulkPackageName + " " + BulkPackageVolume;
         }
 
         public static IEnumerable<WarehouseDrink> GetWarehouseDrinks()

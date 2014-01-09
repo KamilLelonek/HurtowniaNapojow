@@ -5,11 +5,15 @@
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <ComboBox Text="Wybierz filtr" x:Name="DrinkFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
-            <ComboBoxItem Content="Nazwa"/>
-            <ComboBoxItem Content="Smak"/>
-            <ComboBoxItem Content="Rodzaj gazu"/>
-            <ComboBoxItem Content="Producent"/>
-            <ComboBoxItem Content="Typ"/>
+            <ComboBoxItem Name="Nazwa" Content="Nazwa"/>
+            <ComboBoxItem Name="Smak" Content="Smak"/>
+            <ComboBoxItem Name="Gaz" Content="Rodzaj gazu"/>
+            <ComboBoxItem Name="Producent" Content="Producent"/>
+            <ComboBoxItem Name="Typ" Content="Typ"/>
+            <ComboBoxItem Name="NazwaSztuki" Content="Nazwa opak. sztuki"/>
+            <ComboBoxItem Name="PojSztuki" Content="Pojemność opak. sztuki"/>
+            <ComboBoxItem Name="NazwaZbiorczego" Content="Nazwa opak. zbiorczego"/>
+            <ComboBoxItem Name="PojZbiorczego" Content="Pojemność opak. zbiorczego"/>
         </ComboBox>
         <TextBox x:Name="DrinkFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
         <Button Content="_Resetuj" x:Name="DrinkResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="DrinkResetFilterButton_Click" />
@@ -21,6 +25,10 @@
                 <DataGridTextColumn Header="Gaz" Binding="{Binding GasName}" Width="0.1*" />
                 <DataGridTextColumn Header="Producent" Binding="{Binding ProducerName}" Width="0.1*" />
                 <DataGridTextColumn Header="Typ" Binding="{Binding TypeName}" Width="0.1*" />
+                <DataGridTextColumn Header="Nazwa opak. sztuki" Binding="{Binding PiecePackageName}" Width="0.1*" />
+                <DataGridTextColumn Header="Pojemność opak. sztuki" Binding="{Binding PiecePackageVolume}" Width="0.1*" />
+                <DataGridTextColumn Header="Nazwa opak. zbiorczego" Binding="{Binding BulkPackageName}" Width="0.1*" />
+                <DataGridTextColumn Header="Pojemność opak. zbiorczego" Binding="{Binding BulkPackageVolume}" Width="0.1*" />
                 <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="0.05*" />
                 <DataGridTextColumn Header="Data ważności" Binding="{Binding Date}" Width="0.1*" />
                 <DataGridTemplateColumn>

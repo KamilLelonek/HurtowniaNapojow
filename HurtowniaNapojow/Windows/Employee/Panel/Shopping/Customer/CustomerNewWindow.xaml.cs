@@ -13,11 +13,11 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
     public partial class CustomerNewWindow
     {
         private readonly Validator _validator = Validator.Instance;
-        private readonly DataGrid _customerDataGrid;
+        private readonly ShoppingWindow _shoppingWindow;
 
-        public CustomerNewWindow(ref DataGrid customerDataGrid)
+        public CustomerNewWindow(ShoppingWindow shoppingWindow)
         {
-            _customerDataGrid = customerDataGrid;
+            _shoppingWindow = shoppingWindow;
             InitializeComponent();
         }
 
@@ -42,7 +42,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             var result = DataBaseCustomerHelper.AddNewCustomer(newNazwaKlienta, newNIP, newNrTelefonu, newEmail, newUlicaNr, newMiastoKod);
             if (!result) return;
 
-            _customerDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData());
+            _shoppingWindow.SetCustomersBinding();
             CloseButton.PerformClick();
         }
 

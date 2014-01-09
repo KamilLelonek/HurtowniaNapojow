@@ -97,7 +97,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         #endregion
         public void SetCustomersBinding()
         {
-            CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().OrderBy(c => c.NazwaKlienta);
+            CustomersFilterComboBox.Text = Globals.FILTER_SELECT;
+            CustomersFilterTextBox.Text = "";
+            CustomersDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData().OrderBy(c => c.NazwaKlienta));
         }
 
         private void Customers_ShowDetails_Clicked(object sender, RoutedEventArgs e)
@@ -109,13 +111,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
 
         private void AddNewCustomer_Clicked(object sender, RoutedEventArgs e)
         {
-            this.OpenWindow(new CustomerNewWindow(ref CustomersDataGrid), blockPrevious: true);
+            this.OpenWindow(new CustomerNewWindow(this), blockPrevious: true);
         }
         
         private void DeleteCustomer_Clicked(object sender, RoutedEventArgs e)
         {
-            var customers = CustomersDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            customers.ForEach(customer => DataBaseCustomerHelper.DeleteCustomerRow(customer.Row));
+            var customers = CustomersDataGrid.SelectedItems.OfType<HurtowniaNapojowDataSet.KlienciRow>().ToList();
+            int count = customers.Count();
+            customers.ForEach(customer => DataBaseCustomerHelper.DeleteCustomerRow(customer));
+            if(count > 0)
+                SetCustomersBinding();
         }
         #endregion
 
@@ -138,7 +143,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         #endregion
         public void SetShoppingBinding()
         {
-            ShoppingsDataGrid.DataContext = EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee).OrderBy(e => e.CustomerName);
+            ShoppingsDataGrid.RebindContext(EmployeeShopping.EmployeeShoppingCollectionBuilder(SessionHelper.Instance.CurrentEmployee).OrderBy(c => c.CustomerName));
         }
 
         private void Shopping_ShowDetails_Clicked(object sender, RoutedEventArgs e)

@@ -30,7 +30,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
             CustomerDetailsGrid.DataContext = null;
             ProductsDataGrid.DataContext = null;
             CustomerDetailsGrid.DataContext = _shopping;
-            ProductsDataGrid.DataContext = ShoppingProduct.GetProductsForShopping(_shopping._shoppingRow);
+            ProductsDataGrid.DataContext = ShoppingProduct.GetProductsForShopping(_shopping._shoppingRow).OrderBy(s => s.DrinkName);
         }
 
 

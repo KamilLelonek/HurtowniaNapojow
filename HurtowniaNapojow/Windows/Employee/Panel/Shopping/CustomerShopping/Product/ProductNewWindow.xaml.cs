@@ -68,14 +68,18 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             if (comboBoxItem == null) DrinkFilterComboBox.SelectedIndex = 0;
             comboBoxItem = DrinkFilterComboBox.SelectedItem as ComboBoxItem;
 
-            var filterType = comboBoxItem.Content.ToString();
+            var filterType = comboBoxItem.Name.ToString();
             var filterValue = DrinkFilterTextBox.Text.ToLower();
-            if (filterType == "Nazwa") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Name.ToLower().Contains(filterValue));
-            else if (filterType == "Smak") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.TasteName.ToLower().Contains(filterValue));
-            else if (filterType == "Rodzaj Gazu") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.GasName.ToLower().Contains(filterValue));
-            else if (filterType == "Producent") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.ProducerName.ToLower().Contains(filterValue));
-            else if (filterType == "Type") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.TypeName.ToLower().Contains(filterValue));
-            else DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks();
+            if (filterType == "Nazwa") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Name.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Smak") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.TasteName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Gaz") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.GasName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Producent") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.ProducerName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Typ") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.TypeName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "NazwaSztuki") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.PiecePackageName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "PojSztuki") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.PiecePackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "NazwaZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "PojZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
+            else DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
         }
     }
 }
