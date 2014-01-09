@@ -33,7 +33,7 @@ namespace HurtowniaNapojow.Reports.Admin
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
             Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);
-            Date = String.Format("{0:dd/MM/yyyy}", _shoppingRow.DataZłożenia);
+            Date = String.Format(Globals.DATE_FORMAT, _shoppingRow.DataZłożenia);
         }
 
         public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojowDataSet.PracownicyRow employee)
