@@ -28,14 +28,14 @@
                 <Label Content="{Binding PiecePackageFull, Mode=OneWay}" Height="26"/>
                 <Label Content="{Binding BulkPackageFull, Mode=OneWay}" Height="26"/>
                 <Label Content="{Binding Date, Mode=OneWay}" Height="26"/>
-                <Label Content="{Binding BasePrice, Mode=OneWay}" Height="26"/>
-                <Label Content="{Binding Price, Mode=OneWay}" Height="26"/>
+                <Label Content="{Binding BasePrice, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
+                <Label Content="{Binding Price, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
             </StackPanel>
         </Grid>
         <Grid x:Name="ProductDetailsGrid">
             <StackPanel HorizontalAlignment="Left" Height="50" Margin="0,270,0,0" VerticalAlignment="Top" Width="150">
                 <Label Content="Liczba" HorizontalAlignment="Right" />
-                <Label Content="Kwota" HorizontalAlignment="Right" />
+                <Label Content="Kwota (zł)" HorizontalAlignment="Right" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Height="80" Margin="150,270,0,0" VerticalAlignment="Top" Width="240">
                 <Grid>
@@ -44,7 +44,7 @@
                     <Button Content="+" Width="40" Click="ProductAmountIncrease_OnClick" Height="22" Margin="116,2,0,0" HorizontalAlignment="Left" />
                 </Grid>
                 <Grid>
-                    <TextBox x:Name="ProductPrice" Text="{Binding Kwota, Mode=OneTime}" Height="22" Margin="2,2,0,0" Width="70" HorizontalAlignment="Left" />
+                    <TextBox x:Name="ProductPrice" Text="{Binding Kwota, Mode=OneTime, StringFormat={}{0:#,#.00}}" Height="22" Margin="2,2,0,0" Width="70" HorizontalAlignment="Left" />
                     <Button Content="Oblicz kwotę" Width="80" Click="ProductPriceCompute_OnClick" Height="22" Margin="76,2,0,0" HorizontalAlignment="Left" />
                 </Grid>
             </StackPanel>

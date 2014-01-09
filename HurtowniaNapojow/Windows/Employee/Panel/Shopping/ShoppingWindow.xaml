@@ -61,7 +61,7 @@
                             <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding CustomerName}" Width="0.1*" />
                             <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
-                            <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price}" Width="0.05*" />
+                            <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price, StringFormat={}{0:#,#.00} zł}" Width="0.05*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

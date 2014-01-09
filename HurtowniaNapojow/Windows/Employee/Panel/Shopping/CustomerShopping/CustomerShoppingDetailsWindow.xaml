@@ -22,7 +22,7 @@
                 <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
                 <DataGridTextColumn Header="Nazwa napoju" Binding="{Binding DrinkName}" Width="0.1*" />
                 <DataGridTextColumn Header="Liczba" Binding="{Binding Amount}" Width="0.1*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price}" Width="0.1*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat={}{0:#,#.00} zł}" Width="0.1*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
