@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Utils;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Reports.Admin;
 
@@ -19,7 +21,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             InitializeComponent();
             _shoppingWindow = shoppingWindow;
-            CustomersDataGrid.RebindContext(DataBaseCustomerHelper.GetCustomersData());
+            SetCustomersBinding();
             SetCustomersComponentsEvents();
         }
 
@@ -30,7 +32,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
 
         private void CustomersChoose_Clicked(object sender, RoutedEventArgs e)
         {
-            var customerRow = (((DataRowView)((Button)sender).DataContext)).Row as HurtowniaNapojowDataSet.KlienciRow;
+            var customerRow = (((HurtowniaNapojowDataSet.KlienciRow)((Button)sender).DataContext));
             if (customerRow == null) return;
             
             HurtowniaNapojowDataSet.ZakupyKlientaRow shopingRow = DataBaseShoppingHelper.AddNewShopping(SessionHelper.Instance.CurrentEmployee, customerRow);
@@ -48,7 +50,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             CustomersFilterComboBox.Text = Globals.FILTER_SELECT;
             CustomersFilterTextBox.Text = "";
-            ((DataTable)CustomersDataGrid.DataContext).DefaultView.RowFilter = "";
+            SetCustomersBinding();
         }
         private void CustomersFilterChanged()
         {
@@ -56,10 +58,21 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
             if (comboBoxItem == null) CustomersFilterComboBox.SelectedIndex = 0;
             comboBoxItem = CustomersFilterComboBox.SelectedItem as ComboBoxItem;
 
-            var filterType = comboBoxItem.Content.ToString();
-            var filterValue = CustomersFilterTextBox.Text;
-            var filter = String.Format("{0} LIKE '%{1}%'", filterType, filterValue);
-            ((DataTable)CustomersDataGrid.DataContext).DefaultView.RowFilter = filter;
+            var filterType = comboBoxItem.Name.ToString();
+            var filterValue = CustomersFilterTextBox.Text.ToLower();
+
+            if (filterType == "NazwaKlienta") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.NazwaKlienta.ToLower().Contains(filterValue)).OrderBy(c => c.NazwaKlienta);
+            else if (filterType == "NIP") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.NIP.ToLower().Contains(filterValue)).OrderBy(c => c.NIP);
+            else if (filterType == "NrTelefonu") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.NrTelefonu.ToLower().Contains(filterValue)).OrderBy(c => c.NrTelefonu);
+            else if (filterType == "Email") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.Email.ToLower().Contains(filterValue)).OrderBy(c => c.Email);
+            else if (filterType == "UlicaNumer") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.UlicaNumer.ToLower().Contains(filterValue)).OrderBy(c => c.UlicaNumer);
+            else if (filterType == "MiastoKod") CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().Where(c => c.MiastoKod.ToLower().Contains(filterValue)).OrderBy(c => c.MiastoKod);
+            else SetCustomersBinding();
+        }
+
+        public void SetCustomersBinding()
+        {
+            CustomersDataGrid.DataContext = DataBaseCustomerHelper.GetCustomersData().OrderBy(c => c.NazwaKlienta);
         }
     }
 }

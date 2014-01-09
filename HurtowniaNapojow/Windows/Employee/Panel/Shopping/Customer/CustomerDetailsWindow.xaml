@@ -8,24 +8,25 @@
         <TextBox Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding NazwaKlienta, Mode=OneWay}" VerticalAlignment="Top" Width="130" />
         <Label Content="NIP" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" />
         <TextBox Name="NIPTextBox" HorizontalAlignment="Left" Height="23" Margin="147,37,0,0" Text="{Binding NIP, TargetNullValue='', Mode=OneWay}" VerticalAlignment="Top" Width="130" />
-        <Label Content="Nr Telefonu" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
+        <Label Content="Nr telefonu" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
         <TextBox Name="NrTelefonuTextBox" HorizontalAlignment="Left" Height="23" Margin="282,37,0,0" Text="{Binding NrTelefonu, Mode=OneWay}" VerticalAlignment="Top" Width="130" />
         <Label Content="E-mail" HorizontalAlignment="Left" Margin="12,65,0,0" VerticalAlignment="Top" />
         <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="12,91,0,0" Text="{Binding Email, TargetNullValue='', Mode=OneWay}" VerticalAlignment="Top" Width="130" />
-        <Label Content="Ulica Nr" HorizontalAlignment="Left" Margin="147,65,0,0" VerticalAlignment="Top" />
+        <Label Content="Ulica" HorizontalAlignment="Left" Margin="147,65,0,0" VerticalAlignment="Top" />
         <TextBox x:Name="UlicaNrTextBox" HorizontalAlignment="Left" Height="23" Margin="147,91,0,0" Text="{Binding UlicaNumer, Mode=OneWay}" VerticalAlignment="Top" Width="130" />
-        <Label Content="Miasto Kod" HorizontalAlignment="Left" Margin="285,65,0,0" VerticalAlignment="Top" />
+        <Label Content="Kod i miasto" HorizontalAlignment="Left" Margin="285,65,0,0" VerticalAlignment="Top" />
         <TextBox x:Name="MiastoKodTextBox" HorizontalAlignment="Left" Height="23" Margin="282,91,0,0" Text="{Binding MiastoKod, Mode=OneWay}" VerticalAlignment="Top" Width="130" />
         <Label Content="Zakupy klienta" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" />
         <DataGrid x:Name="CustomerShoppingDataGrid" Margin="10,145,10,40"
                   AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.05*" />
-                <DataGridTextColumn Header="Pracownik" Binding="{Binding EmployeeName}" Width="0.1*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.03*" />
+                <DataGridTextColumn Header="Nazwisko pracownika" Binding="{Binding EmployeeLastName}" Width="0.15*" />
+                <DataGridTextColumn Header="Imię pracownika" Binding="{Binding EmployeeFirstName}" Width="0.15*" />
                 <DataGridTextColumn Header="Liczba produktów" Binding="{Binding ProductsCount}" Width="0.1*" />
                 <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding ProductsTotalAmount}" Width="0.1*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price}" Width="0.1*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Price}" Width="0.075*" />
                 <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
             </DataGrid.Columns>
         </DataGrid>

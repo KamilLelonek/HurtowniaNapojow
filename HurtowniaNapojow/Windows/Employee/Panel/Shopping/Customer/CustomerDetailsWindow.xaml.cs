@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
+using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
@@ -25,8 +29,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void SetShoppingBinding(HurtowniaNapojowDataSet.KlienciRow customer)
         {
-            var customerShoppingTable = Helpers.CustomerShopping.GetCustomerShoppings(customer);
-            CustomerShoppingDataGrid.DataContext = customerShoppingTable;
+            CustomerShoppingDataGrid.DataContext = Helpers.CustomerShopping.GetCustomerShoppings(customer).OrderBy(c => c.EmployeeLastName);
             CustomerDetailsGrid.DataContext = customer;
         }
 

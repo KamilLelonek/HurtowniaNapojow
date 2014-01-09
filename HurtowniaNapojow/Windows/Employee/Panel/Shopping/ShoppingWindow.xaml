@@ -11,8 +11,8 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="Powrót" Click="MenuBack_Click" HorizontalAlignment="Left" Background="LightGray"/>
-            <MenuItem Header="Panel Sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
-            <MenuItem Header="Panel Magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
+            <MenuItem Header="Panel sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
+            <MenuItem Header="Panel magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,25,0,0" SelectionChanged="TabControl_SelectionChanged">
@@ -21,12 +21,12 @@
                     <Button Content="_Nowy klient" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="5,5,0,0" Click="AddNewCustomer_Clicked"/>
                     <Button Content="_Usuń zaznaczonych" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="100,5,0,0" Click="DeleteCustomer_Clicked"/>
                     <ComboBox Text="Wybierz filtr" x:Name="CustomersFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
-                        <ComboBoxItem Content="NazwaKlienta"/>
-                        <ComboBoxItem Content="NIP"/>
-                        <ComboBoxItem Content="NrTelefonu"/>
-                        <ComboBoxItem Content="Email"/>
-                        <ComboBoxItem Content="UlicaNumer"/>
-                        <ComboBoxItem Content="MiastoKod"/>
+                        <ComboBoxItem Name="NazwaKlienta" Content="Nazwa klienta"/>
+                        <ComboBoxItem Name="NIP" Content="NIP"/>
+                        <ComboBoxItem Name="NrTelefonu" Content="Nr telefonu"/>
+                        <ComboBoxItem Name="Email" Content="E-mail"/>
+                        <ComboBoxItem Name="UlicaNumer" Content="Ulica"/>
+                        <ComboBoxItem Name="MiastoKod" Content="Miasto"/>
                     </ComboBox>
                     <TextBox x:Name="CustomersFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
                     <Button Content="_Resetuj" x:Name="CustomersResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="CustomersResetFilterButton_Click" />
@@ -35,10 +35,10 @@
                             <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding NazwaKlienta}" Width="0.1*" />
                             <DataGridTextColumn Header="NIP" Binding="{Binding NIP}" Width="0.1*" />
-                            <DataGridTextColumn Header="Nr Telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
+                            <DataGridTextColumn Header="Nr telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
                             <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.1*" />
-                            <DataGridTextColumn Header="Ulica Nr" Binding="{Binding UlicaNumer}" Width="0.1*" />
-                            <DataGridTextColumn Header="Kod Miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
+                            <DataGridTextColumn Header="Ulica" Binding="{Binding UlicaNumer}" Width="0.1*" />
+                            <DataGridTextColumn Header="Kod i miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -50,16 +50,16 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Zakupy" x:Name="ShoppingsTab">
+            <TabItem Header="Sprzedaż" x:Name="ShoppingsTab">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="_Nowe zakupy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="5,5,0,0" Click="AddNewCustomerShopping_Clicked"/>
-                    <Button Content="_Usuń zaznaczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="100,5,0,0" Click="DeleteShopping_Clicked"/>
+                    <Button Content="_Nowe zakupy klienta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="5,5,0,0" Click="AddNewCustomerShopping_Clicked"/>
+                    <Button Content="_Usuń zaznaczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="130,5,0,0" Click="DeleteShopping_Clicked"/>
                     <TextBox x:Name="ShoppingsFilterTextBox" ToolTip="Szukaj" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
                     <Button Content="Resetuj" x:Name="ShoppingsResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="ShoppingsResetFilterButton_Click" />
-                    <DataGrid Margin="0,30,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
+                    <DataGrid Margin="0,30,0,0" x:Name="ShoppingsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.025*" />
-                            <DataGridTextColumn Header="Nazwa Klienta" Binding="{Binding CustomerName}" Width="0.1*" />
+                            <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding CustomerName}" Width="0.1*" />
                             <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
                             <DataGridTextColumn Header="Całkowita kwota" Binding="{Binding Price}" Width="0.05*" />
                             <DataGridTemplateColumn>
@@ -71,6 +71,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Label Content="Nazwa klienta" HorizontalAlignment="Right" Margin="0,3,205,0" IsEnabled="False" VerticalAlignment="Top" Height="25" Width="86"/>
                 </Grid>
             </TabItem>
         </TabControl>

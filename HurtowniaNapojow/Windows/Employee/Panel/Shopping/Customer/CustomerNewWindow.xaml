@@ -10,17 +10,17 @@
         <Label Content="NIP" HorizontalAlignment="Left" Margin="31,52,0,0" VerticalAlignment="Top" Width="38" />
         <TextBox Name="NIPTextBox" HorizontalAlignment="Left" Height="23" Margin="118,55,0,0"
                  VerticalAlignment="Top" Width="135" KeyDown="OnKeyDownHandler" />
-        <Label Content="Nr Telefonu *" FontWeight="Bold"  HorizontalAlignment="Left" Margin="31,80,0,0" VerticalAlignment="Top"
+        <Label Content="Nr telefonu *" FontWeight="Bold"  HorizontalAlignment="Left" Margin="31,80,0,0" VerticalAlignment="Top"
                RenderTransformOrigin="0.132,0" Width="94" />
         <TextBox Name="NrTelefonuTextBox" HorizontalAlignment="Left" Height="23" Margin="118,83,0,0" VerticalAlignment="Top"
                  Width="135" KeyDown="OnKeyDownHandler" />
         <Label Content="E-mail" HorizontalAlignment="Left" Margin="31,111,0,0" VerticalAlignment="Top" Width="52" />
         <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="118,111,0,0"
         	VerticalAlignment="Top" Width="135" KeyDown="OnKeyDownHandler" />
-        <Label Content="Ulica Nr *" FontWeight="Bold"  HorizontalAlignment="Left" Margin="31,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.31,3.5" Width="73" />
+        <Label Content="Ulica *" FontWeight="Bold"  HorizontalAlignment="Left" Margin="31,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.31,3.5" Width="73" />
         <TextBox x:Name="UlicaNrTextBox" HorizontalAlignment="Left" Height="23" Margin="118,139,0,0"
         	VerticalAlignment="Top" Width="135" KeyDown="OnKeyDownHandler" />
-        <Label Content="Kod Miasto *" FontWeight="Bold" HorizontalAlignment="Left" Margin="31,167,0,0" VerticalAlignment="Top"
+        <Label Content="Kod i miasto *" FontWeight="Bold" HorizontalAlignment="Left" Margin="31,167,0,0" VerticalAlignment="Top"
         	RenderTransformOrigin="0.132,0" Width="92" />
         <TextBox x:Name="MiastoKodTextBox" HorizontalAlignment="Left" Height="23" Margin="118,167,0,0" VerticalAlignment="Top"
         	Width="135" KeyDown="OnKeyDownHandler" />

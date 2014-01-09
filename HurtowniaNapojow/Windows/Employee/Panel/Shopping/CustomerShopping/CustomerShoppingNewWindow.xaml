@@ -5,12 +5,12 @@
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <ComboBox Text="Wybierz filtr" x:Name="CustomersFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
-            <ComboBoxItem Content="NazwaKlienta"/>
-            <ComboBoxItem Content="NIP"/>
-            <ComboBoxItem Content="NrTelefonu"/>
-            <ComboBoxItem Content="Email"/>
-            <ComboBoxItem Content="UlicaNumer"/>
-            <ComboBoxItem Content="MiastoKod"/>
+            <ComboBoxItem Name="NazwaKlienta" Content="Nazwa klienta"/>
+            <ComboBoxItem Name="NIP" Content="NIP"/>
+            <ComboBoxItem Name="NrTelefonu" Content="Nr telefonu"/>
+            <ComboBoxItem Name="Email" Content="E-mail"/>
+            <ComboBoxItem Name="UlicaNumer" Content="Ulica"/>
+            <ComboBoxItem Name="MiastoKod" Content="Miasto"/>
         </ComboBox>
         <TextBox x:Name="CustomersFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
         <Button Content="_Resetuj" x:Name="CustomersResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="CustomersResetFilterButton_Click" />
@@ -19,10 +19,10 @@
                 <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.025*" />
                 <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding NazwaKlienta}" Width="0.1*" />
                 <DataGridTextColumn Header="NIP" Binding="{Binding NIP}" Width="0.1*" />
-                <DataGridTextColumn Header="Nr Telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
+                <DataGridTextColumn Header="Nr telefonu" Binding="{Binding NrTelefonu}" Width="0.1*" />
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.1*" />
-                <DataGridTextColumn Header="Ulica Nr" Binding="{Binding UlicaNumer}" Width="0.1*" />
-                <DataGridTextColumn Header="Kod Miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
+                <DataGridTextColumn Header="Ulica" Binding="{Binding UlicaNumer}" Width="0.1*" />
+                <DataGridTextColumn Header="Miasto" Binding="{Binding MiastoKod}" Width="0.1*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

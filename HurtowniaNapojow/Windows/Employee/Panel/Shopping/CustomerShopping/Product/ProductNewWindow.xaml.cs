@@ -26,7 +26,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             _parentWindow = parentWindow;
             _shopping = shopping;
             InitializeComponent();
-            DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks();
+            DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
             SetDrinkComponentsEvents();
         }
 

@@ -9,7 +9,8 @@ namespace HurtowniaNapojow.Helpers
     {
         public int Id { get; set; }
         public String CustomerName { get; set; }
-        public String EmployeeName { get; set; }
+        public String EmployeeFirstName { get; set; }
+        public String EmployeeLastName { get; set; }
         public int ProductsCount { get; set; }
         public int ProductsTotalAmount { get; set; }
         public float Price { get; set; }
@@ -27,7 +28,8 @@ namespace HurtowniaNapojow.Helpers
 
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
-            EmployeeName = _employeeRow.Nazwisko + " " + _employeeRow.Imię;
+            EmployeeFirstName = _employeeRow.Imię;
+            EmployeeLastName = _employeeRow.Nazwisko;
             Date = _shoppingRow.DataZłożenia.ToShortDateString();
             ProductsCount = DataBaseShoppingHelper.CalculateShoppingProductsCount(_shoppingRow);
             ProductsTotalAmount = DataBaseShoppingHelper.CalculateShoppingProductsTotalAmount(_shoppingRow);

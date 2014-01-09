@@ -9,12 +9,12 @@
             <RowDefinition Height="166*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label Content="Nazwa Klienta" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="94" />
+        <Label Content="Nazwa klienta" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="94" />
         <TextBox x:Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="111,13,0,0" Text="{Binding CustomerName, Mode=OneWay}" VerticalAlignment="Top" Width="150" IsReadOnly="True"/>
         <Button Content="Pokaż szczegóły klienta" HorizontalAlignment="Left" Margin="280,13,0,0" VerticalAlignment="Top" Width="142" Click="CustomerDetailsButton_Click" Height="23"/>
-        <Label Content="Data Złożenia" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
+        <Label Content="Data złożenia" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,3" />
         <TextBox Name="DataZlozeniaTextBox" HorizontalAlignment="Left" Height="23" Margin="111,41,0,0" Text="{Binding Date, Mode=OneWay}" VerticalAlignment="Top" Width="150" IsReadOnly="True" />
-        <Label Content="Produkty" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" />
+        <Label Content="Produkty" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" IsEnabled="False" />
         <Button Content="Dodaj produkt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="20,98,0,0" Click="ProductNewButton_Click"/>
         <Button Content="Usuń zazaczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="125,98,0,0" Click="DeleteProductButton_Click"/>
         <DataGrid x:Name="ProductsDataGrid" Margin="0,126,0,20" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True">
