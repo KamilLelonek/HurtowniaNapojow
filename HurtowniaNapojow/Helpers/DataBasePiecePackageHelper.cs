@@ -35,7 +35,7 @@ namespace HurtowniaNapojow.Helpers
             try
             {
                 PiecePackageTableAdapter.Insert(newPieceCapacity, piecePackageName.Identyfikator);
-                _piecePackageData = PiecePackageTableAdapter.GetData();
+                RefreshData();
                 MessageBox.Show("Pomyślnie dodano nowy rodzaj opakowania sztuki", Globals.TITLE_SUCCESS);
                 return true;
             }
@@ -72,7 +72,7 @@ namespace HurtowniaNapojow.Helpers
             {
                 PiecePackageTableAdapter.Update(piecePackage);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _piecePackageData = PiecePackageTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
             catch (OleDbException e)
@@ -80,6 +80,11 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show(e.Message, Globals.TITLE_ERROR);
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _piecePackageData = PiecePackageTableAdapter.GetData();
         }
 
     }

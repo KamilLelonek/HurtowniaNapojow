@@ -335,7 +335,6 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeNewWindow.xaml.cs">
       <DependentUpon>DrinkTypeNewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\Float.cs" />
     <Compile Include="Windows\Employee\Panel\Warehouse\GasType\GasTypeDetailsWindow.xaml.cs">
       <DependentUpon>GasTypeDetailsWindow.xaml</DependentUpon>
     </Compile>

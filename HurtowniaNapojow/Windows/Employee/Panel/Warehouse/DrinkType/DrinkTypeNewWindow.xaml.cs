@@ -33,19 +33,10 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.DrinkType
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var newNameDrinkType = NameTextBox.Text;
-            var regex = new Regex(@"^[0-9]*(?:\,[0-9]*)?$");
-            if (regex.IsMatch(TaxRateTextBox.Text) && newNameDrinkType.Length > 0 && TaxRateTextBox.Text.Length > 0)
-            {
-                
-                var newTaxRate = float.Parse(TaxRateTextBox.Text);
-                var result = DataBaseDrinkTypeHelper.AddNewDrinkType(newNameDrinkType, newTaxRate);
-                if (!result) return;
-            }
-            else
-            {
-                var result = DataBaseDrinkTypeHelper.AddNewDrinkType(null, (float)0.0);
-                if (!result) return;
-            }
+            var newTaxRate = TaxRateTextBox.Text;
+
+            var result = DataBaseDrinkTypeHelper.AddNewDrinkType(newNameDrinkType, newTaxRate);
+            if (!result) return;
 
             _DrinkTypeDataGrid.RebindContext(DataBaseDrinkTypeHelper.GetDrinkTypesData());
             CloseButton.PerformClick();
