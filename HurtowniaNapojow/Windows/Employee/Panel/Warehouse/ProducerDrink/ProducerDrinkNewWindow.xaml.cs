@@ -37,7 +37,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             SetDataBinding();
         }
 
-        private void SetDataBinding() 
+        private void SetDataBinding()
         {
             DrinkNameDataBinding();
             ProducerDataBinding();
@@ -71,7 +71,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             var drinkTypes = DataBaseDrinkTypeHelper.GetDrinkTypesData();
             var query = from item in drinkTypes
                         orderby item.NazwaRodzajuNapoju
-                        select new { Identyfikator = item.Identyfikator, NazwaRodzajuNapoju = item.NazwaRodzajuNapoju+", Vat: "+item.StawkaPodatkowa*100+" %" };
+                        select new { Identyfikator = item.Identyfikator, NazwaRodzajuNapoju = item.NazwaRodzajuNapoju + ", Vat: " + item.StawkaPodatkowa * 100 + " %" };
             DrinkTypeComboBox.ItemsSource = query;
         }
 
@@ -131,7 +131,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             if (_validator.AreComboBoxEmpty(GasTypeComboBox)) return;
             if (_validator.AreComboBoxEmpty(PiecePackageComboBox)) return;
             if (_validator.AreComboBoxEmpty(BulkPackageComboBox)) return;
-            
+
             var newProducerDrinkName = (int)NameDrinkComboBox.SelectedValue;
             var newProducerDrinkTaste = (int)TasteComboBox.SelectedValue;
             var newProducerDrinkGasType = (int)GasTypeComboBox.SelectedValue;
@@ -140,22 +140,22 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             var newProducerDrinkPiecePackageType = (int)PiecePackageComboBox.SelectedValue;
             var newProducerDrinkBulkPackageType = (int)BulkPackageComboBox.SelectedValue;
             var newProducerDrinkPrice = float.Parse(PriceProducerTextBox.Text);
-            
+
             try
             {
-               
-               var result = DataBaseProducerDrinkHelper.AddNewProducerDrink(newProducerDrinkName, newProducerDrinkTaste, newProducerDrinkGasType,
-                   newProducerDrinkProducer, newProducerDrinkType, newProducerDrinkPiecePackageType, newProducerDrinkBulkPackageType, newProducerDrinkPrice);
-              
+
+                var result = DataBaseProducerDrinkHelper.AddNewProducerDrink(newProducerDrinkName, newProducerDrinkTaste, newProducerDrinkGasType,
+                    newProducerDrinkProducer, newProducerDrinkType, newProducerDrinkPiecePackageType, newProducerDrinkBulkPackageType, newProducerDrinkPrice);
+
                 if (!result)
-               {
-                   MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
+                {
+                    MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
                     return;
-               }
-           }
-           catch (NullReferenceException)
+                }
+            }
+            catch (NullReferenceException)
             {
-               MessageBox.Show("Błąd", Globals.TITLE_ERROR);
+                MessageBox.Show("Błąd", Globals.TITLE_ERROR);
             }
 
             _ProducerDrinkDataGrid.RebindContext(DataBaseProducerDrinkHelper.GetProducerDrinkData());
@@ -168,6 +168,39 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             {
                 AddButton.PerformClick();
             }
+
+            var text = PriceProducerTextBox.Text;
+            var notNumberPressed = e.Key < Key.NumPad0 || e.Key > Key.NumPad9;
+            var separatorPressed = e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.OemComma;
+            var inputJustSeparator = String.IsNullOrEmpty(text) && separatorPressed;
+
+            if (inputJustSeparator || !separatorPressed && notNumberPressed)
+            {
+                e.Handled = true;
+            }
+            if (text.Contains("."))
+            {
+                var floatingPartStartPosition = text.IndexOf(".") + 1;
+                var floatingPart = text.Substring(floatingPartStartPosition);
+                var cursorInFloatingPart = PriceProducerTextBox.SelectionStart >= floatingPartStartPosition;
+                var precisionEqualTwo = floatingPart.Length > 1 && cursorInFloatingPart;
+                if (precisionEqualTwo || separatorPressed) e.Handled = true;
+            }
+        }
+
+        private void PriceProducerTextBox_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            var text = PriceProducerTextBox.Text;
+            if (!text.Contains(",")) return;
+
+            PriceProducerTextBox.Text = text.Replace(",", ".");
+            PriceProducerTextBox.SelectionStart = text.Length;
+            PriceProducerTextBox.Focus();
+        }
+
+        private void PriceProducerTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space) e.Handled = true;
         }
 
         private void PlusNewNameButton(object sender, RoutedEventArgs e)
