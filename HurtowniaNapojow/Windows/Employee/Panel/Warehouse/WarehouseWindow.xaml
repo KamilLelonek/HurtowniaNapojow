@@ -18,7 +18,7 @@
         <TabControl Margin="0,40,0,0">
             <Grid>
                 <Button x:Name="TasteButton"  Content="Smaki" HorizontalAlignment="Left" Height="30" Margin="479,34,0,0" VerticalAlignment="Top" Width="82" Click="TasteButton_Click"/>
-                <Button x:Name="PlusTaste" Content="+" Margin="575,34,20,354" Click="PlusTaste_Click"/>
+                <Button x:Name="PlusTaste" Content="+"  HorizontalAlignment="Left" Margin="576,34,0,0" VerticalAlignment="Top" Width="30" Click="PlusTaste_Click"/>
                 <Button x:Name="GasTypeButton" Content="Rodzaje Gazu" HorizontalAlignment="Left" Margin="479,80,0,0" VerticalAlignment="Top" Width="82" Click="GasTypeButton_Click"/>
                 <Button x:Name="PlusGasType" Content="+" HorizontalAlignment="Left" Margin="576,80,0,0" VerticalAlignment="Top" Width="30" Click="PlusGasType_Click"/>
                 <Button x:Name="DrinkNameButton" Content="Nazwa Napoju" HorizontalAlignment="Left" Margin="433,121,0,0" VerticalAlignment="Top" Width="128" Click="DrinkNameButton_Click"/>
@@ -35,6 +35,8 @@
                 <Button x:Name="PlusPiecePackage" Content="+" HorizontalAlignment="Left" Margin="575,317,0,0" VerticalAlignment="Top" Width="30" Click="PiecePackagePlus_Click" />
                 <Button x:Name="BulkPackageButton" Content="Opakowania Zbiorcze" HorizontalAlignment="Left" Margin="386,353,0,0" VerticalAlignment="Top" Width="175" Click="BulkPackageButton_Click"/>
                 <Button x:Name="BulkPiecePackage" Content="+" HorizontalAlignment="Left" Margin="575,353,0,0" VerticalAlignment="Top" Width="30" Click="BulkPackagePlus_Click" />
+                <Button x:Name="ProducerDrinkButton" Content="Napój producenta" HorizontalAlignment="Left" Margin="386,378,0,0" VerticalAlignment="Top" Width="175" Click="ProducerDrinkButton_Click"/>
+                <Button x:Name="ProducerDrinkPackage" Content="+" HorizontalAlignment="Left" Margin="576,378,0,0" VerticalAlignment="Top" Width="30" Click="ProducerDrinkPlus_Click" />
 
             </Grid>
 

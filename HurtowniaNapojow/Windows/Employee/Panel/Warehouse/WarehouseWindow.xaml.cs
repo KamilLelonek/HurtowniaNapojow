@@ -20,6 +20,8 @@ using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackage;
 using HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage;
 using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage;
+using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.ProducerDrink;
+using HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -143,6 +145,16 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         private void BulkPackagePlus_Click(object sender, RoutedEventArgs e)
         {
             this.OpenWindow(new BulkPackageNewWindow(), blockPrevious: true);
+        }
+
+        private void ProducerDrinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new ProducerDrinkDetailsWindow(), blockPrevious: true);
+        }
+
+        private void ProducerDrinkPlus_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new ProducerDrinkNewWindow(), blockPrevious: true);
         }
 
     }

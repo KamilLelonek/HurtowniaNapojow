@@ -1,0 +1,64 @@
+﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink.ProducerDrinkNewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:sysglb="clr-namespace:System.Globalization;assembly=mscorlib"
+        Title="Dodawanie napoju producenta" Height="450" Width="400"
+        WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0">
+
+        <Label Content="Nazwa napoju" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="NameDrinkComboBox" HorizontalAlignment="Left" Height="25" Margin="169,30,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaNapoju" 
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusNameButton" Content="+" HorizontalAlignment="Left" Margin="350,30,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewNameButton"/>
+
+        <Label Content="Producent" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="ProducerComboBox" HorizontalAlignment="Left" Height="25" Margin="169,70,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaProducenta"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusProducerButton" Content="+" HorizontalAlignment="Left" Margin="350,70,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewProducerButton"/>
+
+        <Label Content="Rodzaj napoju" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="DrinkTypeComboBox" HorizontalAlignment="Left" Height="25" Margin="169,110,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaRodzajuNapoju"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusDrinkTypeButton" Content="+" HorizontalAlignment="Left" Margin="350,110,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewDrinkTypeButton"/>
+
+        <Label Content="Smak napoju" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="TasteComboBox" HorizontalAlignment="Left" Height="25" Margin="169,150,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaSmaku"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusTasteButton" Content="+" HorizontalAlignment="Left" Margin="350,150,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewTasteButton"/>
+
+        <Label Content="Rodzaj gazu" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="GasTypeComboBox" HorizontalAlignment="Left" Height="25" Margin="169,190,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaRodzaju"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusGasTypeButton" Content="+" HorizontalAlignment="Left" Margin="350,190,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewGasTypeButton"/>
+
+        <Label Content="Opakowanie sztuki" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="PiecePackageComboBox" HorizontalAlignment="Left" Height="25" Margin="169,230,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaOpakowania"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusPiecePackageButton" Content="+" HorizontalAlignment="Left" Margin="350,230,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewPiecePackageButton"/>
+
+        <Label Content="Opakowanie zbiorcze" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <ComboBox Name="BulkPackageComboBox" HorizontalAlignment="Left" Height="25" Margin="169,270,0,0"
+                 VerticalAlignment="Top" Width="160"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaOpakowania"
+                 SelectedValuePath = "Identyfikator" />
+        <Button x:Name="PlusBulkPackageButton" Content="+" HorizontalAlignment="Left" Margin="350,270,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="PlusNewBulkPackageButton"/>
+
+        <Label Content="Cena producenta" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
+        <TextBox Name="PriceProducerTextBox" HorizontalAlignment="Left" Height="25" Margin="169,310,0,0"
+                 VerticalAlignment="Top" Width="160" KeyDown="OnKeyDownHandler" TextWrapping="WrapWithOverflow" Text="{Binding Price,
+           UpdateSourceTrigger=PropertyChanged,
+           StringFormat='#.00',
+           ConverterCulture={x:Static sysglb:CultureInfo.CurrentCulture}}" />
+
+
+        <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="88,374,0,0" VerticalAlignment="Top"
+                Width="75" Click="AddButton_Click"  Height="20" />
+        <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Left" Margin="235,374,0,0"
+                VerticalAlignment="Top" Width="75" Click="CloseButton_Click"  Height="20" />
+    </Grid>
+</Window>

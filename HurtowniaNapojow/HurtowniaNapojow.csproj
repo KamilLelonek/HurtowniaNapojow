@@ -194,6 +194,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\Producer\ProducerDetailsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -362,6 +374,15 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageNewWindow.xaml.cs">
       <DependentUpon>PiecePackageNewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkDetailsWindow.xaml.cs">
+      <DependentUpon>ProducerDrinkDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkEditWindow.xaml.cs">
+      <DependentUpon>ProducerDrinkEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkNewWindow.xaml.cs">
+      <DependentUpon>ProducerDrinkNewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\Producer\ProducerDetailsWindow.xaml.cs">
       <DependentUpon>ProducerDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -433,6 +454,7 @@
   <ItemGroup>
     <Content Include="Database\HurtowniaNapojow.accdb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
