@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Data;
 using System.Data.OleDb;
+using System.Text.RegularExpressions;
 
 
 namespace HurtowniaNapojow.Helpers
@@ -25,7 +26,7 @@ namespace HurtowniaNapojow.Helpers
             return GetDrinkTypesData().First(drinkType => drinkType.Identyfikator == drinkTypeId);
         }
 
-        public static Boolean AddNewDrinkType(String newDrinkType, float newTaxRate )
+        public static Boolean AddNewDrinkType(String newDrinkType, string newTaxRate)
         {
             var doesDrinkTypeExist = GetDrinkTypesData().Any(drinkType => drinkType.NazwaRodzajuNapoju == newDrinkType);
             if (doesDrinkTypeExist)
@@ -34,16 +35,26 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
             
-            try
+            float TaxRate = 0;
+            var regex = new Regex(@"^[0-9]*(?:\,[0-9]*)?$");
+            if (regex.IsMatch(newTaxRate) && newDrinkType.Length > 0 && float.TryParse(newTaxRate, out TaxRate))
             {
-                DrinkTypeTableAdapter.Insert(newDrinkType, newTaxRate);
-                RefreshData();
-                MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
-                return true;
+                try
+                {
+                    DrinkTypeTableAdapter.Insert(newDrinkType, TaxRate);
+                    RefreshData();
+                    MessageBox.Show("Pomyślnie dodano nowy rodzaj napoju", Globals.TITLE_SUCCESS);
+                    return true;
+                }
+                catch (OleDbException)
+                {
+                    MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju napoju i stawka podatku nie mogą być puste!", "Błąd");
+                    return false;
+                }
             }
-            catch (OleDbException e)
+            else
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\nPole nazwa rodzaju napoju i stawka podatku nie mogą być puste!", "Błąd");
                 return false;
             }
         }
@@ -60,11 +71,21 @@ namespace HurtowniaNapojow.Helpers
             return DrinkTypeTableAdapter.Update(drinkTypeRow) == 1;
         }
 
-        public static Boolean EditDrinkType(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String newDrinkTypeName, float newTaxRate )
+        public static Boolean EditDrinkType(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String newDrinkTypeName, String newTaxRate)
         {
-            drinkType.NazwaRodzajuNapoju = newDrinkTypeName;
-            drinkType.StawkaPodatkowa = newTaxRate;
-            return UpdateDB(drinkType, "Rodzaj napoju został zmieniony");
+            float TaxRate = 0;
+            var regex = new Regex(@"^[0-9]*(?:\,[0-9]*)?$");
+            if (regex.IsMatch(newTaxRate) && newDrinkTypeName.Length > 0 && float.TryParse(newTaxRate, out TaxRate))
+            {
+                drinkType.NazwaRodzajuNapoju = newDrinkTypeName;
+                drinkType.StawkaPodatkowa = TaxRate;
+                return UpdateDB(drinkType, "Rodzaj napoju został zmieniony");
+            }
+            else {
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPola nie może być puste!", "Błąd");
+                return false;
+            }
+           
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.RodzajeNapojuRow drinkType, String messageIfSuccess)
@@ -76,9 +97,9 @@ namespace HurtowniaNapojow.Helpers
                 RefreshData();
                 return true;
             }
-            catch (OleDbException e)
+            catch (OleDbException )
             {
-                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
                 return false;
             }
         }

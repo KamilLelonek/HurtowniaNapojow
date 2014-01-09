@@ -335,7 +335,6 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\DrinkTypeNewWindow.xaml.cs">
       <DependentUpon>DrinkTypeNewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Employee\Panel\Warehouse\DrinkType\Float.cs" />
     <Compile Include="Windows\Employee\Panel\Warehouse\GasType\GasTypeDetailsWindow.xaml.cs">
       <DependentUpon>GasTypeDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -432,9 +431,7 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\HurtowniaNapojow.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Database\HurtowniaNapojow.accdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

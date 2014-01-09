@@ -52,11 +52,19 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
             var tastes = DrinkTypeDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            tastes.ForEach(DrinkType => {
-             HurtowniaNapojowDataSet.RodzajeNapojuRow editDrinkType = (HurtowniaNapojowDataSet.RodzajeNapojuRow)DrinkType.Row;
-             this.OpenWindow(new DrinkTypeEditWindow(ref DrinkTypeDataGrid, ref editDrinkType), blockPrevious: true);
-            });
-            SetDrinkTypeBinding();
+            if (tastes.Count > 0)
+            {
+                tastes.ForEach(DrinkType =>
+                {
+                    HurtowniaNapojowDataSet.RodzajeNapojuRow editDrinkType = (HurtowniaNapojowDataSet.RodzajeNapojuRow)DrinkType.Row;
+                    this.OpenWindow(new DrinkTypeEditWindow(ref DrinkTypeDataGrid, ref editDrinkType), blockPrevious: true);
+                });
+                SetDrinkTypeBinding();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -66,15 +74,15 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.DrinkType
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            var Drinkes = DrinkTypeDataGrid.SelectedItems.OfType<DataRowView>().ToList();
+            if (Drinkes.Count > 0)
             {
-                //do no stuff
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                Drinkes.ForEach(Drink => DataBaseDrinkTypeHelper.DeleteDrinkTypeRow(Drink.Row));
             }
             else
             {
-                //do yes stuff
-                var Drinkes = DrinkTypeDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-                Drinkes.ForEach(Drink => DataBaseDrinkTypeHelper.DeleteDrinkTypeRow(Drink.Row));
+                MessageBox.Show("Nie wybrano danych do usunięcia, zaznacz rekord(y) przeznaczone do usunięcia.", "Uwaga");
             }
             
         }
