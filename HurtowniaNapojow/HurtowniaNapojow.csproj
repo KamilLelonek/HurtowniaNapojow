@@ -258,12 +258,12 @@
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\WarehouseDrink.cs" />
     <Compile Include="Helpers\ShoppingProduct.cs" />
-    <Compile Include="Utils\Validator.cs" />
     <Compile Include="Reports\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ControlsPlugins.cs" />
     <Compile Include="Utils\Timer.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <Compile Include="Utils\WindowsPlugins.cs" />
     <Compile Include="Windows\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>

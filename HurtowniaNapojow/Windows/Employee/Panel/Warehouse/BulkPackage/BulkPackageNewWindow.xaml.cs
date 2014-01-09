@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
 {
@@ -13,6 +14,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
     public partial class BulkPackageNewWindow
     {
         private readonly DataGrid _BulkPackageDataGrid;
+        private readonly Validator _validator = Validator.Instance;
 
         public BulkPackageNewWindow()
         {
@@ -27,10 +29,10 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
             SetDataBinding();
         }
 
-        private void SetDataBinding() 
-        { 
+        private void SetDataBinding()
+        {
             var bulkPackageNames = DataBaseBulkPackageNameHelper.GetBulkPackageNameData();
-            NameBulkPackageComboBox.ItemsSource= bulkPackageNames;
+            NameBulkPackageComboBox.ItemsSource = bulkPackageNames;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -40,17 +42,21 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (_validator.AreControlsEmpty(CapacityBulkPackageTextBox)) return;
+            if (_validator.IsFloatValid(CapacityBulkPackageTextBox)) return;
+            if (_validator.AreComboBoxEmpty(NameBulkPackageComboBox)) return;
+
             var newBulkPackageID = (int)NameBulkPackageComboBox.SelectedValue;
-            var newBulkPackageCapacity = int.Parse(CapacityBulkPackageTextBox.Text);
+            var newBulkPackageCapacity = (int)float.Parse(CapacityBulkPackageTextBox.Text);
             try
             {
                 var bulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID(newBulkPackageID);
-                var result = DataBaseBulkPackageHelper.AddNewBulkPackage(bulkPackageName,newBulkPackageCapacity);
+                var result = DataBaseBulkPackageHelper.AddNewBulkPackage(bulkPackageName, newBulkPackageCapacity);
                 if (!result)
-                    {
-                     MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
+                {
+                    MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
                     return;
-                    }
+                }
             }
             catch (NullReferenceException)
             {

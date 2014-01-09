@@ -108,6 +108,12 @@ namespace HurtowniaNapojow.Utils
             MessageBox.Show("Podaj poprawną wartość", Globals.TITLE_ERROR);
             return true;
         }
+        public Boolean AreComboBoxEmpty(ComboBox ComboBox)
+        {
+            if (ComboBox.SelectedValue != null) return false;
+            MessageBox.Show("Wartość z listy rozwijanej nie została wybrana", Globals.TITLE_ERROR);
+            return true;
+        }
 
     }
 }

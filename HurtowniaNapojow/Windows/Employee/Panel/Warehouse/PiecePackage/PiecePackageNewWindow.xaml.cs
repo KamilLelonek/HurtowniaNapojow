@@ -33,7 +33,6 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
         { 
             var piecePackageNames = DataBasePiecePackageNameHelper.GetPiecePackageNameData();
             NamePiecePackageComboBox.ItemsSource= piecePackageNames;
-            
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -45,13 +44,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.PiecePackage
         {
             if (_validator.AreControlsEmpty(CapacityPiecePackageTextBox)) return;
             if (_validator.IsFloatValid(CapacityPiecePackageTextBox)) return;
-            //if (NamePiecePackageComboBox.SelectedValue == null)
-            //{
-            //    MessageBox.Show("Null");
-            //}
-            //else {
-            //    MessageBox.Show(NamePiecePackageComboBox.SelectedValue.ToString());
-            //}
+            if (_validator.AreComboBoxEmpty(NamePiecePackageComboBox)) return;
 
             var newPiecePackageID = (int)NamePiecePackageComboBox.SelectedValue;
             var newPiecePackageCapacity = float.Parse(CapacityPiecePackageTextBox.Text);

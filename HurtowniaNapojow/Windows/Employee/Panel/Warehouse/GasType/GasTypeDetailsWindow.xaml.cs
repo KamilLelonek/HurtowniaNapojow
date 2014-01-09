@@ -76,15 +76,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.GasType
              var gases = GasTypeDataGrid.SelectedItems.OfType<DataRowView>().ToList();
              if (gases.Count > 0)
              {
-                 if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                 {
-                     //do no stuff
-                 }
-                 else
-                 {
-                     //do yes stuff
+                 if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                      gases.ForEach(gas => DataBaseGasTypeHelper.DeleteGasTypeRow(gas.Row));
-                 }
              }
              else
              {

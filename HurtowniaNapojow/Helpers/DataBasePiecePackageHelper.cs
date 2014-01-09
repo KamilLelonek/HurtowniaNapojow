@@ -59,7 +59,7 @@ namespace HurtowniaNapojow.Helpers
             return PiecePackageTableAdapter.Update(piecePackageRow) == 1;
         }
 
-        public static Boolean EditPiecePackage(HurtowniaNapojowDataSet.OpakowaniaSztukiRow piecePackage, HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow newPiecePackageName, int newPieceCapacity)
+        public static Boolean EditPiecePackage(HurtowniaNapojowDataSet.OpakowaniaSztukiRow piecePackage, HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow newPiecePackageName, float newPieceCapacity)
         {
             piecePackage.id_rodzaju_opakowania_sztuki = newPiecePackageName.Identyfikator;
             piecePackage.Pojemność = newPieceCapacity;

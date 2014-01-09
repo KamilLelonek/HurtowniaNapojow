@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
 using System.Data;
 using HurtowniaNapojow.Database;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
 {
@@ -14,6 +15,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
     {
         private readonly DataGrid _BulkPackageDataGrid;
         private HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow _editBulkPackage;
+        private readonly Validator _validator = Validator.Instance;
 
         public BulkPackageEditWindow(ref DataGrid BulkPackageDataGrid, ref HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow editBulkPackage)
         {
@@ -40,8 +42,12 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
+            if (_validator.AreControlsEmpty(NewCapacityBulkPackageTextBox)) return;
+            if (_validator.IsFloatValid(NewCapacityBulkPackageTextBox)) return;
+            if (_validator.AreComboBoxEmpty(NewBulkPackageNameComboBox)) return;
+
             var newBulkPackageNameID = (int)NewBulkPackageNameComboBox.SelectedValue;
-            var newBulkPackageCapacity = int.Parse(NewCapacityBulkPackageTextBox.Text);
+            var newBulkPackageCapacity = (int)float.Parse(NewCapacityBulkPackageTextBox.Text);
             var bulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID(newBulkPackageNameID);
             
             var result = DataBaseBulkPackageHelper.EditBulkPackage(_editBulkPackage, bulkPackageName, newBulkPackageCapacity);

@@ -54,13 +54,20 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackage
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
             var piecePackages = PiecePackageDataGrid.SelectedItems.Cast<PiecePackageHelper>().ToList();
-            piecePackages.ForEach(piecePackage =>
+            if (piecePackages.Count > 0)
             {
-                var piecePackageToEdit = DataBasePiecePackageHelper.GetPiecePackageByID(piecePackage.Id);
-                HurtowniaNapojowDataSet.OpakowaniaSztukiRow editPiecePackage = (HurtowniaNapojowDataSet.OpakowaniaSztukiRow)piecePackageToEdit;
-                this.OpenWindow(new PiecePackageEditWindow(ref PiecePackageDataGrid, ref editPiecePackage), blockPrevious: true);
-            });
-            SetPiecePackageBinding();
+                piecePackages.ForEach(piecePackage =>
+                {
+                    var piecePackageToEdit = DataBasePiecePackageHelper.GetPiecePackageByID(piecePackage.Id);
+                    HurtowniaNapojowDataSet.OpakowaniaSztukiRow editPiecePackage = (HurtowniaNapojowDataSet.OpakowaniaSztukiRow)piecePackageToEdit;
+                    this.OpenWindow(new PiecePackageEditWindow(ref PiecePackageDataGrid, ref editPiecePackage), blockPrevious: true);
+                });
+                SetPiecePackageBinding();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -70,22 +77,23 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackage
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            var PiecePackages = PiecePackageDataGrid.SelectedItems.Cast<PiecePackageHelper>().ToList();
+            if (PiecePackages.Count > 0)
             {
-                //do no stuff
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                {
+                    PiecePackages.ForEach(piecePackage =>
+                                        {
+                                            var piecePackageToDelete = DataBasePiecePackageHelper.GetPiecePackageByID(piecePackage.Id);
+                                            DataBasePiecePackageHelper.DeletePiecePackageRow(piecePackageToDelete);
+                                        });
+                    SetPiecePackageBinding();
+                }
             }
             else
             {
-                //do yes stuff
-                var PiecePackages = PiecePackageDataGrid.SelectedItems.Cast<PiecePackageHelper>().ToList();
-                PiecePackages.ForEach(piecePackage =>
-                                    {
-                                        var piecePackageToDelete = DataBasePiecePackageHelper.GetPiecePackageByID(piecePackage.Id);
-                                        DataBasePiecePackageHelper.DeletePiecePackageRow(piecePackageToDelete);
-                                    } );
-                SetPiecePackageBinding();
+                MessageBox.Show("Nie wybrano danych do usunięcia, zaznacz rekord(y) przeznaczone do usunięcia.", "Uwaga");
             }
-            
         }
     }
 }

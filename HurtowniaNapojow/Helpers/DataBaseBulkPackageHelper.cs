@@ -32,11 +32,11 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show("Wprowadzany rodzaj opakowania zbiorczego już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
-           
+
             try
             {
                 BulkPackageTableAdapter.Insert(newBulkCapacity, newBulkPackageName.Identyfikator);
-                _bulkPackageData = BulkPackageTableAdapter.GetData();
+                RefreshData();
                 MessageBox.Show("Pomyślnie dodano nowy rodzaj opakowania zbiorczego", Globals.TITLE_SUCCESS);
                 return true;
             }
@@ -48,12 +48,12 @@ namespace HurtowniaNapojow.Helpers
         }
 
         public static Boolean DeleteBulkPackageRow(DataRow bulkPackageRow)
-        {   
+        {
             var productExists = DataBaseProducerDrinkHelper.GetProducerDrinkData().Any(product => product.id_opakowania_zbiorczego == (bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Identyfikator);
             if (productExists)
             {
                 HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow tempBulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID((bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).id_rodzaju_opakowania_zbiorczego);
-                MessageBox.Show("Do wybranego rodzaju opakowania zbiorczego'" +tempBulkPackageName.NazwaOpakowania+ ", " +(bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania zbiorczego nie zostanie usunięty.", Globals.TITLE_ERROR);
+                MessageBox.Show("Do wybranego rodzaju opakowania zbiorczego'" + tempBulkPackageName.NazwaOpakowania + ", " + (bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania zbiorczego nie zostanie usunięty.", Globals.TITLE_ERROR);
                 return false;
             }
             bulkPackageRow.Delete();
@@ -64,7 +64,6 @@ namespace HurtowniaNapojow.Helpers
         {
             bulkPackage.Pojemność = newBulkPackageCapacity;
             return UpdateDB(bulkPackage, "Rodzaju opakowania zbiorczego został edytowany");
-
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow bulkPackage, String messageIfSuccess)
@@ -73,7 +72,7 @@ namespace HurtowniaNapojow.Helpers
             {
                 BulkPackageTableAdapter.Update(bulkPackage);
                 MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
-                _bulkPackageData = BulkPackageTableAdapter.GetData();
+                RefreshData();
                 return true;
             }
             catch (OleDbException e)
@@ -81,6 +80,11 @@ namespace HurtowniaNapojow.Helpers
                 MessageBox.Show(e.Message, Globals.TITLE_ERROR);
                 return false;
             }
+        }
+
+        private static void RefreshData()
+        {
+            _bulkPackageData = BulkPackageTableAdapter.GetData();
         }
 
     }

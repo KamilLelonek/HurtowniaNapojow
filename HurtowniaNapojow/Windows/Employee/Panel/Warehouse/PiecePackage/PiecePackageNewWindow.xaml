@@ -5,8 +5,8 @@
         WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
 
-        <Label Content="Nazwa Opakowania Sztuki" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="189" />
-        <Label Content="Pojemność Opakowania Sztuki" HorizontalAlignment="Left" Margin="9,60,0,0" VerticalAlignment="Top"  Height="26" Width="175" />
+        <Label Content="Nazwa opakowania sztuki" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="189" />
+        <Label Content="Pojemność opakowania sztuki" HorizontalAlignment="Left" Margin="9,60,0,0" VerticalAlignment="Top"  Height="26" Width="175" />
         <ComboBox Name="NamePiecePackageComboBox" HorizontalAlignment="Left" Height="23" Margin="189,24,0,0"
                  VerticalAlignment="Top" Width="139"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaOpakowania"
                  SelectedValuePath = "Identyfikator" />

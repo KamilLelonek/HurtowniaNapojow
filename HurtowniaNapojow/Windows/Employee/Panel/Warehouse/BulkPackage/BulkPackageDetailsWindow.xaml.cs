@@ -20,8 +20,6 @@ using System.Data;
 using HurtowniaNapojow.Windows.Employee.Warehouse;
 using HurtowniaNapojow.Windows.Employee.Warehouse.BulkPackage;
 
-
-
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage
 {
     /// <summary>
@@ -55,13 +53,20 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
             var BulkPackages = BulkPackageDataGrid.SelectedItems.Cast<BulkPackageHelper>().ToList();
-            BulkPackages.ForEach(BulkPackage =>
+            if (BulkPackages.Count > 0)
             {
-                var BulkPackageToEdit = DataBaseBulkPackageHelper.GetBulkPackageByID(BulkPackage.Id);
-                HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow editBulkPackage = (HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow)BulkPackageToEdit;
-                this.OpenWindow(new BulkPackageEditWindow(ref BulkPackageDataGrid, ref editBulkPackage), blockPrevious: true);
-            });
-            SetBulkPackageBinding();
+                BulkPackages.ForEach(BulkPackage =>
+                {
+                    var BulkPackageToEdit = DataBaseBulkPackageHelper.GetBulkPackageByID(BulkPackage.Id);
+                    HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow editBulkPackage = (HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow)BulkPackageToEdit;
+                    this.OpenWindow(new BulkPackageEditWindow(ref BulkPackageDataGrid, ref editBulkPackage), blockPrevious: true);
+                });
+                SetBulkPackageBinding();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -71,22 +76,23 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse.BulkPackage
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            var BulkPackages = BulkPackageDataGrid.SelectedItems.Cast<BulkPackageHelper>().ToList();
+            if (BulkPackages.Count > 0)
             {
-                //do no stuff
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                {
+                    BulkPackages.ForEach(BulkPackage =>
+                                        {
+                                            var BulkPackageToDelete = DataBaseBulkPackageHelper.GetBulkPackageByID(BulkPackage.Id);
+                                            DataBaseBulkPackageHelper.DeleteBulkPackageRow(BulkPackageToDelete);
+                                        });
+                    SetBulkPackageBinding();
+                }
             }
             else
             {
-                //do yes stuff
-                var BulkPackages = BulkPackageDataGrid.SelectedItems.Cast<BulkPackageHelper>().ToList();
-                BulkPackages.ForEach(BulkPackage =>
-                                    {
-                                        var BulkPackageToDelete = DataBaseBulkPackageHelper.GetBulkPackageByID(BulkPackage.Id);
-                                        DataBaseBulkPackageHelper.DeleteBulkPackageRow(BulkPackageToDelete);
-                                    } );
-                SetBulkPackageBinding();
+                MessageBox.Show("Nie wybrano danych do usunięcia, zaznacz rekord(y) przeznaczone do usunięcia.", "Uwaga");
             }
-            
         }
     }
 }

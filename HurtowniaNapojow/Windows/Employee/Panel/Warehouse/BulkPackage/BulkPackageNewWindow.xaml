@@ -4,9 +4,8 @@
         Title="Dodawanie opakowania zbiorczego" Height="174.346" Width="406"
         WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-
-        <Label Content="Nazwa Opakowania Zbiorczego" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="211" />
-        <Label Content="Pojemność Opakowania Zbiorczego" HorizontalAlignment="Left" Margin="9,60,0,0" VerticalAlignment="Top"  Height="26" Width="211" />
+        <Label Content="Nazwa opakowania zbiorczego" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"  Height="26" Width="211" />
+        <Label Content="Pojemność opakowania zbiorczego" HorizontalAlignment="Left" Margin="9,60,0,0" VerticalAlignment="Top"  Height="26" Width="211" />
         <ComboBox Name="NameBulkPackageComboBox" HorizontalAlignment="Left" Height="23" Margin="253,24,0,0"
                  VerticalAlignment="Top" Width="125"  KeyDown="OnKeyDownHandler"  ItemsSource="{Binding}"   DisplayMemberPath = "NazwaOpakowania"
                  SelectedValuePath = "Identyfikator"/>
