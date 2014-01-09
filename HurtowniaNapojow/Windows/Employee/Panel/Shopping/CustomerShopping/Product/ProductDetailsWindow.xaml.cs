@@ -57,10 +57,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_product.Liczba == 0 && _product.Kwota == 0)
-                DeleteButton_OnClick(sender, e);
-            else
-                this.Close();
+            SaveButton_OnClick(sender, e);
+            this.Close();
         }
 
         private void ProductAmountDecrease_OnClick(object sender, RoutedEventArgs e)
@@ -71,6 +69,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             else amount = 0;
 
             ProductAmount.Text = amount + "";
+            ProductPrice.Text = amount * _drink.Price + "";
         }
 
         private void ProductAmountIncrease_OnClick(object sender, RoutedEventArgs e)
@@ -81,6 +80,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             else amount = 1;
 
             ProductAmount.Text = amount + "";
+            ProductPrice.Text = amount * _drink.Price + "";
         }
 
         private void ProductPriceCompute_OnClick(object sender, RoutedEventArgs e)

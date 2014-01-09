@@ -50,7 +50,7 @@
             </StackPanel>
         </Grid>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="72" Click="DeleteButton_OnClick" />
-        <Button Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="72" Click="SaveButton_OnClick" />
-        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="72" Click="CloseButton_OnClick" />
+        <Button Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,105,10" VerticalAlignment="Bottom" Width="72" Click="SaveButton_OnClick" />
+        <Button Content="Zapisz i zamknij" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="92" Click="CloseButton_OnClick" />
     </Grid>
 </Window>
