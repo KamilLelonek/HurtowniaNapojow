@@ -50,10 +50,7 @@
 
         <Label Content="Cena producenta" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top"  Height="26" Width="139" />
         <TextBox Name="PriceProducerTextBox" HorizontalAlignment="Left" Height="25" Margin="169,310,0,0"
-                 VerticalAlignment="Top" Width="160" KeyDown="OnKeyDownHandler" TextWrapping="WrapWithOverflow" Text="{Binding Price,
-           UpdateSourceTrigger=PropertyChanged,
-           StringFormat='#.00',
-           ConverterCulture={x:Static sysglb:CultureInfo.CurrentCulture}}" />
+                 VerticalAlignment="Top" Width="160" KeyDown="OnKeyDownHandler" TextWrapping="WrapWithOverflow" PreviewKeyDown="PriceProducerTextBox_PreviewKeyDown" PreviewKeyUp="PriceProducerTextBox_PreviewKeyUp" />
 
 
         <Button Content="Dodaj" Name="AddButton" HorizontalAlignment="Left" Margin="88,374,0,0" VerticalAlignment="Top"

@@ -170,13 +170,21 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
             }
 
             var text = PriceProducerTextBox.Text;
-            var notNumberPressed = e.Key < Key.NumPad0 || e.Key > Key.NumPad9;
+            var notNumberPressed = (e.Key < Key.NumPad0 || e.Key > Key.NumPad9) && (e.Key < Key.D0 || e.Key > Key.D9);
             var separatorPressed = e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.OemComma;
             var inputJustSeparator = String.IsNullOrEmpty(text) && separatorPressed;
 
             if (inputJustSeparator || !separatorPressed && notNumberPressed)
             {
                 e.Handled = true;
+            }
+            if (text.Contains(","))
+            {
+                var floatingPartStartPosition = text.IndexOf(",") + 1;
+                var floatingPart = text.Substring(floatingPartStartPosition);
+                var cursorInFloatingPart = PriceProducerTextBox.SelectionStart >= floatingPartStartPosition;
+                var precisionEqualTwo = floatingPart.Length > 1 && cursorInFloatingPart;
+                if (precisionEqualTwo || separatorPressed) e.Handled = true;
             }
             if (text.Contains("."))
             {
@@ -191,9 +199,9 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink
         private void PriceProducerTextBox_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             var text = PriceProducerTextBox.Text;
-            if (!text.Contains(",")) return;
+            if (!text.Contains(".")) return;
 
-            PriceProducerTextBox.Text = text.Replace(",", ".");
+            PriceProducerTextBox.Text = text.Replace(".", ",");
             PriceProducerTextBox.SelectionStart = text.Length;
             PriceProducerTextBox.Focus();
         }

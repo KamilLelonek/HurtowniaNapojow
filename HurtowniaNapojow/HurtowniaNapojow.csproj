@@ -194,10 +194,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkDetailsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -256,19 +252,20 @@
     <Compile Include="Helpers\DataBaseGasTypeHelper.cs" />
     <Compile Include="Helpers\DataBasePiecePackageHelper.cs" />
     <Compile Include="Helpers\DataBasePiecePackageNameHelper.cs" />
+    <Compile Include="Helpers\DataBaseProducerDrinkHelper.cs" />
     <Compile Include="Helpers\DataBaseProducerHelper.cs" />
     <Compile Include="Helpers\DataBaseProductHelper.cs" />
     <Compile Include="Helpers\DataBaseTasteHelper.cs" />
     <Compile Include="Helpers\PiecePackageHelper.cs" />
+    <Compile Include="Helpers\ProducerDrinkHelper.cs" />
+    <Compile Include="Helpers\WarehouseDrink.cs" />
     <Compile Include="Reports\Admin\EmployeeIncome.cs" />
     <Compile Include="Helpers\DataBaseCustomerHelper.cs" />
     <Compile Include="Helpers\DataBaseEmployeeHelper.cs" />
     <Compile Include="Helpers\DataBaseShoppingHelper.cs" />
-    <Compile Include="Helpers\DataBaseProducerDrinkHelper.cs" />
     <Compile Include="Helpers\DataBaseWarehouseDrinkHelper.cs" />
     <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
-    <Compile Include="Helpers\WarehouseDrink.cs" />
     <Compile Include="Helpers\ShoppingProduct.cs" />
     <Compile Include="Reports\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
@@ -373,9 +370,6 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\PiecePackage\PiecePackageNewWindow.xaml.cs">
       <DependentUpon>PiecePackageNewWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkDetailsWindow.xaml.cs">
-      <DependentUpon>ProducerDrinkDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\ProducerDrink\ProducerDrinkEditWindow.xaml.cs">
       <DependentUpon>ProducerDrinkEditWindow.xaml</DependentUpon>

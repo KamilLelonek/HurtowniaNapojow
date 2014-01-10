@@ -26,6 +26,8 @@ namespace HurtowniaNapojow.Helpers
         public float BasePrice { get; set; }
         public float Price { get; set; }
         public String Date { get; set; }
+        public int Quantity { get; set; }
+        public String Location { get; set; }
 
         public HurtowniaNapojowDataSet.NapojeHurtowniRow            _warehouseDrinkRow;
         public HurtowniaNapojowDataSet.NapojeProducentaRow          _producerDrinkRow;
@@ -38,6 +40,8 @@ namespace HurtowniaNapojow.Helpers
         public HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow     _piecePackageNameRow;
         public HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow        _bulkPackageRow;
         public HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow _bulkPackageNameRow;
+
+        public WarehouseDrink() { }
 
         public WarehouseDrink(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrinkRow)
         {
@@ -68,6 +72,8 @@ namespace HurtowniaNapojow.Helpers
             BulkPackageName = _bulkPackageNameRow.NazwaOpakowania;
             BulkPackageVolume = _bulkPackageRow.Pojemność;
             BulkPackageFull = BulkPackageName + " " + BulkPackageVolume;
+            Quantity = warehouseDrinkRow.LiczbaSztuk;
+            Location = warehouseDrinkRow.Położenie;
         }
 
         public static IEnumerable<WarehouseDrink> GetWarehouseDrinks()

@@ -53,7 +53,7 @@ namespace HurtowniaNapojow.Helpers
             var warehouseProductExists = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkData().Any(product => product.id_napoju_producenta == (producerDrinkRow as HurtowniaNapojowDataSet.NapojeProducentaRow).Identyfikator);
             if (warehouseProductExists)
             {
-                MessageBox.Show("Do wybranego producenta są przypisane napoje hurtowni. Wybrany napój producenta nie zostanie usunięty.", Globals.TITLE_ERROR);
+                MessageBox.Show("Do wybranego napoju producenta są przypisane napoje hurtowni. Wybrany napój producenta nie zostanie usunięty.", Globals.TITLE_ERROR);
                 return false;
             }
             producerDrinkRow.Delete();
