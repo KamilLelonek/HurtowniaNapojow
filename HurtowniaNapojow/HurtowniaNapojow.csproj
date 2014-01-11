@@ -439,6 +439,7 @@
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByLastName.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByIncome.rdlc" />
+    <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkWithZeroQuantity.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
@@ -453,6 +454,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeIncome.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeShopping.datasource" />
+    <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.WarehouseDrink.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Reports.Admin.EmployeeIncome.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

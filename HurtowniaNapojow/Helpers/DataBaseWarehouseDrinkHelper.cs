@@ -93,5 +93,12 @@ namespace HurtowniaNapojow.Helpers
         {
             _warehouseDrinksData = WarehouseDrinkTableAdapter.GetData();
         }
+
+        public static IEnumerable<WarehouseDrink> GetWarehouseDrinkWithZeroQuantity()
+        {
+            return from warehouseDrink in _warehouseDrinksData
+                       where warehouseDrink.LiczbaSztuk == 0
+                       select new WarehouseDrink(warehouseDrink);
+        }
     }
 }

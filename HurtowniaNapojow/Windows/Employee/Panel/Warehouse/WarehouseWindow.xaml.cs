@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Windows;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Utils;
@@ -154,7 +154,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             var producerDrinks = ProducerDrinkDataGrid.SelectedItems.OfType<ProducerDrinkHelper>().ToList();
             if (producerDrinks.Count > 0)
             {
-                if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunÂ¹Ã¦ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                 {
                     producerDrinks.ForEach(producerDrink =>
                     {
@@ -166,7 +166,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             }
             else
             {
-                MessageBox.Show("Nie wybrano danych do usuniêcia, zaznacz rekord(y) przeznaczone do usuniêcia.", "Uwaga");
+                MessageBox.Show("Nie wybrano danych do usuniÃªcia, zaznacz rekord(y) przeznaczone do usuniÃªcia.", "Uwaga");
             }
         }
 
@@ -344,7 +344,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             if (warehouseDrinks.Count > 0)
             {
                 
-                if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunÂ¹Ã¦ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                 {
                     warehouseDrinks.ForEach(warehouseDrink =>
                     {
@@ -356,12 +356,19 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             }
             else
             {
-                MessageBox.Show("Nie wybrano danych do usuniêcia, zaznacz rekord(y) przeznaczone do usuniêcia.", "Uwaga");
+                MessageBox.Show("Nie wybrano danych do usuniÃªcia, zaznacz rekord(y) przeznaczone do usuniÃªcia.", "Uwaga");
             }
         }
         #endregion
 
-       
+        private void GenerateReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxReportType.SelectionBoxItem.Equals(ZeroQuantityComboBoxItem.Content))
+            {
+                var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithZeroQuantity();
+                this.OpenReport(data, @"Warehouse/WarehouseDrinkWithZeroQuantity.rdlc");
+            }
+        }
     }
 
 }
