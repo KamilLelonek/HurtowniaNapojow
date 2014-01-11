@@ -35,7 +35,7 @@
                             <ComboBoxItem Name="NazwaZbiorczego" Content="Nazwa opak. zbiorczego"/>
                             <ComboBoxItem Name="PojZbiorczego" Content="Pojemność opak. zbiorczego"/>
                             <ComboBoxItem Name="Quantity" Content="Liczba sztuk"/>
-                            <ComboBoxItem Name="Lokation" Content="Położenie"/>
+                            <ComboBoxItem Name="Location" Content="Położenie"/>
                         </ComboBox>
                         <TextBox x:Name="DrinkFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" />
                         <Button Content="_Resetuj" x:Name="DrinkResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="DrinkResetFilterButton_Click" />

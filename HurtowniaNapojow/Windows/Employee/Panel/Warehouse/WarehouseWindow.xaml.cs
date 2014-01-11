@@ -308,6 +308,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             else if (filterType == "PojSztuki") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.PiecePackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
             else if (filterType == "NazwaZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
             else if (filterType == "PojZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Quantity") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Quantity.ToString().Contains(filterValue)).OrderBy(d => d.Name);
+            else if (filterType == "Location") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Location.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
+           
             else DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
         }
 
