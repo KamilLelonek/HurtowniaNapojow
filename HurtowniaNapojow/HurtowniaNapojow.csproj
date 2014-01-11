@@ -226,6 +226,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkAddWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkNewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -394,6 +406,15 @@
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\Taste\TasteNewWindow.xaml.cs">
       <DependentUpon>TasteNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkEditWindow.xaml.cs">
+      <DependentUpon>WarehouseDrinkEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkAddWindow.xaml.cs">
+      <DependentUpon>WarehouseDrinkAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkNewWindow.xaml.cs">
+      <DependentUpon>WarehouseDrinkNewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>

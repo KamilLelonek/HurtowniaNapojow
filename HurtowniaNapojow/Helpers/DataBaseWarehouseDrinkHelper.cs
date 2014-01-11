@@ -2,6 +2,10 @@
 using System.Linq;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
+using System.Windows;
+using System;
+using System.Data.OleDb;
+using System.Data;
 
 namespace HurtowniaNapojow.Helpers
 {
@@ -18,6 +22,76 @@ namespace HurtowniaNapojow.Helpers
         public static HurtowniaNapojowDataSet.NapojeHurtowniRow GetDrinkById(int drinkId)
         {
             return GetWarehouseDrinkData().First(drink => drink.Identyfikator == drinkId);
+        }
+
+        public static Boolean AddNewWarehouseDrink(int idDrink, int quantity, float warehousePrice, string location, DateTime expirationDate)
+        {
+            var doesWarehouseDrinkExist = GetWarehouseDrinkData().Any(warehouseDrink => (warehouseDrink.id_napoju_producenta == idDrink) && (warehouseDrink.LiczbaSztuk == quantity) && (warehouseDrink.CenaHurtowni == warehousePrice)
+                                                                                            && (warehouseDrink.Położenie == location) && (warehouseDrink.DataWażności == expirationDate));
+            if (doesWarehouseDrinkExist)
+            {
+                MessageBox.Show("Wprowadzana partia towaru już istnieje w bazie magazynu hurtowni", Globals.TITLE_ERROR);
+                return false;
+            }
+            try
+            {
+                WarehouseDrinkTableAdapter.Insert(idDrink, quantity, warehousePrice, location, expirationDate);
+                RefreshData();
+                MessageBox.Show("Pomyślnie dodano partię towarów", Globals.TITLE_SUCCESS);
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Wprowadzane dane są nieprawidłowe.\n!", "Błąd");
+                return false;
+            }
+        }
+
+        public static Boolean DeleteWarehouseDrinkRow(DataRow warehouseDrinkRow)
+        {
+            var warehouseProductExists = DataBaseProductHelper.GetProductsData().Any(product => product.id_napoju_hurtowni == (warehouseDrinkRow as HurtowniaNapojowDataSet.NapojeHurtowniRow).Identyfikator);
+            if (warehouseProductExists)
+            {
+                MessageBox.Show("Do wybranego napoju z magazynu są przypisane produkty zakópów klienta. Wybrana pozycja magazynu nie zostanie usunięta.", Globals.TITLE_ERROR);
+                return false;
+            }
+            warehouseDrinkRow.Delete();
+            var result = WarehouseDrinkTableAdapter.Update(warehouseDrinkRow) == 1;
+            if (result) RefreshData();
+            return result;
+        }
+
+        public static Boolean EditWarehouseDrink(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink, int idDrink, int quantity, float warehousePrice, string location, DateTime expirationDate)
+        {
+            warehouseDrink.id_napoju_producenta = idDrink;
+            warehouseDrink.LiczbaSztuk = quantity;
+            warehouseDrink.CenaHurtowni = warehousePrice;
+            warehouseDrink.Położenie = location;
+            warehouseDrink.DataWażności = expirationDate;
+            
+
+            return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony");
+        }
+
+        public static Boolean UpdateDB(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink, String messageIfSuccess)
+        {
+            try
+            {
+                WarehouseDrinkTableAdapter.Update(warehouseDrink);
+                MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
+                RefreshData();
+                return true;
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("Edycja danych nie może być przeprowadzona ponieważ w bazie danych istnieje rekord zawierający wprowadzane dane lub wprowadzane dane są nieprawidłowe.\nPole nie może być puste!", "Błąd");
+                return false;
+            }
+        }
+
+        private static void RefreshData()
+        {
+            _warehouseDrinksData = WarehouseDrinkTableAdapter.GetData();
         }
     }
 }

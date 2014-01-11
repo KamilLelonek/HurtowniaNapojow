@@ -19,8 +19,9 @@ namespace HurtowniaNapojow.Helpers
         public String PiecePackageName { get; set; }
         public float  PiecePackageVolume { get; set; }
         public String BulkPackageName { get; set; }
-
         public float  BulkPackageVolume { get; set; }
+        public String PiecePackageFull { get; set; }
+        public String BulkPackageFull { get; set; }
         public float BasePrice { get; set; }
         public float Price { get; set; }
         
@@ -62,6 +63,8 @@ namespace HurtowniaNapojow.Helpers
             PiecePackageVolume = _piecePackageRow.Pojemność;
             BulkPackageName = _bulkPackageNameRow.NazwaOpakowania;
             BulkPackageVolume = _bulkPackageRow.Pojemność;
+            PiecePackageFull = PiecePackageName + " " + PiecePackageVolume;
+            BulkPackageFull = BulkPackageName + " " + BulkPackageVolume;
            }
 
         public static IEnumerable<ProducerDrinkHelper> GetProducerDrinks()

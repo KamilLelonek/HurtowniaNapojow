@@ -25,6 +25,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Windows.Employee.Panel.Warehouse.PiecePackage;
+using HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 {
@@ -56,14 +57,12 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             if (WarehouseDrinkTab.IsSelected && !_warehouseDrinkFilled)
             {
                 _warehouseDrinkFilled = true;
-                DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
+                SetWarehouseDrinkData();
                 SetDrinkComponentsEvents();
-
             }
             if (CrudDrinkTab.IsSelected && !_crudDrinkFilled)
             {
                 _crudDrinkFilled = true;
-
             }
         }
 
@@ -282,11 +281,15 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             DrinkFilterTextBox.TextChanged += (sender, args) => DrinkFilterChanged();
             DrinkFilterComboBox.SelectionChanged += (sender, args) => DrinkFilterChanged();
         }
+        private void SetWarehouseDrinkData()
+        {
+            DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
+        }
         private void DrinkResetFilterButton_Click(object sender, RoutedEventArgs e)
         {
             DrinkFilterComboBox.Text = Globals.FILTER_SELECT;
             DrinkFilterTextBox.Text = "";
-            DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks();
+            DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
         }
         private void DrinkFilterChanged()
         {
@@ -307,7 +310,55 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             else if (filterType == "PojZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
             else DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
         }
+
+        private void AddNewWarehouseDrink_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new WarehouseDrinkNewWindow(), blockPrevious: true);
+        }
+
+        private void EditWarehouseDrink_Clicked(object sender, RoutedEventArgs e)
+        {
+            var warehouseDrinks = DrinkDataGrid.SelectedItems.Cast<WarehouseDrink>().ToList();
+            if (warehouseDrinks.Count > 0)
+            {
+                warehouseDrinks.ForEach(warehouseDrink =>
+                {
+                    var warehouseDrinkToEdit = DataBaseWarehouseDrinkHelper.GetDrinkById(warehouseDrink.Id);
+                    HurtowniaNapojowDataSet.NapojeHurtowniRow editWarehouseDrink = (HurtowniaNapojowDataSet.NapojeHurtowniRow)warehouseDrinkToEdit;
+                    this.OpenWindow(new WarehouseDrinkEditWindow(ref editWarehouseDrink), blockPrevious: true);
+                });
+                SetWarehouseDrinkData();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do edycji, zaznacz rekord(y) przeznaczone do edycji.", "Uwaga");
+            }
+        }
+
+        private void DeleteWarehouseDrink_Clicked(object sender, RoutedEventArgs e)
+        {
+            var warehouseDrinks = DrinkDataGrid.SelectedItems.Cast<WarehouseDrink>().ToList();
+            if (warehouseDrinks.Count > 0)
+            {
+                
+                if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                {
+                    warehouseDrinks.ForEach(warehouseDrink =>
+                    {
+                        var warehouseDrinkRow = DataBaseWarehouseDrinkHelper.GetDrinkById(warehouseDrink.Id);
+                        DataBaseWarehouseDrinkHelper.DeleteWarehouseDrinkRow(warehouseDrinkRow);
+                    });
+                    SetWarehouseDrinkData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano danych do usuniêcia, zaznacz rekord(y) przeznaczone do usuniêcia.", "Uwaga");
+            }
+        }
         #endregion
+
+       
     }
 
 }
