@@ -73,12 +73,28 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony");
         }
 
-        public static Boolean UpdateDB(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink, String messageIfSuccess)
+        public static Boolean UpdateAmount(HurtowniaNapojowDataSet.ProduktyKlientaRow product, int amountDelta)
+        {
+            HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink = GetDrinkById(product.id_napoju_hurtowni);
+            if (warehouseDrink.LiczbaSztuk >= amountDelta)
+            {
+                warehouseDrink.LiczbaSztuk -= amountDelta;
+                return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony", false);
+            }
+            else
+            {
+                MessageBox.Show("Nie ma wystarczającej liczby sztuk w magazynie. Pozostała dostępna liczba sztuk produktu: " + warehouseDrink.LiczbaSztuk);
+                return false;
+            }
+        }
+
+        public static Boolean UpdateDB(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink, String messageIfSuccess, bool showMessageIfSuccess = true)
         {
             try
             {
                 WarehouseDrinkTableAdapter.Update(warehouseDrink);
-                MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
+                if (showMessageIfSuccess)
+                    MessageBox.Show(messageIfSuccess, Globals.TITLE_SUCCESS);
                 RefreshData();
                 return true;
             }

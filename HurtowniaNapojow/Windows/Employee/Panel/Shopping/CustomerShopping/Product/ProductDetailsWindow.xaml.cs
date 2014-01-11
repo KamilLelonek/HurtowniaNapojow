@@ -16,36 +16,54 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
         private readonly HurtowniaNapojowDataSet.ProduktyKlientaRow _product;
         private readonly Validator _validator = Validator.Instance;
         private readonly CustomerShoppingDetailsWindow _parentWindow;
-        private readonly WarehouseDrink _drink;
+        private WarehouseDrink _drink;
+        private int _lastAmount;
 
         public ProductDetailsWindow(CustomerShoppingDetailsWindow parentWindow, ref HurtowniaNapojowDataSet.ProduktyKlientaRow productRow)
         {
             InitializeComponent();
             _product = productRow;
+            _lastAmount = _product.Liczba;
             _parentWindow = parentWindow;
-            _drink = new WarehouseDrink(DataBaseWarehouseDrinkHelper.GetDrinkById(productRow.id_napoju_hurtowni));
             SetBinding();
         }
 
+        private void SetDrinkBinding()
+        {
+            _drink = new WarehouseDrink(DataBaseWarehouseDrinkHelper.GetDrinkById(_product.id_napoju_hurtowni));
+            DrinkDetailsGrid.DataContext = _drink;
+        }
 
         private void SetBinding()
         {
-            DrinkDetailsGrid.DataContext = _drink;
+            SetDrinkBinding();
             ProductDetailsGrid.DataContext = _product;
         }
 
-        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        private void Save()
         {
             if (_validator.AreControlsEmpty(ProductPrice, ProductAmount)) return;
             int amount = _product.Liczba;
             float price = _product.Kwota;
             bool validAmount = int.TryParse(ProductAmount.Text, out amount);
             bool validPrice = float.TryParse(ProductPrice.Text, out price);
+            if (!validPrice) validPrice = float.TryParse(ProductPrice.Text.Replace('.', ','), out price);
             if (!validAmount || !validPrice) return;
-            _product.Liczba = amount;
-            _product.Kwota = price;
-            DataBaseProductHelper.UpdateDB(_product, "Dane produktu zaktualizowane pomyślnie");
+            int delta = amount - _lastAmount;
+            if (DataBaseWarehouseDrinkHelper.UpdateAmount(_product, delta))
+            {
+                _product.Liczba = amount;
+                _product.Kwota = price;
+                _lastAmount = amount;
+                DataBaseProductHelper.UpdateDB(_product, "Dane produktu zaktualizowane pomyślnie");
+            }
+            SetDrinkBinding();
             _parentWindow.SetShoppingBinding();
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Save();
         }
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
@@ -57,7 +75,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            SaveButton_OnClick(sender, e);
+            Save();
             this.Close();
         }
 

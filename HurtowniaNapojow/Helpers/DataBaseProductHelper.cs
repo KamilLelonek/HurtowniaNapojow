@@ -38,6 +38,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean DeleteProductRow(HurtowniaNapojowDataSet.ProduktyKlientaRow productRow)
         {
+            DataBaseWarehouseDrinkHelper.UpdateAmount(productRow, -productRow.Liczba);
             productRow.Delete();
             return ProductsTableAdapter.Update(productRow) == 1;
         }
