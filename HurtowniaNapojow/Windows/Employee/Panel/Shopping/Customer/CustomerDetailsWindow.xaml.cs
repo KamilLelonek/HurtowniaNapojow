@@ -7,6 +7,7 @@ using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Utils;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping;
 
 namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 {
@@ -61,6 +62,13 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
                 _parentWindow.SetCustomersBinding();
                 Close();
             }
+        }
+
+        private void ShoppingDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var shopping = ((Helpers.CustomerShopping)((Button)sender).DataContext);
+            (new CustomerShoppingDetailsWindow(_parentWindow, new EmployeeShopping(ref shopping._shoppingRow))).ShowDialog();
+            SetShoppingBinding(_customer);
         }
     }
 }
