@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Hurtownia Napojow | Panel Magazynu" Height="500" Width="1000"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
-
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <Menu.ItemsPanel>
@@ -17,7 +16,6 @@
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,25,0,0" SelectionChanged="TabControl_SelectionChanged">
-
             <TabItem Header="Napój hurtowni" x:Name="WarehouseDrinkTab">
                 <Grid Background="#FFE5E5E5">
                     <Grid>
@@ -59,17 +57,17 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <ComboBox Name="ComboBoxReportType" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="120">
+                    <ComboBox Name="ComboBoxReportType" Text="Dostępne raporty" Focusable="False" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="153">
                         <ComboBoxItem Name="ZeroQuantityComboBoxItem">Zerowy stan magazynu</ComboBoxItem>
+                        <ComboBoxItem Name="LowQuantityComboBoxItem">Kończąca się liczba sztuk</ComboBoxItem>
+                        <ComboBoxItem Name="ShortDateComboBoxItem">Krótka data ważności</ComboBoxItem>
+                        <ComboBoxItem Name="ExpiredDateComboBoxItem">Produktu przeterminowane</ComboBoxItem>
                     </ComboBox>
-                    <Button Content="Generuj raport" HorizontalAlignment="Left" Margin="135,0,0,5" VerticalAlignment="Bottom" Width="90" Click="GenerateReportButton_Click"/>
-
-
+                    <Button Content="Generuj raport" HorizontalAlignment="Left" Margin="163,0,0,5" VerticalAlignment="Bottom" Width="90" Click="GenerateReportButton_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Napój producenta" x:Name="ProducerDrinkTab">
                 <Grid Background="#FFE5E5E5">
-
                     <Button Content="_Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="5,5,0,0" Click="AddNewProducerDrink_Clicked"/>
                     <Button Content="_Edycja" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="105,5,0,0" Click="EditProducerDrink_Clicked" />
                     <Button Content="_Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="205,5,0,0" Click="DeleteProducerDrink_Clicked" />
@@ -83,7 +81,6 @@
                         <ComboBoxItem Name="PiecePackageVolume" Content="Pojemność opak. sztuki"/>
                         <ComboBoxItem Name="BulkPackageName" Content="Opakowanie zbiorcze"/>
                         <ComboBoxItem Name="BulkPackageVolume" Content="Pojemność opak. zbiorczego"/>
-
                     </ComboBox>
                     <TextBox x:Name="ProducerDrinkFilterTextBox" HorizontalAlignment="Right" Height="22" Margin="0,5,85,0" VerticalAlignment="Top" Width="120" Grid.Column="1" />
                     <Button Content="_Resetuj" x:Name="ProducerDrinkResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="ProducerDrinkResetFilterButton_Click" Grid.Column="1" />
@@ -104,14 +101,11 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-
             </TabItem>
             <TabItem Header="Właściwości napojów" x:Name="CrudDrinkTab">
                 <Grid Background="#FFE5E5E5">
                     <ScrollViewer  Name="ScrollViewer1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="Auto" CanContentScroll="True" Width="Auto">
-
                         <StackPanel HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Center" Width="Auto">
-
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="DrinkNameButton" Content="Nazwy napojów" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" Height="25" Margin="5,5,5,5" Click="DrinkNameButton_Click"/>
                                 <Button x:Name="PlusDrinkName" Content="+" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="25" Height="25" Margin="5,5,5,5" Click="DrinkNameType_Click"/>
@@ -148,17 +142,10 @@
                                 <Button x:Name="BulkPackageNameButton" Content="Nazwy opakowań zbiorczych" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" Height="25" Margin="5,5,5,5" Click="BulkPackageNameButton_Click"/>
                                 <Button x:Name="PlusBulkPackageName" Content="+" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="25" Height="25" Margin="5,5,5,5" Click="BulkPackageNamePlus_Click"/>
                             </StackPanel>
-
                         </StackPanel>
                     </ScrollViewer>
-
                 </Grid>
             </TabItem>
         </TabControl>
-
-
-
-
     </Grid>
-
 </Window>

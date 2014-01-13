@@ -66,6 +66,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Utils\Prompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Admin\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,6 +287,9 @@
       <DependentUpon>ReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ControlsPlugins.cs" />
+    <Compile Include="Utils\Prompt.xaml.cs">
+      <DependentUpon>Prompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Timer.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Compile Include="Utils\WindowsPlugins.cs" />
@@ -439,6 +446,8 @@
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByLastName.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByIncome.rdlc" />
+    <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkDate.rdlc" />
+    <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkQuantity.rdlc" />
     <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkWithZeroQuantity.rdlc" />
     <None Include="Database\HurtowniaNapojowDataSet.xsc">
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>

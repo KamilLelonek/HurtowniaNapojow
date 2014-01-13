@@ -44,7 +44,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         {
             InitializeComponent();
             SetProducerDrinkComponentsEvents();
-            
+
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,7 +87,6 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             SessionHelper.Instance.LogoutUser();
             this.OpenWindow(new LoginWindow());
         }
-
 
         #region TAB ProducerDrink
 
@@ -310,7 +309,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             else if (filterType == "PojZbiorczego") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.BulkPackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
             else if (filterType == "Quantity") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Quantity.ToString().Contains(filterValue)).OrderBy(d => d.Name);
             else if (filterType == "Location") DrinkDataGrid.DataContext = (WarehouseDrink.GetWarehouseDrinks()).Where(d => d.Location.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
-           
+
             else DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
         }
 
@@ -343,7 +342,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             var warehouseDrinks = DrinkDataGrid.SelectedItems.Cast<WarehouseDrink>().ToList();
             if (warehouseDrinks.Count > 0)
             {
-                
+
                 if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                 {
                     warehouseDrinks.ForEach(warehouseDrink =>
@@ -363,12 +362,41 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 
         private void GenerateReportButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ComboBoxReportType.SelectionBoxItem.Equals(ZeroQuantityComboBoxItem.Content))
+            var selectedItem = ComboBoxReportType.SelectedItem as ComboBoxItem;
+            if (ZeroQuantityComboBoxItem.Equals(selectedItem))
             {
                 var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithZeroQuantity();
                 this.OpenReport(data, @"Warehouse/WarehouseDrinkWithZeroQuantity.rdlc");
             }
+            else if (ExpiredDateComboBoxItem.Equals(selectedItem))
+            {
+                var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithExpiredDate();
+                this.OpenReport(data, @"Warehouse/WarehouseDrinkDate.rdlc");
+            }
+            else if (ShortDateComboBoxItem.Equals(selectedItem))
+            {
+                var prompt = new Prompt { PromptMessage = "Podaj minimalną liczbę dni" };
+                if (prompt.ShowDialog().GetValueOrDefault(false))
+                {
+                    var days = int.Parse(prompt.ResponseText);
+                    var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithShortDate(days);
+                    this.OpenReport(data, @"Warehouse/WarehouseDrinkDate.rdlc");
+                }
+            }
+            else if (LowQuantityComboBoxItem.Equals(selectedItem))
+            {
+                var prompt = new Prompt { PromptMessage = "Podaj minimalną liczbę sztuk" };
+                if (prompt.ShowDialog().GetValueOrDefault(false))
+                {
+                    var quantity = int.Parse(prompt.ResponseText);
+                    var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithLowQuantity(quantity);
+                    this.OpenReport(data, @"Warehouse/WarehouseDrinkQuantity.rdlc");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wybierz dostępny raport z listy");
+            }
         }
     }
-
 }
