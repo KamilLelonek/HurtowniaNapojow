@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Utils;
+using HurtowniaNapojow.Windows.Employee.Warehouse.ProducerDrink;
 
 namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
 {
@@ -22,8 +23,14 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
         public WarehouseDrinkNewWindow()
         {
            InitializeComponent();
+           SetDataInDataGrid();
+           SetDrinkComponentsEvents();
+        }
+
+        private void SetDataInDataGrid()
+        {
             DrinkDataGrid.DataContext = ProducerDrinkHelper.GetProducerDrinksLinq().OrderBy(d => d.Name);
-            SetDrinkComponentsEvents();
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -76,6 +83,12 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             else if (filterType == "NazwaZbiorczego") DrinkDataGrid.DataContext = (ProducerDrinkHelper.GetProducerDrinks()).Where(d => d.BulkPackageName.ToLower().Contains(filterValue)).OrderBy(d => d.Name);
             else if (filterType == "PojZbiorczego") DrinkDataGrid.DataContext = (ProducerDrinkHelper.GetProducerDrinks()).Where(d => d.BulkPackageVolume.ToString().Contains(filterValue)).OrderBy(d => d.Name);
             else DrinkDataGrid.DataContext = ProducerDrinkHelper.GetProducerDrinks().OrderBy(d => d.Name);
+        }
+
+        private void AddNewProducerDrink(object sender, RoutedEventArgs e)
+        {
+            this.OpenWindow(new ProducerDrinkNewWindow(), blockPrevious: true);
+            SetDataInDataGrid();
         }
     }
 }

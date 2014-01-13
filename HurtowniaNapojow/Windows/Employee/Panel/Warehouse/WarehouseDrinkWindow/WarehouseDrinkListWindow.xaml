@@ -4,6 +4,8 @@
         Title="Wybór napoju" Height="500" Width="640"
          WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Button Content="Nowy" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="75" Click="AddNewProducerDrink"/>
+
         <ComboBox Text="Wybierz filtr" x:Name="DrinkFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
             <ComboBoxItem Name="Nazwa" Content="Nazwa"/>
             <ComboBoxItem Name="Smak" Content="Smak"/>
@@ -43,5 +45,5 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Anuluj" Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_Click" />
-    </Grid>
+        </Grid>
 </Window>

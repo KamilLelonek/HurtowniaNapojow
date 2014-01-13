@@ -40,19 +40,19 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(ProductPrice, ProductAmount, Location )) return;
+            if (_validator.AreControlsEmpty(ProductPrice, ProductAmount, Location)) return;
             int amount = 0;
-            float price = _producerDrink.Price*(float)1.30;
+            float price = _producerDrink.Price * (float)1.30;
             bool validAmount = int.TryParse(ProductAmount.Text, out amount);
             bool validPrice = float.TryParse(ProductPrice.Text, out price);
             if (!validAmount || !validPrice) { MessageBox.Show("Proszę podać poprawne Wartości", Globals.TITLE_ERROR); return; }
-           
+
             var idProducerDrink = _producerDrink.Id;
             var quantity = amount;
             var warehousePrice = price;
             var location = Location.Text;
             var expirationDate = ExpiryDate.SelectedDate.Value;
-           
+
             try
             {
 
@@ -60,18 +60,20 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
                 if (!result)
                 {
                     MessageBox.Show("Podane dane są nieprawidłowe", Globals.TITLE_ERROR);
-                    this.Close();
+                    
                     return;
 
                 }
+                else { this.Close(); }
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("Błąd", Globals.TITLE_ERROR);
             }
+
         }
 
-      
+
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {

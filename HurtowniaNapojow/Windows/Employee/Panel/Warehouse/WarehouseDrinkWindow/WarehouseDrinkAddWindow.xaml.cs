@@ -51,6 +51,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             var expirationDate = ExpiryDate.SelectedDate.Value;
             //var expirationDate = (DateTime)ExpiryDate.DataContext;
             DataBaseWarehouseDrinkHelper.AddNewWarehouseDrink(idProducerDrink,quantity,warehousePrice,location,expirationDate);
+            this.Close();
         }
 
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
