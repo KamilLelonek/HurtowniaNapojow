@@ -17,10 +17,10 @@ namespace HurtowniaNapojow.Helpers
         public String TypeName { get; set; }
 
         public String PiecePackageName { get; set; }
-        public float  PiecePackageVolume { get; set; }
+        public float PiecePackageVolume { get; set; }
         public String BulkPackageName { get; set; }
 
-        public float  BulkPackageVolume { get; set; }
+        public float BulkPackageVolume { get; set; }
         public String PiecePackageFull { get; set; }
         public String BulkPackageFull { get; set; }
         public float BasePrice { get; set; }
@@ -29,16 +29,16 @@ namespace HurtowniaNapojow.Helpers
         public int Quantity { get; set; }
         public String Location { get; set; }
 
-        public HurtowniaNapojowDataSet.NapojeHurtowniRow            _warehouseDrinkRow;
-        public HurtowniaNapojowDataSet.NapojeProducentaRow          _producerDrinkRow;
-        public HurtowniaNapojowDataSet.NazwyNapojuRow               _drinkNameRow;
-        public HurtowniaNapojowDataSet.SmakiRow                     _tasteRow;
-        public HurtowniaNapojowDataSet.RodzajeGazuRow               _gasTypeRow;
-        public HurtowniaNapojowDataSet.ProducenciRow                _producerRow;
-        public HurtowniaNapojowDataSet.RodzajeNapojuRow             _drinkTypeRow;
-        public HurtowniaNapojowDataSet.OpakowaniaSztukiRow          _piecePackageRow;
-        public HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow     _piecePackageNameRow;
-        public HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow        _bulkPackageRow;
+        public HurtowniaNapojowDataSet.NapojeHurtowniRow _warehouseDrinkRow;
+        public HurtowniaNapojowDataSet.NapojeProducentaRow _producerDrinkRow;
+        public HurtowniaNapojowDataSet.NazwyNapojuRow _drinkNameRow;
+        public HurtowniaNapojowDataSet.SmakiRow _tasteRow;
+        public HurtowniaNapojowDataSet.RodzajeGazuRow _gasTypeRow;
+        public HurtowniaNapojowDataSet.ProducenciRow _producerRow;
+        public HurtowniaNapojowDataSet.RodzajeNapojuRow _drinkTypeRow;
+        public HurtowniaNapojowDataSet.OpakowaniaSztukiRow _piecePackageRow;
+        public HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow _piecePackageNameRow;
+        public HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow _bulkPackageRow;
         public HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow _bulkPackageNameRow;
 
         public WarehouseDrink() { }
@@ -81,5 +81,63 @@ namespace HurtowniaNapojow.Helpers
             var drinks = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkData();
             return drinks.Select(drink => new WarehouseDrink(drink));
         }
+
+        public static IEnumerable<WarehouseDrink> GetWarehouseDrinksLinq()
+        {
+            var warehouseDrinks = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkData();
+            var producerDrinks = DataBaseProducerDrinkHelper.GetProducerDrinkData();
+            var drinkNames = DataBaseDrinkNameHelper.GetDrinkNamesData();
+            var drinkProducers = DataBaseProducerHelper.GetProducersData();
+            var drinkTastes = DataBaseTasteHelper.GetTastesData();
+            var drinkTypes = DataBaseDrinkTypeHelper.GetDrinkTypesData();
+            var drinkGases = DataBaseGasTypeHelper.GetGasTypeData();
+            var drinkPiecePackages = DataBasePiecePackageHelper.GetPiecePackageData();
+            var drinkPiecePackageNames = DataBasePiecePackageNameHelper.GetPiecePackageNameData();
+            var drinkBulkPackages = DataBaseBulkPackageHelper.GetBulkPackageData();
+            var drinkBulkPackageNames = DataBaseBulkPackageNameHelper.GetBulkPackageNameData();
+
+            var query = from warehouseDrink in warehouseDrinks
+                        join item in producerDrinks on
+                        warehouseDrink.id_napoju_producenta equals item.Identyfikator
+                        join drinkName in drinkNames on
+                        item.id_nazwy_napoju equals drinkName.Identyfikator
+                        join drinkProducer in drinkProducers on
+                        item.id_procuenta equals drinkProducer.Identyfikator
+                        join drinkTaste in drinkTastes on
+                        item.id_smaku equals drinkTaste.Identyfikator
+                        join drinkType in drinkTypes on
+                        item.id_rodzaju_napoju equals drinkType.Identyfikator
+                        join drinkGase in drinkGases on
+                        item.id_rodzaju_gazu equals drinkGase.Identyfikator
+                        join drinkPiecePackage in drinkPiecePackages on
+                        item.id_opakowania_sztuki equals drinkPiecePackage.Identyfikator
+                        join drinkPiecePackageName in drinkPiecePackageNames on
+                        drinkPiecePackage.id_rodzaju_opakowania_sztuki equals drinkPiecePackageName.Identyfikator
+                        join drinkBulkPackage in drinkBulkPackages on
+                        item.id_opakowania_zbiorczego equals drinkBulkPackage.Identyfikator
+                        join drinkBulkPackageName in drinkBulkPackageNames on
+                        drinkBulkPackage.id_rodzaju_opakowania_zbiorczego equals drinkBulkPackageName.Identyfikator
+                        select new WarehouseDrink
+                        {
+                            Id = item.Identyfikator,
+                            Name = drinkName.NazwaNapoju,
+                            ProducerName = drinkProducer.NazwaProducenta,
+                            BasePrice = drinkType.StawkaPodatkowa * 100,
+                            TasteName = drinkTaste.NazwaSmaku,
+                            TypeName = drinkType.NazwaRodzajuNapoju,
+                            GasName = drinkGase.NazwaRodzaju,
+                            PiecePackageName = drinkPiecePackageName.NazwaOpakowania,
+                            PiecePackageVolume = drinkPiecePackage.Pojemność,
+                            BulkPackageName = drinkBulkPackageName.NazwaOpakowania,
+                            BulkPackageVolume = drinkBulkPackage.Pojemność,
+                            Price = warehouseDrink.CenaHurtowni,
+                            Quantity = warehouseDrink.LiczbaSztuk,
+                            Location = warehouseDrink.Położenie,
+                            Date = warehouseDrink.DataWażności.ToShortDateString()
+                        };
+
+            return query;
+        }
     }
 }
+

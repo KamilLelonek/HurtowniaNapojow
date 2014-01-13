@@ -45,7 +45,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             float price = _producerDrink.Price*(float)1.30;
             bool validAmount = int.TryParse(ProductAmount.Text, out amount);
             bool validPrice = float.TryParse(ProductPrice.Text, out price);
-            if (!validAmount || !validPrice) return;
+            if (!validAmount || !validPrice) { MessageBox.Show("Proszę podać poprawne Wartości", Globals.TITLE_ERROR); return; }
            
             var idProducerDrink = _producerDrink.Id;
             var quantity = amount;

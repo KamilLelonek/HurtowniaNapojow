@@ -27,8 +27,8 @@
                 <Label Content="{Binding GasName, Mode=OneWay}" Height="26"/>
                 <Label Content="{Binding PiecePackageFull, Mode=OneWay}" Height="26"/>
                 <Label Content="{Binding BulkPackageFull, Mode=OneWay}" Height="26"/>
-                <Label Content="{Binding BasePrice, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
-                <Label Content="{Binding Price, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
+                <Label Content="{Binding BasePrice, Mode=OneWay, StringFormat={}{0:#,0.00} zł}" Height="26" IsEnabled="False"/>
+                <Label Content="{Binding Price, Mode=OneWay, StringFormat={}{0:#,0.00} zł}" Height="26"/>
 
             </StackPanel>
         </Grid>
@@ -41,7 +41,7 @@
             <StackPanel HorizontalAlignment="Left" Height="80" Margin="150,250,0,0" VerticalAlignment="Top" Width="240">
                 
                 <Grid>
-                    <TextBox x:Name="ProductPrice" Text="{Binding Kwota, Mode=OneTime, StringFormat={}{0:#,#.00}}" Height="22" Margin="2,2,0,0" Width="70" HorizontalAlignment="Left" />
+                    <TextBox x:Name="ProductPrice" Text="{Binding Kwota, Mode=OneTime, StringFormat={}{0:#,#.00}}" Height="22" Margin="2,2,0,0" Width="70" HorizontalAlignment="Left" PreviewKeyDown="PriceProducerTextBox_PreviewKeyDown" PreviewKeyUp="PriceProducerTextBox_PreviewKeyUp" KeyDown="OnKeyDownHandler"/>
                 </Grid>
                 <Grid>
                     <TextBox x:Name="ProductAmount" Text="{Binding Liczba, Mode=OneTime}" Height="22" Margin="2,2,0,0" Width="70" HorizontalAlignment="Left" />
@@ -57,8 +57,8 @@
         </Grid>
         <Label Content="Data ważności" IsEnabled="True" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,220"/>
         <Calendar Name="ExpiryDate"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50"></Calendar>
-        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="72" Click="CloseButton_OnClick" />
-        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="72" Click="AddButton_OnClick" />
+        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="72" Click="CloseButton_OnClick" />
+        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="72" Click="AddButton_OnClick"  />
 
     </Grid>
 </Window>
