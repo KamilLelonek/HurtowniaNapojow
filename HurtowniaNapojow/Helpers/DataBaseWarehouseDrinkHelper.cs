@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Database.HurtowniaNapojowDataSetTableAdapters;
@@ -68,7 +69,7 @@ namespace HurtowniaNapojow.Helpers
             warehouseDrink.CenaHurtowni = warehousePrice;
             warehouseDrink.Położenie = location;
             warehouseDrink.DataWażności = expirationDate;
-            
+
 
             return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony");
         }
@@ -113,8 +114,40 @@ namespace HurtowniaNapojow.Helpers
         public static IEnumerable<WarehouseDrink> GetWarehouseDrinkWithZeroQuantity()
         {
             return from warehouseDrink in _warehouseDrinksData
-                       where warehouseDrink.LiczbaSztuk == 0
-                       select new WarehouseDrink(warehouseDrink);
+                   where warehouseDrink.LiczbaSztuk == 0
+                   select new WarehouseDrink(warehouseDrink);
+        }
+
+        public static IEnumerable<WarehouseDrink> GetWarehouseDrinkWithExpiredDate()
+        {
+            return from warehouseDrink in _warehouseDrinksData
+                   where IsPast(warehouseDrink.DataWażności)
+                   select new WarehouseDrink(warehouseDrink);
+        }
+
+        public static IEnumerable<WarehouseDrink> GetWarehouseDrinkWithShortDate(int days)
+        {
+            return from warehouseDrink in _warehouseDrinksData
+                   where IsDateWithinDays(warehouseDrink.DataWażności, days)
+                   select new WarehouseDrink(warehouseDrink);
+        }
+
+        public static IEnumerable<WarehouseDrink> GetWarehouseDrinkWithLowQuantity(int quantity)
+        {
+            return from warehouseDrink in _warehouseDrinksData
+                   where warehouseDrink.LiczbaSztuk <= quantity
+                   select new WarehouseDrink(warehouseDrink);
+        }
+
+        public static bool IsDateWithinDays(DateTime endDate, int days)
+        {
+            var difference = (int)((endDate.Date - new DateTime().Date).TotalDays);
+            return difference > 0 && difference < days;
+        }
+
+        public static Boolean IsPast(DateTime date)
+        {
+            return new DateTime().CompareTo(date) > 0;
         }
     }
 }

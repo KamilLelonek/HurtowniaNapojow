@@ -88,7 +88,6 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             this.OpenWindow(new LoginWindow());
         }
 
-
         #region TAB ProducerDrink
 
         public void SetProducerDrinkBinding()
@@ -365,12 +364,41 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
 
         private void GenerateReportButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ComboBoxReportType.SelectionBoxItem.Equals(ZeroQuantityComboBoxItem.Content))
+            var selectedItem = ComboBoxReportType.SelectedItem as ComboBoxItem;
+            if (ZeroQuantityComboBoxItem.Equals(selectedItem))
             {
                 var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithZeroQuantity();
                 this.OpenReport(data, @"Warehouse/WarehouseDrinkWithZeroQuantity.rdlc");
             }
+            else if (ExpiredDateComboBoxItem.Equals(selectedItem))
+            {
+                var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithExpiredDate();
+                this.OpenReport(data, @"Warehouse/WarehouseDrinkDate.rdlc");
+            }
+            else if (ShortDateComboBoxItem.Equals(selectedItem))
+            {
+                var prompt = new Prompt { PromptMessage = "Podaj minimalną liczbę dni" };
+                if (prompt.ShowDialog().GetValueOrDefault(false))
+                {
+                    var days = int.Parse(prompt.ResponseText);
+                    var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithShortDate(days);
+                    this.OpenReport(data, @"Warehouse/WarehouseDrinkDate.rdlc");
+                }
+        }
+            else if (LowQuantityComboBoxItem.Equals(selectedItem))
+            {
+                var prompt = new Prompt { PromptMessage = "Podaj minimalną liczbę sztuk" };
+                if (prompt.ShowDialog().GetValueOrDefault(false))
+                {
+                    var quantity = int.Parse(prompt.ResponseText);
+                    var data = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkWithLowQuantity(quantity);
+                    this.OpenReport(data, @"Warehouse/WarehouseDrinkQuantity.rdlc");
+    }
+            }
+            else
+            {
+                MessageBox.Show("Wybierz dostępny raport z listy");
+            }
         }
     }
-
 }

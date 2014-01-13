@@ -1,0 +1,14 @@
+﻿<Window x:Class="HurtowniaNapojow.Utils.Prompt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        WindowStartupLocation="CenterScreen"
+        Height="131" Width="310.5">
+    <Grid>
+        <TextBlock Name="PromptMessageTextBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272"/>
+        <WindowsFormsHost HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" VerticalAlignment="Top" Width="272">
+            <forms:MaskedTextBox x:Name="PromptResponseTextBox" KeyDown="PromptResponseTextBox_OnKeyDown" Mask="990"/> 
+        </WindowsFormsHost>
+        <Button Content="Ok" Name="ConfirmButton" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="272" Click="ConfirmButton_Click"/>
+    </Grid>
+</Window>
