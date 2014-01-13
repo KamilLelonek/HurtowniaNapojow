@@ -100,16 +100,16 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.38875cm</Size>
+                <Size>2.5cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox23">
+                  <Textbox Name="Textbox21">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Nr</Value>
+                            <Value>Data</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
                               <FontSize>11pt</FontSize>
@@ -121,7 +121,7 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox23</rd:DefaultName>
+                    <rd:DefaultName>Textbox21</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>#7292cc</Color>
@@ -141,14 +141,14 @@
                   <TablixHeader>
                     <Size>2.5cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox21">
+                      <Textbox Name="Textbox19">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Data</Value>
+                                <Value>Ilość</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
                                   <FontSize>11pt</FontSize>
@@ -160,7 +160,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
+                        <rd:DefaultName>Textbox19</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>#7292cc</Color>
@@ -180,14 +180,14 @@
                       <TablixHeader>
                         <Size>2.5cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox19">
+                          <Textbox Name="Textbox17">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Ilość</Value>
+                                    <Value>Nazwa</Value>
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <FontSize>11pt</FontSize>
@@ -199,7 +199,7 @@
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox19</rd:DefaultName>
+                            <rd:DefaultName>Textbox17</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>#7292cc</Color>
@@ -217,16 +217,16 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>2.5cm</Size>
+                            <Size>4.16688cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox17">
+                              <Textbox Name="Textbox15">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>Nazwa</Value>
+                                        <Value>Opakowanie sztuki</Value>
                                         <Style>
                                           <FontFamily>Tahoma</FontFamily>
                                           <FontSize>11pt</FontSize>
@@ -238,7 +238,7 @@
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox17</rd:DefaultName>
+                                <rd:DefaultName>Textbox15</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>#7292cc</Color>
@@ -256,16 +256,16 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>4.16688cm</Size>
+                                <Size>4.64312cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox15">
+                                  <Textbox Name="Textbox25">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>Opakowanie sztuki</Value>
+                                            <Value>Opakowanie zbiorcze</Value>
                                             <Style>
                                               <FontFamily>Tahoma</FontFamily>
                                               <FontSize>11pt</FontSize>
@@ -277,7 +277,7 @@
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox15</rd:DefaultName>
+                                    <rd:DefaultName>Textbox25</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>#7292cc</Color>
@@ -295,16 +295,16 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>4.64312cm</Size>
+                                    <Size>2.94979cm</Size>
                                     <CellContents>
-                                      <Textbox Name="Textbox25">
+                                      <Textbox Name="Textbox26">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>Opakowanie zbiorcze</Value>
+                                                <Value>Rodzaj gazu</Value>
                                                 <Style>
                                                   <FontFamily>Tahoma</FontFamily>
                                                   <FontSize>11pt</FontSize>
@@ -316,7 +316,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>Textbox25</rd:DefaultName>
+                                        <rd:DefaultName>Textbox26</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>#7292cc</Color>
@@ -334,16 +334,16 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>2.94979cm</Size>
+                                        <Size>2.5cm</Size>
                                         <CellContents>
-                                          <Textbox Name="Textbox26">
+                                          <Textbox Name="Textbox9">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Rodzaj gazu</Value>
+                                                    <Value>Typ</Value>
                                                     <Style>
                                                       <FontFamily>Tahoma</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -355,7 +355,7 @@
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox26</rd:DefaultName>
+                                            <rd:DefaultName>Textbox9</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>#7292cc</Color>
@@ -375,14 +375,14 @@
                                           <TablixHeader>
                                             <Size>2.5cm</Size>
                                             <CellContents>
-                                              <Textbox Name="Textbox9">
+                                              <Textbox Name="Textbox27">
                                                 <CanGrow>true</CanGrow>
                                                 <KeepTogether>true</KeepTogether>
                                                 <Paragraphs>
                                                   <Paragraph>
                                                     <TextRuns>
                                                       <TextRun>
-                                                        <Value>Typ</Value>
+                                                        <Value>Smak</Value>
                                                         <Style>
                                                           <FontFamily>Tahoma</FontFamily>
                                                           <FontSize>11pt</FontSize>
@@ -394,7 +394,7 @@
                                                     <Style />
                                                   </Paragraph>
                                                 </Paragraphs>
-                                                <rd:DefaultName>Textbox9</rd:DefaultName>
+                                                <rd:DefaultName>Textbox27</rd:DefaultName>
                                                 <Style>
                                                   <Border>
                                                     <Color>#7292cc</Color>
@@ -414,14 +414,14 @@
                                               <TablixHeader>
                                                 <Size>2.5cm</Size>
                                                 <CellContents>
-                                                  <Textbox Name="Textbox27">
+                                                  <Textbox Name="Textbox28">
                                                     <CanGrow>true</CanGrow>
                                                     <KeepTogether>true</KeepTogether>
                                                     <Paragraphs>
                                                       <Paragraph>
                                                         <TextRuns>
                                                           <TextRun>
-                                                            <Value>Smak</Value>
+                                                            <Value>Producent</Value>
                                                             <Style>
                                                               <FontFamily>Tahoma</FontFamily>
                                                               <FontSize>11pt</FontSize>
@@ -433,7 +433,7 @@
                                                         <Style />
                                                       </Paragraph>
                                                     </Paragraphs>
-                                                    <rd:DefaultName>Textbox27</rd:DefaultName>
+                                                    <rd:DefaultName>Textbox28</rd:DefaultName>
                                                     <Style>
                                                       <Border>
                                                         <Color>#7292cc</Color>
@@ -453,14 +453,14 @@
                                                   <TablixHeader>
                                                     <Size>2.5cm</Size>
                                                     <CellContents>
-                                                      <Textbox Name="Textbox28">
+                                                      <Textbox Name="Textbox29">
                                                         <CanGrow>true</CanGrow>
                                                         <KeepTogether>true</KeepTogether>
                                                         <Paragraphs>
                                                           <Paragraph>
                                                             <TextRuns>
                                                               <TextRun>
-                                                                <Value>Producent</Value>
+                                                                <Value>Cena</Value>
                                                                 <Style>
                                                                   <FontFamily>Tahoma</FontFamily>
                                                                   <FontSize>11pt</FontSize>
@@ -472,7 +472,7 @@
                                                             <Style />
                                                           </Paragraph>
                                                         </Paragraphs>
-                                                        <rd:DefaultName>Textbox28</rd:DefaultName>
+                                                        <rd:DefaultName>Textbox29</rd:DefaultName>
                                                         <Style>
                                                           <Border>
                                                             <Color>#7292cc</Color>
@@ -488,48 +488,7 @@
                                                     </CellContents>
                                                   </TablixHeader>
                                                   <TablixMembers>
-                                                    <TablixMember>
-                                                      <TablixHeader>
-                                                        <Size>2.5cm</Size>
-                                                        <CellContents>
-                                                          <Textbox Name="Textbox29">
-                                                            <CanGrow>true</CanGrow>
-                                                            <KeepTogether>true</KeepTogether>
-                                                            <Paragraphs>
-                                                              <Paragraph>
-                                                                <TextRuns>
-                                                                  <TextRun>
-                                                                    <Value>Cena</Value>
-                                                                    <Style>
-                                                                      <FontFamily>Tahoma</FontFamily>
-                                                                      <FontSize>11pt</FontSize>
-                                                                      <FontWeight>Bold</FontWeight>
-                                                                      <Color>White</Color>
-                                                                    </Style>
-                                                                  </TextRun>
-                                                                </TextRuns>
-                                                                <Style />
-                                                              </Paragraph>
-                                                            </Paragraphs>
-                                                            <rd:DefaultName>Textbox29</rd:DefaultName>
-                                                            <Style>
-                                                              <Border>
-                                                                <Color>#7292cc</Color>
-                                                                <Style>Solid</Style>
-                                                              </Border>
-                                                              <BackgroundColor>#4c68a2</BackgroundColor>
-                                                              <PaddingLeft>2pt</PaddingLeft>
-                                                              <PaddingRight>2pt</PaddingRight>
-                                                              <PaddingTop>2pt</PaddingTop>
-                                                              <PaddingBottom>2pt</PaddingBottom>
-                                                            </Style>
-                                                          </Textbox>
-                                                        </CellContents>
-                                                      </TablixHeader>
-                                                      <TablixMembers>
-                                                        <TablixMember />
-                                                      </TablixMembers>
-                                                    </TablixMember>
+                                                    <TablixMember />
                                                   </TablixMembers>
                                                 </TablixMember>
                                               </TablixMembers>
@@ -549,7 +508,6 @@
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
-              <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
               <Group Name="Date">
@@ -562,42 +520,6 @@
                   <Value>=Fields!Date.Value</Value>
                 </SortExpression>
               </SortExpressions>
-              <TablixHeader>
-                <Size>1.38875cm</Size>
-                <CellContents>
-                  <Textbox Name="Date">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value>=Fields!Id.Value</Value>
-                            <Style>
-                              <FontFamily>Tahoma</FontFamily>
-                              <FontWeight>Bold</FontWeight>
-                              <Color>#465678</Color>
-                            </Style>
-                          </TextRun>
-                        </TextRuns>
-                        <Style />
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Date</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Color>#c6daf8</Color>
-                        <Style>Solid</Style>
-                      </Border>
-                      <BackgroundColor>#9eb6e4</BackgroundColor>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixHeader>
               <TablixMembers>
                 <TablixMember>
                   <Group Name="Id">
@@ -1110,7 +1032,7 @@
         </TablixRowHierarchy>
         <DataSetName>HurtowniaNapojowDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>32.83104cm</Width>
+        <Width>31.44229cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

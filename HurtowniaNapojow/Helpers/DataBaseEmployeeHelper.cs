@@ -30,7 +30,7 @@ namespace HurtowniaNapojow.Helpers
             }
             EmployeesTableAdapter.Insert(newLastName, newFirstName, Globals.DEFAULT_PASSWORD, newEmail, hasAdminRole);
             _employeesData = EmployeesTableAdapter.GetData();
-            MessageBox.Show("Pomyślnie dodano nowego pracownika", Globals.TITLE_SUCCESS);
+            MessageBox.Show(String.Format("Pomyślnie dodano nowego pracownika z domyślnym hasłem {0}", Globals.DEFAULT_PASSWORD), Globals.TITLE_SUCCESS);
             return true;
         }
 

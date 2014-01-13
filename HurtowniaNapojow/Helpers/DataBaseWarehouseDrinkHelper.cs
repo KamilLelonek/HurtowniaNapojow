@@ -141,13 +141,13 @@ namespace HurtowniaNapojow.Helpers
 
         public static bool IsDateWithinDays(DateTime endDate, int days)
         {
-            var difference = (int)((endDate.Date - new DateTime().Date).TotalDays);
+            var difference = (int)((endDate.Date - DateTime.Now.Date).TotalDays);
             return difference > 0 && difference < days;
         }
 
         public static Boolean IsPast(DateTime date)
         {
-            return new DateTime().CompareTo(date) > 0;
+            return DateTime.Now.CompareTo(date) > 0;
         }
     }
 }

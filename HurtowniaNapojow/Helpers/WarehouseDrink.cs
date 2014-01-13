@@ -119,7 +119,7 @@ namespace HurtowniaNapojow.Helpers
                         drinkBulkPackage.id_rodzaju_opakowania_zbiorczego equals drinkBulkPackageName.Identyfikator
                         select new WarehouseDrink
                         {
-                            Id = item.Identyfikator,
+                            Id = warehouseDrink.Identyfikator,
                             Name = drinkName.NazwaNapoju,
                             ProducerName = drinkProducer.NazwaProducenta,
                             BasePrice = drinkType.StawkaPodatkowa * 100,

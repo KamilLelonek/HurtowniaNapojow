@@ -52,7 +52,7 @@ namespace HurtowniaNapojow.Helpers
             var bulkPackageExists = DataBaseBulkPackageHelper.GetBulkPackageData().Any(bulk => bulk.id_rodzaju_opakowania_zbiorczego == (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).Identyfikator);
             if (bulkPackageExists)
             {
-               MessageBox.Show("Do wybranej nazwy rodzaju opakowania zbiorczego'" + (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).NazwaOpakowania + "' są przypisane opakowania zbiorcze. Nazwa opakowania zbiorczego nie zostanie usunięta.", Globals.TITLE_ERROR);
+               MessageBox.Show("Do wybranej nazwy rodzaju opakowania zbiorczego '" + (bulkPackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow).NazwaOpakowania + "' są przypisane opakowania zbiorcze. Nazwa opakowania zbiorczego nie zostanie usunięta.", Globals.TITLE_ERROR);
                return false;
             }
             try

@@ -39,7 +39,7 @@ namespace HurtowniaNapojow.Utils
             var match = Regex.IsMatch(email, Globals.EMAIL_REGEX);
             if (match) return true;
 
-            MessageBox.Show("Podaj poprawny adres email", Globals.TITLE_ERROR);
+            MessageBox.Show("Podaj poprawny adres email w postaci example@server.com", Globals.TITLE_ERROR);
             return false;
         }
 
@@ -92,7 +92,7 @@ namespace HurtowniaNapojow.Utils
             var match = Regex.IsMatch(nip, Globals.NIP_REGEX);
             if (match) return true;
 
-            MessageBox.Show("Podaj poprawny NIP", Globals.TITLE_ERROR);
+            MessageBox.Show("Podaj poprawny NIP w formie 000-000-00-00", Globals.TITLE_ERROR);
             return false;
         }
 
@@ -105,7 +105,7 @@ namespace HurtowniaNapojow.Utils
             bool ifParse = float.TryParse(floatValue, out value);
             if (ifParse) return false;
 
-            MessageBox.Show("Podaj poprawną wartość", Globals.TITLE_ERROR);
+            MessageBox.Show("Podaj poprawną wartość liczbową", Globals.TITLE_ERROR);
             return true;
         }
         public Boolean AreComboBoxEmpty(ComboBox ComboBox)

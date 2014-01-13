@@ -153,7 +153,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             var producerDrinks = ProducerDrinkDataGrid.SelectedItems.OfType<ProducerDrinkHelper>().ToList();
             if (producerDrinks.Count > 0)
             {
-                if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                 {
                     producerDrinks.ForEach(producerDrink =>
                     {
@@ -345,7 +345,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             if (warehouseDrinks.Count > 0)
             {
                 
-                if (MessageBox.Show("Czy na pewno chcesz trwale usun¹æ zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
+                if (MessageBox.Show("Czy na pewno chcesz trwale usunąć zaznaczone dane z bazy danych?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
                 {
                     warehouseDrinks.ForEach(warehouseDrink =>
                     {

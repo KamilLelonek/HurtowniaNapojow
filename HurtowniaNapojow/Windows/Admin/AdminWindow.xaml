@@ -1,8 +1,8 @@
 ﻿<Window x:Class="HurtowniaNapojow.Windows.Admin.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hurtownia Napojow | Panel Administratora" Height="500" Width="640"
-        WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Hurtownia Napojow | Panel Administratora" Height="500" Width="781.791"
+         WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <Menu.ItemsPanel>

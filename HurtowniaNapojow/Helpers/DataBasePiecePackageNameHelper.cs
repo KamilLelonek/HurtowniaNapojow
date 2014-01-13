@@ -52,7 +52,7 @@ namespace HurtowniaNapojow.Helpers
             var piecePackageExists = DataBasePiecePackageHelper.GetPiecePackageData().Any(piecePackage => piecePackage.id_rodzaju_opakowania_sztuki == (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).Identyfikator);
             if (piecePackageExists)
             {
-                MessageBox.Show("Do wybranej nazwy rodzaju opakowania sztuki'" + (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).NazwaOpakowania + "' są przypisane opakowania sztuki. Nazwa rodzaju opakowania sztuki nie zostanie usunięta.", Globals.TITLE_ERROR);
+                MessageBox.Show("Do wybranej nazwy rodzaju opakowania sztuki '" + (piecePackageNameRow as HurtowniaNapojowDataSet.NazwyOpakowaniaSztukiRow).NazwaOpakowania + "' są przypisane opakowania sztuki. Nazwa rodzaju opakowania sztuki nie zostanie usunięta.", Globals.TITLE_ERROR);
                 return false;
             }
             piecePackageNameRow.Delete();

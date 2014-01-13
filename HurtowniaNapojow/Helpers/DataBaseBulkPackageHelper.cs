@@ -53,7 +53,7 @@ namespace HurtowniaNapojow.Helpers
             if (productExists)
             {
                 HurtowniaNapojowDataSet.NazwyOpakowaniaZbiorczegoRow tempBulkPackageName = DataBaseBulkPackageNameHelper.GetBulkPackageNameByID((bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).id_rodzaju_opakowania_zbiorczego);
-                MessageBox.Show("Do wybranego rodzaju opakowania zbiorczego'" + tempBulkPackageName.NazwaOpakowania + ", " + (bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania zbiorczego nie zostanie usunięty.", Globals.TITLE_ERROR);
+                MessageBox.Show("Do wybranego rodzaju opakowania zbiorczego '" + tempBulkPackageName.NazwaOpakowania + ", " + (bulkPackageRow as HurtowniaNapojowDataSet.OpakowaniaZbiorczeRow).Pojemność + "' są przypisane napoje producenta. Rodzaj opakowania zbiorczego nie zostanie usunięty.", Globals.TITLE_ERROR);
                 return false;
             }
             bulkPackageRow.Delete();

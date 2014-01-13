@@ -238,7 +238,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkNewWindow.xaml">
+    <Page Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkListWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -420,8 +420,8 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkAddWindow.xaml.cs">
       <DependentUpon>WarehouseDrinkAddWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkNewWindow.xaml.cs">
-      <DependentUpon>WarehouseDrinkNewWindow.xaml</DependentUpon>
+    <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseDrinkWindow\WarehouseDrinkListWindow.xaml.cs">
+      <DependentUpon>WarehouseDrinkListWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>
