@@ -26,10 +26,10 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean AddNewCustomer(String newNazwaKlienta, String newNIP, String newNrTelefonu, String newEmail, String newUlicaNr, String newMiastoKod)
         {
-            var doesCustomerExist = GetCustomersData().Any(customer => customer.NazwaKlienta == newNazwaKlienta);
+            var doesCustomerExist = GetCustomersData().Any(customer => customer.NazwaKlienta == newNazwaKlienta && customer.UlicaNumer == newUlicaNr && customer.MiastoKod ==newMiastoKod);
             if (doesCustomerExist)
             {
-                MessageBox.Show("Klient o podanej nazwie już istnieje", Globals.TITLE_ERROR);
+                MessageBox.Show("Klient o podanych danych już istnieje", Globals.TITLE_ERROR);
                 return false;
             }
             CustomerTableAdapter.Insert(newNazwaKlienta, newNIP, newNrTelefonu, newEmail, newUlicaNr, newMiastoKod);
