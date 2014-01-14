@@ -14,9 +14,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
     public partial class CustomerShoppingDetailsWindow
     {
         private readonly EmployeeShopping _shopping;
-        private readonly ShoppingWindow _shoppingWindow;
+        private readonly IRebindlable _shoppingWindow;
 
-        public CustomerShoppingDetailsWindow(ShoppingWindow shoppingWindow, EmployeeShopping shopping)
+        public CustomerShoppingDetailsWindow(IRebindlable shoppingWindow, EmployeeShopping shopping)
         {
             InitializeComponent();
             _shopping = shopping;
@@ -37,8 +37,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _shoppingWindow.SetShoppingBinding();
-            Close();
+            RebindAndClose();
         }
 
         private void CustomerDetailsButton_Click(object sender, RoutedEventArgs e)
@@ -78,10 +77,18 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
             {
                 if (DataBaseShoppingHelper.DeleteShoppingRow(_shopping._shoppingRow))
                 {
-                    _shoppingWindow.SetShoppingBinding();
-                    Close();
+                    RebindAndClose();
                 }
             }
+        }
+
+        private void RebindAndClose()
+        {
+            if (_shoppingWindow != null)
+            {
+                _shoppingWindow.RebindData();
+            }
+            Close();
         }
     }
 }

@@ -18,9 +18,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
     {
         private readonly HurtowniaNapojowDataSet.KlienciRow _customer;
         private readonly Validator _validator = Validator.Instance;
-        private readonly ShoppingWindow _parentWindow;
+        private readonly IRebindlable _parentWindow;
 
-        public CustomerDetailsWindow(ShoppingWindow parentWindow, HurtowniaNapojowDataSet.KlienciRow customerRow)
+        public CustomerDetailsWindow(IRebindlable parentWindow, HurtowniaNapojowDataSet.KlienciRow customerRow)
         {
             InitializeComponent();
             _customer = customerRow;
@@ -49,24 +49,30 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             _customer.Email = String.IsNullOrEmpty(EmailTextBox.Text) ? null : EmailTextBox.Text;
             _customer.NIP = String.IsNullOrEmpty(NIPTextBox.Text) ? null : NIPTextBox.Text;
             DataBaseCustomerHelper.UpdateDB(_customer, "Dane klienta zaktualizowane pomyślnie");
-            _parentWindow.SetCustomersBinding();
+            RebindData();
+        }
+
+        private void RebindData()
+        {
+            if (_parentWindow != null)
+            {
+                _parentWindow.RebindData();
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Czy na pewno chcesz usunąć dane tego klienta?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                if (DataBaseCustomerHelper.DeleteCustomerRow(_customer))
-                {
-                    _parentWindow.SetCustomersBinding();
-                    Close();
-                }
-            }
+            if (
+                MessageBox.Show("Czy na pewno chcesz usunąć dane tego klienta?", "Potwierdzenie", MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning) != MessageBoxResult.Yes) return;
+            if (!DataBaseCustomerHelper.DeleteCustomerRow(_customer)) return;
+            RebindData();
+            Close();
         }
 
         private void ShoppingDetailsButton_Click(object sender, RoutedEventArgs e)
@@ -75,9 +81,6 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             (new CustomerShoppingDetailsWindow(_parentWindow, new EmployeeShopping(ref shopping._shoppingRow))).ShowDialog();
             SetShoppingBinding(_customer);
         }
-
-
-       
 
         private void RaportButton_Click(object sender, RoutedEventArgs e)
         {

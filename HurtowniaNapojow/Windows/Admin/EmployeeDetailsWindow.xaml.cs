@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Reports.Admin;
 using HurtowniaNapojow.Utils;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping;
+using HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping;
 
 namespace HurtowniaNapojow.Windows.Admin
 {
     /// <summary>
     /// Interaction logic for EmployeeDetail.xaml
     /// </summary>
-    public partial class EmployeeDetailsWindow
+    public partial class EmployeeDetailsWindow : IRebindlable
     {
         private readonly HurtowniaNapojowDataSet.PracownicyRow _employee;
         private readonly Validator _validator = Validator.Instance;
-        private readonly IEnumerable<EmployeeShopping> _customerShoppingTable;
+        private IEnumerable<EmployeeShopping> _customerShoppingTable;
 
         public EmployeeDetailsWindow(ref HurtowniaNapojowDataSet.PracownicyRow employeeRow)
         {
@@ -67,7 +71,17 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void ShowShoppingDetails_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var button = (Button)sender;
+            var dataContext = button.DataContext;
+            var employeeShopping = (EmployeeShopping)dataContext;
+            this.OpenWindow(new CustomerShoppingDetailsWindow(this, employeeShopping), false, true);
+        }
+
+        public void RebindData()
+        {
+            EmployeeShoppingDataGrid.DataContext = null;
+            _customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(_employee);
+            EmployeeShoppingDataGrid.DataContext = _customerShoppingTable;
         }
     }
 }

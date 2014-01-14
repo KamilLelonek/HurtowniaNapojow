@@ -72,6 +72,7 @@
     <Compile Include="Windows\Employee\Panel\Warehouse\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\IRebindlable.cs" />
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>

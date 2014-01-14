@@ -28,10 +28,10 @@
                   VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Identyfikator" Binding="{Binding Id}" Width="0.1*" />
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
                 <DataGridTextColumn Header="Klient" Binding="{Binding CustomerName}" Width="0.2*" /> 
                 <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.2*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat='{}{0:#,#.00}'}" Width="0.2*" />
+                <DataGridTextColumn Header="Kwota (zł)" Binding="{Binding Price, StringFormat='{}{0:#,#.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.2*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

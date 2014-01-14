@@ -35,7 +35,7 @@
                     <Button Content="Resetuj" x:Name="ResetButton" HorizontalAlignment="Left" Margin="260,5,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ResetButton_Click" />
                     <DataGrid x:Name="EmployeesDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" Margin="10,35,10,10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Identyfikator" Binding="{Binding Identyfikator}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
+                            <DataGridTextColumn Header="Id" Binding="{Binding Identyfikator}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
                             <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}" Width="0.2*" />
                             <DataGridTextColumn Header="Imię" Binding="{Binding Imię}" Width="0.2*" />
                             <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="0.3*" />

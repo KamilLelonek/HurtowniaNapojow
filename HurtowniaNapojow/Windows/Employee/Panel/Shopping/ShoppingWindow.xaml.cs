@@ -16,7 +16,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
     /// <summary>
     /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class ShoppingWindow
+    public partial class ShoppingWindow : IRebindlable
     {
         private readonly Validator _validator = Validator.Instance;
         private bool _customersFilled = false;
@@ -187,6 +187,9 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         }
         #endregion
 
-        
+        public void RebindData()
+        {
+            SetShoppingBinding();
+        }
     }
 }
