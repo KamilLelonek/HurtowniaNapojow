@@ -11,8 +11,8 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="Powrót" Click="MenuBack_Click" HorizontalAlignment="Left" Background="LightGray"/>
-            <MenuItem Header="Panel sprzedawcy" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
-            <MenuItem Header="Panel magazyniera" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
+            <MenuItem Header="Panel sprzedaży" Click="MenuShoppingPanel_Click" HorizontalAlignment="Left" Background="DarkGray"/>
+            <MenuItem Header="Panel magazynu" Click="MenuWarehousePanel_Click" HorizontalAlignment="Left" />
             <MenuItem Header="_Wyloguj" Click="MenuLogout_Click" HorizontalAlignment="Right" />
         </Menu>
         <TabControl Margin="0,25,0,0" SelectionChanged="TabControl_SelectionChanged">
