@@ -34,10 +34,30 @@ namespace HurtowniaNapojow.Helpers
             return true;
         }
 
-        public static Boolean DeleteEmployeeRow(DataRow employeeRow)
+        public static Boolean DeleteEmployeeRow(HurtowniaNapojowDataSet.PracownicyRow employeeRow)
         {
+            if (employeeRow == SessionHelper.Instance.CurrentEmployee)
+            {
+                MessageBox.Show("Nie można usunąć zalogowanego pracownika.", Globals.TITLE_ERROR);
+                return false;
+            }
+            if (employeeRow.CzyAdministrator)
+            {
+                MessageBox.Show("Nie można usunąć konta administratora.", Globals.TITLE_ERROR);
+                return false;
+            }
+
             employeeRow.Delete();
-            return EmployeesTableAdapter.Update(employeeRow) == 1;
+            try
+            {
+                return EmployeesTableAdapter.Update(employeeRow) == 1;
+            }
+            catch (Exception)
+            {
+                employeeRow.RejectChanges();
+                MessageBox.Show("Nie można usunąć pracownika, który realizował zakupy klientów.", Globals.TITLE_ERROR);
+                return false;
+            }
         }
 
         #endregion Basic CRUD

@@ -85,7 +85,7 @@ namespace HurtowniaNapojow.Windows.Admin
         private void DeleteEmployees_Clicked(object sender, RoutedEventArgs e)
         {
             var employees = EmployeesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            employees.ForEach(employee => DataBaseEmployeeHelper.DeleteEmployeeRow(employee.Row));
+            employees.ForEach(employee => DataBaseEmployeeHelper.DeleteEmployeeRow(employee.Row as HurtowniaNapojowDataSet.PracownicyRow));
         }
 
         #endregion Employees TAB
