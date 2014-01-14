@@ -76,6 +76,11 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean ChangeEmail(HurtowniaNapojowDataSet.PracownicyRow employee, String newEmail)
         {
+            if (_employeesData.Any(e => e.Email.Equals(newEmail)))
+            {
+                MessageBox.Show("Pracownik o podanym emailu już istnieje", Globals.TITLE_ERROR);
+                return false;
+            }
             employee.Email = newEmail;
             return UpdateDB(employee, "Email został zmieniony");
         }

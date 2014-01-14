@@ -3,20 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Wybór napoju" Height="500" Width="640"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type DataGridCell}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
-
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid>
         <ComboBox Text="Wybierz filtr" x:Name="DrinkFilterComboBox" HorizontalAlignment="Right" Margin="0,5,210,0" VerticalAlignment="Top" Width="120" Focusable="False" IsEditable="True" IsReadOnly="True">
             <ComboBoxItem Name="Nazwa" Content="Nazwa"/>

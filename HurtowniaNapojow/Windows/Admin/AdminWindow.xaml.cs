@@ -85,8 +85,11 @@ namespace HurtowniaNapojow.Windows.Admin
 
         private void DeleteEmployees_Clicked(object sender, RoutedEventArgs e)
         {
-            var employees = EmployeesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
-            employees.ForEach(employee => DataBaseEmployeeHelper.DeleteEmployeeRow(employee.Row as HurtowniaNapojowDataSet.PracownicyRow));
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wybranego pracownika?", "Uwaga", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                var employees = EmployeesDataGrid.SelectedItems.OfType<DataRowView>().ToList();
+                employees.ForEach(employee => DataBaseEmployeeHelper.DeleteEmployeeRow(employee.Row as HurtowniaNapojowDataSet.PracownicyRow));
+            }
         }
 
         #endregion Employees TAB
@@ -140,16 +143,16 @@ namespace HurtowniaNapojow.Windows.Admin
         {
             var currentPassword = CurrentPasswordTextBox.Password;
             var isPasswordEmpty = String.IsNullOrEmpty(currentPassword);
-            var isUserAuthenticated = SessionHelper.Instance.IsUserAuthenticated(currentPassword);
-
-            if (!isUserAuthenticated)
-            {
-                MessageBox.Show("Podane hasło rożni się od obecnego", Globals.TITLE_ERROR);
-                return;
-            }
             if (isPasswordEmpty)
             {
                 MessageBox.Show("Podaj proszę bieżące hasło", Globals.TITLE_ERROR);
+                return;
+            }
+
+            var isUserAuthenticated = SessionHelper.Instance.IsUserAuthenticated(currentPassword);
+            if (!isUserAuthenticated)
+            {
+                MessageBox.Show("Podane hasło rożni się od obecnego", Globals.TITLE_ERROR);
                 return;
             }
 

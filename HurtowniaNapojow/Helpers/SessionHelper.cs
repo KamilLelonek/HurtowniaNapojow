@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -131,11 +132,12 @@ namespace HurtowniaNapojow.Helpers
         {
             var employeesTable = DataBaseEmployeeHelper.GetEmployeesData();
             var employeesRows = from e in employeesTable where e.Email == email select e;
-            var areDataValid = employeesRows.Count() != 0 && employeesRows.First().Hasło.Equals(password);
+            var employeeList = employeesRows as IList<HurtowniaNapojowDataSet.PracownicyRow> ?? employeesRows.ToList();
+            var areDataValid = employeeList.Count() != 0 && employeeList.First().Hasło.Equals(password);
 
             if (!areDataValid) return false;
 
-            CurrentEmployee = employeesRows.First();
+            CurrentEmployee = employeeList.First();
             return true;
         }
 

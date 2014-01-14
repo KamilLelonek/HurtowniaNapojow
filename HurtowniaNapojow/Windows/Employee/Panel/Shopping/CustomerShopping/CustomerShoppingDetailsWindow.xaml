@@ -4,20 +4,6 @@
         Title="Zakupy klienta" Height="372" Width="559"
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type DataGridCell}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
-
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid x:Name="CustomerDetailsGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="166*"/>

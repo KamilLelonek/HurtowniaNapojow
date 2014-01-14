@@ -24,7 +24,6 @@ namespace HurtowniaNapojow.Windows.Admin
             _customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employeeRow);
 
             EmployeeShoppingDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
-
             InitDataContext(employeeRow);
         }
 
@@ -64,6 +63,11 @@ namespace HurtowniaNapojow.Windows.Admin
             var profit = DataBaseEmployeeHelper.CalculateEmployeeProfits(_employee);
             var profitFormatted = Math.Round(profit, 2);
             MessageBox.Show(String.Format("Zyski pracownika dla hurtowni wynoszą {0} zł", profitFormatted), "Zyski");
+        }
+
+        private void ShowShoppingDetails_Clicked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

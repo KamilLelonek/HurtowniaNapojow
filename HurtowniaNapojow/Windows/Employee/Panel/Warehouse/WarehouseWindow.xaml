@@ -4,23 +4,6 @@
         Title="Hurtownia Napojow | Panel Magazynu" Height="500" Width="1000"
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         WindowStartupLocation="CenterScreen" WindowState="Maximized" >
-
-    <Window.Resources>
-        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type DataGridCell}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-        </Style>
-    </Window.Resources>
-    
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <Menu.ItemsPanel>
