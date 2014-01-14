@@ -26,7 +26,7 @@
                 <DataGridTextColumn Header="Imię pracownika" Binding="{Binding EmployeeFirstName}" Width="0.15*" />
                 <DataGridTextColumn Header="Liczba produktów" Binding="{Binding ProductsCount}" Width="0.1*" />
                 <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding ProductsTotalAmount}" Width="0.1*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat={}{0:#,#.00} zł}" Width="0.075*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat={}{0:#,0.00} zł}" Width="0.075*" />
                 <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

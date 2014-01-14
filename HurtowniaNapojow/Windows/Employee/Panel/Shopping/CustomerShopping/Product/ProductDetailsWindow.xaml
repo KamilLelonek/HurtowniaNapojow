@@ -14,7 +14,7 @@
                 <Label Content="Opakowanie sztuki" IsEnabled="False" HorizontalAlignment="Right"/>
                 <Label Content="Opakowanie zbiorcze" IsEnabled="False" HorizontalAlignment="Right"/>
                 <Label Content="Data ważności" IsEnabled="False" HorizontalAlignment="Right"/>
-                <Label Content="Cena podstawowa" IsEnabled="False" HorizontalAlignment="Right"/>
+                <Label Content="Podatek" IsEnabled="False" HorizontalAlignment="Right"/>
                 <Label Content="Cena hurtowni" IsEnabled="False" HorizontalAlignment="Right"/>
                 <Label Content="Pozostała liczba sztuk" IsEnabled="False" HorizontalAlignment="Right"/>
             </StackPanel>
