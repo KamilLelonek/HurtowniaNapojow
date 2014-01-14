@@ -69,5 +69,10 @@ namespace HurtowniaNapojow.Windows
             PasswordBox.Password = "barbara1";
             ButtonLogin.PerformClick();
         }
+
+        private void ButtonSetting_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

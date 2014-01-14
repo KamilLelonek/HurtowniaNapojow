@@ -25,9 +25,10 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         public ShoppingWindow()
         {
             InitializeComponent();
+            CustomersDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
+            ShoppingsDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             SetCustomersComponentsEvents();
             SetShoppingsComponentsEvents();
-            CustomersDataGrid.FontSize = 18;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

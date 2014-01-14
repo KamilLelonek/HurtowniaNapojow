@@ -21,6 +21,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         {
             InitializeComponent();
             _shoppingWindow = shoppingWindow;
+            CustomersDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             SetCustomersBinding();
             SetCustomersComponentsEvents();
         }

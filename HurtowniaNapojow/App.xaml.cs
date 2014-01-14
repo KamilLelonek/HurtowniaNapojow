@@ -13,6 +13,8 @@ namespace HurtowniaNapojow
     {
         private void App_Startup(object sender, StartupEventArgs e)
         {
+            Globals.LoadConfig();
+
             var sessionHelper = SessionHelper.Instance;
             if (!sessionHelper.IsUserSet)
             {
@@ -33,7 +35,7 @@ namespace HurtowniaNapojow
 
         protected override void OnExit(ExitEventArgs e)
         {
-            // add code here to cleanup database
+            Globals.SaveConfig();
             base.OnExit(e);
         }
     }

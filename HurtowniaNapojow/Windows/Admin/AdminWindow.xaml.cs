@@ -31,6 +31,7 @@ namespace HurtowniaNapojow.Windows.Admin
             SetSettingsBinding();
             SetEmployeesBinding();
             SetComponentsEvents();
+            EmployeesDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
         }
 
         private void SetEmployeesBinding()

@@ -22,6 +22,8 @@ namespace HurtowniaNapojow.Windows.Admin
             _employee = employeeRow;
             _customerShoppingTable = EmployeeShopping.EmployeeShoppingCollectionBuilder(employeeRow);
 
+            EmployeeShoppingDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
+
             InitDataContext(employeeRow);
         }
 

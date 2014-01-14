@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Hurtownia Napojów | Logowanie" Height="320" Width="300"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
-    <StackPanel>
+    <StackPanel >
         <Label Margin="0,10,0,0" Content="Hurtownia Napojów" HorizontalAlignment="Center" VerticalAlignment="Top" TabIndex="1" Height="28" Width="116" HorizontalContentAlignment="Center"  />
         <Button Content="Administrator" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="FakeAdminButton_Click" Height="20" Margin="5"/>
         <Button Content="Pracownik" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="FakeEmployeeButton_Click" Height="20" Margin="5"/>

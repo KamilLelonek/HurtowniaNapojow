@@ -26,6 +26,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             _customer = customerRow;
             _parentWindow = parentWindow;
             SetShoppingBinding(_customer);
+
+            CustomerShoppingDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
         }
 
         private void SetShoppingBinding(HurtowniaNapojowDataSet.KlienciRow customer)

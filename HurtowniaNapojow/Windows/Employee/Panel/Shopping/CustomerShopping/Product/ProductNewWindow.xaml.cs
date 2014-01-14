@@ -26,6 +26,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             _parentWindow = parentWindow;
             _shopping = shopping;
             InitializeComponent();
+            DrinkDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinks().OrderBy(d => d.Name);
             SetDrinkComponentsEvents();
         }
