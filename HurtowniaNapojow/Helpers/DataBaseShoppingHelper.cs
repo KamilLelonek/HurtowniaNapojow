@@ -78,5 +78,11 @@ namespace HurtowniaNapojow.Helpers
             shoppingRow.Delete();
             return ShoppingTableAdapter.Update(shoppingRow) == 1;
         }
+
+        public static double CalculateShoppingProfit(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
+        {
+            var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);
+            return customerProducts.Aggregate(.0, (sum, customerProduct) => sum + customerProduct.Liczba * DataBaseProductHelper.CalculateProductProfit(customerProduct));
+        }
     }
 }

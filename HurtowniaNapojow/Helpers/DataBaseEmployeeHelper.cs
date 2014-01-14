@@ -95,6 +95,12 @@ namespace HurtowniaNapojow.Helpers
         }
         #endregion Extended CRUD
 
+        public static double CalculateEmployeeProfits(HurtowniaNapojowDataSet.PracownicyRow employee)
+        {
+            var employeeShoppings = DataBaseShoppingHelper.GetShoppingForEmployee(employee);
+            return employeeShoppings.Aggregate(.0, (sum, profit) => sum + DataBaseShoppingHelper.CalculateShoppingProfit(profit));
+        }
+
         #region Common methods
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.PracownicyRow employee, String messageIfSuccess)
         {

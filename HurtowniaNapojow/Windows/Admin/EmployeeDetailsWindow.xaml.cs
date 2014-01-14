@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
@@ -56,6 +57,13 @@ namespace HurtowniaNapojow.Windows.Admin
         private void SummaryButton_Click(object sender, RoutedEventArgs e)
         {
             this.OpenReport(_customerShoppingTable, @"Admin/EmployeeShoppings.rdlc");
+        }
+
+        private void ProfitsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var profit = DataBaseEmployeeHelper.CalculateEmployeeProfits(_employee);
+            var profitFormatted = Math.Round(profit, 2);
+            MessageBox.Show(String.Format("Zyski pracownika dla hurtowni wynoszą {0} zł", profitFormatted), "Zyski");
         }
     }
 }

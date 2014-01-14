@@ -72,5 +72,11 @@ namespace HurtowniaNapojow.Helpers
             products.ToList().ForEach(p => DeleteProductRow(p));
             return true;
         }
+
+        public static double CalculateProductProfit(HurtowniaNapojowDataSet.ProduktyKlientaRow product)
+        {
+            var drink = DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni);
+            return DataBaseWarehouseDrinkHelper.CalculateDrinkProfit(drink);
+        }
     }
 }

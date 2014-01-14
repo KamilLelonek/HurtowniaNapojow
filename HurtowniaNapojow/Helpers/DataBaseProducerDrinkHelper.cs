@@ -21,7 +21,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static HurtowniaNapojowDataSet.NapojeProducentaRow GetDrinkByID(int drinkId)
         {
-            return GetProducerDrinkData().First(producerDrink => producerDrink.Identyfikator == drinkId);
+            return _producerDrinksData.First(producerDrink => producerDrink.Identyfikator == drinkId);
         }
 
         public static Boolean AddNewProducerDrink(int idDrinkName, int idTaste, int idGasType, int idProducer, int idDrinkType, int idPiecePackage, int idBulkPackage, double producerPrice)

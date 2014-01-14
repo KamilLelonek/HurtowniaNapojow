@@ -22,7 +22,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static HurtowniaNapojowDataSet.NapojeHurtowniRow GetDrinkById(int drinkId)
         {
-            return GetWarehouseDrinkData().First(drink => drink.Identyfikator == drinkId);
+            return _warehouseDrinksData.First(drink => drink.Identyfikator == drinkId);
         }
 
         public static Boolean AddNewWarehouseDrink(int idDrink, int quantity, float warehousePrice, string location, DateTime expirationDate)
@@ -151,6 +151,12 @@ namespace HurtowniaNapojow.Helpers
         public static Boolean IsPast(DateTime date)
         {
             return DateTime.Now.CompareTo(date) > 0;
+        }
+
+        public static double CalculateDrinkProfit(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink)
+        {
+            var producerDrink = DataBaseProducerDrinkHelper.GetDrinkByID(warehouseDrink.id_napoju_producenta);
+            return warehouseDrink.CenaHurtowni - producerDrink.CenaProducenta;
         }
     }
 }
