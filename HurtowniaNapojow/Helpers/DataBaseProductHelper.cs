@@ -29,6 +29,16 @@ namespace HurtowniaNapojow.Helpers
                 select customerProduct;
         }
 
+        public static IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> GetProductsForWarehouseDrink(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink)
+        {
+            var customerProductsDataTable = GetProductsData();
+            return
+                from customerProduct
+                in customerProductsDataTable
+                where customerProduct.id_napoju_hurtowni == warehouseDrink.Identyfikator
+                select customerProduct;
+        }
+
         public static HurtowniaNapojowDataSet.ProduktyKlientaRow AddNewProduct(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow, HurtowniaNapojowDataSet.NapojeHurtowniRow drinkRow)
         {
             ProductsTableAdapter.Insert(shoppingRow.Identyfikator, drinkRow.Identyfikator, 0, 0);
@@ -38,7 +48,7 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean DeleteProductRow(HurtowniaNapojowDataSet.ProduktyKlientaRow productRow)
         {
-            DataBaseWarehouseDrinkHelper.UpdateAmount(productRow, -productRow.Liczba);
+            //DataBaseWarehouseDrinkHelper.UpdateAmount(productRow, -productRow.Liczba);
             productRow.Delete();
             return ProductsTableAdapter.Update(productRow) == 1;
         }

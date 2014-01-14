@@ -50,7 +50,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
             if (!validPrice) validPrice = float.TryParse(ProductPrice.Text.Replace('.', ','), out price);
             if (!validAmount || !validPrice) return;
             int delta = amount - _lastAmount;
-            if (DataBaseWarehouseDrinkHelper.UpdateAmount(_product, delta))
+            if (DataBaseWarehouseDrinkHelper.ValidateAmount(_product, delta))
             {
                 _product.Liczba = amount;
                 _product.Kwota = price;

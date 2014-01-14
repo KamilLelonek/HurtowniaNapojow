@@ -74,19 +74,15 @@ namespace HurtowniaNapojow.Helpers
             return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony");
         }
 
-        public static Boolean UpdateAmount(HurtowniaNapojowDataSet.ProduktyKlientaRow product, int amountDelta)
+        public static Boolean ValidateAmount(HurtowniaNapojowDataSet.ProduktyKlientaRow product, int amountDelta)
         {
-            HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink = GetDrinkById(product.id_napoju_hurtowni);
-            if (warehouseDrink.LiczbaSztuk >= amountDelta)
+            int left = DataBaseWarehouseDrinkHelper.CalculateLeftQuantity(DataBaseWarehouseDrinkHelper.GetDrinkById(product.id_napoju_hurtowni));
+            if (left < amountDelta)
             {
-                warehouseDrink.LiczbaSztuk -= amountDelta;
-                return UpdateDB(warehouseDrink, "Napój z magazynu hurtowni został zmieniony", false);
-            }
-            else
-            {
-                MessageBox.Show("Nie ma wystarczającej liczby sztuk w magazynie. Pozostała dostępna liczba sztuk produktu: " + warehouseDrink.LiczbaSztuk);
+                MessageBox.Show("Nie ma wystarczającej liczby sztuk w magazynie. Pozostała dostępna liczba sztuk produktu: " + left);
                 return false;
             }
+            return true;
         }
 
         public static Boolean UpdateDB(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink, String messageIfSuccess, bool showMessageIfSuccess = true)
@@ -137,6 +133,13 @@ namespace HurtowniaNapojow.Helpers
             return from warehouseDrink in _warehouseDrinksData
                    where warehouseDrink.LiczbaSztuk <= quantity
                    select new WarehouseDrink(warehouseDrink);
+        }
+
+        public static int CalculateLeftQuantity(HurtowniaNapojowDataSet.NapojeHurtowniRow warehouseDrink)
+        {
+            IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> products = DataBaseProductHelper.GetProductsForWarehouseDrink(warehouseDrink);
+
+            return warehouseDrink.LiczbaSztuk - (int)products.Aggregate(.0, (sum, product) => sum + product.Liczba);
         }
 
         public static bool IsDateWithinDays(DateTime endDate, int days)

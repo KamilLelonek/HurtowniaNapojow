@@ -13,6 +13,8 @@ namespace HurtowniaNapojow.Reports.Admin
 
         public int Id { get; set; }
         public String CustomerName { get; set; }
+
+        public String CustomerNameId { get; set; }
         public String Date { get; set; }
         public float Price { get; set; }
 
@@ -32,6 +34,7 @@ namespace HurtowniaNapojow.Reports.Admin
         {
             Id = _shoppingRow.Identyfikator;
             CustomerName = _customerRow.NazwaKlienta;
+            CustomerNameId = CustomerName + " - " + _customerRow.Identyfikator;
             Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);
             Date = String.Format(Globals.DATE_FORMAT, _shoppingRow.DataZłożenia);
         }

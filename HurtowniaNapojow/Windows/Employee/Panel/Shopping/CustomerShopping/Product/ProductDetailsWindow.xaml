@@ -31,7 +31,7 @@
                 <Label Content="{Binding Date, Mode=OneWay}" Height="26"/>
                 <Label Content="{Binding BasePrice, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
                 <Label Content="{Binding Price, Mode=OneWay, StringFormat={}{0:#,#.00} zł}" Height="26"/>
-                <Label Content="{Binding Quantity, Mode=OneWay}" Height="26"/>
+                <Label Content="{Binding QuantityLeft, Mode=OneWay}" Height="26"/>
             </StackPanel>
         </Grid>
         <Grid x:Name="ProductDetailsGrid">
