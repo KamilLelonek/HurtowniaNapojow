@@ -66,5 +66,11 @@ namespace HurtowniaNapojow.Helpers
                 return false;
             }
         }
+
+        public static Boolean DeleteProducts(IEnumerable<HurtowniaNapojowDataSet.ProduktyKlientaRow> products)
+        {
+            products.ToList().ForEach(p => DeleteProductRow(p));
+            return true;
+        }
     }
 }

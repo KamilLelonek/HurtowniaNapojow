@@ -65,11 +65,15 @@ namespace HurtowniaNapojow.Helpers
 
         public static Boolean DeleteShoppingRow(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
-            var productsExists = DataBaseProductHelper.GetProductsForShopping(shoppingRow).Count() > 0;
+            var products = DataBaseProductHelper.GetProductsForShopping(shoppingRow);
+            var productsExists = products.Count() > 0;
             if (productsExists)
             {
-                MessageBox.Show("Do wybranych zakupów klienta są przypisane produkty klienta. Zakupy nie zostaną usunięte.", Globals.TITLE_ERROR);
-                return false;
+                if (MessageBox.Show("Do wybranych zakupów klienta są przypisane produkty klienta. Czy na pewno chcesz trwale usunąć te zakupy klienta (wraz ze wszystkimi dodanymi produktami)?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    DataBaseProductHelper.DeleteProducts(products);
+                }
+                else return false;
             }
             shoppingRow.Delete();
             return ShoppingTableAdapter.Update(shoppingRow) == 1;

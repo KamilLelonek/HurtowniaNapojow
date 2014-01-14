@@ -50,8 +50,15 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
         private void DeleteProductButton_Click(object sender, RoutedEventArgs e)
         {
             var products = ProductsDataGrid.SelectedItems.OfType<ShoppingProduct>().ToList();
-            products.ForEach(product => DataBaseProductHelper.DeleteProductRow(product._productRow));
-            SetShoppingBinding();
+            int count = products.Count();
+            if (count > 0)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz usunąć zaznacze produkty?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    products.ForEach(product => DataBaseProductHelper.DeleteProductRow(product._productRow));
+                    SetShoppingBinding();
+                }
+            }
         }
 
         private void ProductDetailsButton_Click(object sender, RoutedEventArgs e)
@@ -67,11 +74,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (DataBaseShoppingHelper.DeleteShoppingRow(_shopping._shoppingRow))
+            if (MessageBox.Show("Czy na pewno chcesz usunąć te zakupy klienta?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                _shoppingWindow.SetShoppingBinding();
-                Close();
-            }         
+                if (DataBaseShoppingHelper.DeleteShoppingRow(_shopping._shoppingRow))
+                {
+                    _shoppingWindow.SetShoppingBinding();
+                    Close();
+                }
+            }
         }
     }
 }

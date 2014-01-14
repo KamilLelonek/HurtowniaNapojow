@@ -59,10 +59,13 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataBaseCustomerHelper.DeleteCustomerRow(_customer))
+            if(MessageBox.Show("Czy na pewno chcesz usunąć dane tego klienta?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                _parentWindow.SetCustomersBinding();
-                Close();
+                if (DataBaseCustomerHelper.DeleteCustomerRow(_customer))
+                {
+                    _parentWindow.SetCustomersBinding();
+                    Close();
+                }
             }
         }
 

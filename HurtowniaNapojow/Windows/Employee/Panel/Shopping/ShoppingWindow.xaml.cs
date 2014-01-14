@@ -120,9 +120,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         {
             var customers = CustomersDataGrid.SelectedItems.OfType<HurtowniaNapojowDataSet.KlienciRow>().ToList();
             int count = customers.Count();
-            customers.ForEach(customer => DataBaseCustomerHelper.DeleteCustomerRow(customer));
-            if(count > 0)
-                SetCustomersBinding();
+            if (count > 0)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz usunąć dane zaznaczoych klientów?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    customers.ForEach(customer => DataBaseCustomerHelper.DeleteCustomerRow(customer));
+                    SetCustomersBinding();
+                }
+            }
         }
         private void Customers_AddNewShopping_Clicked(object sender, RoutedEventArgs e)
         {
@@ -171,9 +176,14 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping
         {
             var shoppings = ShoppingsDataGrid.SelectedItems.OfType<EmployeeShopping>().ToList();
             int count = shoppings.Count();
-            shoppings.ForEach(shopping => DataBaseShoppingHelper.DeleteShoppingRow(shopping._shoppingRow));
-            if(count > 0)
-                SetShoppingBinding();
+            if (count > 0)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz usunąć zaznacze zakupy klientów?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    shoppings.ForEach(shopping => DataBaseShoppingHelper.DeleteShoppingRow(shopping._shoppingRow));
+                    SetShoppingBinding();
+                }
+            }
         }
         #endregion
 

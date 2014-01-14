@@ -68,15 +68,31 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.Prod
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            DataBaseProductHelper.DeleteProductRow(_product);
-            _parentWindow.SetShoppingBinding();
-            this.Close();
+            if (MessageBox.Show("Czy na pewno chcesz usunąć ten produkt?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                DataBaseProductHelper.DeleteProductRow(_product);
+                _parentWindow.SetShoppingBinding();
+                this.Close();
+            }
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             Save();
-            this.Close();
+            if(_product.Liczba == 0 || _product.Kwota == 0)
+            {
+                MessageBoxResult result = MessageBox.Show("Pozostawiono wyzerowane atrybuty produktu. Czy chcesz usunąć ten produkt?", "Potwierdzenie", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DataBaseProductHelper.DeleteProductRow(_product);
+                    _parentWindow.SetShoppingBinding();
+                    this.Close();
+                }
+                if(result == MessageBoxResult.No)
+                    this.Close();
+
+            }
+            else this.Close();
         }
 
         private void ProductAmountDecrease_OnClick(object sender, RoutedEventArgs e)
