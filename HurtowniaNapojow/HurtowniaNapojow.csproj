@@ -461,6 +461,7 @@
       <DependentUpon>HurtowniaNapojowDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.CustomerShopping.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeIncome.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeShopping.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.WarehouseDrink.datasource" />

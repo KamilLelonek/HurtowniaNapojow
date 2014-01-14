@@ -75,5 +75,13 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
             (new CustomerShoppingDetailsWindow(_parentWindow, new EmployeeShopping(ref shopping._shoppingRow))).ShowDialog();
             SetShoppingBinding(_customer);
         }
+
+
+       
+
+        private void RaportButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
