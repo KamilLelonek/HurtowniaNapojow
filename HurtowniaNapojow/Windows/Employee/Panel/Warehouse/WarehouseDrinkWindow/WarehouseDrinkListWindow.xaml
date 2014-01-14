@@ -3,6 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Wybór napoju" Height="500" Width="640"
          WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Button Content="Nowy" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="75" Click="AddNewProducerDrink"/>
 
@@ -21,20 +37,20 @@
         <Button Content="_Resetuj" x:Name="DrinkResetButton" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="75" Height="22" Click="DrinkResetFilterButton_Click" />
         <DataGrid Margin="5,30,5,30" x:Name="DrinkDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" >
             <DataGrid.Columns>
-               
-                    <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.08*" Visibility="Hidden" />
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="0.10*" />
-                    <DataGridTextColumn Header="Producent" Binding="{Binding ProducerName}" Width="0.10*" />
-                    <DataGridTextColumn Header="Cena prod." Binding="{Binding Price, StringFormat={}{0:#,0.00} zł}" Width="0.08*" />
-                    <DataGridTextColumn Header="Podatek" Binding="{Binding BasePrice, StringFormat={}{0:#,0.00} %}" Width="0.07*" />
-                    <DataGridTextColumn Header="Smak" Binding="{Binding TasteName}" Width="0.08*" />
-                    <DataGridTextColumn Header="Rodzaj" Binding="{Binding TypeName}" Width="0.10*" />
-                    <DataGridTextColumn Header="Rodzaj Gazu" Binding="{Binding GasName}" Width="0.10*" />
-                    <DataGridTextColumn Header="Opakowanie sztuki" Binding="{Binding PiecePackageName}" Width="0.14*" />
-                    <DataGridTextColumn Header="Pojemność" Binding="{Binding PiecePackageVolume, StringFormat={}{0:#,0.00} l}" Width="0.08*"   />
-                    <DataGridTextColumn Header="Opakowanie zbiorcze" Binding="{Binding BulkPackageName}" Width="0.14*" />
-                    <DataGridTextColumn Header="Ilość" Binding="{Binding BulkPackageVolume,StringFormat={}{0:#,#} sztuk}" Width="0.08*" />
-                
+
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.08*" Visibility="Hidden" CellStyle="{StaticResource RightCellStyle}"/>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="0.10*" />
+                <DataGridTextColumn Header="Producent" Binding="{Binding ProducerName}" Width="0.10*" />
+                <DataGridTextColumn Header="Cena producenta (zł)." Binding="{Binding Price, StringFormat='{}{0:0.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.08*" />
+                <DataGridTextColumn Header="Podatek (%)" Binding="{Binding BasePrice, StringFormat='{}{0:0.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.07*" />
+                <DataGridTextColumn Header="Smak" Binding="{Binding TasteName}" Width="0.08*" />
+                <DataGridTextColumn Header="Rodzaj" Binding="{Binding TypeName}" Width="0.10*" />
+                <DataGridTextColumn Header="Rodzaj Gazu" Binding="{Binding GasName}" Width="0.10*" />
+                <DataGridTextColumn Header="Opakowanie sztuki " Binding="{Binding PiecePackageName}" Width="0.14*" />
+                <DataGridTextColumn Header="Pojemność (litr)" Binding="{Binding PiecePackageVolume, StringFormat='{}{0:0.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.08*"   />
+                <DataGridTextColumn Header="Opakowanie zbiorcze" Binding="{Binding BulkPackageName}" Width="0.14*" />
+                <DataGridTextColumn Header="Ilość (sztuki)" Binding="{Binding BulkPackageVolume}" CellStyle="{StaticResource RightCellStyle}" Width="0.08*" />
+
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -95,6 +95,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
             ProducerDrinkFilterComboBox.Text = Globals.FILTER_SELECT;
             ProducerDrinkFilterTextBox.Text = "";
             producerDrinks = ProducerDrinkHelper.GetProducerDrinksLinq();
+            ProducerDrinkDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             ProducerDrinkDataGrid.RebindContext(producerDrinks.OrderBy(c => c.Name));
         }
         private void SetProducerDrinkComponentsEvents()
@@ -282,6 +283,7 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Warehouse
         }
         private void SetWarehouseDrinkData()
         {
+            DrinkDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             DrinkDataGrid.DataContext = WarehouseDrink.GetWarehouseDrinksLinq().OrderBy(d => d.Name);
         }
         private void DrinkResetFilterButton_Click(object sender, RoutedEventArgs e)

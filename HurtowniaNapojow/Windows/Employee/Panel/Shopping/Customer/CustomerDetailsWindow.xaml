@@ -3,6 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Szczegoły klienta" Height="372" Width="559"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="CustomerDetailsGrid">
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="12,11,0,0" VerticalAlignment="Top" />
         <TextBox Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="23" Margin="12,37,0,0" Text="{Binding NazwaKlienta, Mode=OneWay}" VerticalAlignment="Top" Width="130" />
@@ -21,12 +35,12 @@
                   AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" Width="0.03*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Id}" CellStyle="{StaticResource RightCellStyle}" Width="0.03*" />
                 <DataGridTextColumn Header="Nazwisko pracownika" Binding="{Binding EmployeeLastName}" Width="0.15*" />
                 <DataGridTextColumn Header="Imię pracownika" Binding="{Binding EmployeeFirstName}" Width="0.15*" />
-                <DataGridTextColumn Header="Liczba produktów" Binding="{Binding ProductsCount}" Width="0.1*" />
-                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding ProductsTotalAmount}" Width="0.1*" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding Price, StringFormat={}{0:#,0.00} zł}" Width="0.075*" />
+                <DataGridTextColumn Header="Liczba produktów" Binding="{Binding ProductsCount}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
+                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding ProductsTotalAmount}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
+                <DataGridTextColumn Header="Kwota (zł)" Binding="{Binding Price, StringFormat='{}{0:#,0.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.075*" />
                 <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -42,4 +56,5 @@
         <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
         
     </Grid>
+   
 </Window>

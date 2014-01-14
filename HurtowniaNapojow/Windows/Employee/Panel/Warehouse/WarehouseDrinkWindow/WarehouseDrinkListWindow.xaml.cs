@@ -29,6 +29,7 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
 
         private void SetDataInDataGrid()
         {
+            DrinkDataGrid.FontSize = Globals.DATAGRID_FONT_SIZE;
             DrinkDataGrid.DataContext = ProducerDrinkHelper.GetProducerDrinksLinq().OrderBy(d => d.Name);
 
         }

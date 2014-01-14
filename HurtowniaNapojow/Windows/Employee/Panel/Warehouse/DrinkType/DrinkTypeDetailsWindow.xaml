@@ -3,15 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Rodzaje napojów" Height="332.928" Width="302.432"
         WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="RightCellStyle" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </Window.Resources>
 
     <Grid Margin="0,0,0,0">
         <DataGrid x:Name="DrinkTypeDataGrid" HorizontalAlignment="Center" Margin="10,10,10,80"
                   VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding}"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" Width="0.15*" />
+                <DataGridTextColumn Header="Nr" Binding="{Binding Identyfikator}" CellStyle="{StaticResource RightCellStyle}" Width="0.15*" />
                 <DataGridTextColumn Header="Nazwa Rodzaju " Binding="{Binding NazwaRodzajuNapoju}" Width="0.40*" />
-                <DataGridTextColumn Header="Stawka Podatku" Binding="{Binding StawkaPodatkowa}" Width="0.45*" />
+                <DataGridTextColumn Header="Stawka Podatku" Binding="{Binding StawkaPodatkowa}" CellStyle="{StaticResource RightCellStyle}" Width="0.45*" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -22,4 +37,5 @@
         <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Center" Margin="0,0,0,20"
                 VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
     </Grid>
+    
 </Window>
