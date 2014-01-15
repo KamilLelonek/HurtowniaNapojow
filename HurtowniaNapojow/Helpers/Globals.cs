@@ -11,7 +11,7 @@ namespace HurtowniaNapojow.Helpers
         public static readonly String ADMIN_NAME = "admin";
         public static readonly String COOKIE_FILE_NAME = @"\cookie.hn";
         public static readonly String FILTER_SELECT = "Wybierz filtr";
-        public static readonly String CONFIG_FILE = "scale.txt";
+        public static readonly String CONFIG_FILE = "cfg.txt";
 
         public const String DATE_FORMAT = "{0:dd/MM/yyyy}";
 
@@ -22,7 +22,7 @@ namespace HurtowniaNapojow.Helpers
         public static readonly Char COOKIE_DELIMETER = '_';
 
 
-        public static int DATAGRID_FONT_SIZE = 14;
+        public static int DATAGRID_FONT_SIZE = 16;
         public static bool RUN_FIXXXER = true;
 
         public static void LoadConfig()
