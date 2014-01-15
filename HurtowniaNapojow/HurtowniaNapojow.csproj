@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\ShoppingDetailedProduct.cs" />
+    <Compile Include="Utils\Fixxxer.cs" />
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml.cs">
       <DependentUpon>ProductDetailsWindow.xaml</DependentUpon>
     </Compile>
