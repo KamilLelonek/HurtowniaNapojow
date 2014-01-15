@@ -30,7 +30,7 @@ namespace HurtowniaNapojow.Helpers
             CustomerName = _customerRow.NazwaKlienta;
             EmployeeFirstName = _employeeRow.Imię;
             EmployeeLastName = _employeeRow.Nazwisko;
-            Date = _shoppingRow.DataZłożenia.ToShortDateString();
+            Date = String.Format(Globals.DATE_FORMAT, _shoppingRow.DataZłożenia);
             ProductsCount = DataBaseShoppingHelper.CalculateShoppingProductsCount(_shoppingRow);
             ProductsTotalAmount = DataBaseShoppingHelper.CalculateShoppingProductsTotalAmount(_shoppingRow);
             Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);

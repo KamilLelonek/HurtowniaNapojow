@@ -84,7 +84,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.Customer
 
         private void RaportButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var data = Helpers.CustomerShopping.GetCustomerShoppings(_customer).OrderBy(c => c.EmployeeLastName);
+            this.OpenReport(data, @"Employee/ShoppingsSummary.rdlc");
         }
     }
 }

@@ -63,7 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Utils\Fixxxer.cs" />
+    <Compile Include="Helpers\ShoppingDetailedProduct.cs" />
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml.cs">
       <DependentUpon>ProductDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -452,6 +452,8 @@
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByLastName.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesSummary.rdlc" />
     <EmbeddedResource Include="Reports\Admin\EmployeesIncomeByIncome.rdlc" />
+    <EmbeddedResource Include="Reports\Employee\ShoppingDetailedProducts.rdlc" />
+    <EmbeddedResource Include="Reports\Employee\ShoppingsSummary.rdlc" />
     <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkDate.rdlc" />
     <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkQuantity.rdlc" />
     <EmbeddedResource Include="Reports\Warehouse\WarehouseDrinkWithZeroQuantity.rdlc" />
@@ -470,6 +472,7 @@
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.CustomerShopping.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeIncome.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.EmployeeShopping.datasource" />
+    <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.ShoppingDetailedProduct.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Helpers.WarehouseDrink.datasource" />
     <None Include="Properties\DataSources\HurtowniaNapojow.Reports.Admin.EmployeeIncome.datasource" />
     <None Include="Properties\Settings.settings">

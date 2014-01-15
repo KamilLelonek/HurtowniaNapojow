@@ -35,7 +35,6 @@ namespace HurtowniaNapojow.Reports.Admin
             Price = _productRow.Kwota;
         }
 
-
         public static IEnumerable<ShoppingProduct> GetProductsForShopping(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
             var products = DataBaseProductHelper.GetProductsForShopping(shoppingRow);

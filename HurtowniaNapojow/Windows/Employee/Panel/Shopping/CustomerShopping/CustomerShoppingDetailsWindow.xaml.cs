@@ -90,5 +90,11 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
             }
             Close();
         }
+
+        private void SummaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var data = ShoppingDetailedProduct.GetDetailedProductsForShopping(_shopping._shoppingRow);
+            this.OpenReport(data, @"Employee/ShoppingDetailedProducts.rdlc");
+        }
     }
 }
