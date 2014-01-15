@@ -3,6 +3,7 @@ using HurtowniaNapojow.Helpers;
 using HurtowniaNapojow.Windows;
 using HurtowniaNapojow.Windows.Admin;
 using HurtowniaNapojow.Windows.Employee;
+using HurtowniaNapojow.Utils;
 
 namespace HurtowniaNapojow
 {
@@ -14,6 +15,11 @@ namespace HurtowniaNapojow
         private void App_Startup(object sender, StartupEventArgs e)
         {
             Globals.LoadConfig();
+            if(Globals.RUN_FIXXXER)
+            {
+                Fixxxer.FixDatabase();
+                Globals.RUN_FIXXXER = false;
+            }       
 
             var sessionHelper = SessionHelper.Instance;
             if (!sessionHelper.IsUserSet)

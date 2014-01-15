@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utils\Fixxxer.cs" />
     <Compile Include="Windows\Employee\Panel\Shopping\CustomerShopping\Product\ProductDetailsWindow.xaml.cs">
       <DependentUpon>ProductDetailsWindow.xaml</DependentUpon>
     </Compile>

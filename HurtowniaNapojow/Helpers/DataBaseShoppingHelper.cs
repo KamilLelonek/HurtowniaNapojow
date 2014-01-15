@@ -79,6 +79,20 @@ namespace HurtowniaNapojow.Helpers
             return ShoppingTableAdapter.Update(shoppingRow) == 1;
         }
 
+        public static Boolean UpdateDB(HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
+        {
+            try
+            {
+                ShoppingTableAdapter.Update(shoppingRow);
+                return true;
+            }
+            catch (OleDbException e)
+            {
+                MessageBox.Show(e.Message, Globals.TITLE_ERROR);
+                return false;
+            }
+        }
+
         public static double CalculateShoppingProfit(HurtowniaNapojowDataSet.ZakupyKlientaRow shopping)
         {
             var customerProducts = DataBaseProductHelper.GetProductsForShopping(shopping);

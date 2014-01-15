@@ -23,6 +23,7 @@ namespace HurtowniaNapojow.Helpers
 
 
         public static int DATAGRID_FONT_SIZE = 14;
+        public static bool RUN_FIXXXER = true;
 
         public static void LoadConfig()
         {
@@ -34,6 +35,12 @@ namespace HurtowniaNapojow.Helpers
                 int fontSize = 16;
                 if (int.TryParse(fontSizeStr, out fontSize))
                     DATAGRID_FONT_SIZE = fontSize;
+
+                var runFixxxerStr = reader.ReadLine();
+                if (runFixxxerStr == null) return;
+                bool runFixxxer = true;
+                if (bool.TryParse(runFixxxerStr, out runFixxxer))
+                    RUN_FIXXXER = runFixxxer;
             }
         }
 
@@ -44,7 +51,8 @@ namespace HurtowniaNapojow.Helpers
             {
                 using (var writer = new StreamWriter(CONFIG_FILE))
                 {
-                    writer.Write(DATAGRID_FONT_SIZE);
+                    writer.WriteLine(DATAGRID_FONT_SIZE);
+                    writer.WriteLine(RUN_FIXXXER);
                 }
             }
             catch (IOException)
