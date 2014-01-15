@@ -412,7 +412,7 @@
                                           <TablixMembers>
                                             <TablixMember>
                                               <TablixHeader>
-                                                <Size>1.78563cm</Size>
+                                                <Size>2.36771cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="Textbox29">
                                                     <CanGrow>true</CanGrow>
@@ -865,7 +865,7 @@
                                                 </SortExpression>
                                               </SortExpressions>
                                               <TablixHeader>
-                                                <Size>1.78563cm</Size>
+                                                <Size>2.36771cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="Price">
                                                     <CanGrow>true</CanGrow>
@@ -928,18 +928,130 @@
         </TablixRowHierarchy>
         <DataSetName>HurtowniaNapojowDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>29.92125cm</Width>
+        <Width>30.50333cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Price2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!Price.Value)</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>#,0.00 'zł';(#,0.00 'zł')</Format>
+                  <Color>#4c68a2</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Price</rd:DefaultName>
+        <Top>1.55208cm</Top>
+        <Left>25.63562cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.36771cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <BackgroundColor>#e6eefc</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pl-PL</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Location2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Całkowia kwota</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <Color>#4d4d4d</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Location</rd:DefaultName>
+        <Top>1.55208cm</Top>
+        <Left>22.97687cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.65875cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>11.78002in</Width>
+  <Width>12.00919in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

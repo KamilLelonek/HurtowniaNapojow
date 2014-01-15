@@ -13,8 +13,8 @@ namespace HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping
     /// </summary>
     public partial class CustomerShoppingDetailsWindow
     {
-        private readonly EmployeeShopping _shopping;
-        private readonly IRebindlable _shoppingWindow;
+        private EmployeeShopping _shopping;
+        private IRebindlable _shoppingWindow;
 
         public CustomerShoppingDetailsWindow(IRebindlable shoppingWindow, EmployeeShopping shopping)
         {

@@ -55,7 +55,7 @@
                                 <DataGridTextColumn Header="Całkowita liczba sztuk" Binding="{Binding Quantity}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
                                 <DataGridTextColumn Header="Pozostała liczba sztuk" Binding="{Binding QuantityLeft}" CellStyle="{StaticResource RightCellStyle}" Width="0.1*" />
                                 <DataGridTextColumn Header="Położenie" Binding="{Binding Location}" Width="0.1*" />
-                                <DataGridTextColumn Header="Data ważności" Binding="{Binding Date}" Width="0.1*" />
+                                <DataGridTextColumn Header="Data ważności" Binding="{Binding DateRaw, StringFormat='{}{0:dd/MM/yyyy}'}" Width="0.1*" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

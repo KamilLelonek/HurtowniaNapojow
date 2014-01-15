@@ -13,10 +13,11 @@ namespace HurtowniaNapojow.Reports.Admin
 
         public int Id { get; set; }
         public String CustomerName { get; set; }
-
         public String CustomerNameId { get; set; }
         public String Date { get; set; }
         public float Price { get; set; }
+        public DateTime DateRaw { get; set; }
+
 
         public EmployeeShopping(ref HurtowniaNapojowDataSet.ZakupyKlientaRow shoppingRow)
         {
@@ -37,6 +38,7 @@ namespace HurtowniaNapojow.Reports.Admin
             CustomerNameId = CustomerName + " - " + _customerRow.Identyfikator;
             Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);
             Date = String.Format(Globals.DATE_FORMAT, _shoppingRow.DataZłożenia);
+            DateRaw = _shoppingRow.DataZłożenia;
         }
 
         public static IEnumerable<EmployeeShopping> EmployeeShoppingCollectionBuilder(HurtowniaNapojowDataSet.PracownicyRow employee)

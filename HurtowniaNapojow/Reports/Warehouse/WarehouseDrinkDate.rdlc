@@ -178,7 +178,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.5cm</Size>
+                        <Size>3.37312cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox17">
                             <CanGrow>true</CanGrow>
@@ -629,7 +629,7 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>2.5cm</Size>
+                            <Size>3.37312cm</Size>
                             <CellContents>
                               <Textbox Name="Name">
                                 <CanGrow>true</CanGrow>
@@ -1032,7 +1032,7 @@
         </TablixRowHierarchy>
         <DataSetName>HurtowniaNapojowDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>31.44229cm</Width>
+        <Width>32.31542cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

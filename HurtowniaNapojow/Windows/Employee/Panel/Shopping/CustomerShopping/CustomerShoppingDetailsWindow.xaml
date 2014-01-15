@@ -31,9 +31,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Usuń" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="75" Click="DeleteButton_OnClick" />
+        <Button Content="Skasuj zamówienie" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="120" Click="DeleteButton_OnClick" />
         <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
-        <Button Content="Podsumowanie" x:Name="SummaryButton" HorizontalAlignment="Left" Margin="90,0,0,5" VerticalAlignment="Bottom" Width="90" Click="SummaryButton_Click"/>
+        <Button Content="Podsumowanie" x:Name="SummaryButton" HorizontalAlignment="Left" Margin="135,0,0,5" VerticalAlignment="Bottom" Width="90" Click="SummaryButton_Click"/>
     </Grid>
 
 

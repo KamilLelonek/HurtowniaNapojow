@@ -15,6 +15,7 @@ namespace HurtowniaNapojow.Helpers
         public int ProductsTotalAmount { get; set; }
         public float Price { get; set; }
         public String Date { get; set; }
+        public DateTime DateRaw { get; set; }
 
         public HurtowniaNapojowDataSet.KlienciRow       _customerRow;
         public HurtowniaNapojowDataSet.PracownicyRow    _employeeRow;
@@ -31,6 +32,7 @@ namespace HurtowniaNapojow.Helpers
             EmployeeFirstName = _employeeRow.Imię;
             EmployeeLastName = _employeeRow.Nazwisko;
             Date = String.Format(Globals.DATE_FORMAT, _shoppingRow.DataZłożenia);
+            DateRaw = _shoppingRow.DataZłożenia;
             ProductsCount = DataBaseShoppingHelper.CalculateShoppingProductsCount(_shoppingRow);
             ProductsTotalAmount = DataBaseShoppingHelper.CalculateShoppingProductsTotalAmount(_shoppingRow);
             Price = DataBaseShoppingHelper.CalculateShoppingPrice(_shoppingRow);

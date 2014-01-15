@@ -26,6 +26,7 @@ namespace HurtowniaNapojow.Helpers
         public float BasePrice { get; set; }
         public float Price { get; set; }
         public String Date { get; set; }
+        public DateTime DateRaw { get; set; }
         public int Quantity { get; set; }
         public int QuantityLeft { get; set; }
         public String Location { get; set; }
@@ -66,6 +67,7 @@ namespace HurtowniaNapojow.Helpers
             TypeName = _drinkTypeRow.NazwaRodzajuNapoju;
             BasePrice = _drinkTypeRow.StawkaPodatkowa*100;
             Price = _warehouseDrinkRow.CenaHurtowni;
+            DateRaw = _warehouseDrinkRow.DataWażności;
             Date = String.Format(Globals.DATE_FORMAT, _warehouseDrinkRow.DataWażności);
             PiecePackageName = _piecePackageNameRow.NazwaOpakowania;
             PiecePackageVolume = _piecePackageRow.Pojemność;
@@ -136,7 +138,8 @@ namespace HurtowniaNapojow.Helpers
                             Quantity = warehouseDrink.LiczbaSztuk,
                             QuantityLeft = DataBaseWarehouseDrinkHelper.CalculateLeftQuantity(warehouseDrink),
                             Location = warehouseDrink.Położenie,
-                            Date = String.Format(Globals.DATE_FORMAT, warehouseDrink.DataWażności)
+                            DateRaw = warehouseDrink.DataWażności,
+                            Date = String.Format(Globals.DATE_FORMAT, warehouseDrink.DataWażności),
                         };
 
             return query;

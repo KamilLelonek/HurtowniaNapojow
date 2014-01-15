@@ -16,6 +16,24 @@ namespace HurtowniaNapojow.Utils
             if (MessageBox.Show("Fixxxer starts. MAKE COPY OF ACCDB !!!!!!! Continue?", "Warning", MessageBoxButton.YesNo) == MessageBoxResult.No)
                 return;
             int fixxxed = 0;
+
+            //fix zero products
+            fixxxed = 0;
+            var products = DataBaseProductHelper.GetProductsData().ToList();
+            products.ForEach(p =>
+            {
+                if (p.Liczba < 1 || p.Kwota < 0.0001)
+                {
+                    p.Liczba = 2 + (new Random().Next()) % 10;
+                    p.Kwota = p.Liczba * DataBaseWarehouseDrinkHelper.GetDrinkById(p.id_napoju_hurtowni).CenaHurtowni;
+                    DataBaseProductHelper.UpdateDB(p, "fix zero product");
+                    fixxxed++;
+                }
+            });
+            if (fixxxed > 0)
+                MessageBox.Show("fix zero products .... fixxer fixed " + fixxxed);
+
+            fixxxed = 0;
             //fix drinks left quantity to min 50
             int minLeftQuantity = 50;
             IEnumerable<HurtowniaNapojowDataSet.NapojeHurtowniRow> drinks = DataBaseWarehouseDrinkHelper.GetWarehouseDrinkData();

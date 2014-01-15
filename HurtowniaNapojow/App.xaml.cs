@@ -15,7 +15,7 @@ namespace HurtowniaNapojow
         private void App_Startup(object sender, StartupEventArgs e)
         {
             Globals.LoadConfig();
-            if(Globals.RUN_FIXXXER)
+            if(Globals.RUN_FIXXXER && false)
             {
                 Fixxxer.FixDatabase();
                 Globals.RUN_FIXXXER = false;

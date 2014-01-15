@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Windows;
 using HurtowniaNapojow.Database;
 using HurtowniaNapojow.Helpers;
@@ -28,7 +27,6 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             SetBinding();
         }
 
-
         private void SetBinding()
         {
             _producerDrink.BasePrice = _producerDrink.BasePrice * 100;
@@ -37,27 +35,50 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
 
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_validator.AreControlsEmpty(ProductPrice, ProductAmount, Location )) return;
+            if (_validator.AreControlsEmpty(ProductPrice, ProductAmount, Location)) return;
             int amount = 0;
-            float price = _producerDrink.Price*(float)1.30;
+            float price = _producerDrink.Price * (float)1.30;
             bool validAmount = int.TryParse(ProductAmount.Text, out amount);
             bool validPrice = float.TryParse(ProductPrice.Text, out price);
             if (!validAmount || !validPrice) { MessageBox.Show("Proszę podać poprawne Wartości", Globals.TITLE_ERROR); return; }
-           
+
             var idProducerDrink = _producerDrink.Id;
             var quantity = amount;
             var warehousePrice = price;
             var location = Location.Text;
             var expirationDate = ExpiryDate.SelectedDate.Value;
-            //var expirationDate = (DateTime)ExpiryDate.DataContext;
-            DataBaseWarehouseDrinkHelper.AddNewWarehouseDrink(idProducerDrink,quantity,warehousePrice,location,expirationDate);
-            this.Close();
+            var notValidDate = DataBaseWarehouseDrinkHelper.IsPast(expirationDate);
+
+            if (notValidDate)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz dodać przeterminowany produkt?", Globals.TITLE_WARNING, MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
+
+            if (quantity == 0)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz dodać produkt z zerową liczbą sztuk?", Globals.TITLE_WARNING, MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
+
+            if ((int)price == 0)
+            {
+                if (MessageBox.Show("Czy na pewno chcesz dodać produkt bez ceny?", Globals.TITLE_WARNING, MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
+
+            DataBaseWarehouseDrinkHelper.AddNewWarehouseDrink(idProducerDrink, quantity, warehousePrice, location, expirationDate);
+            Close();
         }
 
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-            
-
             var text = ProductPrice.Text;
             var notNumberPressed = (e.Key < Key.NumPad0 || e.Key > Key.NumPad9) && (e.Key < Key.D0 || e.Key > Key.D9);
             var separatorPressed = e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.OemComma;
@@ -113,7 +134,6 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             else amount = 0;
 
             ProductAmount.Text = amount + "";
-           
         }
 
         private void ProductAmountIncrease_OnClick(object sender, RoutedEventArgs e)
@@ -124,9 +144,6 @@ namespace HurtowniaNapojow.Windows.Employee.Warehouse.WarehouseDrinkWindow
             else amount = 1;
 
             ProductAmount.Text = amount + "";
-            
         }
-
-       
     }
 }

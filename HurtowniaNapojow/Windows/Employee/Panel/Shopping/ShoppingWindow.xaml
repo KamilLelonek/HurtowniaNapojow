@@ -67,7 +67,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nr zakupu" Binding="{Binding Id}" CellStyle="{StaticResource RightCellStyle}" Width="0.025*" />
                             <DataGridTextColumn Header="Nazwa klienta" Binding="{Binding CustomerNameId}" Width="0.1*" />
-                            <DataGridTextColumn Header="Data złożenia" Binding="{Binding Date}" Width="0.1*" />
+                            <DataGridTextColumn Header="Data złożenia" Binding="{Binding DateRaw, StringFormat='{}{0:dd/MM/yyyy}'}" Width="0.1*" />
                             <DataGridTextColumn Header="Całkowita kwota (zł)" Binding="{Binding Price, StringFormat='{}{0:#,0.00}'}" CellStyle="{StaticResource RightCellStyle}" Width="0.05*" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
