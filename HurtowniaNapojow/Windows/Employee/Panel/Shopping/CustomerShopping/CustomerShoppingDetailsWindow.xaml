@@ -1,13 +1,12 @@
 ﻿<Window x:Class="HurtowniaNapojow.Windows.Employee.Panel.Shopping.CustomerShopping.CustomerShoppingDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Zakupy klienta" Height="372" Width="559"
+        Title="Zakup klienta" Height="372" Width="559"
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterScreen">
     <Grid x:Name="CustomerDetailsGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="166*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Nazwa klienta" IsEnabled="False" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="94" />
         <Label x:Name="NazwaKlientaTextBox" HorizontalAlignment="Left" Height="26" Margin="111,10,0,0" Content="{Binding CustomerName, Mode=OneWay}" VerticalAlignment="Top" Width="150"/>
@@ -17,7 +16,7 @@
         <Label Content="Produkty" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" IsEnabled="False" />
         <Button Content="Dodaj produkt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="20,98,0,0" Click="ProductNewButton_Click"/>
         <Button Content="Usuń zazaczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="125,98,0,0" Click="DeleteProductButton_Click"/>
-        <DataGrid x:Name="ProductsDataGrid" Margin="0,126,0,20" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True">
+        <DataGrid x:Name="ProductsDataGrid" Margin="0,126,0,30" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nr" Binding="{Binding Id}" CellStyle="{StaticResource RightCellStyle}" Width="0.025*" />
                 <DataGridTextColumn Header="Nazwa napoju" Binding="{Binding DrinkName}" Width="0.1*" />
@@ -32,8 +31,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Usuń" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Bottom" Width="75" Click="DeleteButton_OnClick" Grid.RowSpan="2" />
-        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" Grid.RowSpan="2" />
+        <Button Content="Usuń" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="75" Click="DeleteButton_OnClick" />
+        <Button Content="Zamknij" x:Name="CloseButton" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="CloseButton_OnClick" />
+        <Button Content="Podsumowanie" x:Name="SummaryButton" HorizontalAlignment="Left" Margin="90,0,0,5" VerticalAlignment="Bottom" Width="90" Click="SummaryButton_Click"/>
     </Grid>
 
 
