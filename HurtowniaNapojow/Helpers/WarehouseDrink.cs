@@ -66,7 +66,7 @@ namespace HurtowniaNapojow.Helpers
             TypeName = _drinkTypeRow.NazwaRodzajuNapoju;
             BasePrice = _drinkTypeRow.StawkaPodatkowa*100;
             Price = _warehouseDrinkRow.CenaHurtowni;
-            Date = _warehouseDrinkRow.DataWażności.ToShortDateString();
+            Date = String.Format(Globals.DATE_FORMAT, _warehouseDrinkRow.DataWażności);
             PiecePackageName = _piecePackageNameRow.NazwaOpakowania;
             PiecePackageVolume = _piecePackageRow.Pojemność;
             PiecePackageFull = PiecePackageName + " " + PiecePackageVolume;
@@ -136,7 +136,7 @@ namespace HurtowniaNapojow.Helpers
                             Quantity = warehouseDrink.LiczbaSztuk,
                             QuantityLeft = DataBaseWarehouseDrinkHelper.CalculateLeftQuantity(warehouseDrink),
                             Location = warehouseDrink.Położenie,
-                            Date = warehouseDrink.DataWażności.ToShortDateString()
+                            Date = String.Format(Globals.DATE_FORMAT, warehouseDrink.DataWażności)
                         };
 
             return query;
